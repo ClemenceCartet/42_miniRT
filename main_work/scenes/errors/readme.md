@@ -1,103 +1,105 @@
 ## Liste des scènes contenant des erreurs
 
+- Base cases
 1. Empty
-2. Wrong extension
-3. No Extension
+2. Wrong file extension
+3. No file extension
 4. Text
-5. One \n
+5. \n only in file
 6. Missing A (Ambient Light)
 7. Missing C (Camera)
 8. Missing L (Light)
 9. Missing Object (Sphere, Plane or Cylinder)
-10. Missing A & C
-11. Missing A & L
-12. Missing C & L
-13. Missing A & Object
-14. Missing C & Object
-15. Missing L & Object
-16. Missing A & C & Object
-17. Missing A & L & Object
-18. Missing C & L & Object
-19. Missing A & C & L
-20. Wrong Object alone
+10. Unknown ID given
 
 - ACLO exist but :
-21. A `Ratio` missing
-22. A `Ratio` invalid (wrong input)
-23. A `Ratio` invalid (wrong data)
+11. A `Ratio` missing
+12. A `Ratio` invalid (wrong input)
+13. A `Ratio` invalid (wrong data)
 
-24. A `RGB` missing
-25. A `RGB` invalid (wrong input)
-26. A `RGB` invalid (wrong data)
-27. A `RGB` invalid (missing data)
+14. A `RGB` missing
+15. A `RGB` invalid (wrong input)
+16. A `RGB` invalid (wrong data)
+17. A `RGB` invalid (missing data)
 
-28. C `xyz coordinates` missing
-29. C `xyz coordinates` invalid (wrong input)
-30. C `xyz coordinates` invalid (wrong data)
-31. C `xyz coordinates` invalid (missing data)
+18. C `xyz coordinates` missing
+19. C `xyz coordinates` invalid (wrong input)
+20. C `xyz coordinates` invalid (wrong data)
+21. C `xyz coordinates` invalid (missing data)
 
-32. C `xyz orientation` missing
-33. C `xyz orientation` invalid (wrong input)
-34. C `xyz orientation` invalid (wrong data)
-35. C `xyz orientation` invalid (missing data)
+22. C `xyz orientation` missing
+23. C `xyz orientation` invalid (wrong input)
+24. C `xyz orientation` invalid (wrong data)
+25. C `xyz orientation` invalid (missing data)
 
-36. C `FOV` missing
-37. C `FOV` invalid (wrong input)
-38. C `FOV` invalid (wrong data)
+26. C `FOV` missing
+27. C `FOV` invalid (wrong input)
+28. C `FOV` invalid (wrong data)
 
-39. L `xyz coordinates` missing
-40. L `xyz coordinates` invalid (wrong input)
-41. L `xyz coordinates` invalid (wrong data)
-42. L `xyz coordinates` invalid (missing data)
+29. L `xyz coordinates` missing
+30. L `xyz coordinates` invalid (wrong input)
+31. L `xyz coordinates` invalid (wrong data)
+32. L `xyz coordinates` invalid (missing data)
 
-43. L `Ratio` missing
-44. L `Ratio` invalid (wrong input)
-45. L `Ratio` invalid (wrong data)
+33. L `Ratio` missing
+34. L `Ratio` invalid (wrong input)
+35. L `Ratio` invalid (wrong data)
 
-46. sp `xyz coordinates` missing
-47. sp `xyz coordinates` invalid (wrong input)
-48. sp `xyz coordinates` invalid (wrong data)
-49. sp `xyz coordinates` invalid (missing data)
+36. sp `xyz coordinates` missing
+37. sp `xyz coordinates` invalid (wrong input)
+38. sp `xyz coordinates` invalid (wrong data)
+39. sp `xyz coordinates` invalid (missing data)
 
-50. sp `diameter` missing
-51. sp `diameter` invalid (wrong input)
-52. sp `diameter` invalid (wrong data)
+40. sp `diameter` missing
+41. sp `diameter` invalid (wrong input)
+42. sp `diameter` invalid (wrong data)
 
-53. sp `RGB` missing
-54. sp `RGB` invalid (wrong input)
-55. sp `RGB` invalid (wrong data)
-56. sp `RGB` invalid (missing data)
+43. sp `RGB` missing
+44. sp `RGB` invalid (wrong input)
+45. sp `RGB` invalid (wrong data)
+46. sp `RGB` invalid (missing data)
 
-57. pl `xyz coordinates` missing
-58. pl `xyz coordinates` invalid (wrong input)
-59. pl `xyz coordinates` invalid (wrong data)
-60. pl `xyz coordinates` invalid (missing data)
+47. pl `xyz coordinates` missing
+48. pl `xyz coordinates` invalid (wrong input)
+49. pl `xyz coordinates` invalid (wrong data)
+50. pl `xyz coordinates` invalid (missing data)
 
-61. pl `xyz orientation` missing
-62. pl `xyz orientation` invalid (wrong input)
-63. pl `xyz orientation` invalid (wrong data)
-64. pl `xyz orientation` invalid (missing data)
+51. pl `xyz orientation` missing
+52. pl `xyz orientation` invalid (wrong input)
+53. pl `xyz orientation` invalid (wrong data)
+54. pl `xyz orientation` invalid (missing data)
 
-65. pl `RGB` missing
-66. pl `RGB` invalid (wrong input)
-67. pl `RGB` invalid (wrong data)
-68. pl `RGB` invalid (missing data)
+55. pl `RGB` missing
+56. pl `RGB` invalid (wrong input)
+57. pl `RGB` invalid (wrong data)
+58. pl `RGB` invalid (missing data)
 
-69. cy `xyz coordinates` missing
-70. cy `xyz coordinates` invalid (wrong input)
-71. cy `xyz coordinates` invalid (wrong data)
-72. cy `xyz coordinates` invalid (missing data)
+59. cy `xyz coordinates` missing
+60. cy `xyz coordinates` invalid (wrong input)
+61. cy `xyz coordinates` invalid (wrong data)
+62. cy `xyz coordinates` invalid (missing data)
 
-73. cy `xyz orientation` missing
-74. cy `xyz orientation` invalid (wrong input)
-75. cy `xyz orientation` invalid (wrong data)
-76. cy `xyz orientation` invalid (missing data)
+63. cy `xyz orientation` missing
+64. cy `xyz orientation` invalid (wrong input)
+65. cy `xyz orientation` invalid (wrong data)
+66. cy `xyz orientation` invalid (missing data)
 
-77. cy `diameter` missing
-77. cy `diameter` invalid (wrong input)
-77. cy `diameter` invalid (wrong data)
+67. cy `diameter` missing
+68. cy `diameter` invalid (wrong input)
+69. cy `diameter` invalid (wrong data)
 
-77. cy `RGB` missing
-78. cy `RGB` invalid (wrong input)
-79. cy `RGB` invalid (wrong data)
-80. cy `RGB` invalid (missing data)
+70. cy `height` missing
+71. cy `height` invalid (wrong input)
+72. cy `height` invalid (wrong data)
+
+73. cy `RGB` missing
+74. cy `RGB` invalid (wrong input)
+75. cy `RGB` invalid (wrong data)
+76. cy `RGB` invalid (missing data)
+
+77. A wrong parameter order
+78. C wrong parameter order
+79. L wrong parameter order
+80. sp wrong parameter order
+81. pl wrong parameter order
+82. cy wrong parameter order

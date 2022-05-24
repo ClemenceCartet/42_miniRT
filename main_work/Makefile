@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/05/24 07:57:22 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/05/24 17:06:03 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all:	makelibft makemlx $(NAME)
+all:	makemlx makelibft $(NAME)
 
 # Binary creation
 $(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
@@ -91,15 +91,15 @@ $(P_OBJS):
 	printf "✅	$(GREEN)$(BOLD)$(NAME) obj directories created$(RESET)\n"
 
 # Libs creation
-$(LIBFT): makelibft
-
 $(MLX): makemlx
 
-makelibft:
-	$(MAKE) -j 3 -C libft/
+$(LIBFT): makelibft
 
 makemlx:
 	$(MAKE) -C mlx/
+
+makelibft:
+	$(MAKE) -j 3 -C libft/
 
 # Mandatory rules
 clean:
