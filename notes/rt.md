@@ -38,3 +38,38 @@ We need to know what happens to the light traveling along a ray as it passes thr
 If we are rendering a scene in a vacuum, light energy remains constant along a ray. 
 Although true vacuums are unusual on Earth, they are a reasonable approximation for many environments. 
 More sophisticated models are available for tracing rays through fog, smoke, the Earth’s atmosphere, and so on.
+
+---
+
+# Liens utiles
+
+[Notion MiniRT](https://www.notion.so/miniRT-5f6fcdf6d05e4742b6c38f0588f12436)
+[Ray Tracing in one weekend eBook](https://raytracing.github.io/)
+[MiniRT Github : MartinGarciaLopez](https://github.com/martingarcialopez/miniRT)
+[MiniRT Github : gmzorz](https://github.com/gmzorz/MiniRT)
+[MiniRT Korean tutorial](https://velog.io/@sayi/series/miniRT)
+
+[MiniRT Ressources : DannyFritz](https://github.com/dannyfritz/awesome-ray-tracing)
+[How to Write a Ray Tracer Intuitively](https://blog.scottlogic.com/2020/03/10/raytracer-how-to.html)
+[MiniRT Github : Ray Tracing in one weekend](https://github.com/RayTracing/raytracing.github.io)
+
+[Godot Engine : Vectors maths](https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html)
+[Godot Engine : Vectors advanced](https://docs.godotengine.org/en/stable/tutorials/math/vectors_advanced.html)
+[Computer Graphics from Scratch](https://gabrielgambetta.com/computer-graphics-from-scratch/)
+[Wikipedia : Conversion between quaternions and Euler angles](https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles)
+[Ray Tracer challenge : Texture Mapping](http://raytracerchallenge.com/bonus/texture-mapping.html)
+
+[MiniRT Ressources : Viclw17](https://viclw17.github.io/)
+[MiniRT Tutorial & Ressources](https://bigpel66.oopy.io/library/42/reference/5)
+[Youtube : intersection d'une sphère avec une droite](https://www.youtube.com/watch?v=XA36h0EIMGY)
+[Doc : Développement d'un Raytracer](https://www.alrj.org/docs/3D/raytracer/raytracertutchap1.htm)
+[Edmund Optics : Comprendre la distance focale et le champ de vision](https://www.edmundoptics.fr/knowledge-center/application-notes/imaging/understanding-focal-length-and-field-of-view/)
+
+[PDF 16 pages : Raytracing](https://euler.ac-versailles.fr/IMG/pdf/raytracing.pdf)
+[Youtube : Cours 1 de Raytracing / Path-tracing](https://www.youtube.com/watch?v=1HYhrx9bzP8)
+[PDF Diapo 27 pages : Transformations géométriques, rotation et translation](http://www2.ift.ulaval.ca/~pgiguere/cours/IntroRobotique2017/notes/03-VisionIII.pdf)
+[FAQ Maths pour les jeux](https://jeux.developpez.com/faq/math/)
+[Advanced graphics study guide](https://www.cl.cam.ac.uk/teaching/2000/AGraphHCI/AG/toplevel.html)
+
+[Doc : Learn Computer Graphics From Scratch](https://www.scratchapixel.com/)
+[PDF 32 pages++ : Le ray tracer en infographie](https://physique.cmaisonneuve.qc.ca/svezina/nyc/note_nyc/NYC_CHAP_6_IMPRIMABLE_4.pdf)
