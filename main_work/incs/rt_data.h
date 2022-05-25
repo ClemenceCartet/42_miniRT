@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/25 13:22:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/25 13:31:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ typedef struct s_light		t_light;
 */
 struct s_master
 {
-	t_mlxdata	*mlxdata;
+	t_mlxdata	mlxdata;
 	t_object	*object;
-	t_ambient	*ambient;
-	t_camera	*camera;
-	t_light		*light;
+	t_ambient	ambient;
+	t_camera	camera;
+	t_light		light;
 };
 
 /**Structure contenant les pointeurs et données nécessaires à la MLX
@@ -51,40 +51,34 @@ struct s_mlxdata
 };
 
 /**Structure pour la lumière ambiante
- * id		= identifiant de l'objet
  * ratio	= luminosité de la lumière ambiante | range [ 0.0 / 1.0 ]
  * rgb		= couleurs RGB de la lumière ambiante | range [ 0 / 255 ]
 */
 struct	s_ambient
 {
-	int		id;
 	float	ratio;
 	int		rgb[3];
 };
 
 /**Structure pour la caméra
- * id		= identifiant de l'objet
  * p_xyz	= coordonnées XYZ de la caméra
  * o_xyz	= Vecteur d'orientation 3D sur l'axe XYZ | range [ -1 / 1 ]
  * fov		= Champ de vision horizontal en degré | range [ 0 / 180 ]
 */
 struct	s_camera
 {
-	int		id;
 	float	p_xyz[3];
 	float	o_xyz[3];
 	int		fov;
 };
 
 /**Structure pour la lumière
- * id		= identifiant de l'objet
  * p_xyz	= coordonnées XYZ de la lumière
  * ratio	= luminosité de la lumière | range [ 0.0 / 1.0 ]
  * rgb		= BONUS : couleurs RGB de la lumière | range [ 0 / 255 ]
 */
 struct	s_light
 {
-	int		id;
 	float	p_xyz[3];
 	float	ratio;
 	float	rgb[3];
