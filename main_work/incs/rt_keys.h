@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 09:15:14 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/18 09:23:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/25 13:24:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,7 @@
 # define K_DOWN 125
 # define K_RIGHT 124
 
-/*
-Code	|	Events
+/*Code	|	Events
 
 02		|	Key Press
 03		|	Key Release
@@ -153,7 +152,7 @@ Code	|	Events
 36		|	LAST Event
 */
 
-/*
+/*Mask ID	|	Mask Name
 0L			|		NoEventMask
 (1L<<0)		|		KeyPressMask
 (1L<<1)		|		KeyReleaseMask

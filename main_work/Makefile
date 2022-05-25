@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/05/24 17:06:03 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/05/25 13:23:15 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ MLX		:=	mlx/libmlx.a
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS		:=	mini_rt.h	rt_keys.h
+LST_INCS		:=	mini_rt.h		rt_keys.h	\
+					rt_struct.h		rt_defines.h
 
 # Directories
 P_MLX			:=	mlx/

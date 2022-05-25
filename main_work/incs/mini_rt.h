@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/24 07:57:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/25 13:28:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ struct s_list
 # include <libft.h>
 # include <mlx.h>
 # include <rt_keys.h>
+# include <rt_data.h>
+# include <rt_structs.h>
+# include <rt_defines.h>
 
 # include <math.h>
 
