@@ -10,7 +10,7 @@
 7. Missing C (Camera)
 8. Missing L (Light)
 9. Missing Object (Sphere, Plane or Cylinder)
-10. Unknown ID given
+10. Unknown character
 
 - ACLO exist but :
 11. A `Ratio` missing
@@ -103,3 +103,6 @@
 80. sp wrong parameter order
 81. pl wrong parameter order
 82. cy wrong parameter order
+83. Too much A
+84. Too much C
+85. Too much L
