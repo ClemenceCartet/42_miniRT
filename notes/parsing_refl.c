@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:11:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/26 14:39:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 09:35:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ Parsing
 				return error 85
 			if sp/pl/cy count < 1 | ft_strncmp (sp | pl | cy)
 				return error 9
+			keep a global counter for the parsing right after
 		} // count things
 		find A
 		{
@@ -244,11 +245,129 @@ Parsing
 								return error 48
 							if one value is float max+ or float min-
 								return error 49
-							give alue to "p_xyz" of struct
+							give value to "p_xyz" of struct
 						} // split with ,
-					}
+					} // first one should be xyz coordinates p_xyz, three values
+					second one should be xyz vector, three values between -1 to 1
+					{
+						if does not exist
+							return error 51
+						split with ,
+						{
+							if split number < 3
+								return error 54
+							if one value is not charset("1234567890-+.")
+								return error 52
+							if one value is not in range [-1/1]
+								return error 53
+							give value to "o_xyz" of struct
+						} // split with ,
+					} // second one should be xyz vector, three values between -1 to 1
+					third one should be RGB, three values between 0 to 255
+					{
+						if does not exist
+							return error 55
+						split with ,
+						{
+							if split number < 3
+								return error 62
+							if one value is not charset ("1234567890")
+								return error 60
+							if one value is not in range [0/255]
+								return error 61
+							give value to "rgb" of struct
+						} // split with ,
+					} // third one should be RGB, three values between 0 to 255
 				} // next three valus shoud be xyz coords, xyz vector and RGB
+				next value should be a "\n" or NULL
+				if not
+					return error 86
 			} // if pl
-		}
-	}
-}
+			if cy
+			{
+				create object link
+				give ID value
+				next 5 values should be xyz coords, xyz vector, diameter, height and RGB
+				{
+					first one should be xyz coords, three values
+					{
+						if does not exist
+							return error 59
+						split with ,
+						{
+							if split number < 3
+								return error 62
+							if one value is not charset("1234567890-+.")
+								return error 60
+							if one value is float max+ or float min-
+								return error 61
+							give value to "p_xyz" of struct
+						} // split with ,
+					} // first one should be xyz coords, three values
+					second one should be xyz vector, between -1 to 1
+					{
+						if does not exist
+							return error 63
+						split with ,
+						{
+							if split number < 3
+								return error 66
+							if one value is not charset ("1234567890-+.")
+								return error 64
+							if one value is not in range [-1/1]
+								return error 65
+							give value to "o_xyz" of struct
+						} // split with ,
+					} // second one should be xyz vector, between -1 to 1
+					third one should be diameter
+					{
+						if does not exist
+							return error 67
+						if is not charset ("12345678890")
+							return error 68
+						if is float max+ or float min-
+							return error 69
+						give value to "diameter" of struct
+					} // third value should be diameter
+					fourth value should be height
+					{
+						if does not exist
+							return error 70
+						if is not charset ("1234567890")
+							return error 71
+						if is float max+ or float min-
+							return error 72
+						give value to "height" of struct
+					} // fourth value should be height
+					fifth value should be RGB, three values between 0 to 255
+					{
+						if does not exist
+							return error 73
+						split with ,
+						{
+							if split number < 3
+								return error 76
+							if is not charset ("1234567890")
+								return error 74
+							if is not in range [0/255]
+								return error 75
+							give value to "rgb" of struct
+						} // split with ,
+					} // fifth value should be RGB, three values between 0 to 255
+				} // next 5 values should be xyz coords, xyz vector, diameter, height and RGB
+				next value should be a "\n" or NULL
+				if not
+					return error 86
+			} // if cy
+			Loop until global counter is down to 0 again
+			If global counter == 0
+			{
+				check all splits from main one
+				if there is something left
+					return error 87
+				else
+					PARSING OK
+			} // if global counter == 0
+		} // find object
+	} // Check content
+} // Parsing

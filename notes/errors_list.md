@@ -96,28 +96,29 @@
 65. cy `xyz orientation` invalid (wrong data)
 66. cy `xyz orientation` invalid (missing data)
 
-    cy `diameter` missing
-67. cy `diameter` invalid (wrong input)
-68. cy `diameter` invalid (wrong data)
+67. cy `diameter` missing
+68. cy `diameter` invalid (wrong input)
+69. cy `diameter` invalid (wrong data)
 
-69. cy `height` missing
-70. cy `height` invalid (wrong input)
-71. cy `height` invalid (wrong data)
+70. cy `height` missing
+71. cy `height` invalid (wrong input)
+72. cy `height` invalid (wrong data)
 
-72. cy `RGB` missing
-73. cy `RGB` invalid (wrong input)
-74. cy `RGB` invalid (wrong data)
-75. cy `RGB` invalid (missing data)
+73. cy `RGB` missing
+74. cy `RGB` invalid (wrong input)
+75. cy `RGB` invalid (wrong data)
+76. cy `RGB` invalid (missing data)
 
 **////////////////////////////////////////////////////////////////////////////////////////////////////**
 
-76. A wrong parameter order
-77. C wrong parameter order
-78. L wrong parameter order
-79. sp wrong parameter order
-80. pl wrong parameter order
-81. cy wrong parameter order
-82. Too much A
-83. Too much C
-84. Too much L
-85. Syntax Error
+77. A wrong parameter order
+78. C wrong parameter order
+79. L wrong parameter order
+80. sp wrong parameter order
+81. pl wrong parameter order
+82. cy wrong parameter order
+83. Too much A
+84. Too much C
+85. Too much L
+86. Syntax Error
+87. Random data in parsing
