@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rt_messages.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/27 10:16:42 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/05/27 10:01:20 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/05/27 10:07:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mini_rt.h>
+#ifndef RT_MESSAGES_H
+# define RT_MESSAGES_H
 
-int	rt_write_error(char *str, char *str2)
-{
-	ft_putstr_fd(str, STDERR_FILENO);
-	if (str2)
-		ft_putstr_fd(str2, STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
-	return (1);
-}
+# include <mini_rt.h>
 
-int	main(int ac, char **av)
-{
-	t_master	master;
+# define DFI		__FILE__
+# define DLI		__LINE__
+# define DFU		(char *)__FUNCTION__
 
-	if (ac != 2)
-		return (rt_write_error(E_USAGE, NULL));
-	return (0);
-}
+/*/////////////////////////////////////////////////////////////////////////////
+		MESSAGES
+*//////////////////////////////////////////////////////////////////////////////
+
+# define E_USAGE	"RT ERROR: Usage is ./MiniRT scene.rt"
+
+#endif // RT_MESSAGES_H

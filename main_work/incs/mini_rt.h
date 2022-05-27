@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/26 09:15:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 10:10:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,25 @@ struct s_list
 # include <libft.h>
 # include <mlx.h>
 
+# include <math.h>
+
+/*/////////////////////////////////////////////////////////////////////////////
+		MINI RT HEADER FILES
+*//////////////////////////////////////////////////////////////////////////////
+
 # include <rt_keys.h>
 # include <rt_data.h>
 # include <rt_structs.h>
 # include <rt_defines.h>
+# include <rt_messages.h>
 
-# include <math.h>
+/*/////////////////////////////////////////////////////////////////////////////
+		FUNCTION PROTOTYPES
+*//////////////////////////////////////////////////////////////////////////////
+
+/*-------------------- main.c --------------------*/
+
+int		rt_write_error(char *str, char *str2);
+// int	main(int ac, char **av);
 
 #endif //MINI_RT_H

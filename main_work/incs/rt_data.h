@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/25 13:31:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/27 10:08:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 
 # include <mini_rt.h>
 
+/*/////////////////////////////////////////////////////////////////////////////
+		TYPEDEF
+*//////////////////////////////////////////////////////////////////////////////
+
 typedef struct s_master		t_master;
 typedef struct s_mlxdata	t_mlxdata;
 
 typedef struct s_ambient	t_ambient;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
+
+/*/////////////////////////////////////////////////////////////////////////////
+		MAIN STRUCTURES
+*//////////////////////////////////////////////////////////////////////////////
 
 /**Structure master, donnant accès à toute les données du programme
  * mlxdata	= structure contenant les données de la MLX
