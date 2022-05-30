@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:48:12 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/04/10 09:01:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 10:51:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 
 int		ft_int_strchr(const char *s, int c);
+int		ft_int_strrchr(const char *s, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnjoin(const char *s1, const char *s2, ssize_t index);
 char	*ft_unsplit(char **split, char c);

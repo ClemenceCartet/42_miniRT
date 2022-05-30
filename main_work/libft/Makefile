@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 09:59:23 by ljohnson          #+#    #+#              #
-#    Updated: 2022/04/10 09:32:21 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/05/30 10:51:57 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ LST_STRINGS			:=	ft_int_strchr.c				ft_split.c				\
 						ft_strncpy.c				ft_strnjoin.c			\
 						ft_strnstr.c				ft_strrchr.c			\
 						ft_strstr.c					ft_strtrim.c			\
-						ft_substr.c					ft_unsplit.c
+						ft_substr.c					ft_unsplit.c			\
+						ft_int_strrchr.c
 
 # Directories
 P_INCS			:=	incs/

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_strchr.c                                    :+:      :+:    :+:   */
+/*   ft_int_strrchr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 15:13:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/30 10:49:48 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/05/30 10:44:32 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/05/30 10:51:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_int_strchr(const char *s, int c)
+int	ft_int_strrchr(const char *s, int c)
 {
 	int	a;
 
-	a = 0;
-	while (s[a])
+	a = ft_strlen(s);
+	while (a > 0)
 	{
 		if (s[a] == (char)c)
 			return (a);
-		a++;
+		a--;
 	}
 	if (s[a] == (char)c)
 		return (a);
