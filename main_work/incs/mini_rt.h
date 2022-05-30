@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/30 09:26:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 13:04:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
+int		rt_check_content(char *content);
 char	*rt_get_content(char *filename);
 int		rt_init_master(t_master *master, char *filename);
 
@@ -75,5 +76,11 @@ int		rt_init_master(t_master *master, char *filename);
 char	*rt_write_char_error(char *str, char *str2);
 int		rt_write_int_error(char *str, char *str2);
 // int	main(int ac, char **av);
+
+/*/////////////////////////////////////////////////////////////////////////////
+		TEST FUNCTION PROTOTYPES
+*//////////////////////////////////////////////////////////////////////////////
+
+void	display_split(char **split);
 
 #endif //MINI_RT_H
