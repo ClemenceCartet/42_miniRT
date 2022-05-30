@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/27 10:10:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 09:26:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,13 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
+char	*rt_get_content(char *filename);
+int		rt_init_master(t_master *master, char *filename);
+
 /*-------------------- main.c --------------------*/
 
-int		rt_write_error(char *str, char *str2);
+char	*rt_write_char_error(char *str, char *str2);
+int		rt_write_int_error(char *str, char *str2);
 // int	main(int ac, char **av);
 
 #endif //MINI_RT_H

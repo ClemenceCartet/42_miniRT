@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/05/27 10:17:47 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/05/30 09:16:28 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ LST_INCS		:=	mini_rt.h		rt_keys.h		\
 					rt_data.h		rt_structs.h	\
 					rt_defines.h	rt_messages.h
 
+LST_SRCS		:=	file1.c
+
 # Directories
 P_MLX			:=	mlx/
 P_LIBFT			:=	libft/
@@ -39,7 +41,8 @@ P_OBJS			:=	.objs/
 
 # Shortcuts
 INCS			:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS			:=	$(addprefix $(P_SRCS),main.c)
+SRCS			:=	$(addprefix $(P_SRCS),main.c)	\
+					$(addprefix $(P_SRCS),$(LST_SRCS))
 OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 #//////////////////////////////////////////////////////////////////////////////
@@ -77,20 +80,27 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all:	makemlx makelibft $(NAME)
+# all:	makemlx makelibft $(NAME)
+all:	makelibft $(NAME)
 
 # Binary creation
-$(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
-	$(CC) $(CF) $(CI) $(FW) $(LIBFT) $(MLX) $(OBJS) -o $@
-	printf "\n✅	$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)\n"
+# $(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
+# 	$(CC) $(CF) $(CI) $(FW) $(LIBFT) $(MLX) $(OBJS) -o $@
+# 	printf "\n✅	$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)\n"
 
-$(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) $(MLX) Makefile | $(P_OBJS)
-	$(CC) $(CF) $(CI) $(FW) -c $< -o $@
-	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
-	
+# $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) $(MLX) Makefile | $(P_OBJS)
+# 	$(CC) $(CF) $(CI) $(FW) -c $< -o $@
+# 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
+
+$(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
+	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
+
+$(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
+	$(CC) $(CF) $(CI) -c $< -o $@
+
 $(P_OBJS):
 	mkdir -p $(P_OBJS)
-	printf "✅	$(GREEN)$(BOLD)$(NAME) obj directories created$(RESET)\n"
+#	printf "✅	$(GREEN)$(BOLD)$(NAME) obj directories created$(RESET)\n"
 
 # Libs creation
 $(MLX): makemlx
@@ -107,15 +117,15 @@ makelibft:
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(P_OBJS)
-	printf "$(YELLOW)$(BOLD)All $(NAME) object files removed$(RESET)\n"
-	printf "$(YELLOW)$(BOLD)All $(NAME) object folders removed$(RESET)\n"
+#	printf "$(YELLOW)$(BOLD)All $(NAME) object files removed$(RESET)\n"
+#	printf "$(YELLOW)$(BOLD)All $(NAME) object folders removed$(RESET)\n"
 
 fclean:
 	$(MAKE) clean
 	$(RM) $(NAME)
 	$(MAKE) fclean -C libft/
 	$(MAKE) clean -C mlx/
-	printf "$(RED)$(BOLD)Binary $(NAME) removed $(RESET)\n"
+#	printf "$(RED)$(BOLD)Binary $(NAME) removed $(RESET)\n"
 
 re:
 	$(MAKE) fclean

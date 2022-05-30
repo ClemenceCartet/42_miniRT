@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:49:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/27 10:09:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/30 09:09:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 # define RT_STRUCTS_H
 
 # include <mini_rt.h>
-
-/*/////////////////////////////////////////////////////////////////////////////
-		TYPEDEF
-*//////////////////////////////////////////////////////////////////////////////
-
-typedef struct s_object		t_object;
-
-typedef struct s_sphere		t_sphere;
-typedef struct s_plane		t_plane;
-typedef struct s_cylinder	t_cylinder;
 
 /*/////////////////////////////////////////////////////////////////////////////
 		OBJECTS STRUCTURES
