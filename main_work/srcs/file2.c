@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 09:17:06 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 13:02:22 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/31 14:16:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,22 @@ int	rt_parse_object(t_object *object, char **split)
 	int		splitlen;
 
 	splitlen = ft_splitlen(split);
+	object_ptr = NULL;
 	if (!ft_strncmp(split[0], "sp", 3))
-		object_ptr = rt_init_sphere(object, splitlen, split); // Need to create rt_init_sphere
+	{
+		if (rt_parse_sphere(&object_ptr, split, splitlen))
+			return (1);
+	}
 	else if (!ft_strncmp(split[0], "pl", 3))
-		object_ptr = rt_init_plane(object, splitlen, split); // Need to create rt_init_plane
+	{
+		if (rt_parse_plane(&object_ptr, split, splitlen))
+			return (1);
+	}
 	else if (!ft_strncmp(split[0], "cy", 3))
-		object_ptr = rt_init_cylinder(object, splitlen, split); // Need to create rt_init_cylinder
+	{
+		if (rt_parse_cylinder(&object_ptr, split, splitlen))
+			return (1);
+	}
 	object->lst_size++;
 	ft_lstadd_back(&object->lst, ft_lstnew(object_ptr));
 	return (0);
@@ -98,20 +108,28 @@ int	rt_parse_ambient(t_ambient *ambient, char **split)
 int	rt_get_line_content(t_master *master, char *line)
 {
 	char	**split;
+	int		val;
 
+	val = 1;
 	split = ft_split(line, ' ');
 	if (!split)
 		return (rt_write_int_error(E_MALLOC, NULL));
 	if (!ft_strncmp(split[0], "A", 2))
-		return (rt_parse_ambient(master->ambient, split));
+		val = rt_parse_ambient(master->ambient, split);
 	else if (!ft_strncmp(split[0], "C", 2))
-		return (rt_parse_camera(master->camera, split));
+		val = rt_parse_camera(master->camera, split);
 	else if (!ft_strncmp(split[0], "L", 2))
-		return (rt_parse_light(master->light, split));
-	else if (!ft_strncmp(split[0], "sp", 3)
-		|| !ft_strncmp(split[0], "pl", 3)
+		val = rt_parse_light(master->light, split);
+	else if (!ft_strncmp(split[0], "sp", 3) || !ft_strncmp(split[0], "pl", 3)
 		|| !ft_strncmp(split[0], "cy", 3))
-		return (rt_parse_object(master->object, split));
+		val = rt_parse_object(master->object, split);
+	else
+	{
+		ft_free_split (split);
+		return (rt_write_int_error(E_ID, NULL));
+	}
 	ft_free_split (split);
-	return (rt_write_int_error(E_ID, split[0]));
+	if (!val)
+		return (0);
+	return (1);
 }

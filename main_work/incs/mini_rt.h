@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 12:54:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/31 14:10:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ struct s_list
 /*/////////////////////////////////////////////////////////////////////////////
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
+
+/*-------------------- file3.c --------------------*/
+
+int		rt_parse_sphere(void **object_ptr, char **split, int splitlen);
+int		rt_parse_plane(void **object_ptr, char **split, int splitlen);
+int		rt_parse_cylinder(void **object_ptr, char **split, int splitlen);
 
 /*-------------------- file2.c --------------------*/
 

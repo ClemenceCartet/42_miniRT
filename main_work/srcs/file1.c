@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 08:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 12:53:58 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/31 14:14:54 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,9 @@ char	*rt_get_content(char *filename)
 	return (content);
 }
 
+// Initialize master content to NULL and allocate object structure
 int	rt_set_master(t_master *master)
 {
-	master = ft_calloc(1, sizeof(t_master));
-	if (!master)
-		return (rt_write_int_error(E_MALLOC, NULL));
 	master->mlxdata = NULL;
 	master->ambient = NULL;
 	master->camera = NULL;
@@ -110,6 +108,7 @@ int	rt_set_master(t_master *master)
 	return (0);
 }
 
+// Main function for the initialization and parsing of the program
 int	rt_init_master(t_master *master, char *filename)
 {
 	char	*content;

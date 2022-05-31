@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:01:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 11:29:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/31 13:59:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define E_EMPTY		"RT FILE ERROR: File content is empty"
 # define E_UNKNOWN		"RT FILE ERROR: Unknown character found in file content"
 
-# define E_ID			"RT ID ERROR: Invalid ID "
+# define E_ID			"RT ID ERROR: Invalid ID found in content"
 # define E_EXISTING_ID	"RT ID ERROR: There is already one "
 # define E_SPLIT_SIZE	"RT PARSING ERROR: Wrong number of value for "
 # define E_RANGE		"RT RANGE ERROR: Value must be in range "
