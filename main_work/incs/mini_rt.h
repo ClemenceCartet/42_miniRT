@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/30 13:04:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/31 12:54:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,26 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
+/*-------------------- file2.c --------------------*/
+
+int		rt_parse_object(t_object *object, char **split);
+int		rt_parse_light(t_light *light, char **split);
+int		rt_parse_camera(t_camera *camera, char **split);
+int		rt_parse_ambient(t_ambient *ambient, char **split);
+int		rt_get_line_content(t_master *master, char *line);
+
+/*-------------------- file1.c --------------------*/
+
+int		rt_parse_content(t_master *master, char *content);
 int		rt_check_content(char *content);
 char	*rt_get_content(char *filename);
+int		rt_set_master(t_master *master);
 int		rt_init_master(t_master *master, char *filename);
 
 /*-------------------- main.c --------------------*/
 
+void	rt_free_object_list(t_object *object);
+int		rt_free_master(t_master *master);
 char	*rt_write_char_error(char *str, char *str2);
 int		rt_write_int_error(char *str, char *str2);
 // int	main(int ac, char **av);

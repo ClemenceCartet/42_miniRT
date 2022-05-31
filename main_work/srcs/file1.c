@@ -6,23 +6,39 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 08:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/30 13:28:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/31 12:53:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	rt_init_data(t_master *master, char *content)
+// Split content with \n and iterates through that split to init values
+int	rt_parse_content(t_master *master, char *content)
 {
 	char	**split;
+	int		a;
 
+	a = 0;
 	split = ft_split(content, '\n');
 	if (!split)
 	{
-		free (content);
+		ft_free(&content);
 		return (rt_write_int_error(E_MALLOC, NULL));
 	}
-	// Check content + separate content + Search for ACLO + State machine or bool ?
+	while (split[a])
+	{
+		if (rt_get_line_content(master, split[a]))
+		{
+			ft_free_split(split);
+			ft_free(&content);
+			return (1);
+		}
+		a++;
+	}
+	ft_free_split(split);
+	ft_free(&content);
+	master->object->start = master->object->lst;
+	return (0);
 }
 
 // Check content to see if the file content is valid
@@ -32,13 +48,17 @@ int	rt_check_content(char *content)
 
 	a = 0;
 	if (!content || !content[0])
+	{
+		if (!content[0])
+			ft_free(&content);
 		return (rt_write_int_error(E_EMPTY, NULL));
+	}
 	while (content[a])
 	{
 		if (!ft_ischarset(content[a], PARSING_CHARSET))
 		{
-			free (content);
-			return (rt_write_int_error(E_UNKNOWN, NULL));
+			ft_free(&content);
+			return (rt_write_int_error (E_UNKNOWN, NULL));
 		}
 		a++;
 	}
@@ -65,24 +85,43 @@ char	*rt_get_content(char *filename)
 	content = ft_gnl_join(fd);
 	if (!content)
 		return (rt_write_char_error(E_READ, filename));
-	if (close (fd) == -1)
+	if (close(fd) == -1)
 	{
-		ft_free (&content);
+		ft_free(&content);
 		return (rt_write_char_error(E_CLOSE, filename));
 	}
 	return (content);
+}
+
+int	rt_set_master(t_master *master)
+{
+	master = ft_calloc(1, sizeof(t_master));
+	if (!master)
+		return (rt_write_int_error(E_MALLOC, NULL));
+	master->mlxdata = NULL;
+	master->ambient = NULL;
+	master->camera = NULL;
+	master->light = NULL;
+	master->object = ft_calloc(1, sizeof(t_object));
+	if (!master->object)
+		return (rt_write_int_error(E_MALLOC, NULL));
+	master->object->lst = NULL;
+	master->object->lst_size = 0;
+	return (0);
 }
 
 int	rt_init_master(t_master *master, char *filename)
 {
 	char	*content;
 
+	if (rt_set_master(master))
+		return (1);
 	content = rt_get_content(filename);
 	if (rt_check_content(content))
 		return (1);
-	if (rt_init_data(master, content))
+	if (rt_parse_content(master, content))
 		return (1);
 	dprintf(1, "\033[1m\033[32mEverything worked correctly\033[0m\n");
-	ft_free (&content);
+	ft_free(&content);
 	return (0);
 }
