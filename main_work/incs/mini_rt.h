@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 14:10:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 08:26:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,17 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
+/*-------------------- file4.c --------------------*/
+
+void	rt_init_ambient_values(t_ambient *ambient);
+void	rt_init_camera_values(t_camera *camera);
+void	rt_init_light_values(t_light *light);
+void	rt_init_cylinder_values(t_cylinder *cylinder);
+
 /*-------------------- file3.c --------------------*/
 
+void	rt_init_plane_values(t_plane *plane);
+void	rt_init_sphere_values(t_sphere *sphere);
 int		rt_parse_sphere(void **object_ptr, char **split, int splitlen);
 int		rt_parse_plane(void **object_ptr, char **split, int splitlen);
 int		rt_parse_cylinder(void **object_ptr, char **split, int splitlen);

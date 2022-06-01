@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 09:17:06 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 14:16:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 08:41:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	rt_parse_light(t_light *light, char **split)
 	light = ft_calloc(1, sizeof(t_light));
 	if (!light)
 		return (rt_write_int_error(E_MALLOC, NULL));
+	rt_init_light_values(light);
 	if (rt_set_coordinates(light->p_xyz, split[1], "Light")) // Need to create rt_set_coordinates
 		return (1);
 	if (rt_set_ratio(light->ratio, split[2], "Light")) // Need to create rt_set_ratio
@@ -75,6 +76,7 @@ int	rt_parse_camera(t_camera *camera, char **split)
 	camera = ft_calloc(1, sizeof(t_camera));
 	if (!camera)
 		return (rt_write_int_error(E_MALLOC, NULL));
+	rt_init_camera_values(camera);
 	if (rt_set_coordinates(camera->p_xyz, split[1], "Camera")) // Need to create rt_set_coordinates
 		return (1);
 	if (rt_set_orientation(camera->o_xyz, split[2], "Camera")) // Need to create rt_set_orientation
@@ -97,6 +99,7 @@ int	rt_parse_ambient(t_ambient *ambient, char **split)
 	ambient = ft_calloc(1, sizeof(t_ambient));
 	if (!ambient)
 		return (rt_write_int_error(E_MALLOC, NULL));
+	rt_init_ambient_values(ambient);
 	if (rt_set_ratio(ambient->ratio, split[1], "Ambient Light")) // Need to create rt_set_ratio
 		return (1);
 	if (rt_set_rgb(ambient->rgb, split[2], "Ambient Light")) // Need to create rt_set_rgb
