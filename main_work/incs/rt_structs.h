@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:49:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/30 09:09:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 13:31:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ struct	s_object
 	void	*start;
 };
 
+/**Structure lien de la liste chaînées des objets
+ * id 			= identifiant de l'objet (SP / PL / CY)
+ * object_ptr	= pointeur vers la structure correspondante
+*/
+struct	s_obj_link
+{
+	int		id;
+	void	*object_ptr;
+};
+
 /**Structure pour l'objet sphère
  * id		= identifiant de l'objet (define SP)
  * p_xyz	= coordonnées XYZ du centre de la sphère
@@ -39,7 +49,6 @@ struct	s_object
 */
 struct	s_sphere
 {
-	int		id;
 	float	p_xyz[3];
 	float	diameter;
 	int		rgb[3];
@@ -53,7 +62,6 @@ struct	s_sphere
 */
 struct	s_plane
 {
-	int		id;
 	float	p_xyz[3];
 	float	o_xyz[3];
 	int		rgb[3];
@@ -69,7 +77,6 @@ struct	s_plane
 */
 struct	s_cylinder
 {
-	int		id;
 	float	p_xyz[3];
 	float	o_xyz[3];
 	float	diameter;

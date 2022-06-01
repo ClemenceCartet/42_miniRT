@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 14:15:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 13:53:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	rt_free_object_list(t_object *object)
 {
 	void	*tmp;
 
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	tmp = NULL;
 	object->lst = object->start;
 	while (object->lst)
@@ -31,6 +32,7 @@ void	rt_free_object_list(t_object *object)
 // Function to free everything that has been allocated through initialization
 int	rt_free_master(t_master *master)
 {
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	if (master->object)
 	{
 		rt_free_object_list(master->object);
@@ -54,6 +56,7 @@ int	rt_free_master(t_master *master)
 // Write an error message in two parts and return NULL
 char	*rt_write_char_error(char *str, char *str2)
 {
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	ft_putstr_fd("\033[1m", STDERR_FILENO);
 	ft_putstr_fd("\033[31m", STDERR_FILENO);
 	ft_putstr_fd(str, STDERR_FILENO);
@@ -67,6 +70,7 @@ char	*rt_write_char_error(char *str, char *str2)
 // Write an error message in two parts and return 1
 int	rt_write_int_error(char *str, char *str2)
 {
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	ft_putstr_fd("\033[1m", STDERR_FILENO);
 	ft_putstr_fd("\033[31m", STDERR_FILENO);
 	ft_putstr_fd(str, STDERR_FILENO);
@@ -81,6 +85,7 @@ int	main(int ac, char **av)
 {
 	t_master	master;
 
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	if (ac != 2)
 		return (rt_write_int_error(E_USAGE, NULL));
 	if (rt_init_master(&master, av[1]))

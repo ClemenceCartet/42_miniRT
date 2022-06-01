@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/30 09:10:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 13:26:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
 
 typedef struct s_object		t_object;
+typedef struct s_obj_link	t_obj_link;
 
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;

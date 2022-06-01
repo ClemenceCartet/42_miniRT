@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 08:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 11:47:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 13:53:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	rt_parse_content(t_master *master, char *content)
 	char	**split;
 	int		a;
 
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	a = 0;
 	split = ft_split(content, '\n');
 	if (!split)
@@ -25,9 +26,11 @@ int	rt_parse_content(t_master *master, char *content)
 		ft_free(&content);
 		return (rt_write_int_error(E_MALLOC, NULL));
 	}
+	// display_split(split);
 	ft_free(&content);
 	while (split[a])
 	{
+		// dprintf(STDOUT_FILENO, "%d | %s\n", a, split[a]);
 		if (rt_get_line_content(master, split[a]))
 		{
 			ft_free_split(split);
@@ -46,6 +49,7 @@ int	rt_check_content(char *content)
 	int	a;
 
 	a = 0;
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	if (!content || !content[0])
 	{
 		if (!content[0])
@@ -71,6 +75,7 @@ char	*rt_get_content(char *filename)
 	int		fd;
 	int		i;
 
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	if (!filename || !filename[0])
 		return (rt_write_char_error(E_NO_FILENAME, NULL));
 	i = ft_int_strrchr(filename, '.');
@@ -82,6 +87,7 @@ char	*rt_get_content(char *filename)
 	if (fd == -1)
 		return (rt_write_char_error(E_OPEN, filename));
 	content = ft_gnl_join(fd);
+	// dprintf(STDOUT_FILENO, "\nContent :\n%s\n", content);
 	if (!content)
 		return (rt_write_char_error(E_READ, filename));
 	if (close(fd) == -1)
@@ -95,6 +101,7 @@ char	*rt_get_content(char *filename)
 // Initialize master content to NULL and allocate object structure
 int	rt_set_master(t_master *master)
 {
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	master->mlxdata = NULL;
 	master->ambient = NULL;
 	master->camera = NULL;
@@ -112,6 +119,7 @@ int	rt_init_master(t_master *master, char *filename)
 {
 	char	*content;
 
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	if (rt_set_master(master))
 		return (1);
 	content = rt_get_content(filename);

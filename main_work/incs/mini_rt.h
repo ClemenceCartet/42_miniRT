@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 11:38:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 13:50:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ struct s_list
 # include <rt_data.h>
 # include <rt_structs.h>
 # include <rt_defines.h>
-# include <rt_messages.h>
 
 /*/////////////////////////////////////////////////////////////////////////////
 		FUNCTION PROTOTYPES
@@ -74,12 +73,12 @@ void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name);
 
 /*-------------------- file5.c --------------------*/ // 6
 
-int		rt_set_coordinates(float *p_xyz[3], char *value, char *name);
-int		rt_set_orientation(float *o_xyz[3], char *value, char *name);
-int		rt_set_rgb(int *rgb[3], char *value, char *name);
-int		rt_set_fov(int *fov, char *value, char *name);
-int		rt_set_ratio(float *ratio, char *value, char *name);
-int		rt_set_diameter(float *diameter, char *value, char *name);
+int		rt_set_coordinates(float p_xyz[3], char *value, char *name);
+int		rt_set_orientation(float o_xyz[3], char *value, char *name);
+int		rt_set_rgb(int rgb[3], char *value, char *name);
+int		rt_set_fov(int fov, char *value, char *name);
+int		rt_set_ratio(float ratio, char *value, char *name);
+int		rt_set_diameter(float diameter, char *value, char *name);
 
 /*-------------------- file4.c --------------------*/ // 6
 
@@ -125,5 +124,12 @@ int		rt_write_int_error(char *str, char *str2);
 *//////////////////////////////////////////////////////////////////////////////
 
 void	display_split(char **split);
+void	display_ambient(t_ambient *ambient);
+void	display_camera(t_camera *camera);
+void	display_light(t_light *light);
+void	display_sphere(t_sphere *sphere);
+void	display_plane(t_plane *plane);
+void	display_cylinder(t_cylinder *cylinder);
+void	display_object_list(t_object *object);
 
 #endif //MINI_RT_H
