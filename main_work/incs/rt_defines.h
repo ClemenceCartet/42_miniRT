@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/27 10:08:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 13:06:32 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,33 @@
 # define RGB_CHARSET "1234567890"
 # define FLOAT_CHARSET "1234567890-+."
 # define INT_CHARSET "1234567890-+"
+
+# define DFI		__FILE__
+# define DLI		__LINE__
+# define DFU		(char *)__FUNCTION__
+
+/*/////////////////////////////////////////////////////////////////////////////
+		MESSAGES
+*//////////////////////////////////////////////////////////////////////////////
+
+# define E_MALLOC		"RT CODE ERROR: Malloc error"
+
+# define E_USAGE		"RT PROGRAM ERROR: Usage is ./MiniRT scene.rt"
+# define E_NO_FILENAME	"RT FILE ERROR: Filename does not exist"
+# define E_NO_EXT		"RT FILE ERROR: No file extension"
+# define E_WRONG_EXT	"RT FILE ERROR: Wrong file extension"
+
+# define E_OPEN			"RT FILE ERROR: There was an error while opening file "
+# define E_READ			"RT FILE ERROR: There was an error while reading file "
+# define E_CLOSE		"RT FILE ERROR: There was an error while closing file "
+
+# define E_EMPTY		"RT FILE ERROR: File content is empty"
+# define E_UNKNOWN		"RT FILE ERROR: Unknown character found in file content"
+
+# define E_ID			"RT ID ERROR: Invalid ID found in content"
+# define E_EXISTING_ID	"RT ID ERROR: There is already one "
+# define E_SPLIT_SIZE	"RT PARSING ERROR: Wrong number of value for "
+# define E_RANGE		"RT RANGE ERROR: Value must be in range "
+# define E_MISSING		"RT VALUE ERROR: Missing value for "
 
 #endif //RT_DEFINES_H
