@@ -6,100 +6,64 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:28:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 08:27:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 11:38:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	rt_init_sphere_values(t_sphere *sphere)
-{
-	sphere->id = SP;
-	sphere->p_xyz[0] = 0;
-	sphere->p_xyz[1] = 0;
-	sphere->p_xyz[2] = 0;
-	sphere->diameter = 0;
-	sphere->rgb[0] = 0;
-	sphere->rgb[1] = 0;
-	sphere->rgb[2] = 0;
-}
-
-void	rt_init_plane_values(t_plane *plane)
-{
-	plane->id = PL;
-	plane->p_xyz[0] = 0;
-	plane->p_xyz[1] = 0;
-	plane->p_xyz[2] = 0;
-	plane->o_xyz[0] = 0;
-	plane->o_xyz[1] = 0;
-	plane->o_xyz[2] = 0;
-	plane->rgb[0] = 0;
-	plane->rgb[1] = 0;
-	plane->rgb[2] = 0;
-}
-
 // Create Sphere structure to put in the object list while checking errors
-int	rt_parse_sphere(void **object_ptr, char **split, int splitlen)
+int	rt_parse_sphere(void **object_ptr, char **split)
 {
 	t_sphere	*sphere;
 
-	if (splitlen != 4)
-		return (rt_write_int_error(E_SPLIT_SIZE, "Sphere"));
-	sphere = ft_calloc(1, sizeof(t_sphere));
+	sphere = rt_init_object_ptr(split, 4, "Sphere");
 	if (!sphere)
-		return (rt_write_int_error(E_MALLOC, NULL));
+		return (1);
 	rt_init_sphere_values(sphere);
-	if (rt_set_coordinates(sphere->p_xyz, split[1], "Sphere")) // Need to create rt_set_coordinates
+	if (rt_set_coordinates(&sphere->p_xyz, split[1], "Sphere coordinates"))
 		return (1);
-	if (rt_set_diameter(sphere->diameter, split[2], "Sphere")) // Need to create rt_set_diameter
+	if (rt_set_diameter(&sphere->diameter, split[2], "Sphere diameter"))
 		return (1);
-	if (rt_set_rgb(sphere->rgb, split[3], "Sphere")) // Need to create rt_set_rgb
+	if (rt_set_rgb(&sphere->rgb, split[3], "Sphere RGB"))
 		return (1);
 	object_ptr = sphere;
 	return (0);
 }
 
 // Create Plane structure to put in the object list while checking errors
-int	rt_parse_plane(void **object_ptr, char **split, int splitlen)
+int	rt_parse_plane(void **object_ptr, char **split)
 {
 	t_plane	*plane;
 
-	if (splitlen != 4)
-		return (rt_write_int_error(E_SPLIT_SIZE, "Plane"));
-	plane = ft_calloc(1, sizeof(t_plane));
-	if (!plane)
-		return (rt_write_int_error(E_MALLOC, NULL));
+	plane = rt_init_object_ptr(split, 4, "Plane");
 	rt_init_plane_values(plane);
-	if (rt_set_coordinates(plane->p_xyz, split[1], "Plane")) // Need to create rt_set_coordinates
+	if (rt_set_coordinates(&plane->p_xyz, split[1], "Plane coordinates"))
 		return (1);
-	if (rt_set_orientation(plane->o_xyz, split[2], "Plane")) // Need to create rt_set_orientation
+	if (rt_set_orientation(&plane->o_xyz, split[2], "Plane orientation"))
 		return (1);
-	if (rt_set_rgb(plane->rgb, split[3], "Plane")) // Need to create rt_set_rgb
+	if (rt_set_rgb(&plane->rgb, split[3], "Plane RGB"))
 		return (1);
 	object_ptr = plane;
 	return (0);
 }
 
 // Create Cylinder structure to put in the object list while checking errors
-int	rt_parse_cylinder(void **object_ptr, char **split, int splitlen)
+int	rt_parse_cylinder(void **object_ptr, char **split)
 {
 	t_cylinder	*cylinder;
 
-	if (splitlen != 6)
-		return (rt_write_int_error(E_SPLIT_SIZE, "Cylinder"));
-	cylinder = ft_calloc(1, sizeof(t_cylinder));
-	if (!cylinder)
-		return (rt_write_int_error(E_MALLOC, NULL));
+	cylinder = rt_init_object_ptr(split, 6, "Cylinder");
 	rt_init_cylinder_values(cylinder);
-	if (rt_set_coordinates(cylinder->p_xyz, split[1], "Cylinder")) // Need to create rt_set_coordinates
+	if (rt_set_coordinates(&cylinder->p_xyz, split[1], "Cylinder coordinates"))
 		return (1);
-	if (rt_set_orientation(cylinder->o_xyz, split[2], "Cylinder")) // Need to create rt_set_orientation
+	if (rt_set_orientation(&cylinder->o_xyz, split[2], "Cylinder orientation"))
 		return (1);
-	if (rt_set_diameter(cylinder->diameter, split[3], "Cylinder")) // Need to create rt_set_diameter
+	if (rt_set_diameter(&cylinder->diameter, split[3], "Cylinder diameter"))
 		return (1);
-	if (rt_set_height(cylinder->height, split[4], "Cylinder")) // Need to create rt_set_height
+	if (rt_set_diameter(&cylinder->height, split[4], "Cylinder height"))
 		return (1);
-	if (rt_set_rgb(cylinder->rgb, split[5], "Cylinder")) // Need to create rt_set_rgb
+	if (rt_set_rgb(&cylinder->rgb, split[5], "Cylinder RGB"))
 		return (1);
 	object_ptr = cylinder;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:01:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 13:59:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/01 10:42:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@
 # define E_EXISTING_ID	"RT ID ERROR: There is already one "
 # define E_SPLIT_SIZE	"RT PARSING ERROR: Wrong number of value for "
 # define E_RANGE		"RT RANGE ERROR: Value must be in range "
+# define E_MISSING		"RT VALUE ERROR: Missing value for "
 
 #endif // RT_MESSAGES_H
