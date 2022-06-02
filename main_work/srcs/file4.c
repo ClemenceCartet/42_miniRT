@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 08:22:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 10:10:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	rt_init_sphere_values(t_sphere *sphere)
 	sphere->rgb[0] = 0;
 	sphere->rgb[1] = 0;
 	sphere->rgb[2] = 0;
+	// display_sphere(sphere);
 }
 
 // Initialize every values of structure plane to 0
@@ -38,6 +39,7 @@ void	rt_init_plane_values(t_plane *plane)
 	plane->rgb[0] = 0;
 	plane->rgb[1] = 0;
 	plane->rgb[2] = 0;
+	// display_plane(plane);
 }
 
 // Initialize every values of structure cylinder to 0
@@ -55,6 +57,7 @@ void	rt_init_cylinder_values(t_cylinder *cylinder)
 	cylinder->rgb[0] = 0;
 	cylinder->rgb[1] = 0;
 	cylinder->rgb[2] = 0;
+	// display_cylinder(cylinder);
 }
 
 // Initialize every values of structure light to 0
@@ -68,6 +71,7 @@ void	rt_init_light_values(t_light *light)
 	light->rgb[0] = 0;
 	light->rgb[1] = 0;
 	light->rgb[2] = 0;
+	// display_light(light);
 }
 
 // Initialize every values of structure ambient light to 0
@@ -78,6 +82,7 @@ void	rt_init_ambient_values(t_ambient *ambient)
 	ambient->rgb[0] = 0;
 	ambient->rgb[1] = 0;
 	ambient->rgb[2] = 0;
+	// display_ambient(ambient);
 }
 
 // Initialize every values of structure camera to 0
@@ -91,4 +96,5 @@ void	rt_init_camera_values(t_camera *camera)
 	camera->o_xyz[1] = 0;
 	camera->o_xyz[2] = 0;
 	camera->fov = 0;
+	// display_camera(camera);
 }

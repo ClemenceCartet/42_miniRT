@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:28:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 10:06:22 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	rt_parse_sphere(void **object_ptr, char **split)
 	t_sphere	*sphere;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	// display_split(split);
+	// dprintf(STDOUT_FILENO, "\n");
 	sphere = rt_init_object_ptr(split, 4, "Sphere");
 	if (!sphere)
 		return (1);
@@ -28,6 +30,7 @@ int	rt_parse_sphere(void **object_ptr, char **split)
 		return (1);
 	if (rt_set_rgb(sphere->rgb, split[3], "Sphere RGB"))
 		return (1);
+	// display_sphere(sphere);
 	object_ptr = sphere;
 	return (0);
 }
@@ -38,6 +41,8 @@ int	rt_parse_plane(void **object_ptr, char **split)
 	t_plane	*plane;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	// display_split(split);
+	// dprintf(STDOUT_FILENO, "\n");
 	plane = rt_init_object_ptr(split, 4, "Plane");
 	rt_init_plane_values(plane);
 	if (rt_set_coordinates(plane->p_xyz, split[1], "Plane coordinates"))
@@ -46,6 +51,7 @@ int	rt_parse_plane(void **object_ptr, char **split)
 		return (1);
 	if (rt_set_rgb(plane->rgb, split[3], "Plane RGB"))
 		return (1);
+	// display_plane(plane);
 	object_ptr = plane;
 	return (0);
 }
@@ -56,6 +62,8 @@ int	rt_parse_cylinder(void **object_ptr, char **split)
 	t_cylinder	*cylinder;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	// display_split(split);
+	// dprintf(STDOUT_FILENO, "\n");
 	cylinder = rt_init_object_ptr(split, 6, "Cylinder");
 	rt_init_cylinder_values(cylinder);
 	if (rt_set_coordinates(cylinder->p_xyz, split[1], "Cylinder coordinates"))
@@ -68,6 +76,7 @@ int	rt_parse_cylinder(void **object_ptr, char **split)
 		return (1);
 	if (rt_set_rgb(cylinder->rgb, split[5], "Cylinder RGB"))
 		return (1);
+	// display_cylinder(cylinder);
 	object_ptr = cylinder;
 	return (0);
 }

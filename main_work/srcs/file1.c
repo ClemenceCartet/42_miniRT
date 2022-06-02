@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 08:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 13:53:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 09:57:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	rt_parse_content(t_master *master, char *content)
 	int		a;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	dprintf(STDOUT_FILENO, "content : %s\n\n", content);
 	a = 0;
 	split = ft_split(content, '\n');
 	if (!split)
@@ -50,6 +51,7 @@ int	rt_check_content(char *content)
 
 	a = 0;
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	dprintf(STDOUT_FILENO, "content : %s\n\n", content);
 	if (!content || !content[0])
 	{
 		if (!content[0])
@@ -76,6 +78,7 @@ char	*rt_get_content(char *filename)
 	int		i;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	dprintf(STDOUT_FILENO, "filename : %s\n\n", filename);
 	if (!filename || !filename[0])
 		return (rt_write_char_error(E_NO_FILENAME, NULL));
 	i = ft_int_strrchr(filename, '.');
@@ -120,6 +123,7 @@ int	rt_init_master(t_master *master, char *filename)
 	char	*content;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	dprintf(STDOUT_FILENO, "filename : %s\n\n", filename);
 	if (rt_set_master(master))
 		return (1);
 	content = rt_get_content(filename);

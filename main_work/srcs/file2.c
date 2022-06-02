@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 09:17:06 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 13:53:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 10:00:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	rt_parse_object(t_object *object, char **split)
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	// display_split(split);
+	// dprintf(STDOUT_FILENO, "\n");
 	obj_link = ft_calloc(1, sizeof(t_obj_link));
 	if (!obj_link)
 		return (rt_write_int_error(E_MALLOC, NULL));
@@ -47,6 +48,7 @@ int	rt_parse_light(t_light *light, char **split)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	// display_split(split);
+	// dprintf(STDOUT_FILENO, "\n");
 	if (light)
 		return (rt_write_int_error(E_EXISTING_ID, "Light"));
 	light = rt_init_object_ptr(split, 4, "Light");
@@ -59,6 +61,7 @@ int	rt_parse_light(t_light *light, char **split)
 		return (1);
 	if (rt_set_rgb(light->rgb, split[3], "Light RGB"))
 		return (1);
+	// display_light(light);
 	return (0);
 }
 
@@ -79,6 +82,7 @@ int	rt_parse_camera(t_camera *camera, char **split)
 		return (1);
 	if (rt_set_fov(camera->fov, split[3], "Camera FOV"))
 		return (1);
+	// display_camera(camera);
 	return (0);
 }
 
@@ -97,6 +101,7 @@ int	rt_parse_ambient(t_ambient *ambient, char **split)
 		return (1);
 	if (rt_set_rgb(ambient->rgb, split[2], "Ambient Light RGB"))
 		return (1);
+	// display_ambient(ambient);
 	return (0);
 }
 
@@ -107,6 +112,8 @@ int	rt_get_line_content(t_master *master, char *line)
 	int		val;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	// dprintf(STDOUT_FILENO, "line : %s\n", line);
+	// dprintf(STDOUT_FILENO, "\n");
 	val = 1;
 	split = ft_split(line, ' ');
 	if (!split)

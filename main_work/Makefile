@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/01 13:07:03 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/02 10:46:49 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ LST_INCS		:=	mini_rt.h		rt_keys.h		\
 
 LST_SRCS		:=	file1.c			file2.c			\
 					file3.c			file4.c			\
+					file5.c			file6.c			\
 					unit_test.c
 
 # Directories
