@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 09:17:06 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 10:00:50 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 11:15:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	rt_parse_object(t_object *object, char **split)
 			return (1);
 	}
 	object->lst_size++;
-	ft_lstadd_back(object->lst, ft_lstnew(obj_link));
+	ft_lstadd_back(&object->lst, ft_lstnew(obj_link));
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
@@ -62,6 +63,7 @@ int	rt_parse_light(t_light *light, char **split)
 	if (rt_set_rgb(light->rgb, split[3], "Light RGB"))
 		return (1);
 	// display_light(light);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
@@ -83,6 +85,7 @@ int	rt_parse_camera(t_camera *camera, char **split)
 	if (rt_set_fov(camera->fov, split[3], "Camera FOV"))
 		return (1);
 	// display_camera(camera);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
@@ -102,6 +105,7 @@ int	rt_parse_ambient(t_ambient *ambient, char **split)
 	if (rt_set_rgb(ambient->rgb, split[2], "Ambient Light RGB"))
 		return (1);
 	// display_ambient(ambient);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
@@ -112,7 +116,7 @@ int	rt_get_line_content(t_master *master, char *line)
 	int		val;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// dprintf(STDOUT_FILENO, "line : %s\n", line);
+	// dprintf(STDOUT_FILENO, "char *line : %s\n", line);
 	// dprintf(STDOUT_FILENO, "\n");
 	val = 1;
 	split = ft_split(line, ' ');
@@ -134,6 +138,7 @@ int	rt_get_line_content(t_master *master, char *line)
 		return (rt_write_int_error(E_ID, NULL));
 	}
 	ft_free_split (split);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	if (!val)
 		return (0);
 	return (1);

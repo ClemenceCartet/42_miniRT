@@ -6,14 +6,14 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:28:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 10:06:22 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 11:20:32 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
 // Create Sphere structure to put in the object list while checking errors
-int	rt_parse_sphere(void **object_ptr, char **split)
+int	rt_parse_sphere(void *object_ptr, char **split)
 {
 	t_sphere	*sphere;
 
@@ -32,11 +32,12 @@ int	rt_parse_sphere(void **object_ptr, char **split)
 		return (1);
 	// display_sphere(sphere);
 	object_ptr = sphere;
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
 // Create Plane structure to put in the object list while checking errors
-int	rt_parse_plane(void **object_ptr, char **split)
+int	rt_parse_plane(void *object_ptr, char **split)
 {
 	t_plane	*plane;
 
@@ -53,11 +54,12 @@ int	rt_parse_plane(void **object_ptr, char **split)
 		return (1);
 	// display_plane(plane);
 	object_ptr = plane;
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
 // Create Cylinder structure to put in the object list while checking errors
-int	rt_parse_cylinder(void **object_ptr, char **split)
+int	rt_parse_cylinder(void *object_ptr, char **split)
 {
 	t_cylinder	*cylinder;
 
@@ -78,5 +80,6 @@ int	rt_parse_cylinder(void **object_ptr, char **split)
 		return (1);
 	// display_cylinder(cylinder);
 	object_ptr = cylinder;
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }

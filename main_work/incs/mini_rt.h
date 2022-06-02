@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 13:50:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 11:20:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ void	rt_init_light_values(t_light *light);
 
 /*-------------------- file3.c --------------------*/ // 3
 
-int		rt_parse_sphere(void **object_ptr, char **split);
-int		rt_parse_plane(void **object_ptr, char **split);
-int		rt_parse_cylinder(void **object_ptr, char **split);
+int		rt_parse_sphere(void *object_ptr, char **split);
+int		rt_parse_plane(void *object_ptr, char **split);
+int		rt_parse_cylinder(void *object_ptr, char **split);
 
 /*-------------------- file2.c --------------------*/ // 5
 
@@ -111,10 +111,11 @@ char	*rt_get_content(char *filename);
 int		rt_set_master(t_master *master);
 int		rt_init_master(t_master *master, char *filename);
 
-/*-------------------- main.c --------------------*/ // 5
+/*-------------------- main.c --------------------*/ // 6
 
 void	rt_free_object_list(t_object *object);
 int		rt_free_master(t_master *master);
+char	**rt_write_split_error(char *str, char *str2);
 char	*rt_write_char_error(char *str, char *str2);
 int		rt_write_int_error(char *str, char *str2);
 // int	main(int ac, char **av);

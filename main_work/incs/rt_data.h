@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/01 13:26:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 10:58:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ struct	s_light
 {
 	float	p_xyz[3];
 	float	ratio;
-	float	rgb[3];
+	int		rgb[3];
 };
 
 #endif //RT_DATA_H

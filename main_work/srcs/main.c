@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 10:46:28 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 11:52:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 // Function to free every link of the object list and the object struct itself
 void	rt_free_object_list(t_object *object)
 {
-	void	*tmp;
+	void		*tmp;
+	t_obj_link	*obj_link;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	display_object_list(object);
@@ -23,11 +24,14 @@ void	rt_free_object_list(t_object *object)
 	object->lst = object->start;
 	while (object->lst)
 	{
+		obj_link = object->lst->content;
+		free (obj_link->object_ptr);
 		free(object->lst->content);
 		tmp = object->lst;
 		object->lst = object->lst->next;
 		free(tmp);
 	}
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }
 
 // Function to free everything that has been allocated through initialization
@@ -52,9 +56,25 @@ int	rt_free_master(t_master *master)
 		free(master->mlxdata);
 	}
 	return (0);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }
 
-// Write an error message in two parts and return NULL
+// Write an error message in two parts and return NULL for split
+char	**rt_write_split_error(char *str, char *str2)
+{
+	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	ft_putstr_fd("\033[1m", STDERR_FILENO);
+	ft_putstr_fd("\033[31m", STDERR_FILENO);
+	ft_putstr_fd(str, STDERR_FILENO);
+	if (str2)
+		ft_putstr_fd(str2, STDERR_FILENO);
+	ft_putstr_fd("\033[0m", STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+	return (NULL);
+}
+
+// Write an error message in two parts and return NULL for string
 char	*rt_write_char_error(char *str, char *str2)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
@@ -65,6 +85,7 @@ char	*rt_write_char_error(char *str, char *str2)
 		ft_putstr_fd(str2, STDERR_FILENO);
 	ft_putstr_fd("\033[0m", STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (NULL);
 }
 
@@ -79,6 +100,7 @@ int	rt_write_int_error(char *str, char *str2)
 		ft_putstr_fd(str2, STDERR_FILENO);
 	ft_putstr_fd("\033[0m", STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (1);
 }
 
@@ -91,5 +113,6 @@ int	main(int ac, char **av)
 		return (rt_write_int_error(E_USAGE, NULL));
 	if (rt_init_master(&master, av[1]))
 		return (rt_free_master(&master) + 1);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (rt_free_master(&master));
 }

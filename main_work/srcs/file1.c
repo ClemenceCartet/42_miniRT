@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 08:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 09:57:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 11:43:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	rt_parse_content(t_master *master, char *content)
 	int		a;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	dprintf(STDOUT_FILENO, "content : %s\n\n", content);
+	// dprintf(STDOUT_FILENO, "char *content :\n%s\n\n", content);
 	a = 0;
 	split = ft_split(content, '\n');
 	if (!split)
@@ -31,7 +31,6 @@ int	rt_parse_content(t_master *master, char *content)
 	ft_free(&content);
 	while (split[a])
 	{
-		// dprintf(STDOUT_FILENO, "%d | %s\n", a, split[a]);
 		if (rt_get_line_content(master, split[a]))
 		{
 			ft_free_split(split);
@@ -41,6 +40,7 @@ int	rt_parse_content(t_master *master, char *content)
 	}
 	ft_free_split(split);
 	master->object->start = master->object->lst;
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
@@ -51,7 +51,7 @@ int	rt_check_content(char *content)
 
 	a = 0;
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	dprintf(STDOUT_FILENO, "content : %s\n\n", content);
+	dprintf(STDOUT_FILENO, "char *content :\n%s\n\n", content);
 	if (!content || !content[0])
 	{
 		if (!content[0])
@@ -62,11 +62,13 @@ int	rt_check_content(char *content)
 	{
 		if (!ft_ischarset(content[a], PARSING_CHARSET))
 		{
+			dprintf(STDOUT_FILENO, "content[a] : %c\n", content[a]);
 			ft_free(&content);
 			return (rt_write_int_error(E_UNKNOWN, NULL));
 		}
 		a++;
 	}
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
@@ -78,7 +80,7 @@ char	*rt_get_content(char *filename)
 	int		i;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	dprintf(STDOUT_FILENO, "filename : %s\n\n", filename);
+	// dprintf(STDOUT_FILENO, "char *filename : %s\n\n", filename);
 	if (!filename || !filename[0])
 		return (rt_write_char_error(E_NO_FILENAME, NULL));
 	i = ft_int_strrchr(filename, '.');
@@ -90,7 +92,7 @@ char	*rt_get_content(char *filename)
 	if (fd == -1)
 		return (rt_write_char_error(E_OPEN, filename));
 	content = ft_gnl_join(fd);
-	// dprintf(STDOUT_FILENO, "\nContent :\n%s\n", content);
+	// dprintf(STDOUT_FILENO, "\nchar *gnl_join :\n%s\n", content);
 	if (!content)
 		return (rt_write_char_error(E_READ, filename));
 	if (close(fd) == -1)
@@ -98,6 +100,7 @@ char	*rt_get_content(char *filename)
 		ft_free(&content);
 		return (rt_write_char_error(E_CLOSE, filename));
 	}
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (content);
 }
 
@@ -114,6 +117,7 @@ int	rt_set_master(t_master *master)
 		return (rt_write_int_error(E_MALLOC, NULL));
 	master->object->lst = NULL;
 	master->object->lst_size = 0;
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }
 
@@ -123,15 +127,16 @@ int	rt_init_master(t_master *master, char *filename)
 	char	*content;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	dprintf(STDOUT_FILENO, "filename : %s\n\n", filename);
+	// dprintf(STDOUT_FILENO, "char *filename : %s\n\n", filename);
 	if (rt_set_master(master))
 		return (1);
 	content = rt_get_content(filename);
+	dprintf(STDOUT_FILENO, "rt_get_content:\n%s\n\n", content);
 	if (rt_check_content(content))
 		return (1);
 	if (rt_parse_content(master, content))
 		return (1);
 	dprintf(1, "\033[1m\033[32mEverything worked correctly\033[0m\n");
-	ft_free(&content);
+	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/02 10:46:49 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/02 11:44:10 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 CC				:=	gcc
 CF				:=	-Wall -Werror -Wextra
 CI				:=	-I $(P_INCS_LIBFT) -I $(P_INCS) -I $(P_MLX)
-CS				:=	-g -fsanitize=address
+CS				:=	-g3 -fsanitize=address
 CG				:=	-g3
 RM				:=	rm -rf
 FW				:=	-Lmlx -lmlx -framework OpenGL -framework AppKit
@@ -96,10 +96,10 @@ all:	makelibft $(NAME)
 # 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
 
 $(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
-	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
+	$(CC) $(CF) $(CG) $(CI) $(LIBFT) $(OBJS) -o $@
 
 $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
-	$(CC) $(CF) $(CI) -c $< -o $@
+	$(CC) $(CF) $(CG) $(CI) -c $< -o $@
 
 $(P_OBJS):
 	mkdir -p $(P_OBJS)
