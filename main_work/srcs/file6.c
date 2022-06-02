@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:31:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 11:16:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 14:01:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name)
 	// display_split(split);
 	// dprintf(STDOUT_FILENO, "valid_splitlen: %d\n", valid_splitlen);
 	// dprintf(STDOUT_FILENO, "name: %s\n", name);
+	object_ptr = NULL;
 	splitlen = ft_splitlen(split);
 	// dprintf(STDOUT_FILENO, "splitlen: %d\n", splitlen);
 	if (splitlen != valid_splitlen)
@@ -67,6 +68,7 @@ void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name)
 		return (rt_write_char_error(E_ID, NULL));
 	if (!object_ptr)
 		return (rt_write_char_error(E_MALLOC, NULL));
+	dprintf(STDOUT_FILENO, "\033[33m\033[1m%p | %s\033[0m\n", object_ptr, name);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (object_ptr);
 }

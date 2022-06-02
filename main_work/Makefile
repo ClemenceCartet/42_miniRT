@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/02 11:44:10 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/02 14:40:33 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,10 +96,10 @@ all:	makelibft $(NAME)
 # 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
 
 $(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
-	$(CC) $(CF) $(CG) $(CI) $(LIBFT) $(OBJS) -o $@
+	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
 
 $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
-	$(CC) $(CF) $(CG) $(CI) -c $< -o $@
+	$(CC) $(CF) $(CI) -c $< -o $@
 
 $(P_OBJS):
 	mkdir -p $(P_OBJS)

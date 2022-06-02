@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 11:52:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 13:48:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	rt_free_object_list(t_object *object)
 	while (object->lst)
 	{
 		obj_link = object->lst->content;
-		free (obj_link->object_ptr);
-		free(object->lst->content);
+		free(obj_link->object_ptr);
+		free(obj_link);
 		tmp = object->lst;
 		object->lst = object->lst->next;
 		free(tmp);
@@ -63,13 +63,13 @@ int	rt_free_master(t_master *master)
 char	**rt_write_split_error(char *str, char *str2)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	ft_putstr_fd("\033[1m", STDERR_FILENO);
-	ft_putstr_fd("\033[31m", STDERR_FILENO);
-	ft_putstr_fd(str, STDERR_FILENO);
+	ft_putstr_fd("\033[1m", STDOUT_FILENO);
+	ft_putstr_fd("\033[31m", STDOUT_FILENO);
+	ft_putstr_fd(str, STDOUT_FILENO);
 	if (str2)
-		ft_putstr_fd(str2, STDERR_FILENO);
-	ft_putstr_fd("\033[0m", STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+		ft_putstr_fd(str2, STDOUT_FILENO);
+	ft_putstr_fd("\033[0m", STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (NULL);
 }
@@ -78,13 +78,13 @@ char	**rt_write_split_error(char *str, char *str2)
 char	*rt_write_char_error(char *str, char *str2)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	ft_putstr_fd("\033[1m", STDERR_FILENO);
-	ft_putstr_fd("\033[31m", STDERR_FILENO);
-	ft_putstr_fd(str, STDERR_FILENO);
+	ft_putstr_fd("\033[1m", STDOUT_FILENO);
+	ft_putstr_fd("\033[31m", STDOUT_FILENO);
+	ft_putstr_fd(str, STDOUT_FILENO);
 	if (str2)
-		ft_putstr_fd(str2, STDERR_FILENO);
-	ft_putstr_fd("\033[0m", STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+		ft_putstr_fd(str2, STDOUT_FILENO);
+	ft_putstr_fd("\033[0m", STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (NULL);
 }
@@ -93,13 +93,13 @@ char	*rt_write_char_error(char *str, char *str2)
 int	rt_write_int_error(char *str, char *str2)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	ft_putstr_fd("\033[1m", STDERR_FILENO);
-	ft_putstr_fd("\033[31m", STDERR_FILENO);
-	ft_putstr_fd(str, STDERR_FILENO);
+	ft_putstr_fd("\033[1m", STDOUT_FILENO);
+	ft_putstr_fd("\033[31m", STDOUT_FILENO);
+	ft_putstr_fd(str, STDOUT_FILENO);
 	if (str2)
-		ft_putstr_fd(str2, STDERR_FILENO);
-	ft_putstr_fd("\033[0m", STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+		ft_putstr_fd(str2, STDOUT_FILENO);
+	ft_putstr_fd("\033[0m", STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (1);
 }

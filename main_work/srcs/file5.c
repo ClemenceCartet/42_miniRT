@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 10:22:13 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 11:45:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 13:54:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	rt_set_coordinates(float p_xyz[3], char *value, char *name)
 	split = rt_check_value(value, ',', 3, name);
 	if (!split)
 		return (1);
-	display_split(split);
+	// display_split(split);
 	ft_free_split(split);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
@@ -40,7 +40,7 @@ int	rt_set_orientation(float o_xyz[3], char *value, char *name)
 	split = rt_check_value(value, ',', 3, name);
 	if (!split)
 		return (1);
-	display_split(split);
+	// display_split(split);
 	ft_free_split(split);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
@@ -57,7 +57,7 @@ int	rt_set_rgb(int rgb[3], char *value, char *name)
 	split = rt_check_value(value, ',', 3, name);
 	if (!split)
 		return (1);
-	display_split(split);
+	// display_split(split);
 	ft_free_split(split);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);

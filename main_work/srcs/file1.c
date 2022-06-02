@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 08:20:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 11:43:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 13:49:51 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	rt_check_content(char *content)
 
 	a = 0;
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	dprintf(STDOUT_FILENO, "char *content :\n%s\n\n", content);
+	// dprintf(STDOUT_FILENO, "char *content :\n%s\n\n", content);
 	if (!content || !content[0])
 	{
 		if (!content[0])
@@ -62,7 +62,6 @@ int	rt_check_content(char *content)
 	{
 		if (!ft_ischarset(content[a], PARSING_CHARSET))
 		{
-			dprintf(STDOUT_FILENO, "content[a] : %c\n", content[a]);
 			ft_free(&content);
 			return (rt_write_int_error(E_UNKNOWN, NULL));
 		}
@@ -131,7 +130,7 @@ int	rt_init_master(t_master *master, char *filename)
 	if (rt_set_master(master))
 		return (1);
 	content = rt_get_content(filename);
-	dprintf(STDOUT_FILENO, "rt_get_content:\n%s\n\n", content);
+	// dprintf(STDOUT_FILENO, "rt_get_content:\n%s\n\n", content);
 	if (rt_check_content(content))
 		return (1);
 	if (rt_parse_content(master, content))

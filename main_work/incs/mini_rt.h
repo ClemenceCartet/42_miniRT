@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 11:20:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 14:37:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,25 +82,25 @@ int		rt_set_diameter(float diameter, char *value, char *name);
 
 /*-------------------- file4.c --------------------*/ // 6
 
-void	rt_init_plane_values(t_plane *plane);
-void	rt_init_sphere_values(t_sphere *sphere);
-void	rt_init_cylinder_values(t_cylinder *cylinder);
+int		rt_init_plane_values(t_plane *plane);
+int		rt_init_sphere_values(t_sphere *sphere);
+int		rt_init_cylinder_values(t_cylinder *cylinder);
 void	rt_init_ambient_values(t_ambient *ambient);
 void	rt_init_camera_values(t_camera *camera);
 void	rt_init_light_values(t_light *light);
 
 /*-------------------- file3.c --------------------*/ // 3
 
-int		rt_parse_sphere(void *object_ptr, char **split);
-int		rt_parse_plane(void *object_ptr, char **split);
-int		rt_parse_cylinder(void *object_ptr, char **split);
+void	*rt_parse_sphere(int *object_id, char **split);
+void	*rt_parse_plane(int *object_id, char **split);
+void	*rt_parse_cylinder(int *object_id, char **split);
 
 /*-------------------- file2.c --------------------*/ // 5
 
-int		rt_parse_object(t_object *object, char **split);
-int		rt_parse_light(t_light *light, char **split);
-int		rt_parse_camera(t_camera *camera, char **split);
-int		rt_parse_ambient(t_ambient *ambient, char **split);
+int		rt_parse_object(t_master *master, char **split);
+int		rt_parse_light(t_master *master, char **split);
+int		rt_parse_camera(t_master *master, char **split);
+int		rt_parse_ambient(t_master *master, char **split);
 int		rt_get_line_content(t_master *master, char *line);
 
 /*-------------------- file1.c --------------------*/ // 5

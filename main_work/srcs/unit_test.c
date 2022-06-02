@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 09:44:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 11:14:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 13:36:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	display_light(t_light *light)
 	dprintf(STDOUT_FILENO, "light->rgb[0] : %d\n", light->rgb[0]);
 	dprintf(STDOUT_FILENO, "light->rgb[1] : %d\n", light->rgb[1]);
 	dprintf(STDOUT_FILENO, "light->rgb[2] : %d\n", light->rgb[2]);
-	dprintf(STDOUT_FILENO, "\n---\n");
+	dprintf(STDOUT_FILENO, "---\n");
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }
 
@@ -86,7 +86,7 @@ void	display_sphere(t_sphere *sphere)
 	dprintf(STDOUT_FILENO, "sphere->rgb[0] : %d\n", sphere->rgb[0]);
 	dprintf(STDOUT_FILENO, "sphere->rgb[1] : %d\n", sphere->rgb[1]);
 	dprintf(STDOUT_FILENO, "sphere->rgb[2] : %d\n", sphere->rgb[2]);
-	dprintf(STDOUT_FILENO, "\n---\n");
+	dprintf(STDOUT_FILENO, "---\n");
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }
 
@@ -105,7 +105,7 @@ void	display_plane(t_plane *plane)
 	dprintf(STDOUT_FILENO, "plane->rgb[0] : %d\n", plane->rgb[0]);
 	dprintf(STDOUT_FILENO, "plane->rgb[1] : %d\n", plane->rgb[1]);
 	dprintf(STDOUT_FILENO, "plane->rgb[2] : %d\n", plane->rgb[2]);
-	dprintf(STDOUT_FILENO, "\n---\n");
+	dprintf(STDOUT_FILENO, "---\n");
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }
 
@@ -128,7 +128,7 @@ void	display_cylinder(t_cylinder *cylinder)
 	dprintf(STDOUT_FILENO, "cylinder->rgb[0] : %d\n", cylinder->rgb[0]);
 	dprintf(STDOUT_FILENO, "cylinder->rgb[1] : %d\n", cylinder->rgb[1]);
 	dprintf(STDOUT_FILENO, "cylinder->rgb[2] : %d\n", cylinder->rgb[2]);
-	dprintf(STDOUT_FILENO, "\n---\n");
+	dprintf(STDOUT_FILENO, "---\n");
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }
 
