@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/03 09:17:12 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/03 09:34:54 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,14 +77,14 @@ P_OBJS			:=	.objs/
 # Shortcuts
 INCS			:=	$(addprefix $(P_INCS),$(LST_INCS))
 SRCS			:=	$(addprefix $(P_SRCS),main.c)						\
-					$(addprefix $(P_SRCS),$(P_CHECKERS)$(LST_CHECKERS))	\
-					$(addprefix $(P_SRCS),$(P_FREEZERS)$(LST_FREEZERS))	\
-					$(addprefix $(P_SRCS),$(P_GETTERS)$(LST_GETTERS))	\
-					$(addprefix $(P_SRCS),$(P_INITIERS)$(LST_INITIERS))	\
-					$(addprefix $(P_SRCS),$(P_PARSERS)$(LST_PARSERS))	\
-					$(addprefix $(P_SRCS),$(P_SETTERS)$(LST_SETTERS))	\
-					$(addprefix $(P_SRCS),$(P_WRITERS)$(LST_WRITERS))	\
-					$(addprefix $(P_SRCS),$(P_TESTERS)$(LST_TESTERS))
+					$(addprefix $(P_SRCS)$(P_CHECKERS),$(LST_CHECKERS))	\
+					$(addprefix $(P_SRCS)$(P_FREEZERS),$(LST_FREEZERS))	\
+					$(addprefix $(P_SRCS)$(P_GETTERS),$(LST_GETTERS))	\
+					$(addprefix $(P_SRCS)$(P_INITIERS),$(LST_INITIERS))	\
+					$(addprefix $(P_SRCS)$(P_PARSERS),$(LST_PARSERS))	\
+					$(addprefix $(P_SRCS)$(P_SETTERS),$(LST_SETTERS))	\
+					$(addprefix $(P_SRCS)$(P_WRITERS),$(LST_WRITERS))	\
+					$(addprefix $(P_SRCS)$(P_TESTERS),$(LST_TESTERS))
 OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 #//////////////////////////////////////////////////////////////////////////////

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:40:09 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:40:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:36:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	rt_parse_master(t_master *master, char *filename)
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	// dprintf(STDOUT_FILENO, "char *filename : %s\n\n", filename);
-	if (rt_set_master(master))
+	if (rt_init_master(master))
 		return (1);
-	content = rt_get_content(filename);
-	// dprintf(STDOUT_FILENO, "rt_get_content:\n%s\n\n", content);
-	if (rt_check_content(content))
+	content = rt_get_file_content(filename);
+	// dprintf(STDOUT_FILENO, "rt_get_file_content:\n%s\n\n", content);
+	if (rt_check_file_content(content))
 		return (1);
-	if (rt_parse_content(master, content))
+	if (rt_parse_file_content(master, content))
 		return (1);
 	dprintf(1, "\033[1m\033[32mEverything worked correctly\033[0m\n");
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);

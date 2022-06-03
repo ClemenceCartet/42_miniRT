@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:52:21 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:36:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	rt_set_rgb(int rgb[3], char *value, char *name)
 	dprintf(STDOUT_FILENO, "char *value : %s\n", value);
 	dprintf(STDOUT_FILENO, "char *name : %s\n", name);
 	dprintf(STDOUT_FILENO, "int rgb : 0: %d | 1: %d | 2: %d\n", rgb[0], rgb[1], rgb[2]);
-	split = rt_check_value(value, ',', 3, name);
+	split = rt_check_value_pack(value, ',', 3, name);
 	if (!split)
 		return (1);
 	// test_split_values(split);
