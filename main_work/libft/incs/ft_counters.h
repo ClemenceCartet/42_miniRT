@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:49:16 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 11:22:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 13:26:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ size_t	ft_strlen(const char *str);
 size_t	ft_count_word(const char *str, const char c);
 size_t	ft_count_char(long nb);
 size_t	ft_splitlen(char **split);
+size_t	ft_atoi_check(const char *str, int *negative);
 
 #endif //FT_COUNTERS_H
