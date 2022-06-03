@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_master.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:59:09 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/03 08:40:09 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/03 08:40:14 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	main(int ac, char **av)
+// Main function for the initialization and parsing of the program
+int	rt_parse_master(t_master *master, char *filename)
 {
-	t_master	master;
+	char	*content;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	if (ac != 2)
-		return (rt_write_int_error(E_USAGE, NULL));
-	if (rt_init_master(&master, av[1]))
-		return (rt_free_master(&master) + 1);
+	// dprintf(STDOUT_FILENO, "char *filename : %s\n\n", filename);
+	if (rt_set_master(master))
+		return (1);
+	content = rt_get_content(filename);
+	// dprintf(STDOUT_FILENO, "rt_get_content:\n%s\n\n", content);
+	if (rt_check_content(content))
+		return (1);
+	if (rt_parse_content(master, content))
+		return (1);
+	dprintf(1, "\033[1m\033[32mEverything worked correctly\033[0m\n");
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	return (rt_free_master(&master));
+	return (0);
 }

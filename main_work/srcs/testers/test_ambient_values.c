@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test_ambient_values.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:59:09 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/03 09:01:26 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/03 09:01:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	main(int ac, char **av)
+void	display_ambient(t_ambient *ambient)
 {
-	t_master	master;
-
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	if (ac != 2)
-		return (rt_write_int_error(E_USAGE, NULL));
-	if (rt_init_master(&master, av[1]))
-		return (rt_free_master(&master) + 1);
+	dprintf(STDOUT_FILENO, "\n---\n");
+	dprintf(STDOUT_FILENO, "ambient->ratio : %f\n", ambient->ratio);
+	dprintf(STDOUT_FILENO, "\n");
+	dprintf(STDOUT_FILENO, "ambient->rgb[0] : %d\n", ambient->rgb[0]);
+	dprintf(STDOUT_FILENO, "ambient->rgb[1] : %d\n", ambient->rgb[1]);
+	dprintf(STDOUT_FILENO, "ambient->rgb[2] : %d\n", ambient->rgb[2]);
+	dprintf(STDOUT_FILENO, "\n---\n");
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	return (rt_free_master(&master));
 }

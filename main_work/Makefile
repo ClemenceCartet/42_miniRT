@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/02 14:40:33 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/03 09:17:12 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,38 @@ MLX		:=	mlx/libmlx.a
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS		:=	mini_rt.h		rt_keys.h		\
-					rt_data.h		rt_structs.h	\
+LST_INCS		:=	mini_rt.h					rt_keys.h		\
+					rt_data.h					rt_structs.h	\
 					rt_defines.h
 
-LST_SRCS		:=	file1.c			file2.c			\
-					file3.c			file4.c			\
-					file5.c			file6.c			\
-					unit_test.c
+LST_CHECKERS	:=	check_file_content.c		check_value_pack.c
+
+LST_FREEZERS	:=	free_master.c				free_object_list.c
+
+LST_GETTERS		:=	get_file_content.c
+
+LST_INITIERS	:=	init_ambient_values.c		init_camera_values.c	\
+					init_cylinder_values.c		init_light_values.c		\
+					init_master.c				init_object_ptr.c		\
+					init_plane_values.c			init_sphere_values.c
+
+LST_PARSERS		:=	parse_ambient.c				parse_camera.c			\
+					parse_cylinder.c			parse_file_content.c	\
+					parse_light.c				parse_line.c			\
+					parse_master.c				parse_object.c			\
+					parse_plane.c				parse_sphere.c
+
+LST_SETTERS		:=	set_coordinates.c			set_diameter.c			\
+					set_fov.c					set_orientation.c		\
+					set_ratio.c					set_rgb.c
+
+LST_WRITERS		:=	write_char_error.c			write_int_error.c		\
+					write_split_error.c
+
+LST_TESTERS		:=	test_ambient_values.c		test_camera_values.c	\
+					test_cylinder_values.c		test_light_values.c		\
+					test_object_list_values.c	test_plane_values.c		\
+					test_sphere_values.c		test_split_values.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -39,13 +63,28 @@ P_INCS_LIBFT	:=	libft/incs/
 
 P_INCS			:=	incs/
 P_SRCS			:=	srcs/
+P_CHECKERS		:=	checkers/
+P_FREEZERS		:=	freezers/
+P_GETTERS		:=	getters/
+P_INITIERS		:=	initiers/
+P_PARSERS		:=	parsers/
+P_SETTERS		:=	setters/
+P_WRITERS		:=	writers/
 
+P_TESTERS		:=	testers/
 P_OBJS			:=	.objs/
 
 # Shortcuts
 INCS			:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS			:=	$(addprefix $(P_SRCS),main.c)	\
-					$(addprefix $(P_SRCS),$(LST_SRCS))
+SRCS			:=	$(addprefix $(P_SRCS),main.c)						\
+					$(addprefix $(P_SRCS),$(P_CHECKERS)$(LST_CHECKERS))	\
+					$(addprefix $(P_SRCS),$(P_FREEZERS)$(LST_FREEZERS))	\
+					$(addprefix $(P_SRCS),$(P_GETTERS)$(LST_GETTERS))	\
+					$(addprefix $(P_SRCS),$(P_INITIERS)$(LST_INITIERS))	\
+					$(addprefix $(P_SRCS),$(P_PARSERS)$(LST_PARSERS))	\
+					$(addprefix $(P_SRCS),$(P_SETTERS)$(LST_SETTERS))	\
+					$(addprefix $(P_SRCS),$(P_WRITERS)$(LST_WRITERS))	\
+					$(addprefix $(P_SRCS),$(P_TESTERS)$(LST_TESTERS))
 OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 #//////////////////////////////////////////////////////////////////////////////
@@ -102,7 +141,11 @@ $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
 	$(CC) $(CF) $(CI) -c $< -o $@
 
 $(P_OBJS):
-	mkdir -p $(P_OBJS)
+	mkdir -p $(P_OBJS)								\
+	$(P_OBJS)$(P_CHECKERS)	$(P_OBJS)$(P_FREEZERS)	\
+	$(P_OBJS)$(P_GETTERS)	$(P_OBJS)$(P_INITIERS)	\
+	$(P_OBJS)$(P_PARSERS)	$(P_OBJS)$(P_SETTERS)	\
+	$(P_OBJS)$(P_WRITERS)	$(P_OBJS)$(P_TESTERS)
 #	printf "✅	$(GREEN)$(BOLD)$(NAME) obj directories created$(RESET)\n"
 
 # Libs creation

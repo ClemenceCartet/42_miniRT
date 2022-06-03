@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:59:09 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/03 08:43:29 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/03 08:43:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	main(int ac, char **av)
+// Create Sphere structure to put in the object list while checking errors
+void	*rt_parse_sphere(int *object_id, char **split)
 {
-	t_master	master;
+	t_sphere	*sphere;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	if (ac != 2)
-		return (rt_write_int_error(E_USAGE, NULL));
-	if (rt_init_master(&master, av[1]))
-		return (rt_free_master(&master) + 1);
+	// display_split(split);
+	sphere = rt_init_object_ptr(split, 4, "Sphere");
+	if (!sphere)
+		return (NULL);
+	*object_id = rt_init_sphere_values(sphere);
+	if (rt_set_coordinates(sphere->p_xyz, split[1], "Sphere coordinates"))
+		return (NULL);
+	if (rt_set_diameter(sphere->diameter, split[2], "Sphere diameter"))
+		return (NULL);
+	if (rt_set_rgb(sphere->rgb, split[3], "Sphere RGB"))
+		return (NULL);
+	// display_sphere(sphere);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	return (rt_free_master(&master));
+	return (sphere);
 }

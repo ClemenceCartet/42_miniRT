@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   write_char_error.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:59:09 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/03 08:45:50 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/03 08:45:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	main(int ac, char **av)
+// Write an error message in two parts and return NULL for string
+char	*rt_write_char_error(char *str, char *str2)
 {
-	t_master	master;
-
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	if (ac != 2)
-		return (rt_write_int_error(E_USAGE, NULL));
-	if (rt_init_master(&master, av[1]))
-		return (rt_free_master(&master) + 1);
+	ft_putstr_fd("\033[1m", STDOUT_FILENO);
+	ft_putstr_fd("\033[31m", STDOUT_FILENO);
+	ft_putstr_fd(str, STDOUT_FILENO);
+	if (str2)
+		ft_putstr_fd(str2, STDOUT_FILENO);
+	ft_putstr_fd("\033[0m", STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	return (rt_free_master(&master));
+	return (NULL);
 }

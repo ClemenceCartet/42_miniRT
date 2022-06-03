@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_master.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:59:09 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/03 08:55:47 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/03 08:55:51 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	main(int ac, char **av)
+// Initialize master content to NULL and allocate object structure
+int	rt_init_master(t_master *master)
 {
-	t_master	master;
-
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	if (ac != 2)
-		return (rt_write_int_error(E_USAGE, NULL));
-	if (rt_init_master(&master, av[1]))
-		return (rt_free_master(&master) + 1);
+	master->mlxdata = NULL;
+	master->ambient = NULL;
+	master->camera = NULL;
+	master->light = NULL;
+	master->object = ft_calloc(1, sizeof(t_object));
+	if (!master->object)
+		return (rt_write_int_error(E_MALLOC, NULL));
+	master->object->lst = NULL;
+	master->object->lst_size = 0;
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	return (rt_free_master(&master));
+	return (0);
 }

@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_coordinates.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:59:09 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/03 08:52:50 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/03 08:52:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	main(int ac, char **av)
+int	rt_set_coordinates(float p_xyz[3], char *value, char *name)
 {
-	t_master	master;
+	char	**split;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	if (ac != 2)
-		return (rt_write_int_error(E_USAGE, NULL));
-	if (rt_init_master(&master, av[1]))
-		return (rt_free_master(&master) + 1);
+	dprintf(STDOUT_FILENO, "char *value : %s\n", value);
+	dprintf(STDOUT_FILENO, "char *name : %s\n", name);
+	dprintf(STDOUT_FILENO, "float p_xyz : 0: %f | 1: %f | 2: %f\n", p_xyz[0], p_xyz[1], p_xyz[2]);
+	split = rt_check_value(value, ',', 3, name);
+	if (!split)
+		return (1);
+	// display_split(split);
+	ft_free_split(split);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	return (rt_free_master(&master));
+	return (0);
 }
