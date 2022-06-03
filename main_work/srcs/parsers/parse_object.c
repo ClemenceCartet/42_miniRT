@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:42:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:42:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	rt_parse_object(t_master *master, char **split)
 	t_obj_link	*obj_link;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// display_split(split);
+	// test_split_values(split);
 	// dprintf(STDOUT_FILENO, "\n");
 	obj_link = ft_calloc(1, sizeof(t_obj_link));
 	if (!obj_link)

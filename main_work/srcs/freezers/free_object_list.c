@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:58:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:58:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:44 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rt_free_object_list(t_object *object)
 	t_obj_link	*obj_link;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	display_object_list(object);
+	test_object_list_values(object);
 	tmp = NULL;
 	object->lst = object->start;
 	while (object->lst)

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:41:16 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:41:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	rt_parse_line(t_master *master, char *line)
 	split = ft_split(line, ' ');
 	if (!split)
 		return (rt_write_int_error(E_MALLOC, NULL));
-	// display_split(split);
+	// test_split_values(split);
 	if (!ft_strncmp(split[0], "A", 2))
 		val = rt_parse_ambient(master, split);
 	else if (!ft_strncmp(split[0], "C", 2))

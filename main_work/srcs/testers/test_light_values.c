@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:01:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:02:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	display_light(t_light *light)
+void	test_light_values(t_light *light)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	dprintf(STDOUT_FILENO, "\n---\n");

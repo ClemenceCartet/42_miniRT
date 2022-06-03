@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:40:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:40:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	rt_parse_file_content(t_master *master, char *content)
 		ft_free(&content);
 		return (rt_write_int_error(E_MALLOC, NULL));
 	}
-	// display_split(split);
+	// test_split_values(split);
 	ft_free(&content);
 	while (split[a])
 	{

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:54:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:54:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	rt_init_ambient_values(t_ambient *ambient)
 	ambient->rgb[0] = 0;
 	ambient->rgb[1] = 0;
 	ambient->rgb[2] = 0;
-	// display_ambient(ambient);
+	// test_ambient_values(ambient);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }

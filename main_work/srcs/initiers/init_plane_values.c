@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:55:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:55:22 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	rt_init_plane_values(t_plane *plane)
 	plane->rgb[0] = 0;
 	plane->rgb[1] = 0;
 	plane->rgb[2] = 0;
-	// display_plane(plane);
+	// test_plane_values(plane);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (PL);
 }

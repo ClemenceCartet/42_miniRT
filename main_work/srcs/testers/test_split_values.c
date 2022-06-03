@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:01:09 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:01:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	display_split(char **split)
+void	test_split_values(char **split)
 {
 	int	a;
 

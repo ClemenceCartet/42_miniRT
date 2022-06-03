@@ -6,14 +6,14 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:49:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:50:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:21:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
 // Get content of file using get_next_line and strjoin
-char	*rt_get_content(char *filename)
+char	*rt_get_file_content(char *filename)
 {
 	char	*content;
 	int		fd;

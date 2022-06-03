@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:55:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:55:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	rt_init_cylinder_values(t_cylinder *cylinder)
 	cylinder->rgb[0] = 0;
 	cylinder->rgb[1] = 0;
 	cylinder->rgb[2] = 0;
-	// display_cylinder(cylinder);
+	// test_cylinder_values(cylinder);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (CY);
 }

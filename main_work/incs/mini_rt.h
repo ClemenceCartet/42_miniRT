@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/02 14:37:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:44 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,71 +66,74 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
-/*-------------------- file6.c --------------------*/ // 2
+/*-------------------- CHECKERS --------------------*/
 
-char	**rt_check_value(char *value, char c, int splitlen, char *name);
-void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name);
+int		rt_check_file_content(char *content);
+char	**rt_check_value_pack(char *value, char c, int splitlen, char *name);
 
-/*-------------------- file5.c --------------------*/ // 6
+/*-------------------- FREEZERS --------------------*/
 
-int		rt_set_coordinates(float p_xyz[3], char *value, char *name);
-int		rt_set_orientation(float o_xyz[3], char *value, char *name);
-int		rt_set_rgb(int rgb[3], char *value, char *name);
-int		rt_set_fov(int fov, char *value, char *name);
-int		rt_set_ratio(float ratio, char *value, char *name);
-int		rt_set_diameter(float diameter, char *value, char *name);
+int		rt_free_master(t_master *master);
+void	rt_free_object_list(t_object *object);
 
-/*-------------------- file4.c --------------------*/ // 6
+/*-------------------- GETTERS --------------------*/
 
-int		rt_init_plane_values(t_plane *plane);
-int		rt_init_sphere_values(t_sphere *sphere);
-int		rt_init_cylinder_values(t_cylinder *cylinder);
+char	*rt_get_file_content(char *filename);
+
+/*-------------------- INITIERS --------------------*/
+
 void	rt_init_ambient_values(t_ambient *ambient);
 void	rt_init_camera_values(t_camera *camera);
+int		rt_init_cylinder_values(t_cylinder *cylinder);
 void	rt_init_light_values(t_light *light);
+int		rt_init_master(t_master *master);
+void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name);
+int		rt_init_plane_values(t_plane *plane);
+int		rt_init_sphere_values(t_sphere *sphere);
 
-/*-------------------- file3.c --------------------*/ // 3
+/*-------------------- PARSERS --------------------*/
 
-void	*rt_parse_sphere(int *object_id, char **split);
-void	*rt_parse_plane(int *object_id, char **split);
-void	*rt_parse_cylinder(int *object_id, char **split);
-
-/*-------------------- file2.c --------------------*/ // 5
-
-int		rt_parse_object(t_master *master, char **split);
-int		rt_parse_light(t_master *master, char **split);
-int		rt_parse_camera(t_master *master, char **split);
 int		rt_parse_ambient(t_master *master, char **split);
-int		rt_get_line_content(t_master *master, char *line);
+int		rt_parse_camera(t_master *master, char **split);
+void	*rt_parse_cylinder(int *object_id, char **split);
+int		rt_parse_file_content(t_master *master, char *content);
+int		rt_parse_light(t_master *master, char **split);
+int		rt_parse_line(t_master *master, char *line);
+int		rt_parse_master(t_master *master, char *filename);
+int		rt_parse_object(t_master *master, char **split);
+void	*rt_parse_plane(int *object_id, char **split);
+void	*rt_parse_sphere(int *object_id, char **split);
 
-/*-------------------- file1.c --------------------*/ // 5
+/*-------------------- SETTERS --------------------*/
 
-int		rt_parse_content(t_master *master, char *content);
-int		rt_check_content(char *content);
-char	*rt_get_content(char *filename);
-int		rt_set_master(t_master *master);
-int		rt_init_master(t_master *master, char *filename);
+int		rt_set_coordinates(float p_xyz[3], char *value, char *name);
+int		rt_set_diameter(float diameter, char *value, char *name);
+int		rt_set_fov(int fov, char *value, char *name);
+int		rt_set_orientation(float o_xyz[3], char *value, char *name);
+int		rt_set_ratio(float ratio, char *value, char *name);
+int		rt_set_rgb(int rgb[3], char *value, char *name);
 
-/*-------------------- main.c --------------------*/ // 6
+/*-------------------- WRITERS --------------------*/
 
-void	rt_free_object_list(t_object *object);
-int		rt_free_master(t_master *master);
-char	**rt_write_split_error(char *str, char *str2);
 char	*rt_write_char_error(char *str, char *str2);
 int		rt_write_int_error(char *str, char *str2);
+char	**rt_write_split_error(char *str, char *str2);
+
+/*-------------------- main.c --------------------*/
+
 // int	main(int ac, char **av);
 
 /*/////////////////////////////////////////////////////////////////////////////
 		TEST FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
-void	display_split(char **split);
-void	display_ambient(t_ambient *ambient);
-void	display_camera(t_camera *camera);
-void	display_light(t_light *light);
-void	display_sphere(t_sphere *sphere);
-void	display_plane(t_plane *plane);
-void	display_cylinder(t_cylinder *cylinder);
-void	display_object_list(t_object *object);
+void	test_split_values(char **split);
+void	test_ambient_values(t_ambient *ambient);
+void	test_camera_values(t_camera *camera);
+void	test_light_values(t_light *light);
+void	test_sphere_values(t_sphere *sphere);
+void	test_plane_values(t_plane *plane);
+void	test_cylinder_values(t_cylinder *cylinder);
+void	test_object_list_values(t_object *object);
 
 #endif //MINI_RT_H

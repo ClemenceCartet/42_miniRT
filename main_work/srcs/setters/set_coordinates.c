@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:52:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:52:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	rt_set_coordinates(float p_xyz[3], char *value, char *name)
 	split = rt_check_value(value, ',', 3, name);
 	if (!split)
 		return (1);
-	// display_split(split);
+	// test_split_values(split);
 	ft_free_split(split);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);

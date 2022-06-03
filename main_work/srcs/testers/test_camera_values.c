@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:01:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:01:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:47 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	display_camera(t_camera *camera)
+void	test_camera_values(t_camera *camera)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	dprintf(STDOUT_FILENO, "\n---\n");

@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:01:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:01:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	display_ambient(t_ambient *ambient)
+void	test_ambient_values(t_ambient *ambient)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	dprintf(STDOUT_FILENO, "\n---\n");

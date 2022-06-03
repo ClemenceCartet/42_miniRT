@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:55:31 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:55:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	rt_init_sphere_values(t_sphere *sphere)
 	sphere->rgb[0] = 0;
 	sphere->rgb[1] = 0;
 	sphere->rgb[2] = 0;
-	// display_sphere(sphere);
+	// test_sphere_values(sphere);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (SP);
 }

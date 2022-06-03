@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:02:14 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:02:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	display_sphere(t_sphere *sphere)
+void	test_sphere_values(t_sphere *sphere)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	dprintf(STDOUT_FILENO, "\n---\n");

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:42:59 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:43:03 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*rt_parse_cylinder(int *object_id, char **split)
 	t_cylinder	*cylinder;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// display_split(split);
+	// test_split_values(split);
 	cylinder = rt_init_object_ptr(split, 6, "Cylinder");
 	*object_id = rt_init_cylinder_values(cylinder);
 	if (rt_set_coordinates(cylinder->p_xyz, split[1], "Cylinder coordinates"))
@@ -31,7 +31,7 @@ void	*rt_parse_cylinder(int *object_id, char **split)
 		return (NULL);
 	if (rt_set_rgb(cylinder->rgb, split[5], "Cylinder RGB"))
 		return (NULL);
-	// display_cylinder(cylinder);
+	// test_cylinder_values(cylinder);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (cylinder);
 }

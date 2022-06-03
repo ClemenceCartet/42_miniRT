@@ -6,14 +6,14 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:48:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:49:03 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:19:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
 // Check content to see if the file content is valid
-int	rt_check_content(char *content)
+int	rt_check_file_content(char *content)
 {
 	int	a;
 

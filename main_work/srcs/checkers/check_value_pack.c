@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:48:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:48:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**rt_check_value_pack(char *value, char c, int splitlen, char *name)
 	split = ft_split(value, c);
 	if (!split)
 		return (rt_write_split_error(E_MALLOC, NULL));
-	// display_split(split);
+	// test_split_values(split);
 	if ((int)ft_splitlen(split) != splitlen)
 	{
 		ft_free_split(split);

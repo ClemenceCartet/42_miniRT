@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:02:29 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:02:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	display_plane(t_plane *plane)
+void	test_plane_values(t_plane *plane)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	dprintf(STDOUT_FILENO, "\n---\n");

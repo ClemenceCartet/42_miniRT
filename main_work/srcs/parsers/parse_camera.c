@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:41:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:42:03 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:47 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	rt_parse_camera(t_master *master, char **split)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// display_split(split);
+	// test_split_values(split);
 	if (master->camera)
 		return (rt_write_int_error(E_EXISTING_ID, "Camera"));
 	master->camera = rt_init_object_ptr(split, 4, "Camera");
@@ -29,7 +29,7 @@ int	rt_parse_camera(t_master *master, char **split)
 		return (1);
 	if (rt_set_fov(master->camera->fov, split[3], "Camera FOV"))
 		return (1);
-	// display_camera(camera);
+	// test_camera_values(camera);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:02:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:02:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:28:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	display_cylinder(t_cylinder *cylinder)
+void	test_cylinder_values(t_cylinder *cylinder)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	dprintf(STDOUT_FILENO, "\n---\n");

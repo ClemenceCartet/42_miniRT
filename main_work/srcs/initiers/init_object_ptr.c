@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:56:07 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:56:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name)
 	int		splitlen;
 
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// display_split(split);
+	// test_split_values(split);
 	// dprintf(STDOUT_FILENO, "valid_splitlen: %d\n", valid_splitlen);
 	// dprintf(STDOUT_FILENO, "name: %s\n", name);
 	object_ptr = NULL;

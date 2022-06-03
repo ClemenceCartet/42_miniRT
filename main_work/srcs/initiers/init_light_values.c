@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:54:47 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 08:54:53 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 09:27:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	rt_init_light_values(t_light *light)
 	light->rgb[0] = 0;
 	light->rgb[1] = 0;
 	light->rgb[2] = 0;
-	// display_light(light);
+	// test_light_values(light);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 }
