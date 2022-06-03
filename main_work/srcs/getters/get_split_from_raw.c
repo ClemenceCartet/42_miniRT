@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_value_pack.c                                 :+:      :+:    :+:   */
+/*   get_split_from_raw.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:48:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 14:15:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
 // Check the existence of the given value, split it and check splitlen
-char	**rt_check_value_pack(char *value, char c, int splitlen, char *name)
+char	**rt_get_split_from_raw(char *value, char c, int splitlen, char *name)
 {
 	char	**split;
 

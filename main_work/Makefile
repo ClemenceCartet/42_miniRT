@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/03 09:34:54 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/03 14:14:36 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,11 @@ LST_INCS		:=	mini_rt.h					rt_keys.h		\
 					rt_data.h					rt_structs.h	\
 					rt_defines.h
 
-LST_CHECKERS	:=	check_file_content.c		check_value_pack.c
+LST_CHECKERS	:=	check_file_content.c
 
 LST_FREEZERS	:=	free_master.c				free_object_list.c
 
-LST_GETTERS		:=	get_file_content.c
+LST_GETTERS		:=	get_file_content.c			get_split_from_raw.c
 
 LST_INITIERS	:=	init_ambient_values.c		init_camera_values.c	\
 					init_cylinder_values.c		init_light_values.c		\

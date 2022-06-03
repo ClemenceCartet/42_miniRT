@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:28:44 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 14:15:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ struct s_list
 /*-------------------- CHECKERS --------------------*/
 
 int		rt_check_file_content(char *content);
-char	**rt_check_value_pack(char *value, char c, int splitlen, char *name);
 
 /*-------------------- FREEZERS --------------------*/
 
@@ -79,6 +78,7 @@ void	rt_free_object_list(t_object *object);
 /*-------------------- GETTERS --------------------*/
 
 char	*rt_get_file_content(char *filename);
+char	**rt_get_split_from_raw(char *value, char c, int splitlen, char *name);
 
 /*-------------------- INITIERS --------------------*/
 

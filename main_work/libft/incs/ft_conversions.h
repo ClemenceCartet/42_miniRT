@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:57:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 13:26:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 13:50:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	ft_swap(int *a, int *b);
 char	*ft_str_toupper(const char *str);
 char	*ft_str_tolower(const char *str);
 int		ft_add_str_to_int(const char *str, int *a);
+float	ft_atof(const char *str);
 
 #endif //FT_CONVERSIONS_H
