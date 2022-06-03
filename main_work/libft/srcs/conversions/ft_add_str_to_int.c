@@ -6,11 +6,11 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:25:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 13:25:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/03 13:29:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mini_rt.h>
+#include <libft.h>
 
 int	ft_add_str_to_int(const char *str, int *a)
 {
