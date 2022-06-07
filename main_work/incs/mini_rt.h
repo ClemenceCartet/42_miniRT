@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 14:15:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 12:00:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ struct s_list
 /*-------------------- CHECKERS --------------------*/
 
 int		rt_check_file_content(char *content);
+int		rt_check_float_syntax(char *str, char *name);
+int		rt_check_value_format(char *value, char *charset);
 
 /*-------------------- FREEZERS --------------------*/
 
@@ -82,14 +84,14 @@ char	**rt_get_split_from_raw(char *value, char c, int splitlen, char *name);
 
 /*-------------------- INITIERS --------------------*/
 
-void	rt_init_ambient_values(t_ambient *ambient);
-void	rt_init_camera_values(t_camera *camera);
-int		rt_init_cylinder_values(t_cylinder *cylinder);
-void	rt_init_light_values(t_light *light);
+void	rt_init_item_ambient(t_ambient *ambient, char **split);
+void	rt_init_item_camera(t_camera *camera, char **split);
+int		rt_init_item_cylinder(t_cylinder *cylinder, char **split);
+void	rt_init_item_light(t_light *light, char **split);
 int		rt_init_master(t_master *master);
 void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name);
-int		rt_init_plane_values(t_plane *plane);
-int		rt_init_sphere_values(t_sphere *sphere);
+int		rt_init_item_plane(t_plane *plane, char **split);
+int		rt_init_item_sphere(t_sphere *sphere, char **split);
 
 /*-------------------- PARSERS --------------------*/
 

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ambient.c                                    :+:      :+:    :+:   */
+/*   init_item_ambient.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 08:41:31 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 11:42:11 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/07 11:55:15 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/07 11:55:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-// Create ambient light structure and initialize it while checking value errors
-int	rt_parse_ambient(t_master *master, char **split)
+// Initialize every values of structure ambient light to 0
+void	rt_init_item_ambient(t_ambient *ambient, char **split)
 {
 	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// test_split_values(split);
-	if (master->ambient)
-		return (rt_write_int_error(E_EXISTING_ID, "Ambient Light"));
-	master->ambient = rt_init_object_ptr(split, 3, "Ambient Light");
-	if (!master->ambient)
-		return (1);
-	rt_init_ambient_values(master->ambient, split);
+	ambient->ratio = 0;
+	ambient->rgb[0] = 0;
+	ambient->rgb[1] = 0;
+	ambient->rgb[2] = 0;
 	// test_ambient_values(ambient);
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	return (0);
 }

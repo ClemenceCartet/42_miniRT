@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 09:59:23 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/03 13:28:01 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/07 10:41:56 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LST_CONVERSIONS		:=	ft_atoi.c					ft_atol.c				\
 						ft_str_toupper.c			ft_striteri.c			\
 						ft_strmapi.c				ft_swap.c				\
 						ft_tolower.c				ft_toupper.c			\
-						ft_add_str_to_int.c
+						ft_add_str_to_int.c			ft_atof.c
 
 LST_COUNTERS		:=	ft_count_char.c				ft_count_word.c			\
 						ft_strlcat.c				ft_strlcpy.c			\

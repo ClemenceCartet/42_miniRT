@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_value.c                                      :+:      :+:    :+:   */
+/*   check_float_syntax.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 14:16:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 14:25:48 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/07 10:20:29 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/07 10:38:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-int	rt_check_value_format(char *value, char *charset)
+int	rt_check_float_syntax(char *str, char *name)
 {
 	int	a;
+	int	point;
 
-	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// dprintf(STDOUT_FILENO, "char *value : %s\n", value);
 	a = 0;
-	if (!value || !value[0])
-		return (rt_write_int_error(E_FORMAT, value));
-	while (value[a])
+	point = 0;
+	while (str[a])
 	{
-		if (!ft_ischarset(value[a], charset))
-			return (rt_write_int_error(E_FORMAT, value));
+		if (!ft_isdigit(str[a]))
+		{
+			if ((point && str[a] == '.'))
+				return (rt_write_int_error(E_SYNTAX, name));
+			else if (a > 0 && (str[a] == '-' || str[a] == '+'))
+				return (rt_write_int_error(E_SYNTAX, name));
+			else if (!point && str[a] == '.')
+				point = 1;
+			else if (!ft_ischarset(str[a], FLOAT_CHARSET))
+				return (rt_write_int_error(E_CONTENT, name));
+		}
 		a++;
 	}
-	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }

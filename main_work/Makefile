@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/03 14:14:36 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/07 11:40:03 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,12 @@ MLX		:=	mlx/libmlx.a
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS		:=	mini_rt.h					rt_keys.h		\
-					rt_data.h					rt_structs.h	\
+LST_INCS		:=	mini_rt.h					rt_keys.h				\
+					rt_data.h					rt_structs.h			\
 					rt_defines.h
 
-LST_CHECKERS	:=	check_file_content.c
+LST_CHECKERS	:=	check_file_content.c		check_value_format.c	\
+					check_float_syntax.c
 
 LST_FREEZERS	:=	free_master.c				free_object_list.c
 

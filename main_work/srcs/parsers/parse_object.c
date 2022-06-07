@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:42:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:27:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 11:44:22 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	rt_parse_object(t_master *master, char **split)
 	if (!obj_link->object_ptr)
 		return (1);
 	master->object->lst_size++;
+	dprintf(STDOUT_FILENO, "obj_link->id : %d\n", obj_link->id);
 	dprintf(STDOUT_FILENO, "\033[33m\033[1m%p | %s\033[0m\n", obj_link->object_ptr, split[0]);
 	ft_lstadd_back(&master->object->lst, ft_lstnew(obj_link));
 	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);

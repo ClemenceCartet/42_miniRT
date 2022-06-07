@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 14:24:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 10:24:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@
 # define E_RANGE		"RT RANGE ERROR: Value must be in range "
 # define E_MISSING		"RT VALUE ERROR: Missing value for "
 # define E_FORMAT		"RT VALUE ERROR: Invalid format for "
+# define E_SYNTAX		"RT VALUE ERROR: Invalid syntax for "
+# define E_CONTENT		"RT VALUE ERROR: Invalid content for "
 
 #endif //RT_DEFINES_H
