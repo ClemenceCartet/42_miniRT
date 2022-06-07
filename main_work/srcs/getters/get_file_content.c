@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:49:50 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 09:21:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 13:40:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*rt_get_file_content(char *filename)
 	int		fd;
 	int		i;
 
-	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	// dprintf(STDOUT_FILENO, "char *filename : %s\n\n", filename);
 	if (!filename || !filename[0])
 		return (rt_write_char_error(E_NO_FILENAME, NULL));
 	i = ft_int_strrchr(filename, '.');
@@ -32,7 +30,6 @@ char	*rt_get_file_content(char *filename)
 	if (fd == -1)
 		return (rt_write_char_error(E_OPEN, filename));
 	content = ft_gnl_join(fd);
-	// dprintf(STDOUT_FILENO, "\nchar *gnl_join :\n%s\n", content);
 	if (!content)
 		return (rt_write_char_error(E_READ, filename));
 	if (close(fd) == -1)
@@ -40,6 +37,5 @@ char	*rt_get_file_content(char *filename)
 		ft_free(&content);
 		return (rt_write_char_error(E_CLOSE, filename));
 	}
-	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (content);
 }

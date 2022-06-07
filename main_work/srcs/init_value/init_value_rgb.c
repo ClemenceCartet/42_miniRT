@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_split_from_raw.c                               :+:      :+:    :+:   */
+/*   init_value_rgb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 08:48:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:40:59 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/07 12:53:04 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/07 13:39:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-// Check the existence of the given value, split it and check splitlen
-char	**rt_get_split_from_raw(char *value, char c, int splitlen, char *name)
+int	rt_init_value_rgb(char *value, int index, char *name)
 {
 	char	**split;
+	int		rgb;
 
-	if (!value || !value[0])
-		return (rt_write_split_error(E_MISSING, name));
-	split = ft_split(value, c);
+	rgb = -1;
+	split = rt_get_split_from_raw(value, ',', 3, name);
 	if (!split)
-		return (rt_write_split_error(E_MALLOC, NULL));
-	if ((int)ft_splitlen(split) != splitlen)
-	{
-		ft_free_split(split);
-		return (rt_write_split_error(E_SPLIT_SIZE, name));
-	}
-	return (split);
+		return (-1);
+	if (rt_check_value_format(split[index], RGB_CHARSET))
+		return (rt_write_int_error(E_FORMAT, split[index]) * -1);
+	rgb = ft_atoi(split[index]);
+	if (rgb > 255 || rgb < 0)
+		return (rt_write_int_error(E_RANGE, "0/55") * -1);
+	ft_free_split(split);
+	return (rgb);
 }

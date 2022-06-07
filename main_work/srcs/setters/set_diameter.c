@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:51:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 10:12:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 13:43:44 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,5 @@
 
 int	rt_set_diameter(float *diameter, char *value, char *name)
 {
-	dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
-	dprintf(STDOUT_FILENO, "float *diameter : %f\n", *diameter);
-	dprintf(STDOUT_FILENO, "char *value : %s\n", value);
-	dprintf(STDOUT_FILENO, "char *name : %s\n", name);
-	dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 	return (0);
 }

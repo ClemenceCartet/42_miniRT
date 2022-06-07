@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 12:00:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 13:39:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,10 @@ void	test_sphere_values(t_sphere *sphere);
 void	test_plane_values(t_plane *plane);
 void	test_cylinder_values(t_cylinder *cylinder);
 void	test_object_list_values(t_object *object);
+
+int		rt_init_value_rgb(char *value, int index, char *name);
+
+// dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
+// dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 
 #endif //MINI_RT_H

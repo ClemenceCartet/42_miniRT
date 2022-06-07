@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/07 11:40:03 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/07 13:06:29 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,35 +27,21 @@ LST_INCS		:=	mini_rt.h					rt_keys.h				\
 					rt_data.h					rt_structs.h			\
 					rt_defines.h
 
-LST_CHECKERS	:=	check_file_content.c		check_value_format.c	\
-					check_float_syntax.c
+LST_CHECKERS	:=	
 
-LST_FREEZERS	:=	free_master.c				free_object_list.c
+LST_FREEZERS	:=	
 
-LST_GETTERS		:=	get_file_content.c			get_split_from_raw.c
+LST_GETTERS		:=	
 
-LST_INITIERS	:=	init_ambient_values.c		init_camera_values.c	\
-					init_cylinder_values.c		init_light_values.c		\
-					init_master.c				init_object_ptr.c		\
-					init_plane_values.c			init_sphere_values.c
+LST_INITIERS	:=	
 
-LST_PARSERS		:=	parse_ambient.c				parse_camera.c			\
-					parse_cylinder.c			parse_file_content.c	\
-					parse_light.c				parse_line.c			\
-					parse_master.c				parse_object.c			\
-					parse_plane.c				parse_sphere.c
+LST_PARSERS		:=	
 
-LST_SETTERS		:=	set_coordinates.c			set_diameter.c			\
-					set_fov.c					set_orientation.c		\
-					set_ratio.c					set_rgb.c
+LST_SETTERS		:=	
 
-LST_WRITERS		:=	write_char_error.c			write_int_error.c		\
-					write_split_error.c
+LST_WRITERS		:=	
 
-LST_TESTERS		:=	test_ambient_values.c		test_camera_values.c	\
-					test_cylinder_values.c		test_light_values.c		\
-					test_object_list_values.c	test_plane_values.c		\
-					test_sphere_values.c		test_split_values.c
+LST_TESTERS		:=	
 
 # Directories
 P_MLX			:=	mlx/
