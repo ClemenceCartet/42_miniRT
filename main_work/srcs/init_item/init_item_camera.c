@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:55:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 14:12:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 09:58:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	rt_init_item_camera(t_camera *camera, char **split)
 		return (1);
 	if (rt_init_camera_o_xyz(camera, split[1]))
 		return (1);
-	camera->fov = rt_init_value_fov(split[2]); //Need creation
+	camera->fov = rt_init_value_fov(split[2], "C FOV"); //Need creation
 	if (camera->fov == -1)
 		return (1);
 	return (0);

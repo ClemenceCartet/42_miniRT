@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 14:00:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 09:59:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int		rt_init_item_sphere(t_sphere *sphere, char **split);
 
 /*-------------------- INIT_VALUES --------------------*/
 
+int		rt_init_value_fov(char *value, char *name);
 int		rt_init_value_rgb(char *value, int index, char *name);
 
 /*-------------------- INITIERS --------------------*/

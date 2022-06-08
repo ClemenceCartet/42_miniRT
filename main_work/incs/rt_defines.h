@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 10:24:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 13:08:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@
 # define E_FORMAT		"RT VALUE ERROR: Invalid format for "
 # define E_SYNTAX		"RT VALUE ERROR: Invalid syntax for "
 # define E_CONTENT		"RT VALUE ERROR: Invalid content for "
+# define E_NUMBER		"RT VALUE ERROR: Invalid number for "
 
 #endif //RT_DEFINES_H
