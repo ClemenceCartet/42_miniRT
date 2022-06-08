@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:41:31 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:42:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 09:30:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	rt_parse_ambient(t_master *master, char **split)
 	master->ambient = rt_init_object_ptr(split, 3, "Ambient Light");
 	if (!master->ambient)
 		return (1);
-	if (rt_init_ambient_values(master->ambient, split))
+	if (rt_init_item_ambient(master->ambient, split))
 		return (1);
 	return (0);
 }

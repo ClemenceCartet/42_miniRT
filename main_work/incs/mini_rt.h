@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:39:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 14:00:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,23 @@ void	rt_free_object_list(t_object *object);
 char	*rt_get_file_content(char *filename);
 char	**rt_get_split_from_raw(char *value, char c, int splitlen, char *name);
 
-/*-------------------- INITIERS --------------------*/
+/*-------------------- INIT_ITEM --------------------*/
 
-void	rt_init_item_ambient(t_ambient *ambient, char **split);
-void	rt_init_item_camera(t_camera *camera, char **split);
+int		rt_init_item_ambient(t_ambient *ambient, char **split);
+int		rt_init_item_camera(t_camera *camera, char **split);
 int		rt_init_item_cylinder(t_cylinder *cylinder, char **split);
-void	rt_init_item_light(t_light *light, char **split);
-int		rt_init_master(t_master *master);
-void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name);
+int		rt_init_item_light(t_light *light, char **split);
 int		rt_init_item_plane(t_plane *plane, char **split);
 int		rt_init_item_sphere(t_sphere *sphere, char **split);
+
+/*-------------------- INIT_VALUES --------------------*/
+
+int		rt_init_value_rgb(char *value, int index, char *name);
+
+/*-------------------- INITIERS --------------------*/
+
+int		rt_init_master(t_master *master);
+void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name);
 
 /*-------------------- PARSERS --------------------*/
 
@@ -137,8 +144,6 @@ void	test_sphere_values(t_sphere *sphere);
 void	test_plane_values(t_plane *plane);
 void	test_cylinder_values(t_cylinder *cylinder);
 void	test_object_list_values(t_object *object);
-
-int		rt_init_value_rgb(char *value, int index, char *name);
 
 // dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 // dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);

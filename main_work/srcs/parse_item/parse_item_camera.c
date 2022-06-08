@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:41:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:42:44 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 09:31:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	rt_parse_camera(t_master *master, char **split)
 	master->camera = rt_init_object_ptr(split, 4, "Camera");
 	if (!master->camera)
 		return (1);
-	rt_init_camera_values(master->camera, split);
+	if (rt_init_item_camera(master->camera, split))
+		return (1);
 	return (0);
 }

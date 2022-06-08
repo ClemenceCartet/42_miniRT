@@ -6,12 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:20:29 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 10:38:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 13:46:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
+//Check str to see if it can be converted to float correctly
 int	rt_check_float_syntax(char *str, char *name)
 {
 	int	a;

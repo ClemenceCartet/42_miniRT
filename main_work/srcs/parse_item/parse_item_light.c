@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:42:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:42:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 09:30:47 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	rt_parse_light(t_master *master, char **split)
 	master->light = rt_init_object_ptr(split, 4, "Light");
 	if (!master->light)
 		return (1);
-	rt_init_light_values(master->light, split);
+	if (rt_init_item_light(master->light, split))
+		return (1);
 	return (0);
 }

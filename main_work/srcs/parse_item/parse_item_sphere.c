@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:43:29 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:43:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 09:35:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,10 @@ void	*rt_parse_sphere(int *object_id, char **split)
 	if (!sphere)
 		return (NULL);
 	*object_id = rt_init_sphere_values(sphere, split);
+	if (*object_id == -1)
+	{
+		free(sphere);
+		return (NULL);
+	}
 	return (sphere);
 }

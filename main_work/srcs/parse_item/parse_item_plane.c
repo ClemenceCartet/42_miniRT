@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:43:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:43:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/08 09:30:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	*rt_parse_plane(int *object_id, char **split)
 	char	**split;
 
 	plane = rt_init_object_ptr(split, 4, "Plane");
-	*object_id = rt_init_plane_values(plane, split);
+	if (!plane)
+		return (NULL);
+	*object_id = rt_init_item_plane(plane, split);
+	if (*object_id == -1)
+	{
+		free(plane);
+		return (NULL);
+	}
 	return (plane);
 }

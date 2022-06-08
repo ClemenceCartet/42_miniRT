@@ -6,12 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:16:49 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:40:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/07 13:46:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
+//check value through a given charset
 int	rt_check_value_format(char *value, char *charset)
 {
 	int	a;
