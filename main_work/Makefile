@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/09 09:23:53 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/09 11:09:36 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ LST_WRITERS		:=	write_char_error.c			write_int_error.c		\
 LST_TESTERS		:=	test_ambient_values.c		test_camera_values.c	\
 					test_cylinder_values.c		test_light_values.c		\
 					test_object_list_values.c	test_plane_values.c		\
-					test_sphere_values.c		test_split_values.c
+					test_sphere_values.c		test_split_values.c		\
+					test_unit.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -146,10 +147,10 @@ all:	makelibft $(NAME)
 # 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
 
 $(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
-	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
+	$(CC) $(CF) $(CS) $(CI) $(LIBFT) $(OBJS) -o $@
 
 $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
-	$(CC) $(CF) $(CI) -c $< -o $@
+	$(CC) $(CF) $(CS) $(CI) -c $< -o $@
 
 $(P_OBJS):
 	mkdir -p $(P_OBJS)										\
