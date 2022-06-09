@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:56:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/09 09:14:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/09 09:35:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	rt_init_light_rgb(t_light *light, char *value)
 	while (a < 3)
 	{
 		light->rgb[a] = rt_init_value_rgb(value, a, "L RGB");
-		if (light->rgb == -1)
+		if (light->rgb[a] == -1)
 			return (1);
 		a++;
 	}
