@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:56:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:50:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/09 09:14:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	rt_init_cylinder_p_xyz(t_cylinder *cylinder, char *value)
 	a = 0;
 	while (a < 3)
 	{
-		cylinder->p_xyz[a] = rt_init_value_p_xyz(value, a, "CY p_xyz", &err); //Need creation
+		cylinder->p_xyz[a] = rt_init_value_p_xyz(value, a, "CY p_xyz", &err);
 		if (err)
 			return (1);
 		a++;
@@ -54,7 +54,7 @@ static int	rt_init_cylinder_o_xyz(t_cylinder *cylinder, char *value)
 	a = 0;
 	while (a < 3)
 	{
-		cylinder->o_xyz[a] = rt_init_value_o_xyz(value, a, "CY o_xyz"); //Need creation
+		cylinder->o_xyz[a] = rt_init_value_o_xyz(value, a, "CY o_xyz");
 		if (cylinder->o_xyz[a] == -2)
 			return (1);
 		a++;
@@ -69,10 +69,10 @@ int	rt_init_item_cylinder(t_cylinder *cylinder, char **split)
 		return (-1);
 	if (rt_init_cylinder_o_xyz(cylinder, split[1]))
 		return (-1);
-	cylinder->diameter = rt_init_value_size(split[2], "CY diameter"); //Need creation
+	cylinder->diameter = rt_init_value_size(split[2], "CY diameter");
 	if (cylinder->diameter == -1)
 		return (-1);
-	cylinder->height = rt_init_value_size(split[3], "CY height"); //Need creation
+	cylinder->height = rt_init_value_size(split[3], "CY height");
 	if (cylinder->height == -1)
 		return (-1);
 	if (rt_init_cylinder_rgb(cylinder, split[5]))

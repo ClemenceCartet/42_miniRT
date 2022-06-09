@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:57:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/08 09:29:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/09 08:57:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	rt_init_plane_p_xyz(t_plane *plane, char *value)
 	a = 0;
 	while (a < 3)
 	{
-		plane->p_xyz[a] = rt_init_value_p_xyz(value, a, "PL p_xyz", &err); //Need creation
+		plane->p_xyz[a] = rt_init_value_p_xyz(value, a, "PL p_xyz", &err);
 		if (err)
 			return (1);
 		a++;
@@ -54,7 +54,7 @@ static int	rt_init_plane_o_xyz(t_plane *plane, char *value)
 	a = 0;
 	while (a < 3)
 	{
-		plane->o_xyz[a] = rt_init_value_o_xyz(value, a, "PL o_xyz"); //Need creation
+		plane->o_xyz[a] = rt_init_value_o_xyz(value, a, "PL o_xyz");
 		if (plane->o_xyz[a] == -2)
 			return (1);
 		a++;

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:56:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 14:21:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/09 09:14:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	rt_init_light_p_xyz(t_light *light, char *value)
 	err = 0;
 	while (a < 3)
 	{
-		light->p_xyz[a] = rt_init_value_p_xyz(value, a, "L p_xyz", &err); //Need creation
+		light->p_xyz[a] = rt_init_value_p_xyz(value, a, "L p_xyz", &err);
 		if (err)
 			return (1);
 		a++;
@@ -51,7 +51,7 @@ int	rt_init_item_light(t_light *light, char **split)
 {
 	if (rt_init_light_p_xyz(light, split[0]))
 		return (1);
-	light->ratio = rt_init_value_ratio(split[1], "L ratio"); //Need creation
+	light->ratio = rt_init_value_ratio(split[1], "L ratio");
 	if (light->ratio == -1)
 		return (1);
 	if (rt_init_light_rgb(light, split[2]))

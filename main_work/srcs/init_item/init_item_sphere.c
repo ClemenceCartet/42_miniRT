@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:57:29 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/08 09:47:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/09 09:14:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	rt_init_sphere_p_xyz(t_sphere *sphere, char *value)
 	a = 0;
 	while (a < 3)
 	{
-		sphere->p_xyz[a] = rt_init_value_p_xyz(value, a, "SP p_xyz", &err); //Need creation
+		sphere->p_xyz[a] = rt_init_value_p_xyz(value, a, "SP p_xyz", &err);
 		if (err)
 			return (1);
 		a++;
@@ -51,7 +51,7 @@ int	rt_init_sphere_values(t_sphere *sphere, char **split)
 {
 	if (rt_init_sphere_p_xyz(sphere, split[0]))
 		return (-1);
-	sphere->diameter = rt_init_value_size(split[1], "SP diameter"); // Need creation
+	sphere->diameter = rt_init_value_size(split[1], "SP diameter");
 	if (sphere->diameter == -1)
 		return (-1);
 	if (rt_init_sphere_rgb(sphere, split[2]))

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:55:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 14:20:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/09 09:13:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	rt_init_ambient_rgb(t_ambient *ambient, char *value)
 // Initialize every values of structure ambient light to 0
 int	rt_init_item_ambient(t_ambient *ambient, char **split)
 {
-	ambient->ratio = rt_init_value_ratio(split[0], "ambient ratio"); //Need creation
+	ambient->ratio = rt_init_value_ratio(split[0], "ambient ratio");
 	if (ambient->ratio == -2)
 		return (1);
 	if (rt_init_ambient_rgb(ambient, split[1]))
