@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:26:43 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/03 13:25:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/11 09:52:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 float	ft_atof(const char *str)
 {
 	int		result;
-	int		decimal;
+	float	decimal;
 	int		negative;
 	int		point;
 	int		a;
