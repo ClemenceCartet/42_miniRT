@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 10:37:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/09 13:29:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/11 09:05:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ void	test_rgb(void)
 	rgb = rt_init_value_rgb("0,0,", 3, "ouaf12");
 	dprintf(STDOUT_FILENO, "%d | %d | %s | ERROR\n", -1, rgb, "0,0,");
 	rgb = rt_init_value_rgb(",0,0,0,", 1, "ouaf13");
-	dprintf(STDOUT_FILENO, "%d | %d | %s\n", 0, rgb, ",0,0,0,");
+	dprintf(STDOUT_FILENO, "%d | %d | %s | ERROR\n", -1, rgb, ",0,0,0,");
 	rgb = rt_init_value_rgb("255,255,255", 1, "ouaf14");
-	dprintf(STDOUT_FILENO, "%d | %d | %s\n", 0, rgb, "255,255,255");
+	dprintf(STDOUT_FILENO, "%d | %d | %s\n", 255, rgb, "255,255,255");
 	rgb = rt_init_value_rgb("", 0, "ouaf15");
 	dprintf(STDOUT_FILENO, "%d | %d | %s | ERROR\n", -1, rgb, "void");
 	rgb = rt_init_value_rgb(NULL, 0, "ouaf16");

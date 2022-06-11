@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 08:48:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/07 13:40:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/11 09:29:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	**rt_get_split_from_raw(char *value, char c, int splitlen, char *name)
 
 	if (!value || !value[0])
 		return (rt_write_split_error(E_MISSING, name));
+	if ((int)ft_count_specific_char(value, c) != (splitlen - 1))
+		return (rt_write_split_error(E_SYNTAX, name));
 	split = ft_split(value, c);
 	if (!split)
 		return (rt_write_split_error(E_MALLOC, NULL));
