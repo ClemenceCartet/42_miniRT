@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 12:53:04 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/09 13:04:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/12 09:50:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,16 @@ int	rt_init_value_rgb(char *value, int index, char *name)
 	if (!split)
 		return (-1);
 	if (rt_check_value_format(split[index], RGB_CHARSET))
+	{
+		ft_free_split(split);
 		return (-1);
+	}
 	rgb = ft_atoi(split[index]);
 	if (rgb > 255 || rgb < 0)
+	{
+		ft_free_split(split);
 		return (rt_write_int_error(E_RANGE, "0/255") * -1);
+	}
 	ft_free_split(split);
 	return (rgb);
 }
