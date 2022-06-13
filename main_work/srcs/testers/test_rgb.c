@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 09:44:21 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/12 09:49:54 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/13 08:09:10 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,8 @@ void	test_rgb(void)
 	dprintf(STDOUT_FILENO, "%d | %d | %s | ERROR\n", -1, rgb, "-1,-2,-3");
 	rgb = rt_init_value_rgb("-1,-2,-3", 2, "ouaf26");
 	dprintf(STDOUT_FILENO, "%d | %d | %s | ERROR\n", -1, rgb, "-1,-2,-3");
+	rgb = rt_init_value_rgb("---", 1, "ouaf27");
+	dprintf(STDOUT_FILENO, "%d | %d | %s | ERROR\n", -1, rgb, "---");
+	rgb = rt_init_value_rgb("+++", 1, "ouaf28");
+	dprintf(STDOUT_FILENO, "%d | %d | %s | ERROR\n", -1, rgb, "+++");
 }

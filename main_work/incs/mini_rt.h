@@ -170,6 +170,7 @@ void	test_unit(void);
 void	test_rgb(void);
 void	test_ratio(void);
 void	test_size(void);
+void	test_p_xyz(void);
 
 // dprintf(STDOUT_FILENO, "\n\033[35m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);
 // dprintf(STDOUT_FILENO, "\n\033[36m\033[1m%s | %d | %s\033[0m\n", DFI, DLI, DFU);

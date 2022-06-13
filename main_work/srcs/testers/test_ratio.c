@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 09:44:40 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/12 09:44:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/13 08:09:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,8 @@ void	test_ratio(void)
 	dprintf(STDOUT_FILENO, "%d | %f | %s | ERROR\n", -1, ratio, "tab");
 	ratio = rt_init_value_ratio("\0", "ouaf27");
 	dprintf(STDOUT_FILENO, "%d | %f | %s | ERROR\n", -1, ratio, "NULL char");
+	ratio = rt_init_value_ratio("---", "ouaf28");
+	dprintf(STDOUT_FILENO, "%d | %f | %s | ERROR\n", -1, ratio, "---");
+	ratio = rt_init_value_ratio("+++", "ouaf29");
+	dprintf(STDOUT_FILENO, "%d | %f | %s | ERROR\n", -1, ratio, "+++");
 }

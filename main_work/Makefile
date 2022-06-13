@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/12 09:46:13 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/06/13 09:26:09 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ LST_TESTERS		:=	test_ambient_values.c		test_camera_values.c	\
 					test_sphere_values.c		test_split_values.c		\
 					test_unit.c					test_fov.c				\
 					test_ratio.c				test_rgb.c				\
-					test_size.c
+					test_size.c					test_p_xyz.c
 
 # Directories
 P_MLX			:=	mlx/
