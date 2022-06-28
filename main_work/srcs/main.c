@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/27 10:16:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/28 15:11:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,5 @@ int	rt_write_error(char *str, char *str2)
 
 int	main(int ac, char **av)
 {
-	t_master	master;
-
-	if (ac != 2)
-		return (rt_write_error(E_USAGE, NULL));
 	return (0);
 }

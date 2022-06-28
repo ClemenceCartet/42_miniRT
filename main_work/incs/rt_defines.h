@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/27 10:08:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/28 15:29:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,9 @@
 # define RGB_CHARSET "1234567890"
 # define FLOAT_CHARSET "1234567890-+."
 # define INT_CHARSET "1234567890-+"
+
+# define DFI	__FILE__
+# define DLI	__LINE__
+# define DFU	(char *)__FUNCTION__
 
 #endif //RT_DEFINES_H
