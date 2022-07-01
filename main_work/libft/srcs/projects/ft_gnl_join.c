@@ -6,32 +6,33 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 09:04:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/04/10 08:44:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/02 11:42:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_gnljoin(int fd)
+char	*ft_gnl_join(int fd)
 {
 	char	*str;
 	char	*gnl;
 
-	str = malloc(sizeof(char) * 1);
-	if (!str)
-		return (NULL);
-	gnl = (char *)1;
+	str = NULL;
+	gnl = NULL;
 	while (fd > -1)
 	{
 		gnl = get_next_line(fd);
 		if (!gnl)
 		{
 			free (gnl);
-			break ;
+			return (str);
 		}
-		str = ft_strfreejoin(str, gnl);
+		if (!str)
+			str = gnl;
+		else
+			str = ft_strfreejoin(str, gnl);
 		if (!str)
 			return (NULL);
 	}
-	return (str);
+	return (NULL);
 }

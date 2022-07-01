@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/28 15:24:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 11:27:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ typedef struct s_ambient	t_ambient;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
 
+typedef struct s_object		t_object;
+typedef struct s_obj_link	t_obj_link;
+
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
 typedef struct s_cylinder	t_cylinder;
@@ -51,9 +54,8 @@ typedef struct s_cylinder	t_cylinder;
 */
 struct	s_master
 {
-	t_mlx_data	*mlx_data;
-	t_obj_data	*obj_data;
-
+	t_mlxdata	*mlxdata;
+	t_object	*object;
 	t_ambient	*ambient;
 	t_camera	*camera;
 	t_light		*light;
@@ -117,9 +119,9 @@ struct	s_colors
 */
 struct	s_coords
 {
-	float	x;
-	float	y;
-	float	z;
+	float	p_xyz[3];
+	float	ratio;
+	int		rgb[3];
 };
 
 #endif //RT_DATA_H
