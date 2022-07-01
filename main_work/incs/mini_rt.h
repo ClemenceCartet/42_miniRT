@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/28 15:06:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 11:27:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ struct s_list
 
 # include <rt_keys.h>
 # include <rt_data.h>
-# include <rt_structs.h>
 # include <rt_defines.h>
 
 /*/////////////////////////////////////////////////////////////////////////////

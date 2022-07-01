@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/09 11:42:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 11:27:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@
 # define E_CONTENT		"RT VALUE ERROR: Invalid content for "
 # define E_NUMBER		"RT VALUE ERROR: Invalid number for "
 # define E_NO_VALUE		"RT VALUE ERROR: No value found"
+
+# define DFI	__FILE__
+# define DLI	__LINE__
+# define DFU	(char *)__FUNCTION__
 
 #endif //RT_DEFINES_H
