@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/05/27 10:17:47 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/02 10:00:13 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,13 +80,19 @@ UNDERLINE=\033[4m
 all:	makemlx makelibft $(NAME)
 
 # Binary creation
-$(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
-	$(CC) $(CF) $(CI) $(FW) $(LIBFT) $(MLX) $(OBJS) -o $@
-	printf "\n✅	$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)\n"
+# $(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
+# 	$(CC) $(CF) $(CI) $(FW) $(LIBFT) $(MLX) $(OBJS) -o $@
+# 	printf "\n✅	$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)\n"
 
-$(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) $(MLX) Makefile | $(P_OBJS)
-	$(CC) $(CF) $(CI) $(FW) -c $< -o $@
-	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
+# $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) $(MLX) Makefile | $(P_OBJS)
+# 	$(CC) $(CF) $(CI) $(FW) -c $< -o $@
+# 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
+
+$(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
+	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
+
+$(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
+	$(CC) $(CF) $(CI) -c $< -o $@
 	
 $(P_OBJS):
 	mkdir -p $(P_OBJS)
