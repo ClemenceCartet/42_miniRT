@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/02 09:54:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/02 10:44:54 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ struct s_mlx_data
 {
 	void	*init;
 	void	*window;
+	int		width;
+	int		height;
 	int		loop;
 };
 

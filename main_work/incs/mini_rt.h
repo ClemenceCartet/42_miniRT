@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/02 09:43:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/02 10:48:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,24 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
+/*-------------------- rt_free_data.c --------------------*/
+
+void	rt_free_mlx_data(t_mlx_data	*mlx_data);
+void	rt_free_obj_data(t_obj_data *obj_data);
+int		rt_free_master(t_master *master);
+
+/*-------------------- rt_free_objects.c --------------------*/
+
+void	rt_free_ambient(t_ambient *ambient);
+void	rt_free_camera(t_camera *camera);
+void	rt_free_light(t_light *light);
+void	rt_free_object(t_object *object);
+
 /*-------------------- main.c --------------------*/
 
-int		rt_write_error(char *str, char *str2);
+char	**rt_write_split_error(char *str, char *str2);
+int		rt_write_int_error(char *str, char *str2);
+char	*rt_write_char_error(char *str, char *str2);
 // int	main(int ac, char **av);
 
 #endif //MINI_RT_H
