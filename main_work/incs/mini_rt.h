@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/28 15:11:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/02 09:43:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ struct s_list
 # include <rt_keys.h>
 # include <rt_data.h>
 # include <rt_defines.h>
+# include <rt_objects.h>
 
 /*/////////////////////////////////////////////////////////////////////////////
 		FUNCTION PROTOTYPES

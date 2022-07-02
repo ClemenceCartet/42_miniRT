@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/28 15:24:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/02 09:54:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_master		t_master;
 typedef struct s_mlx_data	t_mlx_data;
 
 typedef struct s_obj_data	t_obj_data;
-typedef struct s_obj_link	t_obj_link;
+typedef struct s_object		t_object;
 
 typedef struct s_colors		t_colors;
 typedef struct s_coords		t_coords;
@@ -33,10 +33,6 @@ typedef struct s_coords		t_coords;
 typedef struct s_ambient	t_ambient;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
-
-typedef struct s_sphere		t_sphere;
-typedef struct s_plane		t_plane;
-typedef struct s_cylinder	t_cylinder;
 
 /*/////////////////////////////////////////////////////////////////////////////
 		MAIN STRUCTURES
@@ -75,27 +71,13 @@ struct s_mlx_data
  * lst		= libft linked list
  * lst_size	= nombre de maillon de la liste lst
  * start	= pointeur vers le début de lst
+ * lst->content = t_object
 */
 struct	s_obj_data
 {
 	t_list	*lst;
 	size_t	lst_size;
 	void	*start;
-};
-
-/**Structure lien de la liste chaînées des objets
- * id 		= identifiant de l'objet (SP / PL / CY)
- * sphere	= pointeur vers la structure sphere si id == SP else NULL
- * plane	= pointeur vers la structure plane si id == PL else NULL
- * cylinder	= pointeur vers la structure cylinder si id == CY else NULL
-*/
-struct	s_obj_link
-{
-	int			id;
-
-	t_sphere	*sphere;
-	t_plane		*plane;
-	t_cylinder	*cylinder;
 };
 
 /**Structure contenant les données de couleur
