@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/02 10:08:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/03 11:58:41 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,16 @@
 # define E_MALLOC		"RT CODE ERROR: Malloc error"
 
 # define E_USAGE		"RT PROGRAM ERROR: Usage is ./MiniRT scene.rt"
-// # define E_NO_FILENAME	"RT FILE ERROR: Filename does not exist"
-// # define E_NO_EXT		"RT FILE ERROR: No file extension"
-// # define E_WRONG_EXT	"RT FILE ERROR: Wrong file extension"
+# define E_NO_FILENAME	"RT FILE ERROR: Filename does not exist"
+# define E_NO_EXT		"RT FILE ERROR: No file extension in filename:"
+# define E_WRONG_EXT	"RT FILE ERROR: Wrong file extension:"
 
-// # define E_OPEN			"RT FILE ERROR: Error while opening file "
-// # define E_READ			"RT FILE ERROR: Error while reading file "
-// # define E_CLOSE		"RT FILE ERROR: Error while closing file "
+# define E_OPEN			"RT FILE ERROR: Error while opening file:"
+# define E_READ			"RT FILE ERROR: Error while reading file:"
+# define E_CLOSE		"RT FILE ERROR: Error while closing file:"
 
-// # define E_EMPTY		"RT FILE ERROR: File content is empty"
+# define E_MISSING		"RT INIT ERROR: Missing data:"
+
 // # define E_UNKNOWN		"RT FILE ERROR: Unknown character found in file content"
 
 // # define E_ID			"RT ID ERROR: Invalid ID found in content"
