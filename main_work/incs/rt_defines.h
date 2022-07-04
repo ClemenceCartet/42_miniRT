@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/03 11:58:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/04 23:54:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@
 // # define E_UNKNOWN		"RT FILE ERROR: Unknown character found in file content"
 
 // # define E_ID			"RT ID ERROR: Invalid ID found in content"
-// # define E_EXISTING_ID	"RT ID ERROR: There is already one "
-// # define E_SPLIT_SIZE	"RT PARSING ERROR: Wrong number of value for "
+# define E_EXISTING_ID	"RT ID ERROR: There is already one:"
+# define E_SPLIT_SIZE	"RT PARSING ERROR: Wrong number of value for:"
 // # define E_RANGE		"RT RANGE ERROR: Value must be in range "
 // # define E_MISSING		"RT VALUE ERROR: Missing value for "
 // # define E_FORMAT		"RT VALUE ERROR: Invalid format for "
