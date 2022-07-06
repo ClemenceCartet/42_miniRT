@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/02 09:55:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/06 08:40:47 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ struct	s_object
 {
 	int			id;
 
-	t_coords	pos;
-	t_coords	dir;
-	t_colors	rgb;
+	t_coords	*pos;
+	t_coords	*dir;
+	t_colors	*rgb;
 	float		diameter;
 	float		height;
 };

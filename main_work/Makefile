@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/02 10:00:13 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/06 10:09:22 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,12 @@ MLX		:=	mlx/libmlx.a
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS		:=	mini_rt.h		rt_keys.h		\
-					rt_data.h		rt_structs.h	\
-					rt_defines.h	rt_messages.h
+LST_INCS		:=	mini_rt.h		rt_keys.h			\
+					rt_data.h		rt_defines.h		\
+					rt_objects.h
+LST_SRCS		:=	rt_free_data.c		rt_free_objects.c	\
+					rt_init_data.c		rt_write_errors.c	\
+					rt_struct_utils.c	rt_init_objects.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -39,7 +42,8 @@ P_OBJS			:=	.objs/
 
 # Shortcuts
 INCS			:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS			:=	$(addprefix $(P_SRCS),main.c)
+SRCS			:=	$(addprefix $(P_SRCS),$(LST_SRCS))	\
+					$(addprefix $(P_SRCS),main.c)
 OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 #//////////////////////////////////////////////////////////////////////////////
@@ -77,7 +81,7 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all:	makemlx makelibft $(NAME)
+all: makelibft $(NAME)
 
 # Binary creation
 # $(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
@@ -120,8 +124,8 @@ fclean:
 	$(MAKE) clean
 	$(RM) $(NAME)
 	$(MAKE) fclean -C libft/
-	$(MAKE) clean -C mlx/
 	printf "$(RED)$(BOLD)Binary $(NAME) removed $(RESET)\n"
+#	$(MAKE) clean -C mlx/
 
 re:
 	$(MAKE) fclean

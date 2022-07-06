@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/03 12:19:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/06 09:27:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,15 @@ void	rt_free_object(t_object *object);
 /*-------------------- rt_init_data.c --------------------*/
 
 int		rt_parse_line(t_master *master, char *line);
-int		rt_check_init_master(t_master *master);
 int		rt_get_file_content(t_master *master, char *filename);
+int		rt_check_init_master(t_master *master);
 int		rt_check_filename(char *filename);
 int		rt_init_master(t_master *master, char *filename);
+
+/*-------------------- rt_struct_utils.c --------------------*/
+
+int		rt_check_struct(void *ptr, char **split, size_t splitlen, char *name);
+void	*rt_calloc_struct(char **split, size_t size);
 
 /*-------------------- rt_write_errors.c --------------------*/
 
@@ -91,6 +96,7 @@ void	rt_display_error(char *str, char *str2);
 char	**rt_write_split_error(char *str, char *str2);
 int		rt_write_int_error(char *str, char *str2);
 char	*rt_write_char_error(char *str, char *str2);
+void	*rt_write_ptr_error(char *str, char *str2);
 
 /*-------------------- main.c --------------------*/
 

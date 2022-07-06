@@ -18,12 +18,8 @@ int	rt_parse_line(t_master *master, char *line)
 	char	**split;
 
 	split = ft_split(line, ' ');
-	if (!split || !split[0])
-	{
-		if (split)
-			ft_free_split(split);
+	if (!split)
 		return (rt_write_int_error(E_MALLOC, NULL));
-	}
 	if (!ft_strncmp(split[0], "A", 2))
 		return (rt_init_ambient(master->ambient, split));
 	else if (!ft_strncmp(split[0], "C", 2))
@@ -35,21 +31,7 @@ int	rt_parse_line(t_master *master, char *line)
 		|| !ft_strncmp(split[0], "CY", 2))
 		return (rt_init_object(master->obj_data, split));
 	ft_free_split(split);
-	return (0);
-}
-
-//Check if base data are correctly initialized
-int	rt_check_init_master(t_master *master)
-{
-	if (!master->obj_data->lst_size)
-		return (rt_write_int_error(E_MISSING, "Objects"));
-	if (!master->ambient)
-		return (rt_write_int_error(E_MISSING, "Ambient Light"));
-	if (!master->camera)
-		return (rt_write_int_error(E_MISSING, "Camera"));
-	if (!master->light)
-		return (rt_write_int_error(E_MISSING, "Light"));
-	return (0);
+	return (rt_write_int_error(E_ID, NULL));
 }
 
 //Loop with GNL to get lines one by one and initialize structures with them
@@ -76,6 +58,22 @@ int	rt_get_file_content(t_master *master, char *filename)
 	return (0);
 }
 
+//Check if base data are correctly initialized
+int	rt_check_init_master(t_master *master)
+{
+	if (!master->ambient)
+		return (rt_write_int_error(E_MISSING, "Ambient Light"));
+	if (!master->camera)
+		return (rt_write_int_error(E_MISSING, "Camera"));
+	if (!master->light)
+		return (rt_write_int_error(E_MISSING, "Light"));
+	if (!master->obj_data)
+		return (rt_write_int_error(E_MISSING, "Object Data"));
+	if (!master->obj_data->lst_size)
+		return (rt_write_int_error(E_MISSING, "Objects"));
+	return (0);
+}
+
 //Check filename to be sure it follows a valid syntax
 int	rt_check_filename(char *filename)
 {
@@ -96,9 +94,6 @@ int	rt_check_filename(char *filename)
 //Call everything to initialize base data from a given file
 int	rt_init_master(t_master *master, char *filename)
 {
-	int		fd;
-	char	*line;
-
 	master->mlx_data = NULL;
 	master->obj_data = NULL;
 	master->ambient = NULL;

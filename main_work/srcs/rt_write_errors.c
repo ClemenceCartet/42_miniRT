@@ -26,6 +26,7 @@ void	rt_display_error(char *str, char *str2)
 	ft_putstr_fd("\033[0m", STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
 }
+
 // Write an error message in two parts and return NULL for split
 char	**rt_write_split_error(char *str, char *str2)
 {
@@ -42,6 +43,12 @@ int	rt_write_int_error(char *str, char *str2)
 
 // Write an error message in two parts and return NULL for string
 char	*rt_write_char_error(char *str, char *str2)
+{
+	rt_display_error(str, str2);
+	return (NULL);
+}
+
+void	*rt_write_ptr_error(char *str, char *str2)
 {
 	rt_display_error(str, str2);
 	return (NULL);
