@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/06 10:45:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/06 14:41:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	rt_free_camera(t_camera *camera);
 void	rt_free_light(t_light *light);
 void	rt_free_object(t_object *object);
 
-/*-------------------- rt_init_data.c --------------------*/
+/*-------------------- rt_init_master.c --------------------*/
 
 int		rt_parse_line(t_master *master, char *line);
 int		rt_get_file_content(t_master *master, char *filename);
@@ -85,12 +85,19 @@ int		rt_check_init_master(t_master *master);
 int		rt_check_filename(char *filename);
 int		rt_init_master(t_master *master, char *filename);
 
-/*-------------------- rt_init_objects.c --------------------*/
+/*-------------------- rt_init_data.c --------------------*/
 
 int		rt_init_obj_data(t_obj_data *obj_data, char **split);
 int		rt_init_light(t_light *light, char **split);
 int		rt_init_camera(t_camera *camera, char **split);
 int		rt_init_ambient(t_ambient *ambient, char **split);
+
+/*-------------------- rt_init_objects.c --------------------*/
+
+void	*rt_init_object(char **split, size_t splitlen, char *name);
+void	*rt_init_sphere(char **split);
+void	*rt_init_plane(char **split);
+void	*rt_init_cylinder(char **split);
 
 /*-------------------- rt_struct_utils.c --------------------*/
 

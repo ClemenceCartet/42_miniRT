@@ -6,76 +6,96 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/06 11:13:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/06 14:44:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-//Object initialization (SP / PL / CY)
-int	rt_init_obj_data(t_obj_data *obj_data, char **split)
+//Initialization of object (SP / PL / CY)
+void	*rt_init_object(char **split, size_t splitlen, char *name)
 {
 	t_object	*object;
 
 	object = NULL;
-	if (!obj_data)
-	{
-		obj_data = rt_calloc_struct(split, sizeof(t_obj_data));
-		if (!obj_data)
-			return (1);
-		obj_data->lst = NULL;
-		obj_data->lst_size = 0;
-	}
-	if (!ft_strncmp(split[0], "SP", 3))
-		object = rt_init_sphere(split);
-	else if (!ft_strncmp(split[0], "PL", 3))
-		object = rt_init_plane(split);
-	else if (!ft_strncmp(split[0], "CY", 3))
-		object = rt_init_cylinder(split);
+	if (rt_check_struct(object, split, splitlen, name))
+		return (NULL);
+	object = rt_calloc_struct(split, sizeof(t_object));
 	if (!object)
-		return (1);
-	ft_lstadd_back(&obj_data->lst, ft_lstnew(object));
-	obj_data->lst_size++;
-	return (0);
+		return (NULL);
+	if (!ft_strncmp(name, "sphere", 7))
+		object->id = SP;
+	else if (!ft_strncmp(name, "plane", 6))
+		object->id = PL;
+	else if (!ft_strncmp(name, "cylinder", 9))
+		object->id = CY;
+	object->pos = NULL;
+	object->dir = NULL;
+	object->rgb = NULL;
+	object->diameter = 0;
+	object->height = 0;
+	return (object);
 }
 
-//Light initialization (L)
-int	rt_init_light(t_light *light, char **split)
+//Initialization of sphere SP data
+void	*rt_init_sphere(char **split)
 {
-	if (rt_check_struct(light, split, 4, "light"))
-		return (1);
-	light = rt_calloc_struct(split, sizeof(t_light));
-	if (!light)
-		return (1);
-	light->pos = rt_init_pos(split[1]); //function needed
-	light->ratio = ft_atof(split[2]); //check error needed
-	light->rgb = rt_init_rgb(split[3]); //function needed
-	return (0);
+	t_object	*object;
+
+	object = rt_init_object(split, 4, "sphere");
+	if (!object)
+		return (NULL);
+	object->id = SP;
+	object->pos = rt_init_pos(split[1]); //function needed
+	if (!object->pos)
+		return (NULL);
+	object->diameter = ft_atof(split[2]); //check error needed
+	object->rgb = rt_init_rgb(split[3]); //function needed
+	if (!object->rgb)
+		return (NULL);
+	return (object);
 }
 
-//Camera initialization (C)
-int	rt_init_camera(t_camera *camera, char **split)
+//Initialization of plane PL data
+void	*rt_init_plane(char **split)
 {
-	if (rt_check_struct(camera, split, 4, "camera"))
-		return (1);
-	camera = rt_calloc_struct(split, sizeof(t_camera));
-	if (!camera)
-		return (1);
-	camera->pos = rt_init_pos(split[1]); //function needed
-	camera->dir = rt_init_dir(split[2]); //function needed
-	camera->fov = ft_atoi(split[3]); //check error needed
-	return (0);
+	t_object	*object;
+
+	object = rt_init_object(split, 4, "plane");
+	if (!object)
+		return (NULL);
+	object->id = PL;
+	object->pos = rt_init_pos(split[1]); //function needed
+	if (!object->pos)
+		return (NULL);
+	object->dir = rt_init_dir(split[2]); //function needed
+	if (!object->dir)
+		return (NULL);
+	object->rgb = rt_init_rgb(split[3]); //function needed
+	if (!object->rgb)
+		return (NULL);
+	return (object);
 }
 
-//Ambient Light initialization (A)
-int	rt_init_ambient(t_ambient *ambient, char **split)
+//Initialization of cylinder CY data
+void	*rt_init_cylinder(char **split)
 {
-	if (rt_check_struct(ambient, split, 3, "ambient light"))
-		return (1);
-	ambient = rt_calloc_struct(split, sizeof(t_ambient));
-	if (!ambient)
-		return (1);
-	ambient->ratio = ft_atof(split[1]); //check error needed
-	ambient->rgb = rt_init_rgb(split[2]); //function needed
-	return (0);
+	t_object	*object;
+
+	object = rt_init_object(split, 6, "cylinder");
+	if (!object)
+		return (NULL);
+	object->id = CY;
+	object->pos = rt_init_pos(split[1]); //function needed
+	if (!object->pos)
+		return (NULL);
+	object->dir = rt_init_dir(split[2]); //function needed
+	if (!object->dir)
+		return (NULL);
+	object->diameter = ft_atof(split[3]); //check error needed
+	object->height = ft_atof(split[4]); //check error needed
+	object->rgb = rt_init_rgb(split[5]); //function needed
+	if (!object->rgb)
+		return (NULL);
+	return (object);
 }

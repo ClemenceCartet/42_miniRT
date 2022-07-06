@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/07/06 10:09:22 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/07/06 14:40:18 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,9 @@ LST_INCS		:=	mini_rt.h		rt_keys.h			\
 					rt_data.h		rt_defines.h		\
 					rt_objects.h
 LST_SRCS		:=	rt_free_data.c		rt_free_objects.c	\
-					rt_init_data.c		rt_write_errors.c	\
-					rt_struct_utils.c	rt_init_objects.c
+					rt_init_master.c	rt_write_errors.c	\
+					rt_struct_utils.c	rt_init_objects.c	\
+					rt_init_data.c
 
 # Directories
 P_MLX			:=	mlx/

@@ -5,105 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 12:16:25 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/03 12:16:25 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/07/06 14:43:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-//Init the corresponding data structure depending on ID given as split[0]
-int	rt_parse_line(t_master *master, char *line)
+//Object initialization (SP / PL / CY)
+int	rt_init_obj_data(t_obj_data *obj_data, char **split)
 {
-	char	**split;
+	t_object	*object;
 
-	split = ft_split(line, ' ');
-	if (!split)
-		return (rt_write_int_error(E_MALLOC, NULL));
-	if (!ft_strncmp(split[0], "A", 2))
-		return (rt_init_ambient(master->ambient, split));
-	else if (!ft_strncmp(split[0], "C", 2))
-		return (rt_init_camera(master->camera, split));
-	else if (!ft_strncmp(split[0], "L", 2))
-		return (rt_init_light(master->light, split));
-	else if (!ft_strncmp(split[0], "SP", 2)
-		|| !ft_strncmp(split[0], "PL", 2)
-		|| !ft_strncmp(split[0], "CY", 2))
-		return (rt_init_obj_data(master->obj_data, split));
-	ft_free_split(split);
-	return (rt_write_int_error(E_ID, NULL));
-}
-
-//Loop with GNL to get lines one by one and initialize structures with them
-int	rt_get_file_content(t_master *master, char *filename)
-{
-	int		fd;
-	char	*line;
-
-	line = NULL;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (rt_write_int_error(E_OPEN, filename));
-	while (fd)
+	object = NULL;
+	if (!obj_data)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		if (rt_parse_line(master, line))
+		obj_data = rt_calloc_struct(split, sizeof(t_obj_data));
+		if (!obj_data)
 			return (1);
-		free (line);
+		obj_data->lst = NULL;
+		obj_data->lst_size = 0;
 	}
-	if (close(fd) == -1)
-		return (rt_write_int_error(E_CLOSE, filename));
+	if (!ft_strncmp(split[0], "SP", 3))
+		object = rt_init_sphere(split);
+	else if (!ft_strncmp(split[0], "PL", 3))
+		object = rt_init_plane(split);
+	else if (!ft_strncmp(split[0], "CY", 3))
+		object = rt_init_cylinder(split);
+	if (!object)
+		return (1);
+	ft_lstadd_back(&obj_data->lst, ft_lstnew(object));
+	obj_data->lst_size++;
 	return (0);
 }
 
-//Check if base data are correctly initialized
-int	rt_check_init_master(t_master *master)
+//Light initialization (L)
+int	rt_init_light(t_light *light, char **split)
 {
-	if (!master->ambient)
-		return (rt_write_int_error(E_MISSING, "Ambient Light"));
-	if (!master->camera)
-		return (rt_write_int_error(E_MISSING, "Camera"));
-	if (!master->light)
-		return (rt_write_int_error(E_MISSING, "Light"));
-	if (!master->obj_data)
-		return (rt_write_int_error(E_MISSING, "Object Data"));
-	if (!master->obj_data->lst_size)
-		return (rt_write_int_error(E_MISSING, "Objects"));
+	if (rt_check_struct(light, split, 4, "light"))
+		return (1);
+	light = rt_calloc_struct(split, sizeof(t_light));
+	if (!light)
+		return (1);
+	light->pos = rt_init_pos(split[1]); //function needed
+	light->ratio = ft_atof(split[2]); //check error needed
+	light->rgb = rt_init_rgb(split[3]); //function needed
 	return (0);
 }
 
-//Check filename to be sure it follows a valid syntax
-int	rt_check_filename(char *filename)
+//Camera initialization (C)
+int	rt_init_camera(t_camera *camera, char **split)
 {
-	int		i;
-	char	*ext;
-
-	if (!filename || !filename[0])
-		return (rt_write_int_error(E_NO_FILENAME, NULL));
-	i = ft_int_strrchr(filename, '.');
-	if (i == -1 || i == 0)
-		return (rt_write_int_error(E_NO_EXT, filename));
-	ext = ft_strrchr(filename, '.');
-	if (ft_strncmp(ext, ".rt", 4) != 0)
-		return (rt_write_int_error(E_WRONG_EXT, ext));
+	if (rt_check_struct(camera, split, 4, "camera"))
+		return (1);
+	camera = rt_calloc_struct(split, sizeof(t_camera));
+	if (!camera)
+		return (1);
+	camera->pos = rt_init_pos(split[1]); //function needed
+	camera->dir = rt_init_dir(split[2]); //function needed
+	camera->fov = ft_atoi(split[3]); //check error needed
 	return (0);
 }
 
-//Call everything to initialize base data from a given file
-int	rt_init_master(t_master *master, char *filename)
+//Ambient Light initialization (A)
+int	rt_init_ambient(t_ambient *ambient, char **split)
 {
-	master->mlx_data = NULL;
-	master->obj_data = NULL;
-	master->ambient = NULL;
-	master->camera = NULL;
-	master->light = NULL;
-	if (rt_check_filename(filename))
+	if (rt_check_struct(ambient, split, 3, "ambient light"))
 		return (1);
-	if (rt_get_file_content(master, filename))
+	ambient = rt_calloc_struct(split, sizeof(t_ambient));
+	if (!ambient)
 		return (1);
-	if (rt_check_init_master(master))
-		return (1);
+	ambient->ratio = ft_atof(split[1]); //check error needed
+	ambient->rgb = rt_init_rgb(split[2]); //function needed
 	return (0);
 }
