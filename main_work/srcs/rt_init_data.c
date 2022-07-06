@@ -29,7 +29,7 @@ int	rt_parse_line(t_master *master, char *line)
 	else if (!ft_strncmp(split[0], "SP", 2)
 		|| !ft_strncmp(split[0], "PL", 2)
 		|| !ft_strncmp(split[0], "CY", 2))
-		return (rt_init_object(master->obj_data, split));
+		return (rt_init_obj_data(master->obj_data, split));
 	ft_free_split(split);
 	return (rt_write_int_error(E_ID, NULL));
 }

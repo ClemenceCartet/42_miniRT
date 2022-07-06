@@ -6,17 +6,18 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/06 09:33:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/06 11:13:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
 //Object initialization (SP / PL / CY)
-int	rt_init_object(t_obj_data *obj_data, char **split)
+int	rt_init_obj_data(t_obj_data *obj_data, char **split)
 {
 	t_object	*object;
 
+	object = NULL;
 	if (!obj_data)
 	{
 		obj_data = rt_calloc_struct(split, sizeof(t_obj_data));
@@ -25,40 +26,14 @@ int	rt_init_object(t_obj_data *obj_data, char **split)
 		obj_data->lst = NULL;
 		obj_data->lst_size = 0;
 	}
-	object = rt_calloc_struct(split, sizeof(t_object));
+	if (!ft_strncmp(split[0], "SP", 3))
+		object = rt_init_sphere(split);
+	else if (!ft_strncmp(split[0], "PL", 3))
+		object = rt_init_plane(split);
+	else if (!ft_strncmp(split[0], "CY", 3))
+		object = rt_init_cylinder(split);
 	if (!object)
 		return (1);
-	object->id = ft_atoi(split[0]);
-	if (object->id == SP)
-	{
-		if (rt_check_struct(object, split, 4, "sphere"))
-			return (1);
-		object->pos = rt_init_pos(split[1]);
-		object->diameter = ft_atof(split[2]);
-		object->rgb = rt_init_rgb(split[3]);
-		object->dir = NULL;
-		object->height = 0;
-	}
-	else if (object->id == PL)
-	{
-		if (rt_check_struct(object, split, 4, "plane"))
-			return (1);
-		object->pos = rt_init_pos(split[1]);
-		object->dir = rt_init_dir(split[2]);
-		object->rgb = rt_init_rgb(split[3]);
-		object->diameter = 0;
-		object->height = 0;
-	}
-	else if (object->id == CY)
-	{
-		if (rt_check_struct(object, split, 6, "cylinder"))
-			return (1);
-		object->pos = rt_init_pos(split[1]);
-		object->dir = rt_init_dir(split[2]);
-		object->diameter = ft_atof(split[3]);
-		object->height = ft_atof(split[4]);
-		object->rgb = rt_init_rgb(split[5]);
-	}
 	ft_lstadd_back(&obj_data->lst, ft_lstnew(object));
 	obj_data->lst_size++;
 	return (0);
