@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_int_strrchr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 13:25:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/09 11:22:40 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/05/30 10:44:32 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/14 10:51:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_atoi(const char *str)
+int	ft_int_strrchr(const char *s, int c)
 {
-	long	result;
-	int		negative;
-	int		a;
+	int	a;
 
-	negative = 1;
-	a = ft_atoi_check(str, &negative);
-	result = ft_add_str_to_int(str, &a);
-	if (result > LONG_MAX && negative == -1)
-		return (0);
-	else if (result > LONG_MAX && negative == 1)
-		return (-1);
-	return (result * negative);
+	a = ft_strlen(s);
+	while (a > 0)
+	{
+		if (s[a] == (char)c)
+			return (a);
+		a--;
+	}
+	if (s[a] == (char)c)
+		return (a);
+	return (-1);
 }

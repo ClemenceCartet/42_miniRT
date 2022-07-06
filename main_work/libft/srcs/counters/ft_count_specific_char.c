@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_count_specific_char.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 13:25:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/09 11:22:40 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/06/11 09:23:11 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/06/11 09:26:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_atoi(const char *str)
+size_t	ft_count_specific_char(char *str, int c)
 {
-	long	result;
-	int		negative;
-	int		a;
+	int	count;
+	int	a;
 
-	negative = 1;
-	a = ft_atoi_check(str, &negative);
-	result = ft_add_str_to_int(str, &a);
-	if (result > LONG_MAX && negative == -1)
-		return (0);
-	else if (result > LONG_MAX && negative == 1)
-		return (-1);
-	return (result * negative);
+	count = 0;
+	a = 0;
+	while (str[a])
+	{
+		if (str[a] == c)
+			count++;
+		a++;
+	}
+	return (count);
 }

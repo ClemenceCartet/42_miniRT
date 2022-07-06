@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 18:50:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/04/12 08:58:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/14 10:46:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	newstr = malloc(sizeof(char) * (len + 1));
 	if (!newstr)
 		return (NULL);
-	while (s[start + a] && a < len && start < s_len)
+	while (s[start + a] && a < len && start < s_len && (start + a) < s_len)
 	{
 		newstr[a] = s[start + a];
 		a++;

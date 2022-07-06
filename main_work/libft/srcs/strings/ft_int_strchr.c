@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:13:18 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/04/10 08:44:37 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/06/14 10:52:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	ft_int_strchr(const char *s, int c)
 	int	a;
 
 	a = 0;
-	if (!s)
-		return (-1);
 	while (s[a])
 	{
 		if (s[a] == (char)c)
