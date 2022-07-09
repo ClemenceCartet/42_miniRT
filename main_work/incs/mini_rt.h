@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/06 14:41:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/09 15:28:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,14 @@ void	*rt_write_ptr_error(char *str, char *str2);
 /*-------------------- main.c --------------------*/
 
 // int	main(int ac, char **av);
+
+todolist
+int	rt_check_ratio(float ratio, char **split); //ambient, light
+int	rt_check_fov(int fov, char **split); //camera
+int	rt_check_size(float size, char **split); //SP, CY
+
+t_coords	*rt_init_pos(char *split_part); //camera, light, SP, PL, CY
+t_coords	*rt_init_dir(char *split_part); //camera, PL, CY
+t_rgb		*rt_init_rgb(char *split_part); //ambient, light, SP, PL, CY
 
 #endif //MINI_RT_H

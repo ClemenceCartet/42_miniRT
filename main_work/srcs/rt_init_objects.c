@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/06 14:44:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/09 15:29:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	*rt_init_sphere(char **split)
 	object->pos = rt_init_pos(split[1]); //function needed
 	if (!object->pos)
 		return (NULL);
-	object->diameter = ft_atof(split[2]); //check error needed
+	object->diameter = ft_atof(split[2]);
+	if (rt_check_size(object->diameter, split)) //function needed
+		return (NULL);
 	object->rgb = rt_init_rgb(split[3]); //function needed
 	if (!object->rgb)
 		return (NULL);
@@ -92,8 +94,12 @@ void	*rt_init_cylinder(char **split)
 	object->dir = rt_init_dir(split[2]); //function needed
 	if (!object->dir)
 		return (NULL);
-	object->diameter = ft_atof(split[3]); //check error needed
-	object->height = ft_atof(split[4]); //check error needed
+	object->diameter = ft_atof(split[3]);
+	if (rt_check_size(object->diameter, split)) //function needed
+		return (NULL);
+	object->height = ft_atof(split[4]);
+	if (rt_check_size(object->height, split)) //function needed
+		return (NULL);
 	object->rgb = rt_init_rgb(split[5]); //function needed
 	if (!object->rgb)
 		return (NULL);

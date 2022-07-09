@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/06 14:43:58 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/09 15:02:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,14 @@ int	rt_init_light(t_light *light, char **split)
 	if (!light)
 		return (1);
 	light->pos = rt_init_pos(split[1]); //function needed
-	light->ratio = ft_atof(split[2]); //check error needed
+	if (!light->pos)
+		return (1);
+	light->ratio = ft_atof(split[2]);
+	if (rt_check_ratio(light->ratio, split)) //function needed
+		return (1);
 	light->rgb = rt_init_rgb(split[3]); //function needed
+	if (!light->rgb)
+		return (1);
 	return (0);
 }
 
@@ -62,8 +68,14 @@ int	rt_init_camera(t_camera *camera, char **split)
 	if (!camera)
 		return (1);
 	camera->pos = rt_init_pos(split[1]); //function needed
+	if (!camera->pos)
+		return (1);
 	camera->dir = rt_init_dir(split[2]); //function needed
-	camera->fov = ft_atoi(split[3]); //check error needed
+	if (!camera->dir)
+		return (1);
+	camera->fov = ft_atoi(split[3]);
+	if (rt_check_fov(camera->fov, split)) //function needed
+		return (1);
 	return (0);
 }
 
@@ -75,7 +87,11 @@ int	rt_init_ambient(t_ambient *ambient, char **split)
 	ambient = rt_calloc_struct(split, sizeof(t_ambient));
 	if (!ambient)
 		return (1);
-	ambient->ratio = ft_atof(split[1]); //check error needed
+	ambient->ratio = ft_atof(split[1]);
+	if (rt_check_ratio(ambient->ratio, split)) //function needed
+		return (1);
 	ambient->rgb = rt_init_rgb(split[2]); //function needed
+	if (!ambient->rgb)
+		return (1);
 	return (0);
 }
