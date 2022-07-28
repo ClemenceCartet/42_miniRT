@@ -6,27 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:00:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/27 16:15:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 11:30:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-/*
-	//entry should be <nb>,<nb>,<nb> only
-	//count splitlen
-		//else check values
-			//for each
-				//if empty / void char return error
-				//if isnotdigit return error
-	//rt_calloc_struct(sizeof(t_coords))
-		//if NULL return error
-	//ft_atof all 3 values
-		//for each
-			//if isnan / isinf return error
-*/
-
-//THIS ONE SHOULDNT CHANGE
+//Check RGB / Pos / Dir values with charset and comma
 int	rt_check_values(char *values, char *charset, char *name)
 {
 	int	a;
@@ -49,10 +35,38 @@ int	rt_check_values(char *values, char *charset, char *name)
 	return (0);
 }
 
+//Check float existence and syntax with signs and points
+int	rt_check_float_syntax(char *value)
+{
+	int	a;
+	int	midnb;
+	int	point;
+
+	a = 0;
+	midnb = 0;
+	point = 0;
+	if (!value || !value[0])
+		return (rt_write_int_error(E_NO_VALUE, "rt_check_float_syntax"));
+	while (value[a])
+	{
+		if (ft_isnotcharset(value[a], FLOAT_CHARSET))
+			return (rt_write_int_error(E_SYNTAX, value));
+		if (midnb && value[a] == '-' || value[a] == '+')
+			return (rt_write_int_error(E_SYNTAX, value));
+		if (!midnb && ft_ischarset(value[a], "0123456789"))
+			midnb = 1;
+		if (point && value[a] == '.')
+			return (rt_write_int_error(E_SYNTAX, value));
+		if (!point && value[a] == '.')
+			point = 1;
+		a++;
+	}
+	return (0);
+}
+
 int	rt_check_pos(char **split)
 {
 	int	a;
-	int	b;
 
 	a = 0;
 	if (ft_splitlen(split) != 3)
@@ -62,19 +76,13 @@ int	rt_check_pos(char **split)
 	}
 	while (split[a])
 	{
-		b = 0;
-		while (split[a][b])
+		if (rt_check_float_syntax(split[a]))
 		{
-			if (ft_isnotcharset(split[a][b], FLOAT_CHARSET))
-			{
-				ft_free_split(split);
-				return (rt_write_int_error(E_SYNTAX, "pos"));
-			}
-			b++;
+			ft_free_split(split);
+			return (1);
 		}
 		a++;
 	}
-	//STILL WORKING HERE
 	return (0);
 }
 
@@ -91,7 +99,19 @@ t_coords	*rt_init_pos(char *values)
 		return (rt_write_ptr_error(E_MALLOC, NULL));
 	if (rt_check_pos(split))
 		return (NULL);
-	//OUAF NEED CHECK EVERYTHING AND INIT
+	pos = rt_calloc_struct(split, sizeof(t_coords));
+	if (!pos)
+		return (NULL);
+	pos->x = ft_atof(split[0]);
+	pos->y = ft_atof(split[1]);
+	pos->z = ft_atof(split[2]);
+	ft_free_split(split);
+	if (isnan(pos->x) || isinf(pos->x) || isnan(pos->y)
+		|| isinf(pos->y) || isnan(pos->z) || isinf(pos->z))
+	{
+		free (pos);
+		return (rt_write_ptr_error(E_NUMBER, "pos"));
+	}
 	return (pos);
 }
 
