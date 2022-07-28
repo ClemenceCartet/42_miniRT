@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/09 15:02:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 13:55:52 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	rt_init_light(t_light *light, char **split)
 	light = rt_calloc_struct(split, sizeof(t_light));
 	if (!light)
 		return (1);
-	light->pos = rt_init_pos(split[1]); //function needed
+	light->pos = rt_init_pos(split[1]);
 	if (!light->pos)
 		return (1);
 	light->ratio = ft_atof(split[2]);
@@ -67,7 +67,7 @@ int	rt_init_camera(t_camera *camera, char **split)
 	camera = rt_calloc_struct(split, sizeof(t_camera));
 	if (!camera)
 		return (1);
-	camera->pos = rt_init_pos(split[1]); //function needed
+	camera->pos = rt_init_pos(split[1]);
 	if (!camera->pos)
 		return (1);
 	camera->dir = rt_init_dir(split[2]); //function needed

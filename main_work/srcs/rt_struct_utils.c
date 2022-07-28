@@ -6,14 +6,14 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:25:52 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/06 09:26:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 13:55:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
 //Check if ACL ptr is already present and number of value given is correct
-int	rt_check_struct(void *ptr, char **split, size_t splitlen, char *name)
+int	rt_check_struct(void *ptr, char **split, size_t slen, char *name)
 {
 	if (ptr && (ft_strncmp(name, "ambient light", 14)
 			|| ft_strncmp(name, "camera", 7) || ft_strncmp(name, "light", 6)))
@@ -21,7 +21,7 @@ int	rt_check_struct(void *ptr, char **split, size_t splitlen, char *name)
 		ft_free_split(split);
 		return (rt_write_int_error(E_EXISTING_ID, name));
 	}
-	if (ft_splitlen(split) != splitlen)
+	if (ft_splitlen(split) != slen)
 	{
 		ft_free_split(split);
 		return (rt_write_int_error(E_SPLIT_SIZE, name));

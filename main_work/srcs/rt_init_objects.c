@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/09 15:29:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 13:55:41 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*rt_init_sphere(char **split)
 	if (!object)
 		return (NULL);
 	object->id = SP;
-	object->pos = rt_init_pos(split[1]); //function needed
+	object->pos = rt_init_pos(split[1]);
 	if (!object->pos)
 		return (NULL);
 	object->diameter = ft_atof(split[2]);
@@ -67,7 +67,7 @@ void	*rt_init_plane(char **split)
 	if (!object)
 		return (NULL);
 	object->id = PL;
-	object->pos = rt_init_pos(split[1]); //function needed
+	object->pos = rt_init_pos(split[1]);
 	if (!object->pos)
 		return (NULL);
 	object->dir = rt_init_dir(split[2]); //function needed
@@ -88,7 +88,7 @@ void	*rt_init_cylinder(char **split)
 	if (!object)
 		return (NULL);
 	object->id = CY;
-	object->pos = rt_init_pos(split[1]); //function needed
+	object->pos = rt_init_pos(split[1]);
 	if (!object->pos)
 		return (NULL);
 	object->dir = rt_init_dir(split[2]); //function needed
