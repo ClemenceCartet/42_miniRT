@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/05 10:04:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/05 14:27:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	*rt_init_sphere(char **split)
 	object->diameter = ft_atof(split[2]);
 	if (rt_check_float(object->diameter, split, 0))
 		return (NULL);
-	object->rgb = rt_init_rgb(split[3]); //function needed
+	object->rgb = rt_init_rgb(split[3]);
 	if (!object->rgb)
 		return (NULL);
 	return (object);
@@ -73,7 +73,7 @@ void	*rt_init_plane(char **split)
 	object->dir = rt_init_dir(split[2]); //function needed
 	if (!object->dir)
 		return (NULL);
-	object->rgb = rt_init_rgb(split[3]); //function needed
+	object->rgb = rt_init_rgb(split[3]);
 	if (!object->rgb)
 		return (NULL);
 	return (object);
@@ -100,7 +100,7 @@ void	*rt_init_cylinder(char **split)
 	object->height = ft_atof(split[4]);
 	if (rt_check_float(object->height, split, 0))
 		return (NULL);
-	object->rgb = rt_init_rgb(split[5]); //function needed
+	object->rgb = rt_init_rgb(split[5]);
 	if (!object->rgb)
 		return (NULL);
 	return (object);

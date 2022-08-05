@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/05 10:05:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/05 14:27:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	rt_init_light(t_light *light, char **split)
 	light->ratio = ft_atof(split[2]);
 	if (rt_check_float(light->ratio, split, 1))
 		return (1);
-	light->rgb = rt_init_rgb(split[3]); //function needed
+	light->rgb = rt_init_rgb(split[3]);
 	if (!light->rgb)
 		return (1);
 	ft_free_split(split);
@@ -93,7 +93,7 @@ int	rt_init_ambient(t_ambient *ambient, char **split)
 	ambient->ratio = ft_atof(split[1]);
 	if (rt_check_float(ambient->ratio, split, 1))
 		return (1);
-	ambient->rgb = rt_init_rgb(split[2]); //function needed
+	ambient->rgb = rt_init_rgb(split[2]);
 	if (!ambient->rgb)
 		return (1);
 	ft_free_split(split);

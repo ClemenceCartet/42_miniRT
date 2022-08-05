@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/05 10:09:52 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/05 14:29:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 # define PL 2
 # define CY 3
 
-# define PARSING_CHARSET "ACLsplcy1234567890-+., \n"
-# define RGB_CHARSET "1234567890"
-# define FLOAT_CHARSET "1234567890-+."
-# define INT_CHARSET "1234567890-+"
-# define POS_CHARSET "0123456789,+-"
+# define PARSING_CHARSET "ACLsplcy0123456789-+., \n"
+# define INT_CHARSET "0123456789"
+# define FLOAT_CHARSET "0123456789-+."
+
+# define VALRGB_CHARSET "0123456789,"
+# define VALPOS_CHARSET "0123456789,+-"
 
 # define DFI	__FILE__
 # define DLI	__LINE__
