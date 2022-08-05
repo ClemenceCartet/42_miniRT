@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/28 13:56:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/05 10:03:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void		*rt_write_ptr_error(char *str, char *str2);
 
 /*-------------------- rt_check_utils.c --------------------*/
 
+int			rt_check_float(float size, char **split, int isratio);
 int			rt_check_values(char *values, char *charset, char *name);
 int			rt_check_float_syntax(char *value);
 
@@ -126,9 +127,7 @@ t_coords	*rt_init_pos(char *values);
 
 // int	main(int ac, char **av);
 
-int			rt_check_ratio(float ratio, char **split); //ambient, light
 int			rt_check_fov(int fov, char **split); //camera
-int			rt_check_size(float size, char **split); //SP, CY
 
 t_coords	*rt_init_dir(char *split_part); //camera, PL, CY
 t_colors	*rt_init_rgb(char *split_part); //ambient, light, SP, PL, CY

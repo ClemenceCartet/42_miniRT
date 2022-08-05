@@ -6,11 +6,32 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:52:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/28 13:52:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/05 10:03:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+//Check float value for diameter and height
+int	rt_check_float(float size, char **split, int isratio)
+{
+	if (!isratio && size < 0)
+	{
+		ft_free_split(split);
+		return (rt_write_int_error(E_RANGE, "positive"));
+	}
+	else if (isratio && (size < 0 || size > 1))
+	{
+		ft_free_split(split);
+		return (rt_write_int_error(E_RANGE, "0.0 / 1.0"));
+	}
+	if (isnan(size) || isinf(size))
+	{
+		ft_free_split(split);
+		return (rt_write_int_error(E_NUMBER, "float size"));
+	}
+	return (0);
+}
 
 //Check RGB / Pos / Dir values with charset and comma
 int	rt_check_values(char *values, char *charset, char *name)

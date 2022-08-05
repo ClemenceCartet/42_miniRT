@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/28 13:55:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/05 10:04:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	*rt_init_sphere(char **split)
 	if (!object->pos)
 		return (NULL);
 	object->diameter = ft_atof(split[2]);
-	if (rt_check_size(object->diameter, split)) //function needed
+	if (rt_check_float(object->diameter, split, 0))
 		return (NULL);
 	object->rgb = rt_init_rgb(split[3]); //function needed
 	if (!object->rgb)
@@ -95,10 +95,10 @@ void	*rt_init_cylinder(char **split)
 	if (!object->dir)
 		return (NULL);
 	object->diameter = ft_atof(split[3]);
-	if (rt_check_size(object->diameter, split)) //function needed
+	if (rt_check_float(object->diameter, split, 0))
 		return (NULL);
 	object->height = ft_atof(split[4]);
-	if (rt_check_size(object->height, split)) //function needed
+	if (rt_check_float(object->height, split, 0))
 		return (NULL);
 	object->rgb = rt_init_rgb(split[5]); //function needed
 	if (!object->rgb)

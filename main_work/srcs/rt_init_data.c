@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/28 13:55:52 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/05 10:05:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	rt_init_obj_data(t_obj_data *obj_data, char **split)
 		return (1);
 	ft_lstadd_back(&obj_data->lst, ft_lstnew(object));
 	obj_data->lst_size++;
+	ft_free_split(split);
 	return (0);
 }
 
@@ -51,11 +52,12 @@ int	rt_init_light(t_light *light, char **split)
 	if (!light->pos)
 		return (1);
 	light->ratio = ft_atof(split[2]);
-	if (rt_check_ratio(light->ratio, split)) //function needed
+	if (rt_check_float(light->ratio, split, 1))
 		return (1);
 	light->rgb = rt_init_rgb(split[3]); //function needed
 	if (!light->rgb)
 		return (1);
+	ft_free_split(split);
 	return (0);
 }
 
@@ -76,6 +78,7 @@ int	rt_init_camera(t_camera *camera, char **split)
 	camera->fov = ft_atoi(split[3]);
 	if (rt_check_fov(camera->fov, split)) //function needed
 		return (1);
+	ft_free_split(split);
 	return (0);
 }
 
@@ -88,10 +91,11 @@ int	rt_init_ambient(t_ambient *ambient, char **split)
 	if (!ambient)
 		return (1);
 	ambient->ratio = ft_atof(split[1]);
-	if (rt_check_ratio(ambient->ratio, split)) //function needed
+	if (rt_check_float(ambient->ratio, split, 1))
 		return (1);
 	ambient->rgb = rt_init_rgb(split[2]); //function needed
 	if (!ambient->rgb)
 		return (1);
+	ft_free_split(split);
 	return (0);
 }
