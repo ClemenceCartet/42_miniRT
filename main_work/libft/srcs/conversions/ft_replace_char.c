@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnotcharset.c                                  :+:      :+:    :+:   */
+/*   ft_replace_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/10 08:48:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 14:12:57 by ljohnson         ###   ########lyon.fr   */
+/*   Created: 2022/08/06 13:56:37 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/08/06 14:15:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_isnotcharset(char c, char *set)
+void	ft_replace_char(char *str, char c, char rep)
 {
-	size_t	a;
+	int	a;
 
 	a = 0;
-	while (set[a])
+	if (!str)
+		return ;
+	while (str[a])
 	{
-		if (c == set[a])
-			return (0);
+		if (str[a] == c)
+			str[a] = rep;
 		a++;
 	}
-	return (1);
 }
