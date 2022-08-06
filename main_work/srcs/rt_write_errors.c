@@ -48,6 +48,7 @@ char	*rt_write_char_error(char *str, char *str2)
 	return (NULL);
 }
 
+// Write an error message in two parts and return NULL for pointer
 void	*rt_write_ptr_error(char *str, char *str2)
 {
 	rt_display_error(str, str2);
