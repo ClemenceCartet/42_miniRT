@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:41 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:33:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 11:48:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ t_coords	*rt_init_coords_numbers(char *values)
 t_coords	*rt_init_coords(char *values, int isdir)
 {
 	t_coords	*coord;
-	char		**split;
 
 	coord = rt_init_coords_numbers(values);
 	if (!coord)

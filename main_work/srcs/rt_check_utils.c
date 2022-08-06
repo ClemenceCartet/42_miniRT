@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:52:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:29:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 11:48:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	rt_check_float_syntax(char *value)
 	{
 		if (ft_isnotcharset(value[a], FLOAT_CHARSET))
 			return (rt_write_int_error(E_SYNTAX, value));
-		if (midnb && value[a] == '-' || value[a] == '+')
+		if (midnb && (value[a] == '-' || value[a] == '+'))
 			return (rt_write_int_error(E_SYNTAX, value));
 		if (!midnb && ft_ischarset(value[a], "0123456789"))
 			midnb = 1;
