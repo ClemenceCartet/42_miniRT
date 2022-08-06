@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:44:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 13:41:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,10 @@ void		*rt_calloc_struct(char **split, size_t size);
 /*-------------------- rt_write_errors.c --------------------*/
 
 void		rt_display_error(char *str, char *str2);
-char		**rt_write_split_error(char *str, char *str2);
-int			rt_write_int_error(char *str, char *str2);
-char		*rt_write_char_error(char *str, char *str2);
-void		*rt_write_ptr_error(char *str, char *str2);
+char		**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
+int			rt_write_int_error(char *str, char *str2, char *dfi, int dli);
+char		*rt_write_char_error(char *str, char *str2, char *dfi, int dli);
+void		*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli);
 
 /*-------------------- rt_check_utils.c --------------------*/
 
@@ -133,6 +133,7 @@ t_colors	*rt_init_rgb(char *values);
 
 /*-------------------- main.c --------------------*/
 
+void		test_battery(t_master *master, int ac, char **av);
 // int	main(int ac, char **av);
 
 #endif //MINI_RT_H

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:44:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 13:42:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	rt_init_camera(t_camera *camera, char **split)
 	camera->fov = ft_atoi(split[3]);
 	ft_free_split(split);
 	if (camera->fov < 0 || camera->fov > 180)
-		return (rt_write_int_error(E_RANGE, "0 / 180"));
+		return (rt_write_int_error(E_RANGE, "0 / 180", DFI, DLI));
 	return (0);
 }
 

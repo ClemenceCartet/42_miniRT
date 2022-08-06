@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/06 11:33:12 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/06 13:26:23 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ LST_SRCS		:=	rt_free_data.c		rt_free_objects.c	\
 					rt_init_master.c	rt_write_errors.c	\
 					rt_struct_utils.c	rt_init_objects.c	\
 					rt_init_data.c		rt_check_utils.c	\
-					rt_init_coords.c	rt_init_rgb.c
+					rt_init_coords.c	rt_init_rgb.c		\
+					test_battery.c
 
 # Directories
 P_MLX			:=	mlx/

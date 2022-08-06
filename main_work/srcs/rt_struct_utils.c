@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:25:52 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/28 13:55:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 13:44:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	rt_check_struct(void *ptr, char **split, size_t slen, char *name)
 			|| ft_strncmp(name, "camera", 7) || ft_strncmp(name, "light", 6)))
 	{
 		ft_free_split(split);
-		return (rt_write_int_error(E_EXISTING_ID, name));
+		return (rt_write_int_error(E_EXISTING_ID, name, DFI, DLI));
 	}
 	if (ft_splitlen(split) != slen)
 	{
 		ft_free_split(split);
-		return (rt_write_int_error(E_SPLIT_SIZE, name));
+		return (rt_write_int_error(E_SPLIT_SIZE, name, DFI, DLI));
 	}
 	return (0);
 }
@@ -38,7 +38,7 @@ void	*rt_calloc_struct(char **split, size_t size)
 	if (!ptr)
 	{
 		ft_free_split(split);
-		return (rt_write_ptr_error(E_MALLOC, NULL));
+		return (rt_write_ptr_error(E_MALLOC, NULL, DFI, DLI));
 	}
 	return (ptr);
 }

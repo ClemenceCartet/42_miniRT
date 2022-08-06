@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:52:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:48:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 14:11:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ int	rt_check_rgb_syntax(char *value)
 	a = 0;
 	nb = 0;
 	if (!value || !value[0])
-		return (rt_write_int_error(E_NO_VALUE, "rt_check_rgb_syntax"));
+		return (rt_write_int_error(E_NO_VALUE, "rt_check_rgb_syntax", DFI, DLI));
 	while (value[a])
 	{
 		if (ft_isnotcharset(value[a], INT_CHARSET))
-			return (rt_write_int_error(E_SYNTAX, value));
+			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
 		a++;
 	}
 	nb = ft_atoi(value);
 	if (nb < 0 || nb > 255)
-		return (rt_write_int_error(E_RANGE, "0 / 255"));
+		return (rt_write_int_error(E_RANGE, "0 / 255", DFI, DLI));
 	return (0);
 }
 
@@ -40,17 +40,17 @@ int	rt_check_float(float size, char **split, int isratio)
 	if (!isratio && size < 0)
 	{
 		ft_free_split(split);
-		return (rt_write_int_error(E_RANGE, "positive"));
+		return (rt_write_int_error(E_RANGE, "positive", DFI, DLI));
 	}
 	else if (isratio && (size < 0 || size > 1))
 	{
 		ft_free_split(split);
-		return (rt_write_int_error(E_RANGE, "0.0 / 1.0"));
+		return (rt_write_int_error(E_RANGE, "0.0 / 1.0", DFI, DLI));
 	}
 	if (isnan(size) || isinf(size))
 	{
 		ft_free_split(split);
-		return (rt_write_int_error(E_NUMBER, "float size"));
+		return (rt_write_int_error(E_NUMBER, "float size", DFI, DLI));
 	}
 	return (0);
 }
@@ -64,17 +64,21 @@ int	rt_check_values(char *values, char *charset, char *name)
 	a = 0;
 	count = 0;
 	if (!values || !values[0])
-		return (rt_write_int_error(E_NO_VALUE, name));
+		return (rt_write_int_error(E_NO_VALUE, name, DFI, DLI));
+	dprintf(STDOUT_FILENO, "\033[35m");
+	dprintf(STDOUT_FILENO, "values = %s\ncharset = %s\nname = %s", values, charset, name);
+	dprintf(STDOUT_FILENO, "\033[0m\n");
 	while (values[a])
 	{
+		dprintf(STDOUT_FILENO, "\033[35mchar = %c\033[0m\n", values[a]);
 		if (ft_isnotcharset(values[a], charset))
-			return (rt_write_int_error(E_SYNTAX, name));
+			return (rt_write_int_error(E_SYNTAX, name, DFI, DLI));
 		if (values[a] == ',')
 			count++;
 		a++;
 	}
 	if (count != 2)
-		return (rt_write_int_error(E_SYNTAX, name));
+		return (rt_write_int_error(E_SYNTAX, name, DFI, DLI));
 	return (0);
 }
 
@@ -89,17 +93,17 @@ int	rt_check_float_syntax(char *value)
 	midnb = 0;
 	point = 0;
 	if (!value || !value[0])
-		return (rt_write_int_error(E_NO_VALUE, "rt_check_float_syntax"));
+		return (rt_write_int_error(E_NO_VALUE, "rt_check_float_syntax", DFI, DLI));
 	while (value[a])
 	{
 		if (ft_isnotcharset(value[a], FLOAT_CHARSET))
-			return (rt_write_int_error(E_SYNTAX, value));
+			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
 		if (midnb && (value[a] == '-' || value[a] == '+'))
-			return (rt_write_int_error(E_SYNTAX, value));
+			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
 		if (!midnb && ft_ischarset(value[a], "0123456789"))
 			midnb = 1;
 		if (point && value[a] == '.')
-			return (rt_write_int_error(E_SYNTAX, value));
+			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
 		if (!point && value[a] == '.')
 			point = 1;
 		a++;

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 14:24:43 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/05 14:31:32 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 13:44:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	rt_check_rgb(char **split)
 	if (ft_splitlen(split) != 3)
 	{
 		ft_free_split(split);
-		return (rt_write_int_error(E_SPLIT_SIZE, "rgb"));
+		return (rt_write_int_error(E_SPLIT_SIZE, "rgb", DFI, DLI));
 	}
 	while (split[a])
 	{
@@ -46,7 +46,7 @@ t_colors	*rt_init_rgb(char *values)
 		return (NULL);
 	split = ft_split(values, ',');
 	if (!split)
-		return (rt_write_ptr_error(E_MALLOC, NULL));
+		return (rt_write_ptr_error(E_MALLOC, NULL, DFI, DLI));
 	if (rt_check_rgb(split))
 		return (NULL);
 	rgb = rt_calloc_struct(split, sizeof(t_colors));

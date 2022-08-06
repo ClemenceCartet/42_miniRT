@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:41 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:48:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 13:43:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	rt_check_coords_values(char **split)
 	if (ft_splitlen(split) != 3)
 	{
 		ft_free_split(split);
-		return (rt_write_int_error(E_SPLIT_SIZE, "pos"));
+		return (rt_write_int_error(E_SPLIT_SIZE, "pos", DFI, DLI));
 	}
 	while (split[a])
 	{
@@ -39,19 +39,19 @@ int	rt_check_coords_values(char **split)
 int	rt_check_coords_numbers(t_coords *coord, int isdir)
 {
 	if (isnan(coord->x) || isinf(coord->x))
-		return (rt_write_int_error(E_NUMBER, "x"));
+		return (rt_write_int_error(E_NUMBER, "x", DFI, DLI));
 	if (isnan(coord->y) || isinf(coord->y))
-		return (rt_write_int_error(E_NUMBER, "y"));
+		return (rt_write_int_error(E_NUMBER, "y", DFI, DLI));
 	if (isnan(coord->z) || isinf(coord->z))
-		return (rt_write_int_error(E_NUMBER, "z"));
+		return (rt_write_int_error(E_NUMBER, "z", DFI, DLI));
 	if (isdir)
 	{
 		if (coord->x > 1 || coord->x < -1)
-			return (rt_write_int_error(E_RANGE, "-1 / 1"));
+			return (rt_write_int_error(E_RANGE, "-1 / 1", DFI, DLI));
 		if (coord->y > 1 || coord->y < -1)
-			return (rt_write_int_error(E_RANGE, "-1 / 1"));
+			return (rt_write_int_error(E_RANGE, "-1 / 1", DFI, DLI));
 		if (coord->z > 1 || coord->z < -1)
-			return (rt_write_int_error(E_RANGE, "-1 / 1"));
+			return (rt_write_int_error(E_RANGE, "-1 / 1", DFI, DLI));
 	}
 	return (0);
 }
@@ -67,7 +67,7 @@ t_coords	*rt_init_coords_numbers(char *values)
 		return (NULL);
 	split = ft_split(values, ',');
 	if (!split)
-		return (rt_write_ptr_error(E_MALLOC, NULL));
+		return (rt_write_ptr_error(E_MALLOC, NULL, DFI, DLI));
 	if (rt_check_coords_values(split))
 		return (NULL);
 	coord = rt_calloc_struct(split, sizeof(t_coords));
