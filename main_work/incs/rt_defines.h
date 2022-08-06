@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 13:32:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 14:32:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define FLOAT_CHARSET "0123456789-+."
 
 # define VALRGB_CHARSET "0123456789,"
-# define COORD_CHARSET "0123456789,+-"
+# define COORD_CHARSET "0123456789,+-."
 
 # define DFI	__FILE__
 # define DLI	__LINE__

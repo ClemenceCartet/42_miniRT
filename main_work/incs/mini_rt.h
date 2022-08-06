@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 13:41:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 14:43:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ int			rt_init_master(t_master *master, char *filename);
 
 /*-------------------- rt_init_data.c --------------------*/
 
-int			rt_init_obj_data(t_obj_data *obj_data, char **split);
-int			rt_init_light(t_light *light, char **split);
-int			rt_init_camera(t_camera *camera, char **split);
-int			rt_init_ambient(t_ambient *ambient, char **split);
+int			rt_init_obj_data(t_obj_data **obj_data, char **split);
+int			rt_init_light(t_light **light, char **split);
+int			rt_init_camera(t_camera **camera, char **split);
+int			rt_init_ambient(t_ambient **ambient, char **split);
 
 /*-------------------- rt_init_objects.c --------------------*/
 

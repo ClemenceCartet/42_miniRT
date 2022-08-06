@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:52:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 14:11:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 14:32:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,8 @@ int	rt_check_values(char *values, char *charset, char *name)
 	count = 0;
 	if (!values || !values[0])
 		return (rt_write_int_error(E_NO_VALUE, name, DFI, DLI));
-	dprintf(STDOUT_FILENO, "\033[35m");
-	dprintf(STDOUT_FILENO, "values = %s\ncharset = %s\nname = %s", values, charset, name);
-	dprintf(STDOUT_FILENO, "\033[0m\n");
 	while (values[a])
 	{
-		dprintf(STDOUT_FILENO, "\033[35mchar = %c\033[0m\n", values[a]);
 		if (ft_isnotcharset(values[a], charset))
 			return (rt_write_int_error(E_SYNTAX, name, DFI, DLI));
 		if (values[a] == ',')
