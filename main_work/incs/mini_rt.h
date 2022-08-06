@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:35:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 11:44:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,5 @@ t_colors	*rt_init_rgb(char *values);
 /*-------------------- main.c --------------------*/
 
 // int	main(int ac, char **av);
-
-int			rt_check_fov(int fov, char **split); //camera
 
 #endif //MINI_RT_H
