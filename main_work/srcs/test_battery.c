@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:26:12 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 16:56:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 17:05:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-static void	error_messages_int(void)
+void	error_messages_int(void)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mError messages : rt_write_int_error\033[0m\n\n");
@@ -54,7 +54,7 @@ static void	error_messages_int(void)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	error_messages_char(void)
+void	error_messages_char(void)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mError messages : rt_write_char_error\033[0m\n\n");
@@ -96,7 +96,7 @@ static void	error_messages_char(void)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	error_messages_ptr(void)
+void	error_messages_ptr(void)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mError messages : rt_write_ptr_error\033[0m\n\n");
@@ -138,7 +138,7 @@ static void	error_messages_ptr(void)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	error_messages_split(void)
+void	error_messages_split(void)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mError messages : rt_write_split_error\033[0m\n\n");
@@ -180,7 +180,7 @@ static void	error_messages_split(void)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	display_mlx_data(t_mlx_data *mlx_data)
+void	display_mlx_data(t_mlx_data *mlx_data)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mdisplay_mlx_data\033[0m\n\n");
@@ -194,7 +194,7 @@ static void	display_mlx_data(t_mlx_data *mlx_data)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	display_ambient(t_ambient *ambient)
+void	display_ambient(t_ambient *ambient)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mdisplay_ambient\033[0m\n\n");
@@ -208,7 +208,7 @@ static void	display_ambient(t_ambient *ambient)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	display_camera(t_camera *camera)
+void	display_camera(t_camera *camera)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mcamera->display_camera\033[0m\n\n");
@@ -228,7 +228,7 @@ static void	display_camera(t_camera *camera)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	display_light(t_light *light)
+void	display_light(t_light *light)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mdisplay_light\033[0m\n\n");
@@ -248,7 +248,7 @@ static void	display_light(t_light *light)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	display_object(t_object *object)
+void	display_object(t_object *object)
 {
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 	dprintf(STDOUT_FILENO, "\033[1m\033[32mdisplay_object\033[0m\n\n");
@@ -290,7 +290,7 @@ static void	display_object(t_object *object)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	display_obj_data(t_obj_data *obj_data)
+void	display_obj_data(t_obj_data *obj_data)
 {
 	t_object	*object;
 
@@ -313,7 +313,7 @@ static void	display_obj_data(t_obj_data *obj_data)
 	dprintf(STDOUT_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
-static void	display_master(t_master *master)
+void	display_master(t_master *master)
 {
 	if (master)
 	{
@@ -330,7 +330,7 @@ static void	display_master(t_master *master)
 	}
 }
 
-static void	display_file_content(char *file)
+void	display_file_content(char *file)
 {
 	int		fd;
 	char	*line;

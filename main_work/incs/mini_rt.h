@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 14:43:06 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 17:07:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,22 @@ t_colors	*rt_init_rgb(char *values);
 
 /*-------------------- main.c --------------------*/
 
-void		test_battery(t_master *master, int ac, char **av);
 // int	main(int ac, char **av);
+
+/*-------------------- test_battery.c --------------------*/
+
+void		error_messages_int(void);
+void		error_messages_char(void);
+void		error_messages_ptr(void);
+void		error_messages_split(void);
+void		display_mlx_data(t_mlx_data *mlx_data);
+void		display_ambient(t_ambient *ambient);
+void		display_camera(t_camera *camera);
+void		display_light(t_light *light);
+void		display_object(t_object *object);
+void		display_obj_data(t_obj_data *obj_data);
+void		display_master(t_master *master);
+void		display_file_content(char *file);
+void		test_battery(t_master *master, int ac, char **av);
 
 #endif //MINI_RT_H
