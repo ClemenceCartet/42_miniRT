@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/05 14:28:37 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 11:35:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,12 @@ int			rt_check_float(float size, char **split, int isratio);
 int			rt_check_values(char *values, char *charset, char *name);
 int			rt_check_float_syntax(char *value);
 
-/*-------------------- rt_init_pos.c --------------------*/
+/*-------------------- rt_init_coords.c --------------------*/
 
-int			rt_check_pos(char **split);
-t_coords	*rt_init_pos(char *values);
+int			rt_check_coords_values(char **split);
+int			rt_check_coords_numbers(t_coords *coord, int isdir);
+t_coords	*rt_init_coords_numbers(char *values);
+t_coords	*rt_init_coords(char *values, int isdir);
 
 /*-------------------- rt_init_rgb.c --------------------*/
 
@@ -134,7 +136,5 @@ t_colors	*rt_init_rgb(char *values);
 // int	main(int ac, char **av);
 
 int			rt_check_fov(int fov, char **split); //camera
-
-t_coords	*rt_init_dir(char *split_part); //camera, PL, CY
 
 #endif //MINI_RT_H

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/05 14:27:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 11:32:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*rt_init_sphere(char **split)
 	if (!object)
 		return (NULL);
 	object->id = SP;
-	object->pos = rt_init_pos(split[1]);
+	object->pos = rt_init_coords(split[1], 0);
 	if (!object->pos)
 		return (NULL);
 	object->diameter = ft_atof(split[2]);
@@ -67,10 +67,10 @@ void	*rt_init_plane(char **split)
 	if (!object)
 		return (NULL);
 	object->id = PL;
-	object->pos = rt_init_pos(split[1]);
+	object->pos = rt_init_coords(split[1], 0);
 	if (!object->pos)
 		return (NULL);
-	object->dir = rt_init_dir(split[2]); //function needed
+	object->dir = rt_init_coords(split[2], 1);
 	if (!object->dir)
 		return (NULL);
 	object->rgb = rt_init_rgb(split[3]);
@@ -88,10 +88,10 @@ void	*rt_init_cylinder(char **split)
 	if (!object)
 		return (NULL);
 	object->id = CY;
-	object->pos = rt_init_pos(split[1]);
+	object->pos = rt_init_coords(split[1], 0);
 	if (!object->pos)
 		return (NULL);
-	object->dir = rt_init_dir(split[2]); //function needed
+	object->dir = rt_init_coords(split[2], 1);
 	if (!object->dir)
 		return (NULL);
 	object->diameter = ft_atof(split[3]);
