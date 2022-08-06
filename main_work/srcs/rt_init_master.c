@@ -20,11 +20,6 @@ int	rt_parse_line(t_master *master, char *line)
 	split = ft_split(line, ' ');
 	if (!split)
 		return (rt_write_int_error(E_MALLOC, NULL, DFI, DLI));
-	// dprintf(STDOUT_FILENO, "\033[35m");
-	// dprintf(STDOUT_FILENO, "line = %s\n", line);
-	// for (int i = 0; split[i]; i++)
-	// 	dprintf(STDOUT_FILENO, "split[%d] = %s\n", i, split[i]);
-	// dprintf(STDOUT_FILENO, "\033[0m\n");
 	if (!ft_strncmp(split[0], "A", 2))
 		return (rt_init_ambient(&master->ambient, split));
 	else if (!ft_strncmp(split[0], "C", 2))
@@ -55,7 +50,6 @@ int	rt_get_file_content(t_master *master, char *filename)
 		if (!line)
 			break ;
 		ft_replace_char(line, '\n', '\0');
-		dprintf(STDOUT_FILENO, "gnl_line = %s\n", line);
 		if (rt_parse_line(master, line))
 			return (1);
 		free (line);

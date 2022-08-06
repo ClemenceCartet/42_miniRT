@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 14:42:53 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/06 16:39:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	rt_init_obj_data(t_obj_data **obj_data, char **split)
 	if (!object)
 		return (1);
 	ft_lstadd_back(&(*obj_data)->lst, ft_lstnew(object));
+	if ((*obj_data)->lst_size == 0)
+		(*obj_data)->start = (*obj_data)->lst;
 	(*obj_data)->lst_size++;
 	ft_free_split(split);
 	return (0);
