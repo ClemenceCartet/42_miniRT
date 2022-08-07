@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:32:55 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 11:32:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/07 14:00:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,15 @@ void	*rt_init_sphere(char **split)
 	object = rt_init_object(split, 4, "sphere");
 	if (!object)
 		return (NULL);
-	object->id = SP;
 	object->pos = rt_init_coords(split[1], 0);
 	if (!object->pos)
-		return (NULL);
+		return (rt_free_object(object));
 	object->diameter = ft_atof(split[2]);
 	if (rt_check_float(object->diameter, split, 0))
-		return (NULL);
+		return (rt_free_object(object));
 	object->rgb = rt_init_rgb(split[3]);
 	if (!object->rgb)
-		return (NULL);
+		return (rt_free_object(object));
 	return (object);
 }
 
@@ -66,16 +65,15 @@ void	*rt_init_plane(char **split)
 	object = rt_init_object(split, 4, "plane");
 	if (!object)
 		return (NULL);
-	object->id = PL;
 	object->pos = rt_init_coords(split[1], 0);
 	if (!object->pos)
-		return (NULL);
+		return (rt_free_object(object));
 	object->dir = rt_init_coords(split[2], 1);
 	if (!object->dir)
-		return (NULL);
+		return (rt_free_object(object));
 	object->rgb = rt_init_rgb(split[3]);
 	if (!object->rgb)
-		return (NULL);
+		return (rt_free_object(object));
 	return (object);
 }
 
@@ -87,21 +85,20 @@ void	*rt_init_cylinder(char **split)
 	object = rt_init_object(split, 6, "cylinder");
 	if (!object)
 		return (NULL);
-	object->id = CY;
 	object->pos = rt_init_coords(split[1], 0);
 	if (!object->pos)
-		return (NULL);
+		return (rt_free_object(object));
 	object->dir = rt_init_coords(split[2], 1);
 	if (!object->dir)
-		return (NULL);
+		return (rt_free_object(object));
 	object->diameter = ft_atof(split[3]);
-	if (rt_check_float(object->diameter, split, 0))
-		return (NULL);
 	object->height = ft_atof(split[4]);
+	if (rt_check_float(object->diameter, split, 0))
+		return (rt_free_object(object));
 	if (rt_check_float(object->height, split, 0))
-		return (NULL);
+		return (rt_free_object(object));
 	object->rgb = rt_init_rgb(split[5]);
 	if (!object->rgb)
-		return (NULL);
+		return (rt_free_object(object));
 	return (object);
 }

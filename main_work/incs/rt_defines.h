@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 14:32:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/07 13:43:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 
 # define E_MISSING		"RT INIT ERROR: Missing data:"
 
-# define E_ID			"RT ID ERROR: Invalid ID:"
+# define E_ID			"RT ID ERROR: Invalid ID"
 # define E_EXISTING_ID	"RT ID ERROR: There is already one:"
 # define E_SPLIT_SIZE	"RT PARSING ERROR: Wrong number of value for:"
 # define E_RANGE		"RT RANGE ERROR: Value must be in range:"

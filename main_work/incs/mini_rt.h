@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 17:07:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/07 13:59:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int			rt_free_master(t_master *master);
 void		rt_free_ambient(t_ambient *ambient);
 void		rt_free_camera(t_camera *camera);
 void		rt_free_light(t_light *light);
-void		rt_free_object(t_object *object);
+void		*rt_free_object(t_object *object);
 
 /*-------------------- rt_init_master.c --------------------*/
 

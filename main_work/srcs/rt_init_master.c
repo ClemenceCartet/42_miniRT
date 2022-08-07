@@ -51,7 +51,10 @@ int	rt_get_file_content(t_master *master, char *filename)
 			break ;
 		ft_replace_char(line, '\n', '\0');
 		if (rt_parse_line(master, line))
+		{
+			free (line);
 			return (1);
+		}
 		free (line);
 	}
 	if (close(fd) == -1)
