@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/07 14:06:03 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/07 15:13:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ int	rt_init_ambient(t_ambient **ambient, char **split)
 	*ambient = rt_calloc_struct(split, sizeof(t_ambient));
 	if (!*ambient)
 		return (1);
+	if (rt_check_float_syntax(split[1]))
+	{
+		ft_free_split(split);
+		return (1);
+	}
 	(*ambient)->ratio = ft_atof(split[1]);
 	if (rt_check_float((*ambient)->ratio, split, 1))
 		return (1);
