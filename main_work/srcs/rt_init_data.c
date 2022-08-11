@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/07 15:13:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/11 12:05:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ int	rt_init_light(t_light **light, char **split)
 	if (!*light)
 		return (1);
 	(*light)->pos = rt_init_coords(split[1], 0);
-	if (!(*light)->pos)
+	if (!(*light)->pos || rt_check_float_syntax(split[2]))
+	{
+		ft_free_split(split);
 		return (1);
+	}
 	(*light)->ratio = ft_atof(split[2]);
 	if (rt_check_float((*light)->ratio, split, 1))
 		return (1);
@@ -78,7 +81,7 @@ int	rt_init_camera(t_camera **camera, char **split)
 		return (1);
 	}
 	(*camera)->dir = rt_init_coords(split[2], 1);
-	if (!(*camera)->dir)
+	if (!(*camera)->dir || rt_check_syntax(split[3], INT_CHARSET))
 	{
 		ft_free_split(split);
 		return (1);

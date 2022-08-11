@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/07 13:43:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/11 14:57:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 
 # define VALRGB_CHARSET "0123456789,"
 # define COORD_CHARSET "0123456789,+-."
+
+# define CHARINT_MAX "2147483647"
+# define CHARINT_MIN "-2147483648"
 
 # define DFI	__FILE__
 # define DLI	__LINE__
@@ -57,6 +60,6 @@
 # define E_RANGE		"RT RANGE ERROR: Value must be in range:"
 # define E_SYNTAX		"RT VALUE ERROR: Invalid syntax:"
 # define E_NUMBER		"RT VALUE ERROR: Invalid number:"
-# define E_NO_VALUE		"RT VALUE ERROR: No value found:"
+# define E_NO_VALUE		"RT VALUE ERROR: No value found"
 
 #endif //RT_DEFINES_H

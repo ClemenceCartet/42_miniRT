@@ -6,11 +6,41 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:41 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 13:43:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/11 15:01:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+//Check if value goes further beyond INT_MAX or INT_MIN
+int	rt_check_min_max_values(char *value, char **split)
+{
+	int		err;
+
+	err = 0;
+	if (!value || !value[0])
+	{
+		ft_free_split(split);
+		return (rt_write_int_error(E_NO_VALUE, NULL, DFI, DLI));
+	}
+	if (ft_strlen(value) > 9)
+	{
+		if (value[0] == '-')
+		{
+			if (ft_strncmp(value, CHARINT_MIN, 12) > 0)
+				err = 1;
+		}
+		else if (ft_strncmp(value, CHARINT_MAX, 11) > 0)
+			err = 1;
+	}
+	if (err)
+	{
+		rt_write_int_error(E_NUMBER, value, DFI, DLI);
+		ft_free_split(split);
+		return (1);
+	}
+	return (0);
+}
 
 //Check splitlen and syntax of each values for struct pos
 int	rt_check_coords_values(char **split)
@@ -30,6 +60,8 @@ int	rt_check_coords_values(char **split)
 			ft_free_split(split);
 			return (1);
 		}
+		if (rt_check_min_max_values(split[a], split))
+			return (1);
 		a++;
 	}
 	return (0);

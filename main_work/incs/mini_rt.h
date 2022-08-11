@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/07 13:59:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/11 15:52:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,11 @@ int			rt_check_rgb_syntax(char *value);
 int			rt_check_float(float size, char **split, int isratio);
 int			rt_check_values(char *values, char *charset, char *name);
 int			rt_check_float_syntax(char *value);
+int			rt_check_syntax(char *value, char *charset);
 
 /*-------------------- rt_init_coords.c --------------------*/
 
+int			rt_check_min_max_values(char *value, char **split);
 int			rt_check_coords_values(char **split);
 int			rt_check_coords_numbers(t_coords *coord, int isdir);
 t_coords	*rt_init_coords_numbers(char *values);

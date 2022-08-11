@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:52:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 14:32:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/11 14:48:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,23 @@ int	rt_check_float_syntax(char *value)
 			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
 		if (!point && value[a] == '.')
 			point = 1;
+		a++;
+	}
+	return (0);
+}
+
+//Check syntax of a value depending on a specific charset
+int	rt_check_syntax(char *value, char *charset)
+{
+	int	a;
+
+	a = 0;
+	if (!value || !value[0])
+		return (1);
+	while (value[a])
+	{
+		if (ft_isnotcharset(value[a], charset))
+			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
 		a++;
 	}
 	return (0);
