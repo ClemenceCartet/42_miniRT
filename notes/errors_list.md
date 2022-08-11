@@ -122,3 +122,76 @@
 85. Too much L
 86. Syntax Error
 87. Random data in parsing
+
+---------------------------------------
+Global
+	Check charset
+	Check Overflow (int max, int min)
+
+Float
+	isnan
+	isinf
+
+Coords
+	Check ','	= 2
+	Splitlen	= 3
+
+Colors
+	Check ','	= 2
+	Splitlen	= 3
+
+ratio
+	float	ratio
+		range 0.0 / 1.0
+
+rgb
+	int		r
+		range 0 / 255
+	int		g
+		range 0 / 255
+	int		b
+		range 0 / 255
+
+pos
+	float	x
+	float	y
+	float	z
+
+dir
+	float	x
+		range -1 / 1
+	float	y
+		range -1 / 1
+	float	z
+		range -1 / 1
+
+fov
+	int		fov
+		range 0 / 180
+		conversion into float	radian
+
+diameter
+	float	diameter
+		range positive
+
+height
+	float	height
+		range positive
+
+
+--------------
+Fonctions
+
+rt_check_range(float value, float min, float max)
+	Check range including values given after atoi / atof
+
+rt_check_charset(char *value, char *charset)
+	Check charset of any value before atoi / atof
+
+rt_check_overflow(char *value)
+	Check overflow of any value before atoi / atof
+
+rt_check_struct(char *values)
+	Check Comma number
+	Check Splitlen
+
