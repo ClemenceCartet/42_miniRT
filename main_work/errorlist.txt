@@ -1,0 +1,4 @@
+./miniRT scenes/error/cy_errors/diameter.input.rt
+./miniRT scenes/error/cy_errors/height.input.rt
+./miniRT scenes/error/sp_errors/diameter.data.rt
+./miniRT scenes/error/sp_errors/diameter.input.rt

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:26:12 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/11 15:13:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/11 16:42:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,16 +349,20 @@ void	display_file_content(char *file)
 
 void	test_battery(t_master *master, int ac, char **av)
 {
-	error_messages_int();
-	error_messages_char();
-	error_messages_ptr();
-	error_messages_split();
-	dprintf(STDERR_FILENO, "\n");
-	dprintf(STDERR_FILENO, "ac = %d\n", ac);
-	for (int i = 0; av[i]; i++)
-		dprintf(STDERR_FILENO, "av[%d] = %s\n", i, av[i]);
-	dprintf(STDERR_FILENO, "%p\n\n", master);
-	display_file_content(av[1]);
-	dprintf(STDERR_FILENO, "\n");
-	display_master(master);
+	dprintf (STDERR_FILENO, "It worked !\n");
+	(void)master;
+	(void)ac;
+	(void)av;
+	// error_messages_int();
+	// error_messages_char();
+	// error_messages_ptr();
+	// error_messages_split();
+	// dprintf(STDERR_FILENO, "\n");
+	// dprintf(STDERR_FILENO, "ac = %d\n", ac);
+	// for (int i = 0; av[i]; i++)
+	// 	dprintf(STDERR_FILENO, "av[%d] = %s\n", i, av[i]);
+	// dprintf(STDERR_FILENO, "%p\n\n", master);
+	// display_file_content(av[1]);
+	// dprintf(STDERR_FILENO, "\n");
+	// display_master(master);
 }
