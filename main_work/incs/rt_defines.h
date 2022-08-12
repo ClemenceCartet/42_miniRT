@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/11 14:57:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 10:21:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@
 
 # define E_ID			"RT ID ERROR: Invalid ID"
 # define E_EXISTING_ID	"RT ID ERROR: There is already one:"
-# define E_SPLIT_SIZE	"RT PARSING ERROR: Wrong number of value for:"
+# define E_SPLITLEN		"RT PARSING ERROR: Wrong number of value for:"
 # define E_RANGE		"RT RANGE ERROR: Value must be in range:"
-# define E_SYNTAX		"RT VALUE ERROR: Invalid syntax:"
-# define E_NUMBER		"RT VALUE ERROR: Invalid number:"
+# define E_SYNTAX		"RT VALUE ERROR: Invalid syntax found"
+# define E_NUMBER		"RT VALUE ERROR: Invalid number found"
 # define E_NO_VALUE		"RT VALUE ERROR: No value found"
 
 #endif //RT_DEFINES_H

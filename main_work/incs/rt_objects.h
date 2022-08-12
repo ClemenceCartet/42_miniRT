@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/11 18:49:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 12:48:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 */
 struct	s_ambient
 {
-	float		ratio;
-	t_colors	*rgb;
+	float	ratio;
+	t_color	*rgb;
 };
 
 /**Structure pour la caméra
@@ -36,10 +36,10 @@ struct	s_ambient
 */
 struct	s_camera
 {
-	t_coords	*pos;
-	t_coords	*dir;
-	int			fov;
-	float		radian;
+	t_coord	*pos;
+	t_coord	*dir;
+	int		fov;
+	float	radian;
 };
 
 /**Structure pour la lumière
@@ -49,9 +49,9 @@ struct	s_camera
 */
 struct	s_light
 {
-	t_coords	*pos;
-	float		ratio;
-	t_colors	*rgb;
+	t_coord	*pos;
+	float	ratio;
+	t_color	*rgb;
 };
 
 /*/////////////////////////////////////////////////////////////////////////////
@@ -69,13 +69,13 @@ struct	s_light
 */
 struct	s_object
 {
-	int			id;
+	int		id;
 
-	t_coords	*pos;
-	t_coords	*dir;
-	t_colors	*rgb;
-	float		diameter;
-	float		height;
+	t_coord	*pos;
+	t_coord	*dir;
+	t_color	*rgb;
+	float	diameter;
+	float	height;
 };
 /**Structure pour l'objet sphère
  * pos		= coordonnées XYZ du centre de la sphère

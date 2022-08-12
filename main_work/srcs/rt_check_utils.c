@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:52:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/11 14:48:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 11:51:32 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,51 +75,5 @@ int	rt_check_values(char *values, char *charset, char *name)
 	}
 	if (count != 2)
 		return (rt_write_int_error(E_SYNTAX, name, DFI, DLI));
-	return (0);
-}
-
-//Check float existence and syntax with signs and points
-int	rt_check_float_syntax(char *value)
-{
-	int	a;
-	int	midnb;
-	int	point;
-
-	a = 0;
-	midnb = 0;
-	point = 0;
-	if (!value || !value[0])
-		return (rt_write_int_error(E_NO_VALUE, "rt_check_float_syntax", DFI, DLI));
-	while (value[a])
-	{
-		if (ft_isnotcharset(value[a], FLOAT_CHARSET))
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
-		if (midnb && (value[a] == '-' || value[a] == '+'))
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
-		if (!midnb && ft_ischarset(value[a], "0123456789"))
-			midnb = 1;
-		if (point && value[a] == '.')
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
-		if (!point && value[a] == '.')
-			point = 1;
-		a++;
-	}
-	return (0);
-}
-
-//Check syntax of a value depending on a specific charset
-int	rt_check_syntax(char *value, char *charset)
-{
-	int	a;
-
-	a = 0;
-	if (!value || !value[0])
-		return (1);
-	while (value[a])
-	{
-		if (ft_isnotcharset(value[a], charset))
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
-		a++;
-	}
 	return (0);
 }

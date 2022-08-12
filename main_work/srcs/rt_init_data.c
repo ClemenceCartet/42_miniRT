@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:35 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/11 12:05:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 13:22:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,6 @@ int	rt_init_obj_data(t_obj_data **obj_data, char **split)
 	if ((*obj_data)->lst_size == 0)
 		(*obj_data)->start = (*obj_data)->lst;
 	(*obj_data)->lst_size++;
-	return (0);
-}
-
-//Light initialization (L)
-int	rt_init_light(t_light **light, char **split)
-{
-	if (rt_check_struct(*light, split, 4, "light"))
-		return (1);
-	*light = rt_calloc_struct(split, sizeof(t_light));
-	if (!*light)
-		return (1);
-	(*light)->pos = rt_init_coords(split[1], 0);
-	if (!(*light)->pos || rt_check_float_syntax(split[2]))
-	{
-		ft_free_split(split);
-		return (1);
-	}
-	(*light)->ratio = ft_atof(split[2]);
-	if (rt_check_float((*light)->ratio, split, 1))
-		return (1);
-	(*light)->rgb = rt_init_rgb(split[3]);
-	ft_free_split(split);
-	if (!(*light)->rgb)
-		return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/02 10:44:54 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 12:48:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_mlx_data	t_mlx_data;
 typedef struct s_obj_data	t_obj_data;
 typedef struct s_object		t_object;
 
-typedef struct s_colors		t_colors;
-typedef struct s_coords		t_coords;
+typedef struct s_color		t_color;
+typedef struct s_coord		t_coord;
 
 //RT_OBJECTS_H
 typedef struct s_ambient	t_ambient;
@@ -87,7 +87,7 @@ struct	s_obj_data
  * g	= couleur verte
  * b	= couleur bleue
 */
-struct	s_colors
+struct	s_color
 {
 	int	r;
 	int	g;
@@ -99,7 +99,7 @@ struct	s_colors
  * y	= axe Y
  * Z	= axe Z
 */
-struct	s_coords
+struct	s_coord
 {
 	float	x;
 	float	y;
