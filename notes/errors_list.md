@@ -37,6 +37,17 @@ Ratio
 9. Number syntax (multiple symbols)
 10. Number syntax (symbols everywhere)
 
+FOV
+1. charset (int)
+2. Out of range < 0
+3. Out of range > 180
+4. Overflow int max
+5. Overflow int min
+6. Number syntax (multiple -)
+7. Number syntax (multiple +)
+8. Number syntax (multiple symbols)
+9. Number syntax (symbols everywhere)
+
 RGB
 1. number of ',' (!= 2)
 
@@ -82,17 +93,6 @@ for each value (x3)
 9. Number syntax (multiple +)
 10. Number syntax (multiple symbols)
 11. Number syntax (symbols everywhere)
-
-FOV
-1. charset (int)
-2. Out of range < 0
-3. Out of range > 180
-4. Overflow int max
-5. Overflow int min
-6. Number syntax (multiple -)
-7. Number syntax (multiple +)
-8. Number syntax (multiple symbols)
-9. Number syntax (symbols everywhere)
 
 DIAMETER / HEIGHT
 1. charset (float)

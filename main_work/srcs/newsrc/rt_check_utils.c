@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:35:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 12:21:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 14:45:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	rt_check_float_syntax(char *value)
 	midnb = 0;
 	point = 0;
 	if (!value || !value[0])
-		return (rt_write_int_error(E_NO_VALUE, "rt_check_float_syntax", DFI, DLI));
+		return (rt_write_int_error(E_NO_VALUE, NULL, DFI, DLI));
 	while (value[a])
 	{
 		if (ft_isnotcharset(value[a], FLOAT_CHARSET))

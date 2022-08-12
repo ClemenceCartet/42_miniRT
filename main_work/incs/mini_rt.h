@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 13:23:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 14:50:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ int		rt_check_overflow(char *value, char **split);
 int		rt_check_float_range(float value, float min, float max, char *range);
 int		rt_check_int_range(int value, int min, int max, char *range);
 
+/*-------------------- rt_data_utils.c --------------------*/
+
+void	*rt_calloc_struct(size_t size, char **split);
+float	rt_init_ratio(char **data, char *value);
+int		rt_init_fov(char **data, char *value);
+
 /*-------------------- rt_init_colors.c --------------------*/
 
 // int	rt_check_rgb_data(char **data, char **split);
@@ -92,6 +98,7 @@ t_coord	*rt_init_coords(char **data, char *values, int isdir);
 /*-------------------- rt_init_data.c --------------------*/
 
 int		rt_init_light(t_light **light, char **split);
+int		rt_init_camera(t_camera **camera, char **split);
 
 /*-------------------- rt_init_master.c --------------------*/
 

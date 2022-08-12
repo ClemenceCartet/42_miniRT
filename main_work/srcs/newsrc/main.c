@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 09:47:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 14:44:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_master	master;
-	
+
 	if (ac != 2)
 		return (rt_write_int_error(E_USAGE, NULL, DFI, DLI));
 	if (rt_init_master(&master, av[1]))
