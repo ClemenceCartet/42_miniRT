@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 12:48:20 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 18:48:08 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ typedef struct s_light		t_light;
 */
 struct	s_master
 {
-	t_mlxdata	*mlxdata;
-	t_object	*object;
+	t_mlx_data	*mlx_data;
+	t_obj_data	*obj_data;
+
 	t_ambient	*ambient;
 	t_camera	*camera;
 	t_light		*light;
@@ -102,7 +103,7 @@ struct	s_coord
 {
 	float	x;
 	float	y;
-	float z;
+	float	z;
 };
 
 #endif //RT_DATA_H
