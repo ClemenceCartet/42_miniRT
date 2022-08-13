@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 14:50:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 10:39:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,19 @@ struct s_list
 
 void	*rt_calloc_struct(size_t size, char **split);
 
+/*-------------------- rt_free_data.c --------------------*/
+
+void	rt_free_mlx_data(t_mlx_data	*mlx_data);
+void	rt_free_obj_data(t_obj_data *obj_data);
+int		rt_free_master(t_master *master);
+
+/*-------------------- rt_free_objects.c --------------------*/
+
+void	rt_free_ambient(t_ambient *ambient);
+void	rt_free_camera(t_camera *camera);
+void	rt_free_light(t_light *light);
+void	*rt_free_object(t_object *object);
+
 /*-------------------- rt_check_utils.c --------------------*/
 
 int		rt_check_ptr(void *ptr, char **split);
@@ -82,6 +95,7 @@ int		rt_check_int_range(int value, int min, int max, char *range);
 /*-------------------- rt_data_utils.c --------------------*/
 
 void	*rt_calloc_struct(size_t size, char **split);
+float	rt_init_obj_size(char **data, char *value);
 float	rt_init_ratio(char **data, char *value);
 int		rt_init_fov(char **data, char *value);
 
@@ -97,8 +111,10 @@ t_coord	*rt_init_coords(char **data, char *values, int isdir);
 
 /*-------------------- rt_init_data.c --------------------*/
 
+int		rt_init_obj_data(t_obj_data **obj_data, char **split);
 int		rt_init_light(t_light **light, char **split);
 int		rt_init_camera(t_camera **camera, char **split);
+int		rt_init_ambient(t_ambient **ambient, char **split);
 
 /*-------------------- rt_init_master.c --------------------*/
 
