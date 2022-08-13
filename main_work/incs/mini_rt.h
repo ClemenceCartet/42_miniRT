@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 10:39:03 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 10:57:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,9 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
-void	*rt_calloc_struct(size_t size, char **split);
+/*-------------------- main.c --------------------*/
 
-/*-------------------- rt_free_data.c --------------------*/
-
-void	rt_free_mlx_data(t_mlx_data	*mlx_data);
-void	rt_free_obj_data(t_obj_data *obj_data);
-int		rt_free_master(t_master *master);
-
-/*-------------------- rt_free_objects.c --------------------*/
-
-void	rt_free_ambient(t_ambient *ambient);
-void	rt_free_camera(t_camera *camera);
-void	rt_free_light(t_light *light);
-void	*rt_free_object(t_object *object);
+// int	main(int ac, char **av);
 
 /*-------------------- rt_check_utils.c --------------------*/
 
@@ -99,15 +88,22 @@ float	rt_init_obj_size(char **data, char *value);
 float	rt_init_ratio(char **data, char *value);
 int		rt_init_fov(char **data, char *value);
 
+/*-------------------- rt_init_coords.c --------------------*/
+
+// int	rt_check_coords_data(char **data, char **split, int isdir);
+t_coord	*rt_init_coords(char **data, char *values, int isdir);
+
 /*-------------------- rt_init_colors.c --------------------*/
 
 // int	rt_check_rgb_data(char **data, char **split);
 t_color	*rt_init_rgb(char **data, char *values);
 
-/*-------------------- rt_init_coords.c --------------------*/
+/*-------------------- rt_init_objects.c --------------------*/
 
-// int	rt_check_coords_data(char **data, char **split, int isdir);
-t_coord	*rt_init_coords(char **data, char *values, int isdir);
+void	*rt_init_object(char **split, size_t splitsize, char *name);
+void	*rt_init_sphere(char **split);
+void	*rt_init_plane(char **split);
+void	*rt_init_cylinder(char **split);
 
 /*-------------------- rt_init_data.c --------------------*/
 
@@ -123,6 +119,19 @@ int		rt_init_ambient(t_ambient **ambient, char **split);
 // int	rt_check_filename(char *filename);
 // int	rt_check_init_master(t_master *master);
 int		rt_init_master(t_master *master, char *filename);
+
+/*-------------------- rt_free_data.c --------------------*/
+
+void	rt_free_mlx_data(t_mlx_data	*mlx_data);
+void	rt_free_obj_data(t_obj_data *obj_data);
+int		rt_free_master(t_master *master);
+
+/*-------------------- rt_free_objects.c --------------------*/
+
+void	rt_free_ambient(t_ambient *ambient);
+void	rt_free_camera(t_camera *camera);
+void	rt_free_light(t_light *light);
+void	*rt_free_object(t_object *object);
 
 /*-------------------- rt_return_errors.c --------------------*/
 
@@ -140,16 +149,17 @@ void	*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli);
 char	*rt_write_char_error(char *str, char *str2, char *dfi, int dli);
 char	**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
 
-/*-------------------- main.c --------------------*/
-
-// int	main(int ac, char **av);
 
 /*-------------------- test_battery.c --------------------*/
 
 void	error_messages_int(void);
-void	error_messages_char(void);
 void	error_messages_ptr(void);
+void	error_messages_char(void);
 void	error_messages_split(void);
+void	error_return_int(void);
+void	error_return_ptr(void);
+void	error_return_char(void);
+void	error_return_split(void);
 void	display_mlx_data(t_mlx_data *mlx_data);
 void	display_ambient(t_ambient *ambient);
 void	display_camera(t_camera *camera);

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:26:12 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/11 16:42:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 11:00:30 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	error_messages_int(void)
 	rt_write_int_error(E_MISSING, NULL, DFI, DLI);
 	rt_write_int_error(E_ID, NULL, DFI, DLI);
 	rt_write_int_error(E_EXISTING_ID, NULL, DFI, DLI);
-	rt_write_int_error(E_SPLIT_SIZE, NULL, DFI, DLI);
+	rt_write_int_error(E_SPLITLEN, NULL, DFI, DLI);
 	rt_write_int_error(E_RANGE, NULL, DFI, DLI);
 	rt_write_int_error(E_SYNTAX, NULL, DFI, DLI);
 	rt_write_int_error(E_NUMBER, NULL, DFI, DLI);
@@ -46,53 +46,11 @@ void	error_messages_int(void)
 	rt_write_int_error(E_MISSING, "ouaf", DFI, DLI);
 	rt_write_int_error(E_ID, "ouaf", DFI, DLI);
 	rt_write_int_error(E_EXISTING_ID, "ouaf", DFI, DLI);
-	rt_write_int_error(E_SPLIT_SIZE, "ouaf", DFI, DLI);
+	rt_write_int_error(E_SPLITLEN, "ouaf", DFI, DLI);
 	rt_write_int_error(E_RANGE, "ouaf", DFI, DLI);
 	rt_write_int_error(E_SYNTAX, "ouaf", DFI, DLI);
 	rt_write_int_error(E_NUMBER, "ouaf", DFI, DLI);
 	rt_write_int_error(E_NO_VALUE, "ouaf", DFI, DLI);
-	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
-}
-
-void	error_messages_char(void)
-{
-	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
-	dprintf(STDERR_FILENO, "\033[1m\033[32mError messages : rt_write_char_error\033[0m\n\n");
-	rt_write_char_error(E_MALLOC, NULL, DFI, DLI);
-	rt_write_char_error(E_USAGE, NULL, DFI, DLI);
-	rt_write_char_error(E_NO_FILENAME, NULL, DFI, DLI);
-	rt_write_char_error(E_NO_EXT, NULL, DFI, DLI);
-	rt_write_char_error(E_WRONG_EXT, NULL, DFI, DLI);
-	rt_write_char_error(E_OPEN, NULL, DFI, DLI);
-	rt_write_char_error(E_READ, NULL, DFI, DLI);
-	rt_write_char_error(E_CLOSE, NULL, DFI, DLI);
-	rt_write_char_error(E_MISSING, NULL, DFI, DLI);
-	rt_write_char_error(E_ID, NULL, DFI, DLI);
-	rt_write_char_error(E_EXISTING_ID, NULL, DFI, DLI);
-	rt_write_char_error(E_SPLIT_SIZE, NULL, DFI, DLI);
-	rt_write_char_error(E_RANGE, NULL, DFI, DLI);
-	rt_write_char_error(E_SYNTAX, NULL, DFI, DLI);
-	rt_write_char_error(E_NUMBER, NULL, DFI, DLI);
-	rt_write_char_error(E_NO_VALUE, NULL, DFI, DLI);
-	
-	dprintf(STDERR_FILENO, "\n");
-	
-	rt_write_char_error(E_MALLOC, "ouaf", DFI, DLI);
-	rt_write_char_error(E_USAGE, "ouaf", DFI, DLI);
-	rt_write_char_error(E_NO_FILENAME, "ouaf", DFI, DLI);
-	rt_write_char_error(E_NO_EXT, "ouaf", DFI, DLI);
-	rt_write_char_error(E_WRONG_EXT, "ouaf", DFI, DLI);
-	rt_write_char_error(E_OPEN, "ouaf", DFI, DLI);
-	rt_write_char_error(E_READ, "ouaf", DFI, DLI);
-	rt_write_char_error(E_CLOSE, "ouaf", DFI, DLI);
-	rt_write_char_error(E_MISSING, "ouaf", DFI, DLI);
-	rt_write_char_error(E_ID, "ouaf", DFI, DLI);
-	rt_write_char_error(E_EXISTING_ID, "ouaf", DFI, DLI);
-	rt_write_char_error(E_SPLIT_SIZE, "ouaf", DFI, DLI);
-	rt_write_char_error(E_RANGE, "ouaf", DFI, DLI);
-	rt_write_char_error(E_SYNTAX, "ouaf", DFI, DLI);
-	rt_write_char_error(E_NUMBER, "ouaf", DFI, DLI);
-	rt_write_char_error(E_NO_VALUE, "ouaf", DFI, DLI);
 	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
@@ -111,7 +69,7 @@ void	error_messages_ptr(void)
 	rt_write_ptr_error(E_MISSING, NULL, DFI, DLI);
 	rt_write_ptr_error(E_ID, NULL, DFI, DLI);
 	rt_write_ptr_error(E_EXISTING_ID, NULL, DFI, DLI);
-	rt_write_ptr_error(E_SPLIT_SIZE, NULL, DFI, DLI);
+	rt_write_ptr_error(E_SPLITLEN, NULL, DFI, DLI);
 	rt_write_ptr_error(E_RANGE, NULL, DFI, DLI);
 	rt_write_ptr_error(E_SYNTAX, NULL, DFI, DLI);
 	rt_write_ptr_error(E_NUMBER, NULL, DFI, DLI);
@@ -130,11 +88,53 @@ void	error_messages_ptr(void)
 	rt_write_ptr_error(E_MISSING, "ouaf", DFI, DLI);
 	rt_write_ptr_error(E_ID, "ouaf", DFI, DLI);
 	rt_write_ptr_error(E_EXISTING_ID, "ouaf", DFI, DLI);
-	rt_write_ptr_error(E_SPLIT_SIZE, "ouaf", DFI, DLI);
+	rt_write_ptr_error(E_SPLITLEN, "ouaf", DFI, DLI);
 	rt_write_ptr_error(E_RANGE, "ouaf", DFI, DLI);
 	rt_write_ptr_error(E_SYNTAX, "ouaf", DFI, DLI);
 	rt_write_ptr_error(E_NUMBER, "ouaf", DFI, DLI);
 	rt_write_ptr_error(E_NO_VALUE, "ouaf", DFI, DLI);
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+}
+
+void	error_messages_char(void)
+{
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+	dprintf(STDERR_FILENO, "\033[1m\033[32mError messages : rt_write_char_error\033[0m\n\n");
+	rt_write_char_error(E_MALLOC, NULL, DFI, DLI);
+	rt_write_char_error(E_USAGE, NULL, DFI, DLI);
+	rt_write_char_error(E_NO_FILENAME, NULL, DFI, DLI);
+	rt_write_char_error(E_NO_EXT, NULL, DFI, DLI);
+	rt_write_char_error(E_WRONG_EXT, NULL, DFI, DLI);
+	rt_write_char_error(E_OPEN, NULL, DFI, DLI);
+	rt_write_char_error(E_READ, NULL, DFI, DLI);
+	rt_write_char_error(E_CLOSE, NULL, DFI, DLI);
+	rt_write_char_error(E_MISSING, NULL, DFI, DLI);
+	rt_write_char_error(E_ID, NULL, DFI, DLI);
+	rt_write_char_error(E_EXISTING_ID, NULL, DFI, DLI);
+	rt_write_char_error(E_SPLITLEN, NULL, DFI, DLI);
+	rt_write_char_error(E_RANGE, NULL, DFI, DLI);
+	rt_write_char_error(E_SYNTAX, NULL, DFI, DLI);
+	rt_write_char_error(E_NUMBER, NULL, DFI, DLI);
+	rt_write_char_error(E_NO_VALUE, NULL, DFI, DLI);
+	
+	dprintf(STDERR_FILENO, "\n");
+	
+	rt_write_char_error(E_MALLOC, "ouaf", DFI, DLI);
+	rt_write_char_error(E_USAGE, "ouaf", DFI, DLI);
+	rt_write_char_error(E_NO_FILENAME, "ouaf", DFI, DLI);
+	rt_write_char_error(E_NO_EXT, "ouaf", DFI, DLI);
+	rt_write_char_error(E_WRONG_EXT, "ouaf", DFI, DLI);
+	rt_write_char_error(E_OPEN, "ouaf", DFI, DLI);
+	rt_write_char_error(E_READ, "ouaf", DFI, DLI);
+	rt_write_char_error(E_CLOSE, "ouaf", DFI, DLI);
+	rt_write_char_error(E_MISSING, "ouaf", DFI, DLI);
+	rt_write_char_error(E_ID, "ouaf", DFI, DLI);
+	rt_write_char_error(E_EXISTING_ID, "ouaf", DFI, DLI);
+	rt_write_char_error(E_SPLITLEN, "ouaf", DFI, DLI);
+	rt_write_char_error(E_RANGE, "ouaf", DFI, DLI);
+	rt_write_char_error(E_SYNTAX, "ouaf", DFI, DLI);
+	rt_write_char_error(E_NUMBER, "ouaf", DFI, DLI);
+	rt_write_char_error(E_NO_VALUE, "ouaf", DFI, DLI);
 	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
@@ -153,7 +153,7 @@ void	error_messages_split(void)
 	rt_write_split_error(E_MISSING, NULL, DFI, DLI);
 	rt_write_split_error(E_ID, NULL, DFI, DLI);
 	rt_write_split_error(E_EXISTING_ID, NULL, DFI, DLI);
-	rt_write_split_error(E_SPLIT_SIZE, NULL, DFI, DLI);
+	rt_write_split_error(E_SPLITLEN, NULL, DFI, DLI);
 	rt_write_split_error(E_RANGE, NULL, DFI, DLI);
 	rt_write_split_error(E_SYNTAX, NULL, DFI, DLI);
 	rt_write_split_error(E_NUMBER, NULL, DFI, DLI);
@@ -172,11 +172,179 @@ void	error_messages_split(void)
 	rt_write_split_error(E_MISSING, "ouaf", DFI, DLI);
 	rt_write_split_error(E_ID, "ouaf", DFI, DLI);
 	rt_write_split_error(E_EXISTING_ID, "ouaf", DFI, DLI);
-	rt_write_split_error(E_SPLIT_SIZE, "ouaf", DFI, DLI);
+	rt_write_split_error(E_SPLITLEN, "ouaf", DFI, DLI);
 	rt_write_split_error(E_RANGE, "ouaf", DFI, DLI);
 	rt_write_split_error(E_SYNTAX, "ouaf", DFI, DLI);
 	rt_write_split_error(E_NUMBER, "ouaf", DFI, DLI);
 	rt_write_split_error(E_NO_VALUE, "ouaf", DFI, DLI);
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+}
+
+void	error_return_int(void)
+{
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+	dprintf(STDERR_FILENO, "\033[1m\033[32mError return : rt_return_int_error\033[0m\n\n");
+	rt_return_int_error(NULL, NULL, E_MALLOC, NULL);
+	rt_return_int_error(NULL, NULL, E_USAGE, NULL);
+	rt_return_int_error(NULL, NULL, E_NO_FILENAME, NULL);
+	rt_return_int_error(NULL, NULL, E_NO_EXT, NULL);
+	rt_return_int_error(NULL, NULL, E_WRONG_EXT, NULL);
+	rt_return_int_error(NULL, NULL, E_OPEN, NULL);
+	rt_return_int_error(NULL, NULL, E_READ, NULL);
+	rt_return_int_error(NULL, NULL, E_CLOSE, NULL);
+	rt_return_int_error(NULL, NULL, E_MISSING, NULL);
+	rt_return_int_error(NULL, NULL, E_ID, NULL);
+	rt_return_int_error(NULL, NULL, E_EXISTING_ID, NULL);
+	rt_return_int_error(NULL, NULL, E_SPLITLEN, NULL);
+	rt_return_int_error(NULL, NULL, E_RANGE, NULL);
+	rt_return_int_error(NULL, NULL, E_SYNTAX, NULL);
+	rt_return_int_error(NULL, NULL, E_NUMBER, NULL);
+	rt_return_int_error(NULL, NULL, E_NO_VALUE, NULL);
+	
+	dprintf(STDERR_FILENO, "\n");
+	
+	rt_return_int_error(NULL, NULL, E_MALLOC, "ouaf");
+	rt_return_int_error(NULL, NULL, E_USAGE, "ouaf");
+	rt_return_int_error(NULL, NULL, E_NO_FILENAME, "ouaf");
+	rt_return_int_error(NULL, NULL, E_NO_EXT, "ouaf");
+	rt_return_int_error(NULL, NULL, E_WRONG_EXT, "ouaf");
+	rt_return_int_error(NULL, NULL, E_OPEN, "ouaf");
+	rt_return_int_error(NULL, NULL, E_READ, "ouaf");
+	rt_return_int_error(NULL, NULL, E_CLOSE, "ouaf");
+	rt_return_int_error(NULL, NULL, E_MISSING, "ouaf");
+	rt_return_int_error(NULL, NULL, E_ID, "ouaf");
+	rt_return_int_error(NULL, NULL, E_EXISTING_ID, "ouaf");
+	rt_return_int_error(NULL, NULL, E_SPLITLEN, "ouaf");
+	rt_return_int_error(NULL, NULL, E_RANGE, "ouaf");
+	rt_return_int_error(NULL, NULL, E_SYNTAX, "ouaf");
+	rt_return_int_error(NULL, NULL, E_NUMBER, "ouaf");
+	rt_return_int_error(NULL, NULL, E_NO_VALUE, "ouaf");
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+}
+
+void	error_return_ptr(void)
+{
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+	dprintf(STDERR_FILENO, "\033[1m\033[32mError return : rt_return_ptr_error\033[0m\n\n");
+	rt_return_ptr_error(NULL, NULL, E_MALLOC, NULL);
+	rt_return_ptr_error(NULL, NULL, E_USAGE, NULL);
+	rt_return_ptr_error(NULL, NULL, E_NO_FILENAME, NULL);
+	rt_return_ptr_error(NULL, NULL, E_NO_EXT, NULL);
+	rt_return_ptr_error(NULL, NULL, E_WRONG_EXT, NULL);
+	rt_return_ptr_error(NULL, NULL, E_OPEN, NULL);
+	rt_return_ptr_error(NULL, NULL, E_READ, NULL);
+	rt_return_ptr_error(NULL, NULL, E_CLOSE, NULL);
+	rt_return_ptr_error(NULL, NULL, E_MISSING, NULL);
+	rt_return_ptr_error(NULL, NULL, E_ID, NULL);
+	rt_return_ptr_error(NULL, NULL, E_EXISTING_ID, NULL);
+	rt_return_ptr_error(NULL, NULL, E_SPLITLEN, NULL);
+	rt_return_ptr_error(NULL, NULL, E_RANGE, NULL);
+	rt_return_ptr_error(NULL, NULL, E_SYNTAX, NULL);
+	rt_return_ptr_error(NULL, NULL, E_NUMBER, NULL);
+	rt_return_ptr_error(NULL, NULL, E_NO_VALUE, NULL);
+	
+	dprintf(STDERR_FILENO, "\n");
+	
+	rt_return_ptr_error(NULL, NULL, E_MALLOC, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_USAGE, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_NO_FILENAME, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_NO_EXT, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_WRONG_EXT, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_OPEN, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_READ, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_CLOSE, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_MISSING, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_ID, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_EXISTING_ID, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_SPLITLEN, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_RANGE, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_SYNTAX, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_NUMBER, "ouaf");
+	rt_return_ptr_error(NULL, NULL, E_NO_VALUE, "ouaf");
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+}
+
+void	error_return_char(void)
+{
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+	dprintf(STDERR_FILENO, "\033[1m\033[32mError return : rt_return_char_error\033[0m\n\n");
+	rt_return_char_error(NULL, NULL, E_MALLOC, NULL);
+	rt_return_char_error(NULL, NULL, E_USAGE, NULL);
+	rt_return_char_error(NULL, NULL, E_NO_FILENAME, NULL);
+	rt_return_char_error(NULL, NULL, E_NO_EXT, NULL);
+	rt_return_char_error(NULL, NULL, E_WRONG_EXT, NULL);
+	rt_return_char_error(NULL, NULL, E_OPEN, NULL);
+	rt_return_char_error(NULL, NULL, E_READ, NULL);
+	rt_return_char_error(NULL, NULL, E_CLOSE, NULL);
+	rt_return_char_error(NULL, NULL, E_MISSING, NULL);
+	rt_return_char_error(NULL, NULL, E_ID, NULL);
+	rt_return_char_error(NULL, NULL, E_EXISTING_ID, NULL);
+	rt_return_char_error(NULL, NULL, E_SPLITLEN, NULL);
+	rt_return_char_error(NULL, NULL, E_RANGE, NULL);
+	rt_return_char_error(NULL, NULL, E_SYNTAX, NULL);
+	rt_return_char_error(NULL, NULL, E_NUMBER, NULL);
+	rt_return_char_error(NULL, NULL, E_NO_VALUE, NULL);
+	
+	dprintf(STDERR_FILENO, "\n");
+	
+	rt_return_char_error(NULL, NULL, E_MALLOC, "ouaf");
+	rt_return_char_error(NULL, NULL, E_USAGE, "ouaf");
+	rt_return_char_error(NULL, NULL, E_NO_FILENAME, "ouaf");
+	rt_return_char_error(NULL, NULL, E_NO_EXT, "ouaf");
+	rt_return_char_error(NULL, NULL, E_WRONG_EXT, "ouaf");
+	rt_return_char_error(NULL, NULL, E_OPEN, "ouaf");
+	rt_return_char_error(NULL, NULL, E_READ, "ouaf");
+	rt_return_char_error(NULL, NULL, E_CLOSE, "ouaf");
+	rt_return_char_error(NULL, NULL, E_MISSING, "ouaf");
+	rt_return_char_error(NULL, NULL, E_ID, "ouaf");
+	rt_return_char_error(NULL, NULL, E_EXISTING_ID, "ouaf");
+	rt_return_char_error(NULL, NULL, E_SPLITLEN, "ouaf");
+	rt_return_char_error(NULL, NULL, E_RANGE, "ouaf");
+	rt_return_char_error(NULL, NULL, E_SYNTAX, "ouaf");
+	rt_return_char_error(NULL, NULL, E_NUMBER, "ouaf");
+	rt_return_char_error(NULL, NULL, E_NO_VALUE, "ouaf");
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+}
+
+void	error_return_split(void)
+{
+	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
+	dprintf(STDERR_FILENO, "\033[1m\033[32mError return : rt_return_split_error\033[0m\n\n");
+	rt_return_split_error(NULL, NULL, E_MALLOC, NULL);
+	rt_return_split_error(NULL, NULL, E_USAGE, NULL);
+	rt_return_split_error(NULL, NULL, E_NO_FILENAME, NULL);
+	rt_return_split_error(NULL, NULL, E_NO_EXT, NULL);
+	rt_return_split_error(NULL, NULL, E_WRONG_EXT, NULL);
+	rt_return_split_error(NULL, NULL, E_OPEN, NULL);
+	rt_return_split_error(NULL, NULL, E_READ, NULL);
+	rt_return_split_error(NULL, NULL, E_CLOSE, NULL);
+	rt_return_split_error(NULL, NULL, E_MISSING, NULL);
+	rt_return_split_error(NULL, NULL, E_ID, NULL);
+	rt_return_split_error(NULL, NULL, E_EXISTING_ID, NULL);
+	rt_return_split_error(NULL, NULL, E_SPLITLEN, NULL);
+	rt_return_split_error(NULL, NULL, E_RANGE, NULL);
+	rt_return_split_error(NULL, NULL, E_SYNTAX, NULL);
+	rt_return_split_error(NULL, NULL, E_NUMBER, NULL);
+	rt_return_split_error(NULL, NULL, E_NO_VALUE, NULL);
+	
+	dprintf(STDERR_FILENO, "\n");
+	
+	rt_return_split_error(NULL, NULL, E_MALLOC, "ouaf");
+	rt_return_split_error(NULL, NULL, E_USAGE, "ouaf");
+	rt_return_split_error(NULL, NULL, E_NO_FILENAME, "ouaf");
+	rt_return_split_error(NULL, NULL, E_NO_EXT, "ouaf");
+	rt_return_split_error(NULL, NULL, E_WRONG_EXT, "ouaf");
+	rt_return_split_error(NULL, NULL, E_OPEN, "ouaf");
+	rt_return_split_error(NULL, NULL, E_READ, "ouaf");
+	rt_return_split_error(NULL, NULL, E_CLOSE, "ouaf");
+	rt_return_split_error(NULL, NULL, E_MISSING, "ouaf");
+	rt_return_split_error(NULL, NULL, E_ID, "ouaf");
+	rt_return_split_error(NULL, NULL, E_EXISTING_ID, "ouaf");
+	rt_return_split_error(NULL, NULL, E_SPLITLEN, "ouaf");
+	rt_return_split_error(NULL, NULL, E_RANGE, "ouaf");
+	rt_return_split_error(NULL, NULL, E_SYNTAX, "ouaf");
+	rt_return_split_error(NULL, NULL, E_NUMBER, "ouaf");
+	rt_return_split_error(NULL, NULL, E_NO_VALUE, "ouaf");
 	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
@@ -211,7 +379,7 @@ void	display_ambient(t_ambient *ambient)
 void	display_camera(t_camera *camera)
 {
 	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
-	dprintf(STDERR_FILENO, "\033[1m\033[32mcamera->display_camera\033[0m\n\n");
+	dprintf(STDERR_FILENO, "\033[1m\033[32mdisplay_camera\033[0m\n\n");
 	if (camera->pos)
 	{
 		dprintf(STDERR_FILENO, "camera->pos->x = \033[36m%f\033[0m\n", camera->pos->x);
@@ -225,6 +393,7 @@ void	display_camera(t_camera *camera)
 		dprintf(STDERR_FILENO, "camera->dir->z = \033[36m%f\033[0m\n", camera->dir->z);
 	}
 	dprintf(STDERR_FILENO, "camera->fov = \033[36m%d\033[0m\n", camera->fov);
+	dprintf(STDERR_FILENO, "camera->radian = \033[36m%f\033[0m\n", camera->radian);
 	dprintf(STDERR_FILENO, "\n\033[2m==================================================\033[0m\n");
 }
 
@@ -354,9 +523,13 @@ void	test_battery(t_master *master, int ac, char **av)
 	(void)ac;
 	(void)av;
 	// error_messages_int();
-	// error_messages_char();
 	// error_messages_ptr();
+	// error_messages_char();
 	// error_messages_split();
+	// error_return_int();
+	// error_return_ptr();
+	// error_return_char();
+	// error_return_split();
 	// dprintf(STDERR_FILENO, "\n");
 	// dprintf(STDERR_FILENO, "ac = %d\n", ac);
 	// for (int i = 0; av[i]; i++)
@@ -365,4 +538,5 @@ void	test_battery(t_master *master, int ac, char **av)
 	// display_file_content(av[1]);
 	// dprintf(STDERR_FILENO, "\n");
 	// display_master(master);
+	dprintf(STDERR_FILENO, "\n\033[1m\033[32mEND OF DISPLAY\033[0m\n");
 }

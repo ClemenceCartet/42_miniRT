@@ -6,14 +6,14 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:05:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 10:39:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 10:56:46 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
 //Initialization of object data (SP / PL / CY)
-void	*rt_init_object(char **split, size_t splitsize, char name)
+void	*rt_init_object(char **split, size_t splitsize, char *name)
 {
 	t_object	*object;
 
@@ -78,7 +78,7 @@ void	*rt_init_plane(char **split)
 }
 
 //Cylinder initialization (CY)
-void	rt_init_cylinder(char **split)
+void	*rt_init_cylinder(char **split)
 {
 	t_object	*object;
 
