@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/06 11:33:12 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/13 10:59:46 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,13 @@ MLX		:=	mlx/libmlx.a
 LST_INCS		:=	mini_rt.h		rt_keys.h			\
 					rt_data.h		rt_defines.h		\
 					rt_objects.h
-LST_SRCS		:=	rt_free_data.c		rt_free_objects.c	\
-					rt_init_master.c	rt_write_errors.c	\
-					rt_struct_utils.c	rt_init_objects.c	\
-					rt_init_data.c		rt_check_utils.c	\
-					rt_init_coords.c	rt_init_rgb.c
+LST_SRCS		:=	rt_check_utils.c	rt_check_utils2.c	\
+					rt_data_utils.c		rt_free_data.c		\
+					rt_free_objects.c	rt_init_coords.c	\
+					rt_init_data.c		rt_init_master.c	\
+					rt_init_objects.c	rt_init_rgb.c		\
+					rt_return_errors.c	rt_write_errors.c	\
+					test_battery.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -95,7 +97,7 @@ all: makelibft $(NAME)
 # 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
 
 $(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
-	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
+	$(CC) $(CF) $(CI) $(OBJS) -o $@ $(LIBFT)
 
 $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
 	$(CC) $(CF) $(CI) -c $< -o $@

@@ -68,7 +68,7 @@ void	rt_free_light(t_light *light)
 }
 
 //Free data of an object from obj_data->lst
-void	rt_free_object(t_object *object)
+void	*rt_free_object(t_object *object)
 {
 	if (object)
 	{
@@ -90,4 +90,5 @@ void	rt_free_object(t_object *object)
 		free (object);
 		object = NULL;
 	}
+	return (NULL);
 }
