@@ -209,4 +209,3 @@ rt_check_overflow(char *value)
 rt_check_struct(char *values)
 	Check Comma number
 	Check Splitlen
-

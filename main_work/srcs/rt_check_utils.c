@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:35:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 14:45:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 12:08:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,9 @@ int	rt_check_charset(char *value, char *charset)
 int	rt_check_float_syntax(char *value)
 {
 	int	a;
-	int	midnb;
 	int	point;
 
 	a = 0;
-	midnb = 0;
 	point = 0;
 	if (!value || !value[0])
 		return (rt_write_int_error(E_NO_VALUE, NULL, DFI, DLI));
@@ -81,10 +79,8 @@ int	rt_check_float_syntax(char *value)
 	{
 		if (ft_isnotcharset(value[a], FLOAT_CHARSET))
 			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
-		if (midnb && (value[a] == '-' || value[a] == '+'))
+		if (a > 0 && (value[a] == '-' || value[a] == '+'))
 			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
-		if (!midnb && ft_ischarset(value[a], "0123456789"))
-			midnb = 1;
 		if (point && value[a] == '.')
 			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
 		if (!point && value[a] == '.')

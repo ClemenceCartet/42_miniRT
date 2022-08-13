@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 10:57:01 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 12:12:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,6 @@ int		rt_write_int_error(char *str, char *str2, char *dfi, int dli);
 void	*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli);
 char	*rt_write_char_error(char *str, char *str2, char *dfi, int dli);
 char	**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
-
 
 /*-------------------- test_battery.c --------------------*/
 
