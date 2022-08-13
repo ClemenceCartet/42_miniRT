@@ -6,12 +6,14 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/06/28 15:27:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/12 12:48:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_OBJECTS_H
 # define RT_OBJECTS_H
+
+# include <mini_rt.h>
 
 /*/////////////////////////////////////////////////////////////////////////////
 		MANDATORY OBJECTS STRUCTURES
@@ -23,8 +25,8 @@
 */
 struct	s_ambient
 {
-	float		ratio;
-	t_colors	*rgb;
+	float	ratio;
+	t_color	*rgb;
 };
 
 /**Structure pour la caméra
@@ -34,9 +36,10 @@ struct	s_ambient
 */
 struct	s_camera
 {
-	t_coords	*pos;
-	t_coords	*dir;
-	int			fov;
+	t_coord	*pos;
+	t_coord	*dir;
+	int		fov;
+	float	radian;
 };
 
 /**Structure pour la lumière
@@ -46,39 +49,44 @@ struct	s_camera
 */
 struct	s_light
 {
-	t_coords	*pos;
-	float		ratio;
-	t_colors	*rgb;
+	t_coord	*pos;
+	float	ratio;
+	t_color	*rgb;
 };
 
 /*/////////////////////////////////////////////////////////////////////////////
-		SECONDARY OBJECTS STRUCTURES
+		SECONDARY OBJECTS STRUCTURE
 *//////////////////////////////////////////////////////////////////////////////
 
+/**Structure lien de la liste chaînées des objets
+ * id 		= identifiant de l'objet (SP / PL / CY)
+ * 
+ * pos		= coordonnées XYZ de l'objet
+ * dir		= Vecteur d'orientation 3D sur l'axe XYZ | range [ -1 / 1 ] (PL / CY)
+ * rgb		= couleur RGB de l'objet | range [ 0 / 255 ]
+ * diameter	= diamètre de l'objet (SP / CY)
+ * height	= hauteur de l'objet (CY)
+*/
+struct	s_object
+{
+	int		id;
+
+	t_coord	*pos;
+	t_coord	*dir;
+	t_color	*rgb;
+	float	diameter;
+	float	height;
+};
 /**Structure pour l'objet sphère
  * pos		= coordonnées XYZ du centre de la sphère
  * diameter	= diamètre de la sphère
  * rgb		= couleurs RGB de la sphère | range [ 0 / 255 ]
 */
-struct	s_sphere
-{
-	t_coords	pos;
-	float		diameter;
-	t_colors	rgb;
-};
-
 /**Structure pour l'objet plan
  * pos		= coordonnées XYZ du plan
  * dir		= Vecteur d'orientation 3d sur l'axe XYZ | range [ -1 / 1 ]
  * rgb		= couleurs RGB du plan | range [ 0 / 255 ]
 */
-struct	s_plane
-{
-	t_coords	pos;
-	t_coords	dir;
-	t_colors	rgb;
-};
-
 /**Structure pour l'objet cylindre
  * pos		= coordonnées XYZ du cylindre
  * dir		= Vecteur d'orientation 3D sur l'axe XYZ | range [ -1 / 1 ]
@@ -86,13 +94,5 @@ struct	s_plane
  * height	= hauteur du cylindre
  * rgb		= couleurs RGB du cylindre | range [ 0 / 255 ]
 */
-struct	s_cylinder
-{
-	t_coords	pos;
-	t_coords	dir;
-	float		diameter;
-	float		height;
-	t_colors	rgb;
-};
 
 #endif //RT_OBJECTS_H

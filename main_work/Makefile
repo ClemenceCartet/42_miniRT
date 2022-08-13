@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/06/13 09:26:09 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/13 10:59:46 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,46 +23,16 @@ MLX		:=	mlx/libmlx.a
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS		:=	mini_rt.h					rt_keys.h				\
-					rt_data.h					rt_structs.h			\
-					rt_defines.h
-
-LST_CHECKERS	:=	check_file_content.c		check_float_syntax.c	\
-					check_value_format.c
-
-LST_FREEZERS	:=	free_master.c				free_object_list.c
-
-LST_GETTERS		:=	get_file_content.c			get_split_from_raw.c
-
-LST_INIT_ITEM	:=	init_item_ambient.c			init_item_camera.c		\
-					init_item_cylinder.c		init_item_light.c		\
-					init_item_plane.c			init_item_sphere.c
-
-LST_INIT_VALUE	:=	init_value_fov.c			init_value_o_xyz.c		\
-					init_value_p_xyz.c			init_value_ratio.c		\
-					init_value_rgb.c			init_value_size.c
-
-LST_INITIERS	:=	init_master.c				init_object_ptr.c
-
-LST_PARSE_ITEM	:=	parse_item_ambient.c		parse_item_camera.c		\
-					parse_item_cylinder.c		parse_item_light.c		\
-					parse_item_plane.c			parse_item_sphere.c
-
-LST_PARSERS		:=	parse_file_content.c		parse_line.c			\
-					parse_master.c				parse_object.c
-
-LST_SETTERS		:=	
-
-LST_WRITERS		:=	write_char_error.c			write_int_error.c		\
-					write_split_error.c
-
-LST_TESTERS		:=	test_ambient_values.c		test_camera_values.c	\
-					test_cylinder_values.c		test_light_values.c		\
-					test_object_list_values.c	test_plane_values.c		\
-					test_sphere_values.c		test_split_values.c		\
-					test_unit.c					test_fov.c				\
-					test_ratio.c				test_rgb.c				\
-					test_size.c					test_p_xyz.c
+LST_INCS		:=	mini_rt.h		rt_keys.h			\
+					rt_data.h		rt_defines.h		\
+					rt_objects.h
+LST_SRCS		:=	rt_check_utils.c	rt_check_utils2.c	\
+					rt_data_utils.c		rt_free_data.c		\
+					rt_free_objects.c	rt_init_coords.c	\
+					rt_init_data.c		rt_init_master.c	\
+					rt_init_objects.c	rt_init_rgb.c		\
+					rt_return_errors.c	rt_write_errors.c	\
+					test_battery.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -87,18 +57,8 @@ P_OBJS			:=	.objs/
 
 # Shortcuts
 INCS			:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS			:=	$(addprefix $(P_SRCS),main.c)								\
-					$(addprefix $(P_SRCS)$(P_CHECKERS),$(LST_CHECKERS))			\
-					$(addprefix $(P_SRCS)$(P_FREEZERS),$(LST_FREEZERS))			\
-					$(addprefix $(P_SRCS)$(P_GETTERS),$(LST_GETTERS))			\
-					$(addprefix $(P_SRCS)$(P_INIT_ITEM),$(LST_INIT_ITEM))		\
-					$(addprefix $(P_SRCS)$(P_INIT_VALUE),$(LST_INIT_VALUE))		\
-					$(addprefix $(P_SRCS)$(P_INITIERS),$(LST_INITIERS))			\
-					$(addprefix $(P_SRCS)$(P_PARSE_ITEM),$(LST_PARSE_ITEM))		\
-					$(addprefix $(P_SRCS)$(P_PARSERS),$(LST_PARSERS))			\
-					$(addprefix $(P_SRCS)$(P_SETTERS),$(LST_SETTERS))			\
-					$(addprefix $(P_SRCS)$(P_WRITERS),$(LST_WRITERS))			\
-					$(addprefix $(P_SRCS)$(P_TESTERS),$(LST_TESTERS))
+SRCS			:=	$(addprefix $(P_SRCS),$(LST_SRCS))	\
+					$(addprefix $(P_SRCS),main.c)
 OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 #//////////////////////////////////////////////////////////////////////////////

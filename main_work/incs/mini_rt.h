@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/07/01 11:27:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 18:21:11 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ struct s_list
 # include <libft.h>
 # include <mlx.h>
 
-# include <math.h>
-
 /*/////////////////////////////////////////////////////////////////////////////
 		MINI RT HEADER FILES
 *//////////////////////////////////////////////////////////////////////////////
@@ -60,118 +58,112 @@ struct s_list
 # include <rt_keys.h>
 # include <rt_data.h>
 # include <rt_defines.h>
+# include <rt_objects.h>
 
 /*/////////////////////////////////////////////////////////////////////////////
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
-/*-------------------- CHECKERS --------------------*/
+/*-------------------- rt_check_utils.c --------------------*/
 
-int		rt_check_file_content(char *content);
-int		rt_check_float_syntax(char *str, char *name);
-int		rt_check_value_format(char *value, char *charset);
+int		rt_check_ptr(void *ptr, char **split);
+int		rt_check_comma(char *values);
+int		rt_check_charset(char *value, char *charset);
+int		rt_check_float_syntax(char *value);
 
-/*-------------------- FREEZERS --------------------*/
+/*-------------------- rt_check_utils2.c --------------------*/
 
+// int	rt_full_strcmp(char *s1, char *s2);
+int		rt_check_overflow(char *value, char **split);
+int		rt_check_float_range(float value, float min, float max, char *range);
+int		rt_check_int_range(int value, int min, int max, char *range);
+
+/*-------------------- rt_data_utils.c --------------------*/
+
+void	*rt_calloc_struct(size_t size, char **split);
+float	rt_init_obj_size(char **data, char *value);
+float	rt_init_ratio(char **data, char *value);
+int		rt_init_fov(char **data, char *value);
+
+/*-------------------- rt_init_coords.c --------------------*/
+
+// int	rt_check_coords_data(char **data, char **split, int isdir);
+t_coord	*rt_init_coords(char **data, char *values, int isdir);
+
+/*-------------------- rt_init_colors.c --------------------*/
+
+// int	rt_check_rgb_data(char **data, char **split);
+t_color	*rt_init_rgb(char **data, char *values);
+
+/*-------------------- rt_init_objects.c --------------------*/
+
+void	*rt_init_object(char **split, size_t splitsize, char *name);
+void	*rt_init_sphere(char **split);
+void	*rt_init_plane(char **split);
+void	*rt_init_cylinder(char **split);
+
+/*-------------------- rt_init_data.c --------------------*/
+
+int		rt_init_obj_data(t_obj_data **obj_data, char **split);
+int		rt_init_light(t_light **light, char **split);
+int		rt_init_camera(t_camera **camera, char **split);
+int		rt_init_ambient(t_ambient **ambient, char **split);
+
+/*-------------------- rt_init_master.c --------------------*/
+
+// int	rt_parse_line(t_master *master, char *line);
+// int	rt_get_file_content(t_master *master, char *filename);
+// int	rt_check_filename(char *filename);
+// int	rt_check_init_master(t_master *master);
+int		rt_init_master(t_master *master, char *filename);
+
+/*-------------------- rt_free_data.c --------------------*/
+
+void	rt_free_mlx_data(t_mlx_data	*mlx_data);
+void	rt_free_obj_data(t_obj_data *obj_data);
 int		rt_free_master(t_master *master);
-void	rt_free_object_list(t_object *object);
 
-/*-------------------- GETTERS --------------------*/
+/*-------------------- rt_free_objects.c --------------------*/
 
-char	*rt_get_file_content(char *filename);
-char	**rt_get_split_from_raw(char *value, char c, int splitlen, char *name);
+void	rt_free_ambient(t_ambient *ambient);
+void	rt_free_camera(t_camera *camera);
+void	rt_free_light(t_light *light);
+void	*rt_free_object(t_object *object);
 
-/*-------------------- INIT_ITEM --------------------*/
+/*-------------------- rt_return_errors.c --------------------*/
 
-// int	rt_init_ambient_rgb(t_ambient *ambient, char *value);
-int		rt_init_item_ambient(t_ambient *ambient, char **split);
+// void	ft_free_split_error(char **split1, char **split2);
+int		rt_return_int_error(char **s1, char **s2, char *str, char *str2);
+void	*rt_return_ptr_error(char **s1, char **s2, char *str, char *str2);
+char	*rt_return_char_error(char **s1, char **s2, char *str, char *str2);
+char	**rt_return_split_error(char **s1, char **s2, char *str, char *str2);
 
-// int	rt_init_camera_o_xyz(t_camera *camera, char *value);
-// int	rt_init_camera_p_xyz(t_camera *camera, char *value);
-int		rt_init_item_camera(t_camera *camera, char **split);
+/*-------------------- rt_write_errors.c --------------------*/
 
-// int	rt_init_cylinder_rgb(t_cylinder *cylinder, char *value);
-// int	rt_init_cylinder_p_xyz(t_cylinder *cylinder, char *value);
-// int	rt_init_cylinder_o_xyz(t_cylinder *cylinder, char *value);
-int		rt_init_item_cylinder(t_cylinder *cylinder, char **split);
+// void	rt_display_error(char *str, char *str2);
+int		rt_write_int_error(char *str, char *str2, char *dfi, int dli);
+void	*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli);
+char	*rt_write_char_error(char *str, char *str2, char *dfi, int dli);
+char	**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
 
-// int	rt_init_light_rgb(t_light *light, char *value);
-// int	rt_init_light_p_xyz(t_light *light, char *value);
-int		rt_init_item_light(t_light *light, char **split);
+/*-------------------- test_battery.c --------------------*/
 
-// int	rt_init_plane_rgb(t_plane *plane, char *value);
-// int	rt_init_plane_p_xyz(t_plane *plane, char *value);
-// int	rt_init_plane_o_xyz(t_plane *plane, char *value);
-int		rt_init_item_plane(t_plane *plane, char **split);
-
-// int	rt_init_sphere_rgb(t_sphere *sphere, char *value);
-// int	rt_init_sphere_p_xyz(t_sphere *sphere, char *value);
-int		rt_init_sphere_values(t_sphere *sphere, char **split);
-
-/*-------------------- INIT_VALUES --------------------*/
-
-int		rt_init_value_fov(char *value, char *name);
-float	rt_init_value_o_xyz(char *value, int index, char *name);
-float	rt_init_value_p_xyz(char *value, int index, char *name, int *err);
-float	rt_init_value_ratio(char *value, char *name);
-int		rt_init_value_rgb(char *value, int index, char *name);
-float	rt_init_value_size(char *value, char *name);
-
-/*-------------------- INITIERS --------------------*/
-
-int		rt_init_master(t_master *master);
-void	*rt_init_object_ptr(char **split, int valid_splitlen, char *name);
-
-/*-------------------- PARSE_ITEM --------------------*/
-
-int		rt_parse_ambient(t_master *master, char **split);
-int		rt_parse_camera(t_master *master, char **split);
-void	*rt_parse_cylinder(int *object_id, char **split);
-int		rt_parse_light(t_master *master, char **split);
-void	*rt_parse_plane(int *object_id, char **split);
-void	*rt_parse_sphere(int *object_id, char **split);
-
-/*-------------------- PARSERS --------------------*/
-
-int		rt_parse_file_content(t_master *master, char *content);
-int		rt_parse_line(t_master *master, char *line);
-int		rt_parse_master(t_master *master, char *filename);
-int		rt_parse_object(t_master *master, char **split);
-
-/*-------------------- SETTERS --------------------*/
-
-
-/*-------------------- WRITERS --------------------*/
-
-char	*rt_write_char_error(char *str, char *str2);
-int		rt_write_int_error(char *str, char *str2);
-char	**rt_write_split_error(char *str, char *str2);
-
-/*-------------------- main.c --------------------*/
-
-// int	main(int ac, char **av);
-
-/*/////////////////////////////////////////////////////////////////////////////
-		TEST FUNCTION PROTOTYPES
-*//////////////////////////////////////////////////////////////////////////////
-
-void	test_ambient_values(t_ambient *ambient);
-void	test_camera_values(t_camera *camera);
-void	test_cylinder_values(t_cylinder *cylinder);
-void	test_light_values(t_light *light);
-void	test_object_list_values(t_object *object);
-void	test_plane_values(t_plane *plane);
-void	test_sphere_values(t_sphere *sphere);
-void	test_split_values(char **split);
-
-void	test_fov(void);
-void	test_unit(void);
-void	test_rgb(void);
-void	test_ratio(void);
-void	test_size(void);
-void	test_p_xyz(void);
-
-// dprintf(STDOUT_FILENO, "\n\033[35m\033[1mIN  | %s | %d | %s\033[0m\n", DFI, DLI, DFU);
-// dprintf(STDOUT_FILENO, "\n\033[36m\033[1mOUT | %s | %d | %s\033[0m\n", DFI, DLI, DFU);
+void	error_messages_int(void);
+void	error_messages_ptr(void);
+void	error_messages_char(void);
+void	error_messages_split(void);
+void	error_return_int(void);
+void	error_return_ptr(void);
+void	error_return_char(void);
+void	error_return_split(void);
+void	display_mlx_data(t_mlx_data *mlx_data);
+void	display_ambient(t_ambient *ambient);
+void	display_camera(t_camera *camera);
+void	display_light(t_light *light);
+void	display_object(t_object *object);
+void	display_obj_data(t_obj_data *obj_data);
+void	display_master(t_master *master);
+void	display_file_content(char *file);
+void	test_battery(t_master *master, int ac, char **av);
 
 #endif //MINI_RT_H

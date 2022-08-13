@@ -1,0 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rt_init_rgb.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/12 13:19:42 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/08/13 18:32:42 by ljohnson         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <mini_rt.h>
+
+//Check splitlen, existence, rgb syntax, overflow, isnan, isinf, range
+static int	rt_check_rgb_data(char **data, char **split)
+{
+	int	a;
+	int	tmp;
+
+	if (ft_splitlen(split) != 3)
+		return (rt_return_int_error(data, split, E_SPLITLEN, "rgb"));
+	a = 0;
+	while (split[a])
+	{
+		if (!split[a] || !split[a][0])
+			return (rt_return_int_error(data, split, E_NO_VALUE, NULL));
+		if (rt_check_charset(split[a], INT_CHARSET))
+			return (rt_return_int_error(data, split, NULL, NULL));
+		if (rt_check_overflow(split[a], split))
+			return (rt_return_int_error(data, NULL, NULL, NULL));
+		tmp = ft_atoi(split[a]);
+		if (rt_check_int_range(tmp, 0, 255, "0 / 255"))
+			return (rt_return_int_error(data, split, NULL, NULL));
+		a++;
+	}
+	return (0);
+}
+
+//Initialize color module for rgb (A, L, SP, PL, CY)
+t_color	*rt_init_rgb(char **data, char *values)
+{
+	t_color	*color;
+	char	**split;
+
+	if (rt_check_comma(values))
+		return (rt_return_ptr_error(data, NULL, NULL, NULL));
+	split = ft_split(values, ',');
+	if (!split)
+		return (rt_return_ptr_error(data, split, E_MALLOC, NULL));
+	if (rt_check_rgb_data(data, split))
+		return (NULL);
+	color = rt_calloc_struct(sizeof(t_color), split);
+	if (!color)
+		return (rt_return_ptr_error(data, split, NULL, NULL));
+	color->r = ft_atoi(split[0]);
+	color->g = ft_atoi(split[1]);
+	color->b = ft_atoi(split[2]);
+	ft_free_split(split);
+	return (color);
+}
