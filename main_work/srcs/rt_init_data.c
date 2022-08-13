@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:17:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 10:42:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 17:47:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	rt_init_obj_data(t_obj_data **obj_data, char **split)
 		object = rt_init_plane(split);
 	else if (!ft_strncmp(split[0], "cy", 3))
 		object = rt_init_cylinder(split);
-	ft_free_split(split);
 	if (!object)
 		return (1);
+	ft_free_split(split);
 	ft_lstadd_back(&(*obj_data)->lst, ft_lstnew(object));
 	if (!(*obj_data)->lst_size)
 		(*obj_data)->start = (*obj_data)->lst;

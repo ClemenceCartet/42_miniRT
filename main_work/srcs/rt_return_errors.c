@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:02:00 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 14:44:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 17:21:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@
 static void	ft_free_split_error(char **split1, char **split2)
 {
 	if (split1)
+	{
 		ft_free_split(split1);
+		split1 = NULL;
+	}
 	if (split2)
+	{
 		ft_free_split(split2);
+		split2 = NULL;
+	}
 }
 
 //Free splits used, call write error if needed and return int error

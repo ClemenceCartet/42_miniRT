@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:44:05 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 12:11:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 17:53:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	rt_check_coords_data(char **data, char **split, int isdir)
 		if (rt_check_float_syntax(split[a]))
 			return (rt_return_int_error(data, split, NULL, NULL));
 		if (rt_check_overflow(split[a], split))
-			return (rt_return_int_error(data, split, NULL, NULL));
+			return (rt_return_int_error(data, NULL, NULL, NULL));
 		tmp = ft_atof(split[a]);
 		if (isnan(tmp) || isinf(tmp))
 			return (rt_return_int_error(data, split, E_NUMBER, NULL));

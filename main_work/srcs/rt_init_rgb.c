@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:19:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 14:22:22 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 17:53:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	rt_check_rgb_data(char **data, char **split)
 		if (rt_check_charset(split[a], INT_CHARSET))
 			return (rt_return_int_error(data, split, NULL, NULL));
 		if (rt_check_overflow(split[a], split))
-			return (rt_return_int_error(data, split, NULL, NULL));
+			return (rt_return_int_error(data, NULL, NULL, NULL));
 		tmp = ft_atoi(split[a]);
 		if (rt_check_int_range(tmp, 0, 255, "0 / 255"))
 			return (rt_return_int_error(data, split, NULL, NULL));
