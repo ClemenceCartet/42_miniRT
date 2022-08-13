@@ -60,7 +60,7 @@ FOV
 9. Number syntax (symbols everywhere)
 
 RGB
-1. number of ',' (!= 2)
+0. number of ',' (!= 2)
 
 for each value (x3)
 1. missing
@@ -75,7 +75,7 @@ for each value (x3)
 10. Number syntax (symbols everywhere)
 
 POS
-1. number of ',' (!= 2)
+0. number of ',' (!= 2)
 
 for each value (x3)
 1. missing
@@ -90,7 +90,7 @@ for each value (x3)
 
 
 DIR
-1. number of ',' (!= 2)
+0. number of ',' (!= 2)
 
 for each value (x3)
 1. missing
@@ -106,6 +106,7 @@ for each value (x3)
 11. Number syntax (symbols everywhere)
 
 ---------------------------------------
+
 Global
 	Check charset
 	Check Overflow (int max, int min)
@@ -160,6 +161,38 @@ height
 	float	height
 		range positive
 
+-------------------------------
+
+A
+	ratio
+	rgb
+
+C
+	pos
+	dir
+	fov
+
+L
+	pos
+	ratio
+	rgb
+
+SP
+	pos
+	diameter
+	rgb
+
+PL
+	pos
+	dir
+	rgb
+
+CY
+	pos
+	dir
+	diameter
+	height
+	rgb
 
 --------------
 Fonctions

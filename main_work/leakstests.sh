@@ -21,7 +21,7 @@ ft_print_lines()
 printf "Valid tests & leaks\n\n" > leakstests_outfile.txt
 printf "Valid tests & leaks\n\n" > leakstests_errfile.txt
 
-printf "Currently Doing Valid tests"
+printf "\033[2K\rCurrently Doing \033[36mValid\033[0m tests, \033[33m\033[1m\033[4mPlease Wait\033[0m"
 x=1
 while [ $x -le 20 ]; do
 	ft_print_lines
@@ -34,9 +34,12 @@ done
 ######################################################################################################################################################
 # Basic Error tests ##################################################################################################################################
 ######################################################################################################################################################
+ft_print_lines
+ft_print_lines
+ft_print_lines
 printf "\n\nBasic Error tests & leaks\n\n" >> leakstests_outfile.txt
 printf "\n\nBasic Error tests & leaks\n\n" >> leakstests_errfile.txt
-printf "\033[2K\rCurrently Doing Basic Error tests"
+printf "\033[2K\rCurrently Doing \033[36mBasic Error\033[0m tests, \033[33m\033[1m\033[4mPlease Wait\033[0m"
 
 ft_print_lines
 printf "\nleaks -atExit -q -- ./miniRT scenes/error/basic_errors/empty.rt\n" >> leakstests_outfile.txt
@@ -126,312 +129,37 @@ leaks -atExit -q -- ./miniRT scenes/error/basic_errors/wrongorderSP.rt >> leakst
 ######################################################################################################################################################
 # A Error tests ######################################################################################################################################
 ######################################################################################################################################################
-printf "\n\na_errors tests & leaks\n\n" >> leakstests_outfile.txt
-printf "\n\na_errors tests & leaks\n\n" >> leakstests_errfile.txt
-# These should only print error messages in STDERR, so we will get STDERR too
-printf "\033[2K\rCurrently Doing A Error tests"
+ft_print_lines
+ft_print_lines
+ft_print_lines
+printf "\n\nA Error tests & leaks\n\n" >> leakstests_outfile.txt
+printf "\n\nA Error tests & leaks\n\n" >> leakstests_errfile.txt
+printf "\033[2K\rCurrently Doing \033[36mA Ratio Error\033[0m tests, \033[33m\033[1m\033[4mPlease Wait\033[0m"
+
+x=1
+while [ $x -le 10 ]; do
+	ft_print_lines
+	printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/a_ratio/a.ratio.$x.rt\n" >> leakstests_outfile.txt
+	printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/a_ratio/a.ratio.$x.rt\n" >> leakstests_errfile.txt
+	leaks -atExit -q -- ./miniRT scenes/error/a_errors/a_ratio/a.ratio.$x.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
+	x=$(($x + 1))
+done
+
+printf "\033[2K\rCurrently Doing \033[36mA RGB Error\033[0m tests, \033[33m\033[1m\033[4mPlease Wait\033[0m"
 
 ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/a_errors/ratio.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/a_errors/rgb.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-
-######################################################################################################################################################
-# L Error tests ######################################################################################################################################
-######################################################################################################################################################
-printf "\n\nl_errors tests & leaks\n\n" >> leakstests_outfile.txt
-printf "\n\nl_errors tests & leaks\n\n" >> leakstests_errfile.txt
-printf "\033[2K\rCurrently Doing L Error tests"
-
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/dir.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/fov.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/c_errors/pos.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-
-######################################################################################################################################################
-# C Error tests ######################################################################################################################################
-######################################################################################################################################################
-printf "\n\nc_errors tests & leaks\n\n" >> leakstests_outfile.txt
-printf "\n\nc_errors tests & leaks\n\n" >> leakstests_errfile.txt
-printf "\033[2K\rCurrently Doing C Error tests"
-
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/l_errors/pos.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/l_errors/ratio.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-
-######################################################################################################################################################
-# CY Error tests ######################################################################################################################################
-######################################################################################################################################################
-printf "\n\ncy_errors tests & leaks\n\n" >> leakstests_outfile.txt
-printf "\n\ncy_errors tests & leaks\n\n" >> leakstests_errfile.txt
-printf "\033[2K\rCurrently Doing CY Error tests"
-
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/diameter.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/dir.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/height.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/pos.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/cy_errors/rgb.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-
-######################################################################################################################################################
-# PL Error tests ######################################################################################################################################
-######################################################################################################################################################
-printf "\n\npl_errors tests & leaks\n\n" >> leakstests_outfile.txt
-printf "\n\npl_errors tests & leaks\n\n" >> leakstests_errfile.txt
-printf "\033[2K\rCurrently Doing PL Error tests"
-
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/dir.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/pos.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/pl_errors/rgb.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-
-######################################################################################################################################################
-# SP Error tests ######################################################################################################################################
-######################################################################################################################################################
-printf "\n\nsp_errors tests & leaks\n\n" >> leakstests_outfile.txt
-printf "\n\nsp_errors tests & leaks\n\n" >> leakstests_errfile.txt
-printf "\033[2K\rCurrently Doing SP Error tests"
-
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/diameter.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/pos.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.data.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.data.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.data.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.incomplete.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.incomplete.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.incomplete.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.input.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.input.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.input.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
-ft_print_lines
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.missing.rt\n" >> leakstests_outfile.txt
-printf "\nleaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.missing.rt\n" >> leakstests_errfile.txt
-leaks -atExit -q -- ./miniRT scenes/error/sp_errors/rgb.missing.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
+printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/a_rgb/a.rgb.0.rt\n" >> leakstests_outfile.txt
+printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/a_rgb/a.rgb.0.rt\n" >> leakstests_errfile.txt
+leaks -atExit -q -- ./miniRT scenes/error/a_errors/a_rgb/a.rgb.0.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
+y=1
+while [ $y -le 3 ]; do
+	x=1
+	while [ $x -le 10 ]; do
+		ft_print_lines
+		printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/a_rgb/a_rgb$y/a.rgb$y.$x.rt\n" >> leakstests_outfile.txt
+		printf "\nleaks -atExit -q -- ./miniRT scenes/error/a_errors/a_rgb/a_rgb$y/a.rgb$y.$x.rt\n" >> leakstests_errfile.txt
+		leaks -atExit -q -- ./miniRT scenes/error/a_errors/a_rgb/a_rgb$y/a.rgb$y.$x.rt >> leakstests_outfile.txt 2>> leakstests_errfile.txt
+		x=$(($x + 1))
+	done
+	y=$(($y + 1))
+done

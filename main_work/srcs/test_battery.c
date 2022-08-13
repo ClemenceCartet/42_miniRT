@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:26:12 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 11:00:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 11:35:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -538,5 +538,5 @@ void	test_battery(t_master *master, int ac, char **av)
 	// display_file_content(av[1]);
 	// dprintf(STDERR_FILENO, "\n");
 	// display_master(master);
-	dprintf(STDERR_FILENO, "\n\033[1m\033[32mEND OF DISPLAY\033[0m\n");
+	dprintf(STDERR_FILENO, "\nEND OF DISPLAY\n");
 }
