@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 12:12:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 18:21:11 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		rt_check_float_syntax(char *value);
 
 /*-------------------- rt_check_utils2.c --------------------*/
 
+// int	rt_full_strcmp(char *s1, char *s2);
 int		rt_check_overflow(char *value, char **split);
 int		rt_check_float_range(float value, float min, float max, char *range);
 int		rt_check_int_range(int value, int min, int max, char *range);
