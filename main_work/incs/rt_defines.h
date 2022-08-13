@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 10:21:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 18:24:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define E_USAGE		"RT PROGRAM ERROR: Usage is ./MiniRT scene.rt"
 # define E_NO_FILENAME	"RT FILE ERROR: Filename does not exist"
 # define E_NO_EXT		"RT FILE ERROR: No file extension in filename:"
+# define E_NO_NAME		"RT FILE ERROR: No filename found before extension"
 # define E_WRONG_EXT	"RT FILE ERROR: Wrong file extension:"
 
 # define E_OPEN			"RT FILE ERROR: Error while opening file:"

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:48:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 10:40:32 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 18:24:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static int	rt_check_filename(char *filename)
 	i = ft_int_strrchr(filename, '.');
 	if (i == -1 || i == 0)
 		return (rt_write_int_error(E_NO_EXT, filename, DFI, DLI));
+	if (filename[i - 1] == '/')
+		return (rt_write_int_error(E_NO_NAME, NULL, DFI, DLI));
 	ext = ft_strrchr(filename, '.');
 	if (ft_strncmp(ext, ".rt", 4) != 0)
 		return (rt_write_int_error(E_WRONG_EXT, ext, DFI, DLI));
