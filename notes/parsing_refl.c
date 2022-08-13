@@ -6,53 +6,49 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:11:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/27 09:35:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/05/31 10:50:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 // to read with errors_list.md for error numbers
 
-if ac != 2
-	return Error arg count : Usage
+// if ac != 2
+// 	return Error arg count : Usage
 Parsing
 {
-	Check file and filename
-	{
-		if av[1] is a directory | open(O_RDWR)
-			return Error invalid Is a directory
-		if av[1] does not exist | open(O_RDWR)
-			return Error invalid file Does not exist
-		if av[1] does not have any . in filename | ft_int_strchr
-			return error 3
-		if av[1] does not have .rt at the end of filename | ft_strlen -3 ?
-			return error 2
-	} //Check file and filename
+	// Check file and filename
+// 	{
+// 		if av[1] is a directory | open(O_RDWR)
+// 			return Error invalid Is a directory
+// 		if av[1] does not exist | open(O_RDWR)
+// 			return Error invalid file Does not exist
+// 		if av[1] does not have any . in filename | ft_int_strchr
+// 			return error 3
+// 		if av[1] does not have .rt at the end of filename | ft_strlen -3 ?
+// 			return error 2
+	// } //Check file and filename
 	Check content
 	{
-		Get full content of file | get_next_line
-		if (!content[a])
-			return error 1
-		if content[a] != charset("ACLsplcy0123456789., \n-+") | ft_ischarset
-			return error 4 10
+		// Get full content of file | get_next_line
+		// if (!content[a])
+			// return error 1
+		// if content[a] != charset("ACLsplcy0123456789., \n-+") | ft_ischarset
+			// return error 4 10
 		Split with space to check things | ft_split
-		count things
-		{
-			if A count < 1 | ft_strncmp(A)
-				return error 6
-			if A count > 1
-				return error 83
-			if C count < 1 | ft_strncmp(C)
-				return error 7
-			if C count > 1
-				return error 84
-			if L count < 1 | ft_strncmp(L)
-				return error 8
-			if L count > 1
-				return error 85
-			if sp/pl/cy count < 1 | ft_strncmp (sp | pl | cy)
-				return error 9
-			keep a global counter for the parsing right after
-		} // count things
+		if A count < 1 | ft_strncmp(A)
+			return error 6
+		if A count > 1
+			return error 83
+		if C count < 1 | ft_strncmp(C)
+			return error 7
+		if C count > 1
+			return error 84
+		if L count < 1 | ft_strncmp(L)
+			return error 8
+		if L count > 1
+			return error 85
+		if sp/pl/cy count < 1 | ft_strncmp (sp | pl | cy)
+			return error 9
 		find A
 		{
 			next two values should be Ratio and RGB

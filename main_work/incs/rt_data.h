@@ -47,9 +47,8 @@ typedef struct s_light		t_light;
 */
 struct	s_master
 {
-	t_mlx_data	*mlx_data;
-	t_obj_data	*obj_data;
-
+	t_mlxdata	*mlxdata;
+	t_object	*object;
 	t_ambient	*ambient;
 	t_camera	*camera;
 	t_light		*light;
@@ -103,7 +102,7 @@ struct	s_coord
 {
 	float	x;
 	float	y;
-	float	z;
+	float z;
 };
 
 #endif //RT_DATA_H

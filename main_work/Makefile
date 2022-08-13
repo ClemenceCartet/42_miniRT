@@ -41,7 +41,18 @@ P_INCS_LIBFT	:=	libft/incs/
 
 P_INCS			:=	incs/
 P_SRCS			:=	srcs/
+P_CHECKERS		:=	checkers/
+P_FREEZERS		:=	freezers/
+P_GETTERS		:=	getters/
+P_INIT_ITEM		:=	init_item/
+P_INIT_VALUE	:=	init_value/
+P_INITIERS		:=	initiers/
+P_PARSE_ITEM	:=	parse_item/
+P_PARSERS		:=	parsers/
+P_SETTERS		:=	setters/
+P_WRITERS		:=	writers/
 
+P_TESTERS		:=	testers/
 P_OBJS			:=	.objs/
 
 # Shortcuts
@@ -58,7 +69,7 @@ OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 CC				:=	gcc
 CF				:=	-Wall -Werror -Wextra
 CI				:=	-I $(P_INCS_LIBFT) -I $(P_INCS) -I $(P_MLX)
-CS				:=	-g -fsanitize=address
+CS				:=	-g3 -fsanitize=address
 CG				:=	-g3
 RM				:=	rm -rf
 FW				:=	-Lmlx -lmlx -framework OpenGL -framework AppKit
@@ -85,7 +96,8 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-all: makelibft $(NAME)
+# all:	makemlx makelibft $(NAME)
+all:	makelibft $(NAME)
 
 # Binary creation
 # $(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
@@ -97,14 +109,20 @@ all: makelibft $(NAME)
 # 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
 
 $(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
-	$(CC) $(CF) $(CI) $(OBJS) -o $@ $(LIBFT)
+	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
 
 $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
 	$(CC) $(CF) $(CI) -c $< -o $@
-	
+
 $(P_OBJS):
-	mkdir -p $(P_OBJS)
-	printf "✅	$(GREEN)$(BOLD)$(NAME) obj directories created$(RESET)\n"
+	mkdir -p $(P_OBJS)										\
+	$(P_OBJS)$(P_CHECKERS)		$(P_OBJS)$(P_FREEZERS)		\
+	$(P_OBJS)$(P_GETTERS)		$(P_OBJS)$(P_INITIERS)		\
+	$(P_OBJS)$(P_INIT_ITEM)		$(P_OBJS)$(P_INIT_VALUE)	\
+	$(P_OBJS)$(P_PARSERS)		$(P_OBJS)$(P_SETTERS)		\
+	$(P_OBJS)$(P_PARSE_ITEM)	$(P_OBJS)$(P_WRITERS)		\
+	$(P_OBJS)$(P_TESTERS)
+#	printf "✅	$(GREEN)$(BOLD)$(NAME) obj directories created$(RESET)\n"
 
 # Libs creation
 $(MLX): makemlx
@@ -121,15 +139,15 @@ makelibft:
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(P_OBJS)
-	printf "$(YELLOW)$(BOLD)All $(NAME) object files removed$(RESET)\n"
-	printf "$(YELLOW)$(BOLD)All $(NAME) object folders removed$(RESET)\n"
+#	printf "$(YELLOW)$(BOLD)All $(NAME) object files removed$(RESET)\n"
+#	printf "$(YELLOW)$(BOLD)All $(NAME) object folders removed$(RESET)\n"
 
 fclean:
 	$(MAKE) clean
 	$(RM) $(NAME)
 	$(MAKE) fclean -C libft/
-	printf "$(RED)$(BOLD)Binary $(NAME) removed $(RESET)\n"
-#	$(MAKE) clean -C mlx/
+	$(MAKE) clean -C mlx/
+#	printf "$(RED)$(BOLD)Binary $(NAME) removed $(RESET)\n"
 
 re:
 	$(MAKE) fclean

@@ -64,10 +64,6 @@ struct s_list
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
-/*-------------------- main.c --------------------*/
-
-// int	main(int ac, char **av);
-
 /*-------------------- rt_check_utils.c --------------------*/
 
 int		rt_check_ptr(void *ptr, char **split);
