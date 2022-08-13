@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:55:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 18:20:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/13 18:52:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,9 @@ int	rt_check_overflow(char *value, char **split)
 		{
 			if (rt_full_strcmp(value, CHARINT_MIN) > 0)
 				return (rt_return_int_error(split, NULL, E_NUMBER, NULL));
-			// if (ft_strncmp(value, CHARINT_MIN, 12) > 0)
-			// 	return (rt_return_int_error(split, NULL, E_NUMBER, NULL));
 		}
 		else if (rt_full_strcmp(value, CHARINT_MAX) > 0)
 			return (rt_return_int_error(split, NULL, E_NUMBER, NULL));
-		// else if (ft_strncmp(value, CHARINT_MAX, 11) > 0)
-		// 	return (rt_return_int_error(split, NULL, E_NUMBER, NULL));
 	}
 	return (0);
 }
