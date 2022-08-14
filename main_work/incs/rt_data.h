@@ -110,6 +110,7 @@ struct	s_ray
 	t_coord	dir;
 	float	time;
 	t_coord	hit;
+	t_coord	normal;
 	t_color	color;
 	int		object_id;
 };

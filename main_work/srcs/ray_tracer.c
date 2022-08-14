@@ -11,15 +11,24 @@ void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 	mlx->addr[i++] = color.b;
 }
 
-t_color	ray_color(t_coord ray)
+t_color	ray_color(t_coord ray, t_coord *normal)
 {
 	t_color	color;
 	float	t;
 
-	t = 255 * ray.z - 128;
-	color.r = t * 0.5;
-	color.g = t * 0.7;
-	color.b = t * 1.0;
+	if (normal == NULL)
+	{
+		t = 255 * ray.z - 128;
+		color.r = t * 0.5;
+		color.g = t * 0.7;
+		color.b = t * 1.0;
+	}
+	else
+	{
+		color.r = normal->x * 255;
+		color.g = normal->y * 255;
+		color.b = normal->z * 255;
+	}	
 	return (color);
 }
 
@@ -53,8 +62,11 @@ void	ray_tracer(t_master *master)
 		while (w < W)
 		{
 			ray = create_ray(*master->camera, w, h);
-			if (!hit_sphere(&ray, master->obj_data->lst->content))
-				ray.color = ray_color(ray.dir);
+			if (hit_sphere(&ray, master->obj_data->lst->content))
+			//if (!hit_plane(&ray, master->obj_data->lst->content))
+				ray.color = ray_color(ray.dir, &ray.normal);
+			else
+				ray.color = ray_color(ray.dir, NULL);
 			mlx_put_pixel(w, h, ray.color, master->mlx);
 			w++;
 		}	

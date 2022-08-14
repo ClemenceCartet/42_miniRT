@@ -158,13 +158,13 @@ char	**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
 
 void	ray_tracer(t_master *master);
 t_ray	create_ray(t_camera cam, float w, float h);
-t_color	ray_color(t_coord ray);
+t_color	ray_color(t_coord ray, t_coord *normal);
 void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
 
 /*-------------------- hits.c --------------------*/
 
 void	set_hit_point(t_ray *ray);
-//bool	hit_plane(t_ray *ray, t_object *pl);
+bool	hit_plane(t_ray *ray, t_object *pl);
 bool	hit_sphere(t_ray *ray, t_object *sp);
 
 /*-------------------- op_vector1.c --------------------*/
