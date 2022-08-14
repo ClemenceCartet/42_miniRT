@@ -108,9 +108,10 @@ struct	s_ray
 {
 	t_coord	origin;
 	t_coord	dir;
-	float	distance; // à initialiser à 0.0;
+	float	time;
 	t_coord	hit;
 	t_color	color;
+	int		object_id;
 };
 
 struct	s_matrix

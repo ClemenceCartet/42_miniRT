@@ -13,9 +13,6 @@
 #ifndef MINI_RT_H
 # define MINI_RT_H
 
-# define W 1280
-# define H 720
-
 # include <math.h>
 # include <stdbool.h>
 
@@ -166,6 +163,7 @@ void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
 
 /*-------------------- hits.c --------------------*/
 
+void	set_hit_point(t_ray *ray);
 //bool	hit_plane(t_ray *ray, t_object *pl);
 bool	hit_sphere(t_ray *ray, t_object *sp);
 

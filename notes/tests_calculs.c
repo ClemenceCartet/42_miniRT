@@ -16,3 +16,41 @@ t_coord	find_hit_test(t_camera *cam, t_object *pl) // pour le point central
 	dprintf(2, "%f, %f, %f\n", i.x, i.y, i.z);
 	return (i);
 }
+
+bool	hit_sphere(t_ray *ray, t_object *sp)
+{
+	t_coord	to_center;
+	float	distance;
+	float	opposit;
+	float	radius;
+
+	radius = sp->diameter * 0.5;
+	to_center = find_vector(ray->origin, *sp->pos);
+	distance = dot_product(to_center, ray->dir);
+	opposit = vector_lenght(to_center) * vector_lenght(to_center) - distance * distance;
+	if (opposit < (radius * radius))
+	{
+		dprintf(2, "blop");
+		ray->color = *sp->rgb;
+		return (1);
+	}
+	return (0);
+}
+
+bool	hit_plane(t_ray *ray, t_object *pl)
+{
+	float	d;
+	float	distance;
+
+	d = -(dot_product(*pl->dir, *pl->pos));
+	distance = -(dot_product(*pl->dir, ray->origin) + d) 
+		/ dot_product(*pl->dir, ray->dir);
+	if (distance <= 0)
+		return (0);
+	if (ray->time == 0.0 || distance < ray->time)
+		ray->time = distance;
+	else
+		return (0);
+	set_hit_point(ray);
+	return (1);
+}

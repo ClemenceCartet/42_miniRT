@@ -1,6 +1,13 @@
 #include <mini_rt.h>
 
-/*bool	hit_plane(t_ray *ray, t_object *pl)
+void	set_hit_point(t_ray *ray)
+{	
+	ray->hit.x = ray->origin.x + ray->dir.x * ray->time;
+	ray->hit.y = ray->origin.y + ray->dir.y * ray->time;
+	ray->hit.z = ray->origin.z + ray->dir.z * ray->time;
+}
+
+bool	hit_plane(t_ray *ray, t_object *pl)
 {
 	float	d;
 	float	distance;
@@ -10,33 +17,44 @@
 		/ dot_product(*pl->dir, ray->dir);
 	if (distance <= 0)
 		return (0);
-	if (ray->distance == 0.0 || distance < ray->distance)
-		ray->distance = distance;
+	if (ray->time == 0.0 || distance < ray->time)
+		ray->time = distance;
 	else
 		return (0);
-	ray->hit.x = ray->origin.x + ray->dir.x * distance;
-	if ()
-	ray->hit.y = ray->origin.y + ray->dir.y * distance;
-	ray->hit.z = ray->origin.z + ray->dir.z * distance;
+	set_hit_point(ray);
 	return (1);
-}*/
+}
 
 bool	hit_sphere(t_ray *ray, t_object *sp)
 {
 	t_coord	to_center;
-	float	distance;
-	float	opposit;
-	float	radius;
+	float	a;
+	float	b;
+	float	c;
+	float	discriminant;
+	float	time[3];
 
-	radius = sp->diameter * 0.5;
 	to_center = find_vector(ray->origin, *sp->pos);
-	distance = dot_product(to_center, ray->dir);
-	opposit = vector_lenght(to_center) * vector_lenght(to_center) - distance * distance;
-	if (opposit < (radius * radius))
-	{
-		dprintf(2, "blop");
-		ray->color = *sp->rgb;
-		return (1);
-	}
-	return (0);
+	a = vector_lenght_squared(ray->dir);
+	b = 2 * dot_product(to_center, ray->dir);
+	c = vector_lenght_squared(to_center) - sp->radius * sp->radius;
+	discriminant = b * b - 4 * a * c;
+	if (discriminant < 0.0)
+		return (0);
+	time[0] = (-b + sqrt(discriminant)) / 2 * a; // pas trop compris ce calcul...
+	time[1] = (-b - sqrt(discriminant)) / 2 * a;
+	if (time[0] < time[1])
+		time[2] = time[0];
+	else
+		time[2] = time[1];
+	if (time[2] > 0.0 && ray->time == 0.0)
+		ray->time = time[2];
+	else if (time[2] > 0.0 && time[2] < ray->time)
+		ray->time = time[2];
+	else
+		return (0);
+	set_hit_point(ray);
+	ray->color = *sp->rgb;
+	ray->object_id = SP;
+	return (1);
 }

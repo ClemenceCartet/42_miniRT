@@ -14,7 +14,7 @@ void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 t_color	ray_color(t_coord ray)
 {
 	t_color	color;
-	float			t;
+	float	t;
 
 	t = 255 * ray.z - 128;
 	color.r = t * 0.5;
@@ -27,23 +27,24 @@ t_ray	create_ray(t_camera cam, float w, float h)
 {
 	t_ray	new;
 
-	new.origin = *cam.pos;
+	new.origin.x = -cam.pos->x;
+	new.origin.y = cam.pos->y;
+	new.origin.z = -cam.pos->z;
 	new.dir.x = (w - W * 0.5) * cam.ratio_H;
-	new.dir.y = -1;
+	new.dir.y = -1.0;
 	new.dir.z = (H * 0.5 - h) * cam.ratio_V;
-	norm_vector(cam.dir);
-	// ajouter rotation de la caméra
+	new.dir = add_vectors(new.dir, *cam.dir);
 	norm_vector(&new.dir);
+	new.time = 0.0;
+	new.object_id = 0;
 	return (new);
 }
 
 void	ray_tracer(t_master *master)
 {
-	//t_coord	i_tmp;
-	t_ray		ray;
-	t_color	color;
-	int			h;
-	int			w;
+	t_ray	ray;
+	int		h;
+	int		w;	
 
 	h = 0;
 	while (h < H)
@@ -52,18 +53,11 @@ void	ray_tracer(t_master *master)
 		while (w < W)
 		{
 			ray = create_ray(*master->camera, w, h);
-			if (hit_sphere(&ray, master->obj_data->lst->content))
-				color = ray.color;
-			//hit_pl(&ray, master->obj_data->lst->content);
-			else
-				color = ray_color(ray.dir);
-			mlx_put_pixel(w, h, color, master->mlx);
+			if (!hit_sphere(&ray, master->obj_data->lst->content))
+				ray.color = ray_color(ray.dir);
+			mlx_put_pixel(w, h, ray.color, master->mlx);
 			w++;
 		}	
 		h++;
 	}
-	//dprintf(2, "%d, %d, %d\n", color.r, color.g, color.b);
-	//parcourir la liste chainée, tous les objets
-	//si la distance entre la caméra et le point d'intersection est plus petite que la précédente changer i 
-	//i_tmp = find_hit_test(master->camera, master->obj_data->lst->content);
 }
