@@ -12,26 +12,6 @@
 
 #include <mini_rt.h>
 
-//Free all mlx pointers and data
-void	rt_free_mlx_data(t_mlx_data	*mlx_data)
-{
-	if (mlx_data)
-	{
-		if (mlx_data->init)
-		{
-			free (mlx_data->init);
-			mlx_data->init = NULL;
-		}
-		if (mlx_data->window)
-		{
-			free (mlx_data->window);
-			mlx_data->window = NULL;
-		}
-		free (mlx_data);
-		mlx_data = NULL;
-	}
-}
-
 //Iterate on t_list to free all object structures
 void	rt_free_obj_data(t_obj_data *obj_data)
 {
@@ -60,8 +40,7 @@ int	rt_free_master(t_master *master)
 {
 	if (master)
 	{
-		if (master->mlx_data)
-			rt_free_mlx_data(master->mlx_data);
+		free(master->mlx);
 		if (master->obj_data)
 			rt_free_obj_data(master->obj_data);
 		if (master->ambient)

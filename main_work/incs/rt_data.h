@@ -28,6 +28,8 @@ typedef struct s_object		t_object;
 
 typedef struct s_color		t_color;
 typedef struct s_coord		t_coord;
+typedef struct s_ray		t_ray;
+typedef struct s_matrix		t_matrix;
 
 //RT_OBJECTS_H
 typedef struct s_ambient	t_ambient;
@@ -47,26 +49,22 @@ typedef struct s_light		t_light;
 */
 struct	s_master
 {
-	t_mlx_data	*mlx_data;
+	void		*init;
+	void		*wdw;
+	t_mlx_data	*mlx;
 	t_obj_data	*obj_data;
-
 	t_ambient	*ambient;
 	t_camera	*camera;
 	t_light		*light;
 };
 
-/**Structure contenant les pointeurs et données nécessaires à la MLX
- * init		= pointeur donné par mlx_init();
- * window	= pointeur donné par mlx_new_window();
- * loop		= int donné par mlx_loop();
-*/
 struct s_mlx_data
 {
-	void	*init;
-	void	*window;
-	int		width;
-	int		height;
-	int		loop;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
 };
 
 /**Structure contenant une liste chaînée des objets
@@ -104,6 +102,28 @@ struct	s_coord
 	float	x;
 	float	y;
 	float	z;
+};
+
+struct	s_ray
+{
+	t_coord	origin;
+	t_coord	dir;
+	float	distance; // à initialiser à 0.0;
+	t_coord	hit;
+	t_color	color;
+};
+
+struct	s_matrix
+{
+	float	x_x;
+	float	x_y;
+	float	x_z;
+	float	y_x;
+	float	y_y;
+	float	y_z;
+	float	z_x;
+	float	z_y;
+	float	z_z;
 };
 
 #endif //RT_DATA_H

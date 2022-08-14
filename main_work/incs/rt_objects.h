@@ -40,6 +40,10 @@ struct	s_camera
 	t_coord	*dir;
 	int		fov;
 	float	radian;
+	float	ratio_H;
+	float	ratio_V;
+	float	rot_x; // + ou - 0.5
+	float	rot_z; // + ou - 0.5
 };
 
 /**Structure pour la lumière
@@ -75,6 +79,7 @@ struct	s_object
 	t_coord	*dir;
 	t_color	*rgb;
 	float	diameter;
+	float	radius;
 	float	height;
 };
 /**Structure pour l'objet sphère

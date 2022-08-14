@@ -32,8 +32,9 @@ void	*rt_init_object(char **split, size_t splitsize, char *name)
 	object->pos = NULL;
 	object->dir = NULL;
 	object->rgb = NULL;
-	object->diameter = 0;
-	object->height = 0;
+	object->diameter = 0.0;
+	object->radius = 0.0;
+	object->height = 0.0;
 	return (object);
 }
 
@@ -51,6 +52,7 @@ void	*rt_init_sphere(char **split)
 	object->diameter = rt_init_obj_size(split, split[2]);
 	if (object->diameter == -1)
 		return (rt_free_object(object));
+	object->radius = object->diameter * 0.5;
 	object->rgb = rt_init_rgb(split, split[3]);
 	if (!object->rgb)
 		return (rt_free_object(object));

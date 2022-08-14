@@ -13,6 +13,12 @@
 #ifndef MINI_RT_H
 # define MINI_RT_H
 
+# define W 1280
+# define H 720
+
+# include <math.h>
+# include <stdbool.h>
+
 /* LIBFT.H
 # include <stdlib.h>
 # include <unistd.h>
@@ -22,7 +28,6 @@
 # include <stddef.h>
 # include <sys/wait.h>
 # include <stdio.h>
-# include <math.h>
 # include <sys/time.h>
 # include <pthread.h>
 
@@ -67,6 +72,8 @@ struct s_list
 /*-------------------- main.c --------------------*/
 
 // int	main(int ac, char **av);
+void	display_scene(t_master *master);
+int		exit_x(t_master *master);
 
 /*-------------------- rt_check_utils.c --------------------*/
 
@@ -111,6 +118,7 @@ void	*rt_init_cylinder(char **split);
 int		rt_init_obj_data(t_obj_data **obj_data, char **split);
 int		rt_init_light(t_light **light, char **split);
 int		rt_init_camera(t_camera **camera, char **split);
+void	rt_init_ratios(t_camera *cam);
 int		rt_init_ambient(t_ambient **ambient, char **split);
 
 /*-------------------- rt_init_master.c --------------------*/
@@ -123,7 +131,6 @@ int		rt_init_master(t_master *master, char *filename);
 
 /*-------------------- rt_free_data.c --------------------*/
 
-void	rt_free_mlx_data(t_mlx_data	*mlx_data);
 void	rt_free_obj_data(t_obj_data *obj_data);
 int		rt_free_master(t_master *master);
 
@@ -150,24 +157,37 @@ void	*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli);
 char	*rt_write_char_error(char *str, char *str2, char *dfi, int dli);
 char	**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
 
-/*-------------------- test_battery.c --------------------*/
+/*-------------------- ray_tracer.c --------------------*/
 
-void	error_messages_int(void);
-void	error_messages_ptr(void);
-void	error_messages_char(void);
-void	error_messages_split(void);
-void	error_return_int(void);
-void	error_return_ptr(void);
-void	error_return_char(void);
-void	error_return_split(void);
-void	display_mlx_data(t_mlx_data *mlx_data);
-void	display_ambient(t_ambient *ambient);
-void	display_camera(t_camera *camera);
-void	display_light(t_light *light);
-void	display_object(t_object *object);
-void	display_obj_data(t_obj_data *obj_data);
-void	display_master(t_master *master);
-void	display_file_content(char *file);
-void	test_battery(t_master *master, int ac, char **av);
+void	ray_tracer(t_master *master);
+t_ray	create_ray(t_camera cam, float w, float h);
+t_color	ray_color(t_coord ray);
+void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
+
+/*-------------------- hits.c --------------------*/
+
+//bool	hit_plane(t_ray *ray, t_object *pl);
+bool	hit_sphere(t_ray *ray, t_object *sp);
+
+/*-------------------- op_vector1.c --------------------*/
+
+float	vector_lenght(t_coord v);
+float	vector_lenght_squared(t_coord v);
+void	norm_vector(t_coord *v);
+t_coord	create_vector(float x, float y, float z);
+
+/*-------------------- op_vector1.c --------------------*/
+
+t_coord	add_vectors(t_coord v, t_coord u);
+t_coord	scale_vectors(t_coord v, t_coord u);
+t_coord	find_vector(t_coord a, t_coord b);
+t_coord	cross_vectors(t_coord v, t_coord u);
+float	dot_product(t_coord v, t_coord p);
+
+/*-------------------- op_matrix1.c --------------------*/
+
+t_matrix	mat_rot_x(float rad);
+t_matrix	mat_rot_z(float rad);
+t_coord		mat_x_vector(t_matrix m, t_coord v);
 
 #endif //MINI_RT_H

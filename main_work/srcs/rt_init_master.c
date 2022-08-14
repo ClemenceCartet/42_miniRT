@@ -102,7 +102,9 @@ static int	rt_check_init_master(t_master *master)
 //Call everything to initialize base data from a given file
 int	rt_init_master(t_master *master, char *filename)
 {
-	master->mlx_data = NULL;
+	master->init = NULL;
+	master->wdw = NULL;
+	master->mlx = malloc(sizeof(t_mlx_data));
 	master->obj_data = NULL;
 	master->ambient = NULL;
 	master->camera = NULL;

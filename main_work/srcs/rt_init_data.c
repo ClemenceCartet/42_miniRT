@@ -84,9 +84,18 @@ int	rt_init_camera(t_camera **camera, char **split)
 	(*camera)->fov = rt_init_fov(split, split[3]);
 	if ((*camera)->fov == -1)
 		return (1);
-	(*camera)->radian = 0;//rt_init_radian((*camera)->fov); //ouaf
+	(*camera)->radian = (*camera)->fov * M_PI / 180;
+	rt_init_ratios(*camera);
+	(*camera)->rot_x = 0.0;
+	(*camera)->rot_z = 0.0;
 	ft_free_split(split);
 	return (0);
+}
+
+void	rt_init_ratios(t_camera *cam)
+{	
+	cam->ratio_H = (2 * tan(cam->radian * 0.5)) / W;
+	cam->ratio_V = (2 * tan(cam->radian * H / (W * 2))) / H;
 }
 
 //Ambient Light initialization (A)

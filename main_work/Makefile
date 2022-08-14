@@ -32,7 +32,9 @@ LST_SRCS		:=	rt_check_utils.c	rt_check_utils2.c	\
 					rt_init_data.c		rt_init_master.c	\
 					rt_init_objects.c	rt_init_rgb.c		\
 					rt_return_errors.c	rt_write_errors.c	\
-					test_battery.c
+					op_vector1.c		op_vector2.c		\
+					op_matrix1.c		ray_tracer.c		\
+					hits.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -96,8 +98,7 @@ UNDERLINE=\033[4m
 #		RULES
 #//////////////////////////////////////////////////////////////////////////////
 
-# all:	makemlx makelibft $(NAME)
-all:	makelibft $(NAME)
+all:	makemlx makelibft $(NAME)
 
 # Binary creation
 # $(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
@@ -108,8 +109,8 @@ all:	makelibft $(NAME)
 # 	$(CC) $(CF) $(CI) $(FW) -c $< -o $@
 # 	printf "$(FAINT)$(CC) $(CF) $(CI) $(FW) -c -o $(RESET) $(CYAN)$(BOLD)$@$(RESET) $(FAINT)$(BLUE)$<$(RESET)\n"
 
-$(NAME): $(OBJS) $(INCS) $(LIBFT) Makefile
-	$(CC) $(CF) $(CI) $(LIBFT) $(OBJS) -o $@
+$(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
+	$(CC) $(CF) $(CI) $(FW) $(LIBFT) $(MLX) $(OBJS) -o $@
 
 $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) Makefile | $(P_OBJS)
 	$(CC) $(CF) $(CI) -c $< -o $@
