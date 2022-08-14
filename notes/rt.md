@@ -74,3 +74,5 @@ More sophisticated models are available for tracing rays through fog, smoke, the
 - [Doc : Learn Computer Graphics From Scratch](https://www.scratchapixel.com/)
 - [PDF 32 pages++ : Le ray tracer en infographie](https://physique.cmaisonneuve.qc.ca/svezina/nyc/note_nyc/NYC_CHAP_6_IMPRIMABLE_4.pdf)
 - [MiniRT Github : JorgeVB20007](https://github.com/JorgeVB20007/42.miniRT)
+
+https://physique.cmaisonneuve.qc.ca/svezina/nyc/note_nyc/NYC_CHAP_6_IMPRIMABLE_4.pdf
