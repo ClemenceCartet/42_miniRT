@@ -25,9 +25,9 @@ t_color	ray_color(t_coord ray, t_coord *normal)
 	}
 	else
 	{
-		color.r = normal->x * 255;
-		color.g = normal->y * 255;
-		color.b = normal->z * 255;
+		color.r = (normal->x * 255 - 128) * 0.5;
+		color.g = (normal->y * 255 - 128) * 0.7;
+		color.b = (normal->z * 255 - 128) * 1.0;
 	}	
 	return (color);
 }
@@ -62,8 +62,8 @@ void	ray_tracer(t_master *master)
 		while (w < W)
 		{
 			ray = create_ray(*master->camera, w, h);
-			if (hit_sphere(&ray, master->obj_data->lst->content))
-			//if (!hit_plane(&ray, master->obj_data->lst->content))
+			//if (hit_sphere(&ray, master->obj_data->lst->content))
+			if (!hit_plane(&ray, master->obj_data->lst->content))
 				ray.color = ray_color(ray.dir, &ray.normal);
 			else
 				ray.color = ray_color(ray.dir, NULL);

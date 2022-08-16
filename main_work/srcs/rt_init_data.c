@@ -95,7 +95,7 @@ int	rt_init_camera(t_camera **camera, char **split)
 void	rt_init_ratios(t_camera *cam)
 {	
 	cam->ratio_H = (2 * tan(cam->radian * 0.5)) / W;
-	cam->ratio_V = (2 * tan(cam->radian * H / (W * 2))) / H;
+	cam->ratio_V = (2 * tan(cam->radian * H / (W * 2))) / H; // calculs à revoir
 }
 
 //Ambient Light initialization (A)
