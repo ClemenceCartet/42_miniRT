@@ -57,11 +57,6 @@ void	rt_free_light(t_light *light)
 			free (light->pos);
 			light->pos = NULL;
 		}
-		if (light->rgb)
-		{
-			free (light->rgb);
-			light->rgb = NULL;
-		}
 		free (light);
 		light = NULL;
 	}

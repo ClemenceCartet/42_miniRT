@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:17:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 08:46:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 10:45:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	rt_init_light(t_light **light, char **split)
 {
 	if (rt_check_ptr(*light, split))
 		return (1);
-	if (ft_splitlen(split) != 4)
+	if (ft_splitlen(split) != 3)
 		return (rt_return_int_error(split, NULL, E_SPLITLEN, "Light"));
 	*light = rt_calloc_struct(sizeof(t_light), split);
 	if (!*light)
@@ -57,9 +57,6 @@ int	rt_init_light(t_light **light, char **split)
 		return (1);
 	(*light)->ratio = rt_init_ratio(split, split[2]);
 	if ((*light)->ratio == -1)
-		return (1);
-	(*light)->rgb = rt_init_rgb(split, split[3]);
-	if (!(*light)->rgb)
 		return (1);
 	ft_free_split(split);
 	return (0);
