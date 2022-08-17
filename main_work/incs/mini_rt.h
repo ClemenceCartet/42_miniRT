@@ -6,15 +6,12 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 18:47:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 08:22:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINI_RT_H
 # define MINI_RT_H
-
-# include <math.h>
-# include <stdbool.h>
 
 /* LIBFT.H
 # include <stdlib.h>
@@ -25,6 +22,7 @@
 # include <stddef.h>
 # include <sys/wait.h>
 # include <stdio.h>
+# include <math.h>
 # include <sys/time.h>
 # include <pthread.h>
 
@@ -50,6 +48,7 @@ struct s_list
 	struct s_list	*next;
 };
 */
+# include <stdbool.h>
 # include <libft.h>
 # include <mlx.h>
 
@@ -61,6 +60,7 @@ struct s_list
 # include <rt_data.h>
 # include <rt_defines.h>
 # include <rt_objects.h>
+# include <rt_maths.h>
 
 /*/////////////////////////////////////////////////////////////////////////////
 		FUNCTION PROTOTYPES

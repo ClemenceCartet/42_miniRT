@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 18:48:08 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 08:23:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_object		t_object;
 
 typedef struct s_color		t_color;
 typedef struct s_coord		t_coord;
+
+//RT_MATHS_H
 typedef struct s_ray		t_ray;
 typedef struct s_matrix		t_matrix;
 
@@ -102,30 +104,6 @@ struct	s_coord
 	float	x;
 	float	y;
 	float	z;
-};
-
-struct	s_ray
-{
-	t_coord	origin;
-	t_coord	dir;
-	float	time;
-	t_coord	hit;
-	t_coord	normal;
-	t_color	color;
-	int		object_id;
-};
-
-struct	s_matrix
-{
-	float	x_x;
-	float	x_y;
-	float	x_z;
-	float	y_x;
-	float	y_y;
-	float	y_z;
-	float	z_x;
-	float	z_y;
-	float	z_z;
 };
 
 #endif //RT_DATA_H

@@ -40,7 +40,8 @@ int	rt_free_master(t_master *master)
 {
 	if (master)
 	{
-		free(master->mlx);
+		if (master->mlx)
+			free(master->mlx);
 		if (master->obj_data)
 			rt_free_obj_data(master->obj_data);
 		if (master->ambient)

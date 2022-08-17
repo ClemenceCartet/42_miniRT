@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 12:48:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 08:23:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ struct	s_camera
 	t_coord	*pos;
 	t_coord	*dir;
 	int		fov;
+
 	float	radian;
 	float	ratio_H;
 	float	ratio_V;
@@ -79,8 +80,9 @@ struct	s_object
 	t_coord	*dir;
 	t_color	*rgb;
 	float	diameter;
-	float	radius;
 	float	height;
+
+	float	radius;
 };
 /**Structure pour l'objet sphère
  * pos		= coordonnées XYZ du centre de la sphère
