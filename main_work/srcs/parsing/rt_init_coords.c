@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:44:05 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 17:53:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 10:38:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ t_coord	*rt_init_coords(char **data, char *values, int isdir)
 	coord->x = ft_atof(split[0]);
 	coord->y = ft_atof(split[1]);
 	coord->z = ft_atof(split[2]);
+	if (ft_strncmp(data[0], "C", 2) != 0 && isdir
+		&& !coord->x && !coord->y && !coord->z)
+	{
+		free (coord);
+		return (rt_return_ptr_error(data, split, E_NUMBER, NULL));
+	}
 	ft_free_split(split);
 	return (coord);
 }
