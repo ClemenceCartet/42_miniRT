@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/17 08:34:24 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/17 08:55:31 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ all:	makemlx makelibft $(NAME)
 # Binary creation
 $(NAME): $(OBJS) $(INCS) $(LIBFT) $(MLX) Makefile
 	$(CC) $(CF) $(CI) $(FW) $(LIBFT) $(MLX) $(OBJS) -o $@
-	printf "\n✅	$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)\n"
+	printf "✅	$(GREEN)$(BOLD)Binary $(NAME) created$(RESET)\n"
 
 $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) $(MLX) Makefile | $(P_OBJS)
 	$(CC) $(CF) $(CI) -c $< -o $@
@@ -111,7 +111,9 @@ $(MLX): makemlx
 $(LIBFT): makelibft
 
 makemlx:
+	printf "$(YELLOW)$(BOLD)Creating $(MLX) Library$(RESET)\n"
 	$(MAKE) -C mlx/
+	printf "✅	$(GREEN)$(BOLD)Library $(MLX) created$(RESET)\n"
 
 makelibft:
 	$(MAKE) -j 3 -C libft/

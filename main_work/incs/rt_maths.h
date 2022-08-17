@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 08:23:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 08:51:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ struct	s_matrix
 	float	x_x;
 	float	x_y;
 	float	x_z;
+
 	float	y_x;
 	float	y_y;
 	float	y_z;
+
 	float	z_x;
 	float	z_y;
 	float	z_z;

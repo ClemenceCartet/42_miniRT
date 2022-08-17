@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 08:23:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 08:50:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ struct	s_master
 	void		*init;
 	void		*wdw;
 	t_mlx_data	*mlx;
+
 	t_obj_data	*obj_data;
+
 	t_ambient	*ambient;
 	t_camera	*camera;
 	t_light		*light;
