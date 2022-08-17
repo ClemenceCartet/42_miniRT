@@ -6,11 +6,23 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:17:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 10:45:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 11:55:05 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+//Check object ID to init correct object data
+static t_object	*rt_obj_data_hub(char **split)
+{
+	if (!ft_strncmp(split[0], "sp", 3))
+		return (rt_init_sphere(split));
+	else if (!ft_strncmp(split[0], "pl", 3))
+		return (rt_init_plane(split));
+	else if (!ft_strncmp(split[0], "cy", 3))
+		return (rt_init_cylinder(split));
+	return (NULL);
+}
 
 //Object initialization (SP / PL / CY)
 int	rt_init_obj_data(t_obj_data **obj_data, char **split)
@@ -26,18 +38,16 @@ int	rt_init_obj_data(t_obj_data **obj_data, char **split)
 		(*obj_data)->lst = NULL;
 		(*obj_data)->lst_size = 0;
 	}
-	if (!ft_strncmp(split[0], "sp", 3))
-		object = rt_init_sphere(split);
-	else if (!ft_strncmp(split[0], "pl", 3))
-		object = rt_init_plane(split);
-	else if (!ft_strncmp(split[0], "cy", 3))
-		object = rt_init_cylinder(split);
+	object = rt_obj_data_hub(split);
 	if (!object)
 		return (1);
 	ft_free_split(split);
 	ft_lstadd_back(&(*obj_data)->lst, ft_lstnew(object));
 	if (!(*obj_data)->lst_size)
+	{
 		(*obj_data)->start = (*obj_data)->lst;
+		(*obj_data)->current = (*obj_data)->start;
+	}
 	(*obj_data)->lst_size++;
 	return (0);
 }
@@ -87,12 +97,6 @@ int	rt_init_camera(t_camera **camera, char **split)
 	(*camera)->rot_z = 0.0; //will be moved in init_additional_data
 	ft_free_split(split);
 	return (0);
-}
-
-void	rt_init_ratios(t_camera *cam) //will be moved in init_additional_data
-{
-	cam->ratio_H = (2 * tan(cam->radian * 0.5)) / W;
-	cam->ratio_V = (2 * tan(cam->radian * H / (W * 2))) / H; // calculs à revoir
 }
 
 //Ambient Light initialization (A)

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 14:44:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 12:01:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ void	display_scene(t_master *master)
 	ray_tracer(master);
 	mlx_put_image_to_window(master->init, master->wdw, master->mlx->img, 0, 0);
 	mlx_destroy_image(master->init, master->mlx->img);
+}
+
+//Give next object ptr, if end is reached, return first object of the list
+t_object	*rt_get_next_object(t_obj_data *obj_data)
+{
+	if (obj_data->current->next)
+		obj_data->current = obj_data->current->next;
+	else
+		obj_data->current = obj_data->start;
+	return (obj_data->current->content);
 }
 
 int	main(int ac, char **av)
