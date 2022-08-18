@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:11:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/05/31 10:50:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 12:48:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -367,3 +367,24 @@ Parsing
 		} // find object
 	} // Check content
 } // Parsing
+
+/*CSS
+body {
+	background-color: rgb(255, 0, 0);
+	background-color: rgb(255, 128, 0);
+	background-color: rgb(255, 128, 128);
+	background-color: rgb(255, 0, 128);
+
+	background-color: rgb(0, 255, 0);
+	background-color: rgb(128, 255, 0);
+	background-color: rgb(128, 255, 128);
+	background-color: rgb(0, 255, 128);
+
+	background-color: rgb(0, 0, 255);
+	background-color: rgb(128, 0, 255);
+	background-color: rgb(128, 128, 255);
+	background-color: rgb(0, 128, 255);
+	background-color: rgb(0, 255, 255);
+	background-color: rgb(255,200,255);
+}
+*/
