@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/18 09:57:47 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/18 10:28:57 by ccartet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 # Commands
 CC				:=	gcc
-CF				:=	-Wall -Werror -Wextra
+CF				:=	-Wall -Werror -Wextra -g3 -fsanitize=address
 CI				:=	-I $(P_INCS_LIBFT) -I $(P_INCS) -I $(P_MLX)
 CS				:=	-g3 -fsanitize=address
 CG				:=	-g3

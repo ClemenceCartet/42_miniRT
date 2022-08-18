@@ -9,13 +9,19 @@ void	set_hit_point(t_ray *ray)
 
 bool	hit_plane(t_ray *ray, t_object *pl)
 {
-	float	a;
-	float	b;
+	// float	a;
+	// float	b;
+	// float	time;
+
+	// a = dot_product(*pl->dir, ray->dir);
+	// b = dot_product(*pl->dir, find_vector(ray->origin, *pl->pos));
+	// time = b / a; 
+	float	d;
 	float	time;
 
-	a = dot_product(*pl->dir, ray->dir);
-	b = dot_product(*pl->dir, find_vector(ray->origin, *pl->pos));
-	time = b / a; 
+	d = -(dot_product(*pl->dir, *pl->pos));
+	time = -(dot_product(*pl->dir, ray->origin) + d) 
+		/ dot_product(*pl->dir, ray->dir);
 	if (time <= 0)
 		return (0);
 	if (ray->time == 0.0 || time < ray->time)
