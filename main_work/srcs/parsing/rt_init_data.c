@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:17:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:23:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	rt_init_obj_data(t_obj_data **obj_data, char **split)
 			return (1);
 		(*obj_data)->lst = NULL;
 		(*obj_data)->lst_size = 0;
+		(*obj_data)->objects = NULL;
 	}
 	object = rt_obj_data_hub(split);
 	if (!object)
@@ -44,10 +45,7 @@ int	rt_init_obj_data(t_obj_data **obj_data, char **split)
 	ft_free_split(split);
 	ft_lstadd_back(&(*obj_data)->lst, ft_lstnew(object));
 	if (!(*obj_data)->lst_size)
-	{
 		(*obj_data)->start = (*obj_data)->lst;
-		(*obj_data)->current = (*obj_data)->start;
-	}
 	(*obj_data)->lst_size++;
 	return (0);
 }

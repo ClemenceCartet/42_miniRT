@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:18:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int			rt_init_ambient(t_ambient **ambient, char **split);
 /*-------------------- rt_init_additional_data.c --------------------*/
 
 void		rt_init_ratios(t_camera *cam);
+t_object	**rt_init_object_tab(t_obj_data *obj_data);
 
 /*-------------------- rt_init_master.c --------------------*/
 

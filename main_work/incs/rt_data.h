@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:51:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:23:36 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ struct s_mlx_data
 struct	s_obj_data
 {
 	t_list		*lst;
-	t_list		*current;
 	size_t		lst_size;
 	void		*start;
 	t_object	**objects;

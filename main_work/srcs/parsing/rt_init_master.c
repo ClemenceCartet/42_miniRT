@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:48:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 08:52:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:21:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,8 @@ int	rt_init_master(t_master *master, char *filename)
 		return (1);
 	// if (rt_init_additional_data(master))
 	// 	return (1);
+	master->obj_data->objects = rt_init_object_tab(master->obj_data);
+	if (!master->obj_data->objects)
+		return (1);
 	return (0);
 }

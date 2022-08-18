@@ -30,6 +30,8 @@ void	rt_free_obj_data(t_obj_data *obj_data)
 			free (tmp);
 			tmp = NULL;
 		}
+		if (obj_data->objects)
+			free (obj_data->objects);
 		free (obj_data);
 		obj_data = NULL;
 	}
@@ -41,7 +43,7 @@ int	rt_free_master(t_master *master)
 	if (master)
 	{
 		if (master->mlx)
-			free(master->mlx);
+			free (master->mlx);
 		if (master->obj_data)
 			rt_free_obj_data(master->obj_data);
 		if (master->ambient)
