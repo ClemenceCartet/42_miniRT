@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:05:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 08:47:52 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*rt_init_object(char **split, size_t splitsize, char *name)
 
 	object = NULL;
 	if (ft_splitlen(split) != splitsize)
-		return (rt_return_ptr_error(split, NULL, E_SPLITLEN, name));
+		return (rt_ret_ptr_error(split, NULL, E_SPLITLEN, name));
 	object = rt_calloc_struct(sizeof(t_object), split);
 	if (!object)
 		return (NULL);

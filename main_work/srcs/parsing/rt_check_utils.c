@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:35:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 12:08:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	rt_check_ptr(void *ptr, char **split)
 	if (ptr)
 	{
 		if (!ft_strncmp(split[0], "A", 2))
-			return (rt_return_int_error(split, NULL, E_EXISTING_ID, "A"));
+			return (rt_ret_int_error(split, NULL, E_EXISTING_ID, "A"));
 		else if (!ft_strncmp(split[0], "C", 2))
-			return (rt_return_int_error(split, NULL, E_EXISTING_ID, "C"));
+			return (rt_ret_int_error(split, NULL, E_EXISTING_ID, "C"));
 		else if (!ft_strncmp(split[0], "L", 2))
-			return (rt_return_int_error(split, NULL, E_EXISTING_ID, "L"));
+			return (rt_ret_int_error(split, NULL, E_EXISTING_ID, "L"));
 	}
 	return (0);
 }

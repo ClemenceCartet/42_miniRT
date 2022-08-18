@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 11:59:35 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void		rt_free_camera(t_camera *camera);
 void		rt_free_light(t_light *light);
 void		*rt_free_object(t_object *object);
 
-/*-------------------- rt_return_errors.c --------------------*/
+/*-------------------- rt_ret_errors.c --------------------*/
 
 // void		ft_free_split_error(char **split1, char **split2);
 int			rt_ret_int_error(char **s1, char **s2, char *str, char *str2);

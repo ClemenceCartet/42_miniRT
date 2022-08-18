@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:48:20 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 12:11:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*rt_calloc_struct(size_t size, char **split)
 
 	ptr = ft_calloc(1, size);
 	if (!ptr)
-		return (rt_return_ptr_error(split, NULL, E_MALLOC, NULL));
+		return (rt_ret_ptr_error(split, NULL, E_MALLOC, NULL));
 	return (ptr);
 }
 
@@ -31,10 +31,10 @@ float	rt_init_obj_size(char **data, char *value)
 	if (rt_check_overflow(value, data))
 		return (-1);
 	if (rt_check_float_syntax(value))
-		return (rt_return_int_error(data, NULL, NULL, NULL) * -1);
+		return (rt_ret_int_error(data, NULL, NULL, NULL) * -1);
 	obj_size = ft_atof(value);
 	if (rt_check_float_range(obj_size, 0, 0, "Positive"))
-		return (rt_return_int_error(data, NULL, NULL, NULL) * -1);
+		return (rt_ret_int_error(data, NULL, NULL, NULL) * -1);
 	return (obj_size);
 }
 
@@ -46,10 +46,10 @@ float	rt_init_ratio(char **data, char *value)
 	if (rt_check_overflow(value, data))
 		return (-1);
 	if (rt_check_float_syntax(value))
-		return (rt_return_int_error(data, NULL, NULL, NULL) * -1);
+		return (rt_ret_int_error(data, NULL, NULL, NULL) * -1);
 	ratio = ft_atof(value);
 	if (rt_check_float_range(ratio, 0, 1, "0 / 1"))
-		return (rt_return_int_error(data, NULL, NULL, NULL) * -1);
+		return (rt_ret_int_error(data, NULL, NULL, NULL) * -1);
 	return (ratio);
 }
 
@@ -61,9 +61,9 @@ int	rt_init_fov(char **data, char *value)
 	if (rt_check_overflow(value, data))
 		return (-1);
 	if (rt_check_charset(value, INT_CHARSET))
-		return (rt_return_int_error(data, NULL, NULL, NULL) * -1);
+		return (rt_ret_int_error(data, NULL, NULL, NULL) * -1);
 	fov = ft_atoi(value);
 	if (rt_check_int_range(fov, 0, 180, "0 / 180"))
-		return (rt_return_int_error(data, NULL, NULL, NULL) * -1);
+		return (rt_ret_int_error(data, NULL, NULL, NULL) * -1);
 	return (fov);
 }

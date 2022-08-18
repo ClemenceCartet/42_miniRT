@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:55:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 11:58:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ static int	rt_full_strcmp(char *s1, char *s2)
 int	rt_check_overflow(char *value, char **split)
 {
 	if (!value || !value[0])
-		return (rt_return_int_error(split, NULL, E_NO_VALUE, NULL));
+		return (rt_ret_int_error(split, NULL, E_NO_VALUE, NULL));
 	if (ft_strlen(value) > 9)
 	{
 		if (value[0] == '-')
 		{
 			if (rt_full_strcmp(value, CHARINT_MIN) > 0)
-				return (rt_return_int_error(split, NULL, E_NUMBER, NULL));
+				return (rt_ret_int_error(split, NULL, E_NUMBER, NULL));
 		}
 		else if (rt_full_strcmp(value, CHARINT_MAX) > 0)
-			return (rt_return_int_error(split, NULL, E_NUMBER, NULL));
+			return (rt_ret_int_error(split, NULL, E_NUMBER, NULL));
 	}
 	return (0);
 }

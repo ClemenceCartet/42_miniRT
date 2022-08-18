@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:17:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/17 11:55:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	rt_init_light(t_light **light, char **split)
 	if (rt_check_ptr(*light, split))
 		return (1);
 	if (ft_splitlen(split) != 3)
-		return (rt_return_int_error(split, NULL, E_SPLITLEN, "Light"));
+		return (rt_ret_int_error(split, NULL, E_SPLITLEN, "Light"));
 	*light = rt_calloc_struct(sizeof(t_light), split);
 	if (!*light)
 		return (1);
@@ -78,7 +78,7 @@ int	rt_init_camera(t_camera **camera, char **split)
 	if (rt_check_ptr(*camera, split))
 		return (1);
 	if (ft_splitlen(split) != 4)
-		return (rt_return_int_error(split, NULL, E_SPLITLEN, "Camera"));
+		return (rt_ret_int_error(split, NULL, E_SPLITLEN, "Camera"));
 	*camera = rt_calloc_struct(sizeof(t_camera), split);
 	if (!*camera)
 		return (1);
@@ -105,7 +105,7 @@ int	rt_init_ambient(t_ambient **ambient, char **split)
 	if (rt_check_ptr(*ambient, split))
 		return (1);
 	if (ft_splitlen(split) != 3)
-		return (rt_return_int_error(split, NULL, E_SPLITLEN, "Ambient Light"));
+		return (rt_ret_int_error(split, NULL, E_SPLITLEN, "Ambient Light"));
 	*ambient = rt_calloc_struct(sizeof(t_ambient), split);
 	if (!*ambient)
 		return (1);
