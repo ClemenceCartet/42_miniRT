@@ -12,6 +12,11 @@ t_coord	scale_vectors(t_coord v, t_coord u) // ou scale par un float ?
 }
 // ici, on ne modifie pas la direction du vecteur, seulement sa magnitude / longueur
 
+t_coord	scale_vectors_bis(t_coord v, float f)
+{
+	return (create_vector(v.x * f, v.y * f, v.z * f));
+}
+
 t_coord	find_vector(t_coord a, t_coord b)
 {
 	return (create_vector(b.x - a.x, b.y - a.y, b.z - a.z));

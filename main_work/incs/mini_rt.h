@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 12:28:56 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/19 12:32:27 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,11 +172,12 @@ void		mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
 void		set_hit_point(t_ray *ray);
 bool		hit_plane(t_ray *ray, t_object *pl);
 bool		hit_sphere(t_ray *ray, t_object *sp);
+bool		hit_cylinder(t_ray *ray, t_object *cy);
 
 /*-------------------- op_vector1.c --------------------*/
 
-float		vector_lenght(t_coord v);
-float		vector_lenght_squared(t_coord v);
+float		vector_length(t_coord v);
+float		vector_length_squared(t_coord v);
 void		norm_vector(t_coord *v);
 t_coord		create_vector(float x, float y, float z);
 
@@ -184,6 +185,7 @@ t_coord		create_vector(float x, float y, float z);
 
 t_coord		add_vectors(t_coord v, t_coord u);
 t_coord		scale_vectors(t_coord v, t_coord u);
+t_coord		scale_vectors_bis(t_coord v, float f);
 t_coord		find_vector(t_coord a, t_coord b);
 t_coord		cross_vectors(t_coord v, t_coord u);
 float		dot_product(t_coord v, t_coord p);

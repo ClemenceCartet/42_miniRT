@@ -1,5 +1,6 @@
 .DS_Store
-main_work/.objs
 main_work/libft/.objs
+main_work/libft/libft.a
+main_work/.objs
 main_work/mlx
 miniRT

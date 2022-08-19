@@ -4,10 +4,10 @@ void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 {
 	int	i;
 
-	i = (y * mlx->line_length) + (x * (mlx->bpp / 8));
+	i = (y * mlx->line_length) + (x * (mlx->bpp / 8)); // sert à cacluler le memory offset
 	mlx->addr[i++] = color.b;
-	mlx->addr[i++] = color.r;
 	mlx->addr[i++] = color.g;
+	mlx->addr[i++] = color.r;
 }
 
 t_color	ray_color(t_color *cl, t_coord *normal)
@@ -56,10 +56,11 @@ void	ray_tracer(t_master *master)
 	int		w;
 	size_t	n;
 	int		i;
-	bool	(*fctHit[2])(t_ray*, t_object*);
+	bool	(*fctHit[3])(t_ray*, t_object*);
 
 	fctHit[0] = &hit_sphere;
 	fctHit[1] = &hit_plane;
+	fctHit[2] = &hit_cylinder;
 	h = 0;
 	while (h < H)
 	{	
@@ -71,7 +72,7 @@ void	ray_tracer(t_master *master)
 			while (n < master->obj_data->lst_size)
 			{
 				i = 1;
-				while (i <= 2)
+				while (i <= 3)
 				{
 					if (i == master->obj_data->objects[n]->id)
 					{
@@ -80,8 +81,6 @@ void	ray_tracer(t_master *master)
 					}
 					i++;
 				}
-				// if (!hit_plane(&ray, master->obj_data->objects[n]))
-				// ray.color = ray_color(ray.dir, &ray.normal);
 				n++;
 			}
 			mlx_put_pixel(w, h, ray.color, master->mlx);

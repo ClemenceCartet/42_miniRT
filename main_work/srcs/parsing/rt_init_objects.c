@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_init_objects.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:05:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 12:07:48 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	*rt_init_cylinder(char **split)
 	object->diameter = rt_init_obj_size(split, split[3]);
 	if (object->diameter == -1)
 		return (rt_free_object(object));
+	object->radius = object->diameter * 0.5; //will be moved in init_additional_data
 	object->height = rt_init_obj_size(split, split[4]);
 	if (object->height == -1)
 		return (rt_free_object(object));
