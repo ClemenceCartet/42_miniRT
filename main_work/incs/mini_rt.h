@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 12:28:56 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/19 09:53:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ struct s_list
 
 /*-------------------- main.c --------------------*/
 
-t_object	*rt_get_next_object(t_obj_data *obj_data);
 // int		main(int ac, char **av);
 void		display_scene(t_master *master);
 int			exit_x(t_master *master);
+int			key_hook(int key, t_master *master);
 
 /*-------------------- rt_check_utils.c --------------------*/
 
@@ -164,7 +164,7 @@ char		**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
 
 void		ray_tracer(t_master *master);
 t_ray		create_ray(t_camera cam, float w, float h);
-t_color		ray_color(t_color *cl, t_coord *normal);
+t_color		ray_color(void);
 void		mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
 
 /*-------------------- hits.c --------------------*/

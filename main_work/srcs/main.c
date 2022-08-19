@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 10:16:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:52:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ int	exit_x(t_master *master)
 	mlx_destroy_window(master->init, master->wdw);
 	rt_free_master(master);
 	exit(0);
+	return (0);
+}
+
+int	key_hook(int key, t_master *master)
+{
+	if (key == K_ESC)
+		exit_x(master);
+	else
+		dprintf(STDOUT_FILENO, "key = %d\n", key);
 	return (0);
 }
 
@@ -42,9 +51,8 @@ int	main(int ac, char **av)
 	master.init = mlx_init();
 	master.wdw = mlx_new_window(master.init, W, H, "miniRT");
 	display_scene(&master);
-	//mlx_hook(master.wdw, 4, 1L << 2, mouse_hook, &master);
-	//mlx_hook(master.wdw, 2, 1L << 0, key_hook, &master);
-	mlx_hook(master.wdw, 17, 1L << 17, exit_x, &master);
+	mlx_hook(master.wdw, 2, 0, key_hook, &master);
+	mlx_hook(master.wdw, 17, 0, exit_x, &master);
 	mlx_loop(master.init);
 	return (rt_free_master(&master));
 }
