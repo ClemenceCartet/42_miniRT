@@ -196,4 +196,8 @@ t_matrix	mat_rot_x(float rad);
 t_matrix	mat_rot_z(float rad);
 t_coord		mat_x_vector(t_matrix m, t_coord v);
 
+void		rotate_x(t_coord *xyz, float rad);
+void		rotate_y(t_coord *xyz, float rad);
+void		rotate_z(t_coord *xyz, float rad);
+
 #endif //MINI_RT_H
