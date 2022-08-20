@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/19 10:59:51 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/20 10:55:17 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,8 +111,7 @@ $(MLX): makemlx
 $(LIBFT): makelibft
 
 makemlx:
-	printf "$(YELLOW)$(BOLD)Creating $(MLX) Library$(RESET)\n"
-	$(MAKE) -C mlx/
+	$(MAKE) -j 3 -C mlx/
 
 makelibft:
 	$(MAKE) -j 3 -C libft/
