@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/21 17:32:58 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/21 17:35:57 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,16 @@ MLX		:=	mlx/libmlx.a
 LST_INCS		:=	mini_rt.h		rt_keys.h			\
 					rt_data.h		rt_defines.h		\
 					rt_objects.h
-LST_PARSING		:=	rt_check_utils.c	rt_check_utils2.c			\
-					rt_data_utils.c		rt_init_coords.c			\
-					rt_init_data.c		rt_init_master.c			\
-					rt_init_objects.c	rt_init_rgb.c
-LST_SRCS		:=	hits.c				op_matrix1.c				\
-					op_vector1.c		op_vector2.c				\
-					ray_tracer.c		rt_free_data.c				\
-					rt_free_objects.c	rt_return_errors.c			\
-					rt_write_errors.c	rt_init_additional_data.c
+LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c			\
+					rt_data_utils.c				rt_init_coords.c			\
+					rt_init_data.c				rt_init_master.c			\
+					rt_init_objects.c			rt_init_rgb.c				\
+					rt_init_additional_data.c
+LST_SRCS		:=	hits.c						op_matrix1.c				\
+					op_vector1.c				op_vector2.c				\
+					ray_tracer.c				rt_free_data.c				\
+					rt_free_objects.c			rt_return_errors.c			\
+					rt_write_errors.c
 
 # Directories
 P_MLX			:=	mlx/
