@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/20 10:55:17 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/21 17:32:58 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LST_SRCS		:=	hits.c				op_matrix1.c				\
 					op_vector1.c		op_vector2.c				\
 					ray_tracer.c		rt_free_data.c				\
 					rt_free_objects.c	rt_return_errors.c			\
-					rt_write_errors.c	rt_init_additional_data.c	\
+					rt_write_errors.c	rt_init_additional_data.c
 
 # Directories
 P_MLX			:=	mlx/

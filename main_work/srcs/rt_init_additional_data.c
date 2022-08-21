@@ -6,20 +6,14 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 10:23:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/21 17:30:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-void	rt_init_ratios(t_camera *cam)
-{
-	cam->ratio_H = (2 * tan(cam->radian * 0.5)) / W;
-	cam->ratio_V = (2 * tan(cam->radian * H / (W * 2))) / H; // calculs à revoir
-}
-
 //Object table initialization from linked list of obj_data
-t_object	**rt_init_object_tab(t_obj_data *obj_data)
+static t_object	**rt_init_object_tab(t_obj_data *obj_data)
 {
 	t_object	**objects;
 	size_t		a;
@@ -27,7 +21,7 @@ t_object	**rt_init_object_tab(t_obj_data *obj_data)
 	a = 0;
 	objects = malloc(sizeof(t_object *) * (obj_data->lst_size + 1));
 	if (!objects)
-		return (NULL);
+		return (rt_write_ptr_error(E_MALLOC, NULL, DFI, DLI));
 	obj_data->lst = obj_data->start;
 	while (a < obj_data->lst_size)
 	{
@@ -37,4 +31,48 @@ t_object	**rt_init_object_tab(t_obj_data *obj_data)
 	}
 	objects[a] = NULL;
 	return (objects);
+}
+
+//Camera additional data initialization (C)
+/**
+ * (*camera)->ratio_V calculs à revoir
+*/
+static void	rt_init_add_camera(t_camera **camera)
+{
+	(*camera)->radian = (*camera)->fov * M_PI / 180;
+	(*camera)->ratio_H = (2 * tan((*camera)->radian * 0.5)) / W;
+	(*camera)->ratio_V = (2 * tan((*camera)->radian * H / (W * 2))) / H;
+	(*camera)->rot_x = 0.0;
+	(*camera)->rot_z = 0.0;
+}
+
+//Object additional data initialization (SP / PL / CY)
+static void	rt_init_add_object(t_object **object)
+{
+	if ((*object)->id == SP || (*object)->id == CY)
+		(*object)->radius = (*object)->diameter * 0.5;
+	else
+		(*object)->radius = 0;
+}
+
+//Master additional data initialization
+int	rt_init_additional_data(t_master *master)
+{
+	int	a;
+
+	a = 0;
+	master->mlx = malloc(sizeof(t_mlx_data));
+	if (!master->mlx)
+		return (rt_write_int_error(E_MALLOC, NULL, DFI, DLI));
+	master->obj_data->objects = rt_init_object_tab(master->obj_data);
+	if (!master->obj_data->objects)
+		return (1);
+	master->obj_data->lst = master->obj_data->start;
+	rt_init_add_camera(&master->camera);
+	while (master->obj_data->objects[a])
+	{
+		rt_init_add_object(&master->obj_data->objects[a]);
+		a++;
+	}
+	return (0);
 }

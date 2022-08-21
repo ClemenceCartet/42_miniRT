@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:05:08 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/21 17:22:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	*rt_init_sphere(char **split)
 	object->diameter = rt_init_obj_size(split, split[2]);
 	if (object->diameter == -1)
 		return (rt_free_object(object));
-	object->radius = object->diameter * 0.5; //will be moved in init_additional_data
 	object->rgb = rt_init_rgb(split, split[3]);
 	if (!object->rgb)
 		return (rt_free_object(object));
