@@ -35,12 +35,13 @@ t_ray	create_ray(t_camera cam, float w, float h)
 {
 	t_ray	new;
 
-	new.origin.x = -cam.pos->x;
-	new.origin.y = cam.pos->y;
-	new.origin.z = -cam.pos->z;
-	new.dir.x = (W * 0.5 - w) * cam.ratio_H;
-	new.dir.y = -1.0;
-	new.dir.z = (h - H * 0.5) * cam.ratio_V;
+	new.origin = *cam.pos;
+	/*new.dir.x = (W * 0.5 - w) * cam.focal;
+	new.dir.y = -1;
+	new.dir.z = (h - H * 0.5) * cam.focal; */
+	new.dir.x = W * 0.5 - w;
+	new.dir.y = -cam.focal; // pourquoi y négatif ?!
+	new.dir.z = h - H * 0.5; // opengl cartesian coord : right hand ?? 
 	new.dir = add_vectors(new.dir, *cam.dir);
 	norm_vector(&new.dir);
 	new.color = ray_color(NULL, NULL);

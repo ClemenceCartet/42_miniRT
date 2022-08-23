@@ -12,10 +12,11 @@
 
 #include <mini_rt.h>
 
-void	rt_init_ratios(t_camera *cam)
+void	rt_init_focal(t_camera *cam)
 {
-	cam->ratio_H = (2 * tan(cam->radian * 0.5)) / W;
-	cam->ratio_V = (2 * tan(cam->radian * H / (W * 2))) / H; // calculs à revoir
+	cam->focal = W / (2 * tan(cam->radian * 0.5));
+	//cam->focal = (cos(cam->radian * 0.5) / sin(cam->radian * 0.5)) / H;
+	//dprintf(2, "%f, %f\n", cam->radian, cam->focal);
 }
 
 //Object table initialization from linked list of obj_data

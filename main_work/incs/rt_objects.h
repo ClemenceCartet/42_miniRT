@@ -41,8 +41,7 @@ struct	s_camera
 	int		fov;
 
 	float	radian;
-	float	ratio_H;
-	float	ratio_V;
+	float	focal;
 	float	rot_x; // + ou - 0.5
 	float	rot_z; // + ou - 0.5
 };

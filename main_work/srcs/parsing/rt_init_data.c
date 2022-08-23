@@ -90,7 +90,7 @@ int	rt_init_camera(t_camera **camera, char **split)
 	if ((*camera)->fov == -1)
 		return (1);
 	(*camera)->radian = (*camera)->fov * M_PI / 180; //will be moved in init_additional_data
-	rt_init_ratios(*camera); //will be moved in init_additional_data
+	rt_init_focal(*camera); //will be moved in init_additional_data
 	(*camera)->rot_x = 0.0; //will be moved in init_additional_data
 	(*camera)->rot_z = 0.0; //will be moved in init_additional_data
 	ft_free_split(split);

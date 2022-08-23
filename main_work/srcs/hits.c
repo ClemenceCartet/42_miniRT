@@ -38,7 +38,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	float	time[3];
 
 	to_center = find_vector(ray->origin, *sp->pos);
-	a = vector_length_squared(ray->dir);
+	a = vector_length_squared(ray->dir); // normalement egal à 1
 	half_b = dot_product(to_center, ray->dir);
 	c = vector_length_squared(to_center) - sp->radius * sp->radius;
 	discriminant = half_b * half_b - a * c;
@@ -58,6 +58,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 		return (0);
 	set_hit_point(ray);
 	ray->normal = find_vector(*sp->pos, ray->hit);
+	norm_vector(&ray->normal);
 	ray->color = *sp->rgb;
 	ray->object_id = SP;
 	return (1);
