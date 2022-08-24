@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_matrix1.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 11:15:16 by ccartet           #+#    #+#             */
+/*   Updated: 2022/08/24 15:00:21 by ccartet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mini_rt.h>
 
 t_matrix	mat_rot_x(float rad) // rotation up-down
@@ -44,7 +56,7 @@ t_coord	mat_x_vector(t_matrix m, t_coord v)
 
 // matrice de translation ??
 
-void	rotate_x(t_coord *xyz, float rad) // rotation haut/bas
+void	rotate_y(t_coord *xyz, float rad) // rotation haut/bas
 {
 	float	prev_y;
 
@@ -53,7 +65,7 @@ void	rotate_x(t_coord *xyz, float rad) // rotation haut/bas
 	xyz->z = prev_y * sin(rad) + xyz->z * cos(rad);
 }
 
-void	rotate_y(t_coord *xyz, float rad) // tanguage droite/gauche
+void	rotate_x(t_coord *xyz, float rad) // rotation droite/gauche
 {
 	float	prev_x;
 
@@ -62,7 +74,7 @@ void	rotate_y(t_coord *xyz, float rad) // tanguage droite/gauche
 	xyz->z = -prev_x * sin(rad) + xyz->z * cos(rad);
 }
 
-void	rotate_z(t_coord *xyz, float rad) // rotation droite/gauche
+void	rotate_z(t_coord *xyz, float rad) // tanguage droite/gauche
 {
 	float	prev_x;
 	float	prev_y;

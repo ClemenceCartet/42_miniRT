@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/19 12:32:27 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/24 12:37:32 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ t_coord		create_vector(float x, float y, float z);
 /*-------------------- op_vector1.c --------------------*/
 
 t_coord		add_vectors(t_coord v, t_coord u);
+t_coord		inverse_vector(t_coord v);
 t_coord		scale_vectors(t_coord v, t_coord u);
 t_coord		scale_vectors_bis(t_coord v, float f);
 t_coord		find_vector(t_coord a, t_coord b);

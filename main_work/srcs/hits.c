@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hits.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
+/*   Updated: 2022/08/24 14:49:08 by ccartet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mini_rt.h>
 
 void	set_hit_point(t_ray *ray)
@@ -14,8 +26,8 @@ bool	hit_plane(t_ray *ray, t_object *pl)
 	float	time;
 
 	a = dot_product(*pl->dir, ray->dir);
-	b = dot_product(*pl->dir, find_vector(ray->origin, *pl->pos));
-	time = b / a; 
+	b = dot_product(*pl->dir, find_vector(ray->origin, *pl->pos)); // distance
+	time = b / a;
 	if (time <= 0)
 		return (0);
 	if (ray->time == 0.0 || time < ray->time)
@@ -28,6 +40,41 @@ bool	hit_plane(t_ray *ray, t_object *pl)
 	return (1);
 }
 
+// bool	hit_plane(t_ray *ray, t_object *pl)
+// {
+// 	float		a;
+// 	float		b;
+// 	float		time;
+
+// 	a = dot_product(*pl->dir, ray->dir);
+// 	b = dot_product(*pl->dir, find_vector(*pl->pos, ray->origin));
+// 	time = b / a; 
+// 	if (time <= 0)
+// 		return (0);
+// 	if (ray->time == 0.0 || time < ray->time)
+// 		ray->time = time;
+// 	else
+// 		return (0);
+// 	set_hit_point(ray);
+// 	if (pl->first == 0)
+// 	{
+// 		pl->first = 1;
+// 		pl->U = find_vector(*pl->pos, ray->hit);
+// 		pl->V = cross_vectors(pl->U, *pl->dir);
+// 		norm_vector(&pl->U);
+// 		norm_vector(&pl->V);
+// 		pl->U = scale_vectors_bis(pl->U, W/2);
+// 		pl->V = scale_vectors_bis(pl->V, H/2);
+// 		// pl->c1 = add_vectors(add_vectors(*pl->pos, pl->U), pl->V);
+// 		// pl->c2 = add_vectors(add_vectors(*pl->pos, pl->U), -pl->V);
+// 		// pl->c3 = add_vectors(add_vectors(*pl->pos, -pl->U), pl->V);
+// 		// pl->c4 = add_vectors(add_vectors(*pl->pos, -pl->U), -pl->V);
+// 	}
+// 	ray->color = *pl->rgb;
+// 	ray->object_id = PL;
+// 	return (1);
+// }
+
 bool	hit_sphere(t_ray *ray, t_object *sp)
 {
 	t_coord	to_center;
@@ -37,7 +84,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	float	discriminant;
 	float	time[3];
 
-	to_center = find_vector(ray->origin, *sp->pos);
+	to_center = find_vector(*sp->pos, ray->origin);
 	a = vector_length_squared(ray->dir); // normalement egal à 1
 	half_b = dot_product(to_center, ray->dir);
 	c = vector_length_squared(to_center) - sp->radius * sp->radius;

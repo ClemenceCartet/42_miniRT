@@ -1,8 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_vector2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 11:15:56 by ccartet           #+#    #+#             */
+/*   Updated: 2022/08/24 12:36:22 by ccartet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mini_rt.h>
 
 t_coord	add_vectors(t_coord v, t_coord u)
 {
 	return (create_vector(v.x + u.x, v.y + u.y, v.z + u.z));
+}
+
+t_coord	inverse_vector(t_coord v)
+{
+	return (create_vector(-v.x, -v.y, -v.z));
 }
 
 t_coord	scale_vectors(t_coord v, t_coord u) // ou scale par un float ?
