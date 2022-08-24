@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/19 14:42:09 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:54:14 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,17 @@ int	exit_x(t_master *master)
 void	rt_update_camera_pos(int key, t_master *master)
 {
 	if (key == K_W)
-		master->camera->pos->y += 0.1;
+		master->camera->pos->z += 0.1;
 	else if (key == K_S)
-		master->camera->pos->y -= 0.1;
+		master->camera->pos->z -= 0.1;
 	else if (key == K_A)
-		master->camera->pos->x += 0.1;
-	else if (key == K_D)
 		master->camera->pos->x -= 0.1;
+	else if (key == K_D)
+		master->camera->pos->x += 0.1;
+	dprintf(STDERR_FILENO, "x = %f\n", master->camera->pos->x);
+	dprintf(STDERR_FILENO, "y = %f\n", master->camera->pos->y);
+	dprintf(STDERR_FILENO, "z = %f\n", master->camera->pos->z);
+	dprintf(STDERR_FILENO, "\n");
 }
 
 void	rt_update_camera_dir(int key, t_master *master)
@@ -115,6 +119,10 @@ int	main(int ac, char **av)
 	master.init = mlx_init();
 	master.wdw = mlx_new_window(master.init, W, H, "miniRT");
 	display_scene(&master);
+	dprintf(STDERR_FILENO, "x = %f\n", master.camera->pos->x);
+	dprintf(STDERR_FILENO, "y = %f\n", master.camera->pos->y);
+	dprintf(STDERR_FILENO, "z = %f\n", master.camera->pos->z);
+	dprintf(STDERR_FILENO, "\n");
 	mlx_hook(master.wdw, 2, 0, key_hook, &master);
 	mlx_hook(master.wdw, 17, 0, exit_x, &master);
 	mlx_loop(master.init);
