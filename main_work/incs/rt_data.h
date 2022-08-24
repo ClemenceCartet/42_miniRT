@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 10:52:44 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/19 09:53:12 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ struct s_mlx_data
 {
 	void	*img;
 	char	*addr;
-	int		bpp;
+	int		bpp; // bit per pixel, 8 bits color
 	int		line_length;
 	int		endian;
 };

@@ -27,7 +27,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	radius = sp->diameter * 0.5;
 	to_center = find_vector(ray->origin, *sp->pos);
 	distance = dot_product(to_center, ray->dir);
-	opposit = vector_lenght(to_center) * vector_lenght(to_center) - distance * distance;
+	opposit = vector_length(to_center) * vector_length(to_center) - distance * distance;
 	if (opposit < (radius * radius))
 	{
 		dprintf(2, "blop");

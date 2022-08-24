@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/21 17:30:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:43:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,12 @@ static t_object	**rt_init_object_tab(t_obj_data *obj_data)
 }
 
 //Camera additional data initialization (C)
-/**
- * (*camera)->ratio_V calculs à revoir
-*/
-static void	rt_init_add_camera(t_camera **camera)
+static void	rt_init_add_camera(t_camera **cam)
 {
-	(*camera)->radian = (*camera)->fov * M_PI / 180;
-	(*camera)->ratio_H = (2 * tan((*camera)->radian * 0.5)) / W;
-	(*camera)->ratio_V = (2 * tan((*camera)->radian * H / (W * 2))) / H;
-	(*camera)->rot_x = 0.0;
-	(*camera)->rot_z = 0.0;
+	(*cam)->radian = (*cam)->fov * M_PI / 180;
+	(*cam)->focal = W / (2 * tan((*cam)->radian * 0.5));
+	// (*cam)->focal = (cos((*cam)->radian * 0.5) / sin((*cam)->radian * 0.5) / H);
+	// dprintf(2, "%f, %f\n", (*cam)->radian, (*cam)->focal);
 }
 
 //Object additional data initialization (SP / PL / CY)

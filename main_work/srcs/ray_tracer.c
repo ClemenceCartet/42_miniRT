@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_tracer.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
+/*   Updated: 2022/08/24 15:43:11 by ljohnson         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <mini_rt.h>
 
 void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 {
 	int	i;
 
-	i = (y * mlx->line_length) + (x * (mlx->bpp / 8));
+	i = (y * mlx->line_length) + (x * (mlx->bpp / 8)); // sert à cacluler le memory offset
 	mlx->addr[i++] = color.b;
 	mlx->addr[i++] = color.g;
 	mlx->addr[i++] = color.r;
@@ -20,17 +32,15 @@ t_color	ray_color(void)
 	return (color);
 }
 
+// on trace un rayon entre le pixel du viewplane et la cam
 t_ray	create_ray(t_camera cam, float w, float h)
 {
 	t_ray	new;
 
-	new.origin.x = -cam.pos->x;
-	new.origin.y = cam.pos->y;
-	new.origin.z = -cam.pos->z;
-	new.dir.x = (W * 0.5 - w) * cam.ratio_H;
-	new.dir.y = -1.0;
-	new.dir.z = (h - H * 0.5) * cam.ratio_V;
-	new.dir = add_vectors(new.dir, *cam.dir);
+	new.origin = *cam.pos;
+	new.dir.x = w - W * 0.5;
+	new.dir.y = H * 0.5 - h; 
+	new.dir.z = cam.focal;
 	norm_vector(&new.dir);
 	new.color = ray_color();
 	new.time = 0.0;
@@ -45,10 +55,11 @@ void	ray_tracer(t_master *master)
 	int		w;
 	size_t	n;
 	int		i;
-	bool	(*fctHit[2])(t_ray*, t_object*);
+	bool	(*fctHit[3])(t_ray*, t_object*);
 
 	fctHit[0] = &hit_sphere;
 	fctHit[1] = &hit_plane;
+	fctHit[2] = &hit_cylinder;
 	h = 0;
 	while (h < H)
 	{	
@@ -60,7 +71,7 @@ void	ray_tracer(t_master *master)
 			while (n < master->obj_data->lst_size)
 			{
 				i = 1;
-				while (i <= 2)
+				while (i <= 3)
 				{
 					if (i == master->obj_data->objects[n]->id)
 						(*fctHit[i - 1])(&ray, master->obj_data->objects[n]);

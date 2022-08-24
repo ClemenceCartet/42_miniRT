@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/21 17:30:12 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:33:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,18 +174,21 @@ void		mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
 void		set_hit_point(t_ray *ray);
 bool		hit_plane(t_ray *ray, t_object *pl);
 bool		hit_sphere(t_ray *ray, t_object *sp);
+bool		hit_cylinder(t_ray *ray, t_object *cy);
 
 /*-------------------- op_vector1.c --------------------*/
 
-float		vector_lenght(t_coord v);
-float		vector_lenght_squared(t_coord v);
+float		vector_length(t_coord v);
+float		vector_length_squared(t_coord v);
 void		norm_vector(t_coord *v);
 t_coord		create_vector(float x, float y, float z);
 
 /*-------------------- op_vector1.c --------------------*/
 
 t_coord		add_vectors(t_coord v, t_coord u);
+t_coord		inverse_vector(t_coord v);
 t_coord		scale_vectors(t_coord v, t_coord u);
+t_coord		scale_vectors_bis(t_coord v, float f);
 t_coord		find_vector(t_coord a, t_coord b);
 t_coord		cross_vectors(t_coord v, t_coord u);
 float		dot_product(t_coord v, t_coord p);
@@ -195,5 +198,9 @@ float		dot_product(t_coord v, t_coord p);
 t_matrix	mat_rot_x(float rad);
 t_matrix	mat_rot_z(float rad);
 t_coord		mat_x_vector(t_matrix m, t_coord v);
+
+void		rotate_x(t_coord *xyz, float rad);
+void		rotate_y(t_coord *xyz, float rad);
+void		rotate_z(t_coord *xyz, float rad);
 
 #endif //MINI_RT_H
