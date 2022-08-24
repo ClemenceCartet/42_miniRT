@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:17:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 10:23:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:28:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,6 @@ int	rt_init_camera(t_camera **camera, char **split)
 	(*camera)->fov = rt_init_fov(split, split[3]);
 	if ((*camera)->fov == -1)
 		return (1);
-	(*camera)->radian = (*camera)->fov * M_PI / 180; //will be moved in init_additional_data
-	rt_init_focal(*camera); //will be moved in init_additional_data
-	(*camera)->rot_x = 0.0; //will be moved in init_additional_data
-	(*camera)->rot_z = 0.0; //will be moved in init_additional_data
 	ft_free_split(split);
 	return (0);
 }

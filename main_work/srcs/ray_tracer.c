@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/24 15:06:25 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/24 15:43:11 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,13 @@ void	mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 	mlx->addr[i++] = color.r;
 }
 
-t_color	ray_color(t_color *cl, t_coord *normal)
+t_color	ray_color(void)
 {
 	t_color	color;
-	// float	t;
-	(void)cl;
 
-	if (normal == NULL)
-	{
-		color.r = 0;
-		color.g = 100;
-		color.b = 160;
-	}
-	else
-	{
-		color.r = (normal->x * 255 - 128) * 0.5;
-		color.g = (normal->y * 255 - 128) * 0.7;
-		color.b = (normal->z * 255 - 128) * 1.0;
-	}	
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
 	return (color);
 }
 
@@ -53,10 +42,7 @@ t_ray	create_ray(t_camera cam, float w, float h)
 	new.dir.y = H * 0.5 - h; 
 	new.dir.z = cam.focal;
 	norm_vector(&new.dir);
-	//rotate_x(&new.dir, -0.2);
-	rotate_z(&new.dir, -0.2);
-	// new.dir = add_vectors(new.dir, *cam.dir);
-	new.color = ray_color(NULL, NULL);
+	new.color = ray_color();
 	new.time = 0.0;
 	new.object_id = 0;
 	return (new);
@@ -88,10 +74,7 @@ void	ray_tracer(t_master *master)
 				while (i <= 3)
 				{
 					if (i == master->obj_data->objects[n]->id)
-					{
 						(*fctHit[i - 1])(&ray, master->obj_data->objects[n]);
-							// tmp = ray_color(&ray.color, &ray.normal);
-					}
 					i++;
 				}
 				n++;

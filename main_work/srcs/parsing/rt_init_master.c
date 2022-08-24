@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:48:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 10:34:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/21 17:26:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	rt_init_master(t_master *master, char *filename)
 {
 	master->init = NULL;
 	master->wdw = NULL;
-	master->mlx = malloc(sizeof(t_mlx_data));
+	master->mlx = NULL;
 	master->obj_data = NULL;
 	master->ambient = NULL;
 	master->camera = NULL;
@@ -115,11 +115,7 @@ int	rt_init_master(t_master *master, char *filename)
 		return (1);
 	if (rt_check_init_master(master))
 		return (1);
-	// if (rt_init_additional_data(master))
-	// 	return (1);
-	master->obj_data->objects = rt_init_object_tab(master->obj_data);
-	if (!master->obj_data->objects)
+	if (rt_init_additional_data(master))
 		return (1);
-	master->obj_data->lst = master->obj_data->start;
 	return (0);
 }

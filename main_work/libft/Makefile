@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 09:59:23 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/06 16:58:06 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/08/19 10:04:36 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,7 +126,7 @@ CF			:=	-Wall -Werror -Wextra
 CS			:=	-g -fsanitize=address
 CI			:=	-I $(P_INCS)
 CG			:=	-g3
-AR			:=	ar rcs
+AR			:=	ar -rcs
 RM			:=	rm -rf
 
 # Colors

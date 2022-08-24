@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+         #
+#    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/18 10:28:57 by ccartet          ###   ########.fr        #
+#    Updated: 2022/08/21 17:35:57 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,16 @@ MLX		:=	mlx/libmlx.a
 LST_INCS		:=	mini_rt.h		rt_keys.h			\
 					rt_data.h		rt_defines.h		\
 					rt_objects.h
-LST_PARSING		:=	rt_check_utils.c	rt_check_utils2.c			\
-					rt_data_utils.c		rt_init_coords.c			\
-					rt_init_data.c		rt_init_master.c			\
-					rt_init_objects.c	rt_init_rgb.c
-LST_SRCS		:=	hits.c				op_matrix1.c				\
-					op_vector1.c		op_vector2.c				\
-					ray_tracer.c		rt_free_data.c				\
-					rt_free_objects.c	rt_return_errors.c			\
-					rt_write_errors.c	rt_init_additional_data.c	\
+LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c			\
+					rt_data_utils.c				rt_init_coords.c			\
+					rt_init_data.c				rt_init_master.c			\
+					rt_init_objects.c			rt_init_rgb.c				\
+					rt_init_additional_data.c
+LST_SRCS		:=	hits.c						op_matrix1.c				\
+					op_vector1.c				op_vector2.c				\
+					ray_tracer.c				rt_free_data.c				\
+					rt_free_objects.c			rt_return_errors.c			\
+					rt_write_errors.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -60,7 +61,7 @@ OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 # Commands
 CC				:=	gcc
-CF				:=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CF				:=	-Wall -Werror -Wextra #-g3 -fsanitize=address
 CI				:=	-I $(P_INCS_LIBFT) -I $(P_INCS) -I $(P_MLX)
 CS				:=	-g3 -fsanitize=address
 CG				:=	-g3
@@ -111,9 +112,7 @@ $(MLX): makemlx
 $(LIBFT): makelibft
 
 makemlx:
-	printf "$(YELLOW)$(BOLD)Creating $(MLX) Library$(RESET)\n"
-	$(MAKE) -C mlx/
-	printf "✅	$(GREEN)$(BOLD)Library $(MLX) created$(RESET)\n"
+	$(MAKE) -j 3 -C mlx/
 
 makelibft:
 	$(MAKE) -j 3 -C libft/
@@ -122,6 +121,8 @@ makelibft:
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(P_OBJS)
+	$(MAKE) clean -C libft/
+	$(MAKE) clean -C mlx/
 	printf "$(YELLOW)$(BOLD)All $(NAME) object files removed$(RESET)\n"
 	printf "$(YELLOW)$(BOLD)All $(NAME) object folders removed$(RESET)\n"
 
@@ -129,7 +130,7 @@ fclean:
 	$(MAKE) clean
 	$(RM) $(NAME)
 	$(MAKE) fclean -C libft/
-	$(MAKE) clean -C mlx/
+	$(MAKE) fclean -C mlx/
 	printf "$(RED)$(BOLD)Binary $(NAME) removed $(RESET)\n"
 
 re:

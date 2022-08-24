@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 10:16:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 14:42:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,79 @@ int	exit_x(t_master *master)
 	mlx_destroy_window(master->init, master->wdw);
 	rt_free_master(master);
 	exit(0);
+	return (0);
+}
+
+// void	move_object(int key, t_master *master)
+// {
+// 	float	ratio;
+// 	int		i;
+
+// 	i = 0;
+// 	if (key == K_UP || key == K_RIGHT)
+// 	{
+// 		ratio = 0.2;
+// 		master->obj_data->objects[1]->pos->z += 0.2;
+// 		master->obj_data->objects[2]->pos->z += 0.2;
+// 		master->obj_data->objects[3]->pos->z += 0.2;
+// 	}
+// 	else
+// 		ratio = -0.2;
+// 	while (master->obj_data->objects[i])
+// 	{
+// 		if (key == K_UP || key == K_DOWN)
+// 			master->obj_data->objects[i]->pos->z += ratio;
+// 		else
+// 			master->obj_data->objects[i]->pos->x += ratio;
+// 		i++;
+// 	}
+// }
+	// if (key == K_UP || key == K_DOWN || key == K_LEFT || key == K_RIGHT)
+	// 	move_object(key, master);
+
+void	rt_update_camera_pos(int key, t_master *master)
+{
+	if (key == K_W)
+		master->camera->pos->y += 0.1;
+	else if (key == K_S)
+		master->camera->pos->y -= 0.1;
+	else if (key == K_A)
+		master->camera->pos->x += 0.1;
+	else if (key == K_D)
+		master->camera->pos->x -= 0.1;
+}
+
+void	rt_update_camera_dir(int key, t_master *master)
+{
+	if (key == K_I)
+		master->camera->dir->z += 0.1;
+	else if (key == K_K)
+		master->camera->dir->z -= 0.1;
+	else if (key == K_J)
+	{
+		master->camera->dir->y -= 0.05;
+		master->camera->dir->x -= 0.1;
+	}
+	else if (key == K_L)
+	{
+		master->camera->dir->y += 0.05;
+		master->camera->dir->x += 0.1;
+	}
+}
+
+int	key_hook(int key, t_master *master)
+{
+	if (key == K_ESC)
+		exit_x(master);
+	else
+	{
+		if (key == K_W || key == K_S || key == K_A || key == K_D)
+			rt_update_camera_pos(key, master);
+		if (key == K_I || key == K_K || key == K_J || key == K_L)
+			rt_update_camera_dir(key, master);
+		display_scene(master);
+		dprintf(STDOUT_FILENO, "key = %d\n", key);
+	}
 	return (0);
 }
 
@@ -42,9 +115,8 @@ int	main(int ac, char **av)
 	master.init = mlx_init();
 	master.wdw = mlx_new_window(master.init, W, H, "miniRT");
 	display_scene(&master);
-	//mlx_hook(master.wdw, 4, 1L << 2, mouse_hook, &master);
-	//mlx_hook(master.wdw, 2, 1L << 0, key_hook, &master);
-	mlx_hook(master.wdw, 17, 1L << 17, exit_x, &master);
+	mlx_hook(master.wdw, 2, 0, key_hook, &master);
+	mlx_hook(master.wdw, 17, 0, exit_x, &master);
 	mlx_loop(master.init);
 	return (rt_free_master(&master));
 }
