@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/24 14:49:08 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/24 15:18:07 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 		return (0);
 	time[0] = (-half_b + sqrt(discriminant)) * a;
 	time[1] = (-half_b - sqrt(discriminant)) * a;
-	if (time[0] < time[1])
+	if (time[0] > 0 && time[0] < time[1])
 		time[2] = time[0];
 	else
 		time[2] = time[1];
