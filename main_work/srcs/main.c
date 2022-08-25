@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/24 15:54:14 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/25 10:29:43 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,21 @@ void	rt_update_camera_pos(int key, t_master *master)
 
 void	rt_update_camera_dir(int key, t_master *master)
 {
+	// float	vlen;
+
+	// vlen = vector_length(*master->camera->dir);
+	// master->camera->dir->x *= vlen;
+	// master->camera->dir->y *= vlen;
+	// master->camera->dir->z *= vlen;
 	if (key == K_I)
-		master->camera->dir->z += 0.1;
+		master->camera->dir->y += 0.2;
 	else if (key == K_K)
-		master->camera->dir->z -= 0.1;
+		master->camera->dir->y += -0.2;
 	else if (key == K_J)
-	{
-		master->camera->dir->y -= 0.05;
-		master->camera->dir->x -= 0.1;
-	}
+		master->camera->dir->x += -0.2;
 	else if (key == K_L)
-	{
-		master->camera->dir->y += 0.05;
-		master->camera->dir->x += 0.1;
-	}
+		master->camera->dir->x += 0.2;
+	// norm_vector(master->camera->dir);
 }
 
 int	key_hook(int key, t_master *master)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_init_additional_data.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/24 15:43:31 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/25 10:00:12 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	rt_init_add_camera(t_camera **cam)
 	(*cam)->radian = (*cam)->fov * M_PI / 180;
 	(*cam)->focal = W / (2 * tan((*cam)->radian * 0.5));
 	// (*cam)->focal = (cos((*cam)->radian * 0.5) / sin((*cam)->radian * 0.5) / H);
-	// dprintf(2, "%f, %f\n", (*cam)->radian, (*cam)->focal);
+	// dprintf(2, "%f\n", (*cam)->focal);
 }
 
 //Object additional data initialization (SP / PL / CY)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/24 15:43:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/25 10:49:02 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,19 @@ t_color	ray_color(void)
 t_ray	create_ray(t_camera cam, float w, float h)
 {
 	t_ray	new;
+	t_coord	test;
 
+	test.x = 0;
+	test.y = 0;
+	test.z = 1;
 	new.origin = *cam.pos;
 	new.dir.x = w - W * 0.5;
 	new.dir.y = H * 0.5 - h; 
 	new.dir.z = cam.focal;
+	// rotate_y(cam.dir, 1);
+	norm_vector(&new.dir);
+	new.dir = add_vectors(new.dir, *cam.dir);
+	new.dir = sub_vectors(new.dir, test);
 	norm_vector(&new.dir);
 	new.color = ray_color();
 	new.time = 0.0;
