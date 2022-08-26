@@ -35,7 +35,8 @@ LST_SRCS		:=	hits.c						op_matrix1.c				\
 					op_vector1.c				op_vector2.c				\
 					ray_tracer.c				rt_free_data.c				\
 					rt_free_objects.c			rt_return_errors.c			\
-					rt_write_errors.c
+					rt_write_errors.c			utils.c 					\
+					hit_square.c
 
 # Directories
 P_MLX			:=	mlx/

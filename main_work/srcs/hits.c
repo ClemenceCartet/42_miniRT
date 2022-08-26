@@ -28,7 +28,7 @@ bool	hit_plane(t_ray *ray, t_object *pl)
 	a = dot_product(*pl->dir, ray->dir);
 	b = dot_product(*pl->dir, find_vector(ray->origin, *pl->pos)); // distance
 	time = b / a;
-	if (time <= 0)
+	if (time <= 0.0)
 		return (0);
 	if (ray->time == 0.0 || time < ray->time)
 		ray->time = time;
@@ -39,41 +39,6 @@ bool	hit_plane(t_ray *ray, t_object *pl)
 	ray->object_id = PL;
 	return (1);
 }
-
-// bool	hit_plane(t_ray *ray, t_object *pl)
-// {
-// 	float		a;
-// 	float		b;
-// 	float		time;
-
-// 	a = dot_product(*pl->dir, ray->dir);
-// 	b = dot_product(*pl->dir, find_vector(*pl->pos, ray->origin));
-// 	time = b / a; 
-// 	if (time <= 0)
-// 		return (0);
-// 	if (ray->time == 0.0 || time < ray->time)
-// 		ray->time = time;
-// 	else
-// 		return (0);
-// 	set_hit_point(ray);
-// 	if (pl->first == 0)
-// 	{
-// 		pl->first = 1;
-// 		pl->U = find_vector(*pl->pos, ray->hit);
-// 		pl->V = cross_vectors(pl->U, *pl->dir);
-// 		norm_vector(&pl->U);
-// 		norm_vector(&pl->V);
-// 		pl->U = scale_vectors_bis(pl->U, W/2);
-// 		pl->V = scale_vectors_bis(pl->V, H/2);
-// 		// pl->c1 = add_vectors(add_vectors(*pl->pos, pl->U), pl->V);
-// 		// pl->c2 = add_vectors(add_vectors(*pl->pos, pl->U), -pl->V);
-// 		// pl->c3 = add_vectors(add_vectors(*pl->pos, -pl->U), pl->V);
-// 		// pl->c4 = add_vectors(add_vectors(*pl->pos, -pl->U), -pl->V);
-// 	}
-// 	ray->color = *pl->rgb;
-// 	ray->object_id = PL;
-// 	return (1);
-// }
 
 bool	hit_sphere(t_ray *ray, t_object *sp)
 {
@@ -93,13 +58,12 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 		return (0);
 	time[0] = (-half_b + sqrt(discriminant)) * a;
 	time[1] = (-half_b - sqrt(discriminant)) * a;
-	if (time[0] > 0 && time[0] < time[1])
-		time[2] = time[0];
-	else
+	min_first(&time[0], &time[1]);
+	if (time[0] > 0.0 && time[1] > 0.0)
 		time[2] = time[1];
-	if (time[2] > 0.0 && ray->time == 0.0)
-		ray->time = time[2];
-	else if (time[2] > 0.0 && time[2] < ray->time)
+	else
+		time[2] = time[0];
+	if (time[2] > 0.0 && (ray->time == 0.0 || time[2] < ray->time))
 		ray->time = time[2];
 	else
 		return (0);

@@ -48,7 +48,7 @@ t_ray	create_ray(t_camera cam, float w, float h)
 	// rotate_y(cam.dir, 1);
 	norm_vector(&new.dir);
 	new.dir = add_vectors(new.dir, *cam.dir);
-	new.dir = sub_vectors(new.dir, test);
+	new.dir = find_vector(test, new.dir);
 	norm_vector(&new.dir);
 	new.color = ray_color();
 	new.time = 0.0;
@@ -68,6 +68,13 @@ void	ray_tracer(t_master *master)
 	fctHit[0] = &hit_sphere;
 	fctHit[1] = &hit_plane;
 	fctHit[2] = &hit_cylinder;
+	n = 0;
+	while (n < master->obj_data->lst_size)
+	{
+		if (master->obj_data->objects[n]->id == 2)
+		init_square(master->obj_data->objects[n]);
+		n++;
+	}
 	h = 0;
 	while (h < H)
 	{	

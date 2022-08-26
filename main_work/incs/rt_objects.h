@@ -79,6 +79,8 @@ struct	s_object
 	float	height;
 
 	float	radius;
+	t_coord c[4];
+	t_coord	gap[4];
 };
 /**Structure pour l'objet sphère
  * pos		= coordonnées XYZ du centre de la sphère

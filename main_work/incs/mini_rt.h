@@ -186,7 +186,6 @@ t_coord		create_vector(float x, float y, float z);
 /*-------------------- op_vector1.c --------------------*/
 
 t_coord		add_vectors(t_coord v, t_coord u);
-t_coord		sub_vectors(t_coord v, t_coord u);
 t_coord		scale_vectors(t_coord v, t_coord u);
 t_coord		scale_vectors_bis(t_coord v, float f);
 t_coord		find_vector(t_coord a, t_coord b);
@@ -202,5 +201,15 @@ t_coord		mat_x_vector(t_matrix m, t_coord v);
 void		rotate_x(t_coord *xyz, float rad);
 void		rotate_y(t_coord *xyz, float rad);
 void		rotate_z(t_coord *xyz, float rad);
+
+/*-------------------- utils.c --------------------*/
+
+void		min_first(float *t1, float *t2);
+
+/*-------------------- hit_square.c --------------------*/
+
+void		init_square(t_object *sq);
+bool		hit_square(t_ray *ray, t_object *sq);
+bool		is_in_square(t_coord p, t_object *sq);
 
 #endif //MINI_RT_H

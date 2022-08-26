@@ -17,11 +17,6 @@ t_coord	add_vectors(t_coord v, t_coord u)
 	return (create_vector(v.x + u.x, v.y + u.y, v.z + u.z));
 }
 
-t_coord	sub_vectors(t_coord v, t_coord u)
-{
-	return (create_vector(v.x - u.x, v.y - u.y, v.z - u.z));
-}
-
 t_coord	scale_vectors(t_coord v, t_coord u) // ou scale par un float ?
 {
 	return (create_vector(v.x * u.x, v.y * u.y, v.z * u.z)); // ou (v.x * u.x + v.y * u.y + v.z * u.z) pour obtenir un float

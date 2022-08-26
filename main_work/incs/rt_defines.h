@@ -25,6 +25,7 @@
 # define SP 1
 # define PL 2
 # define CY 3
+# define SQ 4
 
 # define PARSING_CHARSET "ACLsplcy0123456789-+., \n"
 # define INT_CHARSET "0123456789"
