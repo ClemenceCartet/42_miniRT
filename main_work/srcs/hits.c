@@ -48,7 +48,9 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	float	c;
 	float	discriminant;
 	float	time[3];
+	int		in_sp;
 
+	in_sph = 0;
 	to_center = find_vector(*sp->pos, ray->origin);
 	a = vector_length_squared(ray->dir); // normalement egal à 1
 	half_b = dot_product(to_center, ray->dir);
@@ -62,13 +64,19 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	if (time[0] > 0.0 && time[1] > 0.0)
 		time[2] = time[1];
 	else
+	{
+		in_sph = 1; // à enregistrer dans t_ray ? front / back ?
 		time[2] = time[0];
+	}
 	if (time[2] > 0.0 && (ray->time == 0.0 || time[2] < ray->time))
 		ray->time = time[2];
 	else
 		return (0);
 	set_hit_point(ray);
-	ray->normal = find_vector(*sp->pos, ray->hit);
+	if (in_sph)
+		ray->normal = find_vector(ray->hit, *sp->pos);
+	else
+		ray->normal = find_vector(*sp->pos, ray->hit);
 	norm_vector(&ray->normal);
 	ray->color = *sp->rgb;
 	ray->object_id = SP;
