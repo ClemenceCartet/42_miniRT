@@ -3,14 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   op_vector2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:56 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/25 10:45:06 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/28 13:53:56 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+//refactoring WiP
+
+// t_coord	rt_add_vectors(t_coord v1, t_coord v2)
+// {
+// 	float	x;
+// 	float	y;
+// 	float	z;
+
+// 	x = v1.x + v2.x;
+// 	y = v1.y + v2.y;
+// 	z = v1.z + v2.z;
+// 	return (create_vector(x, y, z));
+// }
+
+// t_coord	rt_scale_vectors(t_coord v1, t_coord v2)
+// {
+// 	float	x;
+// 	float	y;
+// 	float	z;
+
+// 	x = v1.x * v2.x;
+// 	y = v1.y * v2.y;
+// 	z = v1.z * v2.z;
+// 	return (create_vector(x, y, z));
+// }
+
+// float	rt_dot_product(t_coord v1, t_coord v2)
+// {
+// 	t_coord	vector;
+
+// 	vector = rt_scale_vectors(v1, v2);
+// 	return (vector.x + vector.y + vector.z);
+// }
 
 t_coord	add_vectors(t_coord v, t_coord u)
 {
