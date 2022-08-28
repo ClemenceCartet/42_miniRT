@@ -25,7 +25,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	float	radius;
 
 	radius = sp->diameter * 0.5;
-	to_center = find_vector(ray->origin, *sp->pos);
+	to_center = rt_sub_vec(*sp->pos, ray->origin);
 	distance = dot_product(to_center, ray->dir);
 	opposit = vector_length(to_center) * vector_length(to_center) - distance * distance;
 	if (opposit < (radius * radius))

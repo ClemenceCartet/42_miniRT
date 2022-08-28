@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hits.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/28 10:56:53 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/28 14:53:49 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ bool	hit_plane(t_ray *ray, t_object *pl)
 	float	b;
 	float	time;
 
-	a = dot_product(*pl->dir, ray->dir);
-	b = dot_product(*pl->dir, find_vector(ray->origin, *pl->pos)); // distance
+	a = rt_dot_prod(*pl->dir, ray->dir);
+	b = rt_dot_prod(*pl->dir, rt_sub_vec(*pl->pos, ray->origin)); // distance
 	time = b / a;
 	if (time <= 0.0)
 		return (0);
@@ -51,9 +51,9 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	int		in_sp;
 
 	in_sp = 0;
-	to_center = find_vector(*sp->pos, ray->origin);
+	to_center = rt_sub_vec(ray->origin, *sp->pos);
 	a = vector_length_squared(ray->dir); // normalement egal à 1
-	half_b = dot_product(to_center, ray->dir);
+	half_b = rt_dot_prod(to_center, ray->dir);
 	c = vector_length_squared(to_center) - sp->radius * sp->radius;
 	discriminant = half_b * half_b - a * c;
 	if (discriminant < 0.0)
@@ -74,9 +74,9 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 		return (0);
 	set_hit_point(ray);
 	if (in_sp)
-		ray->normal = find_vector(ray->hit, *sp->pos);
+		ray->normal = rt_sub_vec(*sp->pos, ray->hit);
 	else
-		ray->normal = find_vector(*sp->pos, ray->hit);
+		ray->normal = rt_sub_vec(ray->hit, *sp->pos);
 	norm_vector(&ray->normal);
 	ray->color = *sp->rgb;
 	ray->object_id = SP;
@@ -93,10 +93,10 @@ bool	hit_cylinder(t_ray *ray, t_object *cy)
 	t_coord	to_origin;
 	float	discriminant;
 
-	v = cross_vectors(cross_vectors(*cy->dir, ray->dir), *cy->dir);
+	v = rt_cross_vec(rt_cross_vec(*cy->dir, ray->dir), *cy->dir);
 	a = vector_length_squared(v);
-	to_origin = cross_vectors(cross_vectors(*cy->dir, find_vector(ray->origin, *cy->pos)), *cy->dir);
-	half_b = dot_product(to_origin, v);
+	to_origin = rt_cross_vec(rt_cross_vec(*cy->dir, rt_sub_vec(*cy->pos, ray->origin)), *cy->dir);
+	half_b = rt_dot_prod(to_origin, v);
 	c = vector_length_squared(to_origin) - cy->radius * cy->radius;
 	discriminant = half_b * half_b - a * c;
 	if (discriminant < 0.0)
@@ -114,8 +114,8 @@ bool	hit_cylinder(t_ray *ray, t_object *cy)
 	else
 		return (0);
 	set_hit_point(ray);
-	if (!(dot_product(find_vector(ray->hit, *cy->pos), *cy->dir) > 0.0 &&
-		dot_product(find_vector(ray->hit, scale_vectors_bis(*cy->pos, cy->height)), *cy->dir) < 0.0))
+	if (!(rt_dot_prod(rt_sub_vec(*cy->pos, ray->hit), *cy->dir) > 0.0 &&
+		rt_dot_prod(rt_sub_vec(rt_scale_vec(*cy->pos, cy->height), ray->hit), *cy->dir) < 0.0))
 		return (0);
 	ray->color = *cy->rgb;
 	ray->object_id = CY;

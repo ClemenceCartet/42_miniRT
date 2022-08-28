@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/25 10:45:08 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:53:26 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,12 +185,11 @@ t_coord		create_vector(float x, float y, float z);
 
 /*-------------------- op_vector1.c --------------------*/
 
-t_coord		add_vectors(t_coord v, t_coord u);
-t_coord		scale_vectors(t_coord v, t_coord u);
-t_coord		scale_vectors_bis(t_coord v, float f);
-t_coord		find_vector(t_coord a, t_coord b);
-t_coord		cross_vectors(t_coord v, t_coord u);
-float		dot_product(t_coord v, t_coord p);
+t_coord		rt_add_vec(t_coord v1, t_coord v2);
+t_coord		rt_sub_vec(t_coord v1, t_coord v2);
+t_coord		rt_scale_vec(t_coord v, float m);
+float		rt_dot_prod(t_coord v1, t_coord v2);
+t_coord		rt_cross_vec(t_coord v1, t_coord v2);
 
 /*-------------------- op_matrix1.c --------------------*/
 
