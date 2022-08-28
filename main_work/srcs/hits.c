@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hits.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/24 15:18:07 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/28 10:56:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	float	time[3];
 	int		in_sp;
 
-	in_sph = 0;
+	in_sp = 0;
 	to_center = find_vector(*sp->pos, ray->origin);
 	a = vector_length_squared(ray->dir); // normalement egal à 1
 	half_b = dot_product(to_center, ray->dir);
@@ -65,7 +65,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 		time[2] = time[1];
 	else
 	{
-		in_sph = 1; // à enregistrer dans t_ray ? front / back ?
+		in_sp = 1; // à enregistrer dans t_ray ? front / back ?
 		time[2] = time[0];
 	}
 	if (time[2] > 0.0 && (ray->time == 0.0 || time[2] < ray->time))
@@ -73,7 +73,7 @@ bool	hit_sphere(t_ray *ray, t_object *sp)
 	else
 		return (0);
 	set_hit_point(ray);
-	if (in_sph)
+	if (in_sp)
 		ray->normal = find_vector(ray->hit, *sp->pos);
 	else
 		ray->normal = find_vector(*sp->pos, ray->hit);
