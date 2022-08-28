@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:44:05 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/28 11:04:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,27 @@ static int	rt_check_coords_data(char **data, char **split, int isdir)
 	return (0);
 }
 
+//Check dir values for objects and camera
+static t_coord	*rt_check_dir(t_coord * coord, char **data, char **split)
+{
+
+	if (ft_strncmp(data[0], "C", 2) != 0)
+	{
+		if (!coord->x && !coord->y && !coord->z)
+		{
+			free (coord);
+			return (rt_ret_ptr_error(data, split, E_NUMBER, NULL));
+		}
+	}
+	else
+	{
+		if (!coord->z)
+			coord->z = 1;
+	}
+	ft_free_split(split);
+	return (coord);
+}
+
 //Initialize coord module for pos or dir (C, L, SP, PL, CY)
 t_coord	*rt_init_coords(char **data, char *values, int isdir)
 {
@@ -59,12 +80,8 @@ t_coord	*rt_init_coords(char **data, char *values, int isdir)
 	coord->x = ft_atof(split[0]);
 	coord->y = ft_atof(split[1]);
 	coord->z = ft_atof(split[2]);
-	if (ft_strncmp(data[0], "C", 2) != 0 && isdir
-		&& !coord->x && !coord->y && !coord->z)
-	{
-		free (coord);
-		return (rt_ret_ptr_error(data, split, E_NUMBER, NULL));
-	}
+	if (isdir)
+		return (rt_check_dir(coord, data, split));
 	ft_free_split(split);
 	return (coord);
 }
