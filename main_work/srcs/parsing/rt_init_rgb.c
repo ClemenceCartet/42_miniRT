@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:19:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/08/30 14:14:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ t_color	*rt_init_rgb(char **data, char *values)
 	color->r = ft_atoi(split[0]);
 	color->g = ft_atoi(split[1]);
 	color->b = ft_atoi(split[2]);
+	color->ratio_r = color->r / 255;
+	color->ratio_g = color->g / 255;
+	color->ratio_b = color->b / 255;
 	ft_free_split(split);
 	return (color);
 }

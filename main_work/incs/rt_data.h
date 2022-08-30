@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_data.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/19 09:53:12 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/08/30 14:13:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,12 @@ struct	s_obj_data
 */
 struct	s_color
 {
-	int	r;
-	int	g;
-	int	b;
+	int		r;
+	int		g;
+	int		b;
+	float	ratio_r;
+	float	ratio_g;
+	float	ratio_b;
 };
 
 /**Structure contenant les données de coordonnées, position ou direction
