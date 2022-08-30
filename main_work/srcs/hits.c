@@ -36,6 +36,7 @@ bool	hit_plane(t_ray *ray, t_object *pl)
 		return (0);
 	set_hit_point(ray);
 	ray->color = *pl->rgb;
+	ray->normal = *pl->dir;
 	ray->object_id = PL;
 	return (1);
 }

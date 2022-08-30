@@ -168,6 +168,7 @@ void		ray_tracer(t_master *master);
 t_ray		create_ray(t_camera cam, float w, float h);
 t_color		ray_color(void);
 void		mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
+bool		intersect(t_obj_data *obj_data, t_ray *ray);
 
 /*-------------------- hits.c --------------------*/
 
@@ -210,5 +211,16 @@ void		min_first(float *t1, float *t2);
 void		init_square(t_object *sq);
 bool		hit_square(t_ray *ray, t_object *sq);
 bool		is_in_square(t_coord p, t_object *sq);
+
+/*-------------------- light.c --------------------*/
+
+t_color		set_color(t_ray ray, t_master *master);
+t_color		set_spot_light(t_ray ray, t_light *light);
+float		diffuse_light(t_light *light, float angle);
+float		specular_light(t_light *light, float angle, t_ray ray);
+t_color		set_ambient_light(t_ray ray, t_ambient *ambient);
+
+t_color		rt_add_color(t_color c1, t_color c2);
+t_color		rt_scale_color(t_color c1, float r);
 
 #endif //MINI_RT_H

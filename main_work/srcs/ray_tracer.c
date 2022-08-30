@@ -26,9 +26,9 @@ t_color	ray_color(void)
 {
 	t_color	color;
 
-	color.r = 255;
-	color.g = 255;
-	color.b = 255;
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
 	return (color);
 }
 
@@ -56,44 +56,57 @@ t_ray	create_ray(t_camera cam, float w, float h)
 	return (new);
 }
 
+bool	intersect(t_obj_data *obj_data, t_ray *ray)
+{
+	size_t	n;
+	int 	i;
+	bool	(*fctHit[3])(t_ray*, t_object*);
+	int		ret;
+
+	ret = 0;
+	fctHit[0] = &hit_sphere;
+	fctHit[1] = &hit_plane;
+	fctHit[2] = &hit_cylinder;
+	n = 0;
+	while (n < obj_data->lst_size)
+	{
+		i = 1;
+		while (i <= 3)
+		{
+			if (i == obj_data->objects[n]->id)
+				if ((*fctHit[i - 1])(ray, obj_data->objects[n]))
+					ret = 1;
+			i++;
+		}
+		n++;
+	}
+	return (ret);
+}	
+
 void	ray_tracer(t_master *master)
 {
 	t_ray	ray;
 	int		h;
 	int		w;
-	size_t	n;
-	int		i;
-	bool	(*fctHit[3])(t_ray*, t_object*);
+	//size_t	n;
+	t_color	color;
 
-	fctHit[0] = &hit_sphere;
-	fctHit[1] = &hit_plane;
-	fctHit[2] = &hit_cylinder;
-	n = 0;
+	/*n = 0;
 	while (n < master->obj_data->lst_size)
 	{
 		if (master->obj_data->objects[n]->id == 2)
 		init_square(master->obj_data->objects[n]);
 		n++;
-	}
+	}*/
 	h = 0;
 	while (h < H)
 	{	
 		w = 0;
 		while (w < W)
 		{
-			n = 0;
 			ray = create_ray(*master->camera, w, h);
-			while (n < master->obj_data->lst_size)
-			{
-				i = 1;
-				while (i <= 3)
-				{
-					if (i == master->obj_data->objects[n]->id)
-						(*fctHit[i - 1])(&ray, master->obj_data->objects[n]);
-					i++;
-				}
-				n++;
-			}
+			if (intersect(master->obj_data, &ray))
+				color = set_color(ray, master);
 			mlx_put_pixel(w, h, ray.color, master->mlx);
 			w++;
 		}	
