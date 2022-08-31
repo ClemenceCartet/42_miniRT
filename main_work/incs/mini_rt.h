@@ -69,7 +69,7 @@ struct s_list
 /*-------------------- main.c --------------------*/
 
 // int		main(int ac, char **av);
-void		display_scene(t_master *master);
+void		rt_display_scene(t_master *master);
 int			exit_x(t_master *master);
 int			key_hook(int key, t_master *master);
 
@@ -162,29 +162,43 @@ void		*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli);
 char		*rt_write_char_error(char *str, char *str2, char *dfi, int dli);
 char		**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
 
-/*-------------------- ray_tracer.c --------------------*/
+/*-------------------- rt_ray_tracer.c --------------------*/
 
-void		ray_tracer(t_master *master);
-t_ray		create_ray(t_camera cam, float w, float h);
-t_color		ray_color(void);
-void		mlx_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
-bool		intersect(t_obj_data *obj_data, t_ray *ray);
+void		rt_ray_tracer(t_master *master);
+t_ray		rt_create_ray(t_camera cam, float w, float h);
+void		rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
+bool		rt_intersect(t_obj_data *obj_data, t_ray *ray);
 
-/*-------------------- hits.c --------------------*/
+/*-------------------- rt_hits1.c --------------------*/
 
-void		set_hit_point(t_ray *ray);
-bool		hit_plane(t_ray *ray, t_object *pl);
-bool		hit_sphere(t_ray *ray, t_object *sp);
-bool		hit_cylinder(t_ray *ray, t_object *cy);
+void		rt_set_hit_point(t_ray *ray);
+bool		rt_hit_plane(t_ray *ray, t_object *pl);
+bool		rt_hit_sphere(t_ray *ray, t_object *sp);
+bool		rt_hit_cylinder(t_ray *ray, t_object *cy);
 
-/*-------------------- op_vector1.c --------------------*/
+/*-------------------- rt_light.c --------------------*/
 
-float		vector_length(t_coord v);
-float		vector_length_squared(t_coord v);
-void		norm_vector(t_coord *v);
-t_coord		create_vector(float x, float y, float z);
+t_color		rt_set_color(t_ray ray, t_master *master);
+t_color		rt_set_spot_light(t_ray ray, t_light *light);
+float		rt_diffuse_light(t_light *light, float angle);
+float		rt_specular_light(t_light *light, float angle, t_ray ray);
+t_color		rt_set_ambient_light(t_ray ray, t_ambient *ambient);
 
-/*-------------------- op_vector1.c --------------------*/
+/*-------------------- rt_color.c --------------------*/
+
+t_color		rt_init_ray_color(void);
+t_color		rt_add_color(t_color c1, t_color c2);
+t_color		rt_scale_color(t_color c1, float ratio);
+t_color		rt_reflt_color(t_color light, t_color obj);
+
+/*-------------------- rt_op_vector1.c --------------------*/
+
+float		rt_vector_length(t_coord v);
+float		rt_vector_length_squared(t_coord v);
+void		rt_norm_vector(t_coord *v);
+t_coord		rt_create_vector(float x, float y, float z);
+
+/*-------------------- rt_op_vector1.c --------------------*/
 
 t_coord		rt_add_vec(t_coord v1, t_coord v2);
 t_coord		rt_sub_vec(t_coord v1, t_coord v2);
@@ -204,23 +218,17 @@ void		rotate_z(t_coord *xyz, float rad);
 
 /*-------------------- utils.c --------------------*/
 
-void		min_first(float *t1, float *t2);
+void		rt_min_first(float *t1, float *t2);
 
-/*-------------------- hit_square.c --------------------*/
 
-void		init_square(t_object *sq);
-bool		hit_square(t_ray *ray, t_object *sq);
-bool		is_in_square(t_coord p, t_object *sq);
 
-/*-------------------- light.c --------------------*/
 
-t_color		set_color(t_ray ray, t_master *master);
-t_color		set_spot_light(t_ray ray, t_light *light);
-float		diffuse_light(t_light *light, float angle);
-float		specular_light(t_light *light, float angle, t_ray ray);
-t_color		set_ambient_light(t_ray ray, t_ambient *ambient);
 
-t_color		rt_add_color(t_color c1, t_color c2);
-t_color		rt_scale_color(t_color c1, float r);
+
+/*-------------------- rt_bn_hit_square.c --------------------*/
+
+void		rt_init_square(t_object *sq);
+bool		rt_hit_square(t_ray *ray, t_object *sq);
+bool		rt_is_in_square(t_coord p, t_object *sq);
 
 #endif //MINI_RT_H

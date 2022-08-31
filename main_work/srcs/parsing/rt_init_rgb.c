@@ -53,12 +53,9 @@ t_color	*rt_init_rgb(char **data, char *values)
 	color = rt_calloc_struct(sizeof(t_color), split);
 	if (!color)
 		return (rt_ret_ptr_error(data, split, NULL, NULL));
-	color->r = ft_atoi(split[0]);
-	color->g = ft_atoi(split[1]);
-	color->b = ft_atoi(split[2]);
-	color->ratio_r = color->r / 255;
-	color->ratio_g = color->g / 255;
-	color->ratio_b = color->b / 255;
+	color->r = ft_atof(split[0])/ 255;
+	color->g = ft_atof(split[1])/ 255;
+	color->b = ft_atof(split[2])/ 255;
 	ft_free_split(split);
 	return (color);
 }

@@ -93,18 +93,18 @@ int	key_hook(int key, t_master *master)
 			rt_update_camera_pos(key, master);
 		if (key == K_I || key == K_K || key == K_J || key == K_L)
 			rt_update_camera_dir(key, master);
-		display_scene(master);
+		rt_display_scene(master);
 		dprintf(STDOUT_FILENO, "key = %d\n", key);
 	}
 	return (0);
 }
 
-void	display_scene(t_master *master)
+void	rt_display_scene(t_master *master)
 {
 	master->mlx->img = mlx_new_image(master->init, W, H);
 	master->mlx->addr = mlx_get_data_addr(master->mlx->img, &(master->mlx->bpp),
 			&(master->mlx->line_length), &(master->mlx->endian));
-	ray_tracer(master);
+	rt_ray_tracer(master);
 	mlx_put_image_to_window(master->init, master->wdw, master->mlx->img, 0, 0);
 	mlx_destroy_image(master->init, master->mlx->img);
 }
@@ -119,7 +119,7 @@ int	main(int ac, char **av)
 		return (rt_free_master(&master) + 1);
 	master.init = mlx_init();
 	master.wdw = mlx_new_window(master.init, W, H, "miniRT");
-	display_scene(&master);
+	rt_display_scene(&master);
 	dprintf(STDERR_FILENO, "x = %f\n", master.camera->pos->x);
 	dprintf(STDERR_FILENO, "y = %f\n", master.camera->pos->y);
 	dprintf(STDERR_FILENO, "z = %f\n", master.camera->pos->z);

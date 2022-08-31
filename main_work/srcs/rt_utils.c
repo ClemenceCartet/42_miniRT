@@ -1,6 +1,6 @@
 #include <mini_rt.h>
 
-void	min_first(float *t1, float *t2)
+void	rt_min_first(float *t1, float *t2)
 {
 	float	ret;
 

@@ -92,12 +92,9 @@ struct	s_obj_data
 */
 struct	s_color
 {
-	int		r;
-	int		g;
-	int		b;
-	float	ratio_r;
-	float	ratio_g;
-	float	ratio_b;
+	float	r;
+	float	g;
+	float	b;
 };
 
 /**Structure contenant les données de coordonnées, position ou direction

@@ -31,12 +31,14 @@ LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c			\
 					rt_init_data.c				rt_init_master.c			\
 					rt_init_objects.c			rt_init_rgb.c				\
 					rt_init_additional_data.c
-LST_SRCS		:=	hits.c						op_matrix1.c				\
-					op_vector1.c				op_vector2.c				\
-					ray_tracer.c				rt_free_data.c				\
-					rt_free_objects.c			rt_return_errors.c			\
-					rt_write_errors.c			utils.c 					\
-					hit_square.c				light.c
+LST_SRCS		:=	rt_ray_tracer.c				rt_hits1.c					\
+					rt_light.c					rt_color.c					\
+					rt_op_vector1.c				rt_op_vector2.c				\
+					rt_free_data.c				rt_free_objects.c			\
+					rt_return_errors.c			rt_write_errors.c			\
+					rt_utils.c 					\
+					rt_bn_hit_square.c			\
+					op_matrix1.c
 
 # Directories
 P_MLX			:=	mlx/

@@ -1,6 +1,6 @@
 #include <mini_rt.h>
 
-void	init_square(t_object *sq)
+void	rt_init_square(t_object *sq)
 {
 	t_coord x;
 	t_coord	U;
@@ -11,7 +11,7 @@ void	init_square(t_object *sq)
 	x.z = 0.0;
 	// trouver les deux autres vecteurs perpendiculaires à sq->dir
 	U = rt_cross_vec(*sq->dir, x);
-	if (!vector_length_squared(U))
+	if (!rt_vector_length_squared(U))
 		U.y = 1.0;
 	V = rt_cross_vec(U, *sq->dir);
 	// modifier les vecteurs à la taille souhaitée
@@ -29,30 +29,7 @@ void	init_square(t_object *sq)
 	sq->gap[3] = rt_sub_vec(sq->c[2], sq->c[3]);
 }	
 
-bool	hit_square(t_ray *ray, t_object *sq)
-{
- 	float	a;
-	float	b;
- 	float	time;
-
- 	a = rt_dot_prod(*sq->dir, ray->dir);
- 	b = rt_dot_prod(*sq->dir, rt_sub_vec(*sq->pos, ray->origin));
-	time = b / a; 
-	if (time <= 0.0)
- 		return (0);
- 	if (ray->time == 0.0 || time < ray->time)
-		ray->time = time;
-	else
- 		return (0);
- 	set_hit_point(ray);
-	if (!is_in_square(ray->hit, sq))
-		return (0);
- 	ray->color = *sq->rgb;
- 	ray->object_id = SQ;
- 	return (1);
-}
-
-bool	is_in_square(t_coord p, t_object *sq)
+bool	rt_is_in_square(t_coord p, t_object *sq)
 {
 	t_coord	g[4];
 
@@ -68,4 +45,27 @@ bool	is_in_square(t_coord p, t_object *sq)
 		&& rt_dot_prod(*sq->dir, rt_cross_vec(sq->gap[3], g[3])) >= 0)
 		return (1);
 	return (0);
+}
+
+bool	rt_hit_square(t_ray *ray, t_object *sq)
+{
+ 	float	a;
+	float	b;
+ 	float	time;
+
+ 	a = rt_dot_prod(*sq->dir, ray->dir);
+ 	b = rt_dot_prod(*sq->dir, rt_sub_vec(*sq->pos, ray->origin));
+	time = b / a; 
+	if (time <= 0.0)
+ 		return (0);
+ 	if (ray->time == 0.0 || time < ray->time)
+		ray->time = time;
+	else
+ 		return (0);
+ 	rt_set_hit_point(ray);
+	if (!rt_is_in_square(ray->hit, sq))
+		return (0);
+ 	ray->color = *sq->rgb;
+ 	ray->object_id = SQ;
+ 	return (1);
 }
