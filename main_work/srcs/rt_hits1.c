@@ -12,112 +12,97 @@
 
 #include <mini_rt.h>
 
-void	rt_set_hit_point(t_ray *ray)
+void	rt_set_hit_pl(float t, t_ray *ray, t_object *pl)
 {	
-	ray->hit.x = ray->origin.x + ray->dir.x * ray->time;
-	ray->hit.y = ray->origin.y + ray->dir.y * ray->time;
-	ray->hit.z = ray->origin.z + ray->dir.z * ray->time;
-}
+	float	ratio;
 
-bool	rt_hit_plane(t_ray *ray, t_object *pl)
+	ratio = 1.0;
+	ray->hit.time = t;
+	ray->inter = 1;
+	rt_set_hit_point(ray);
+	ray->hit.normal = *pl->dir;
+	ray->hit.color = *pl->rgb;
+	if (t > 25.0)
+	{
+		ratio = 25.0 / t;
+		ray->hit.color = rt_scale_color(*pl->rgb, ratio);
+	}
+	ray->hit.obj = pl;
+}	
+
+bool	rt_inter_plane(t_ray *ray, t_object *pl, int crea)
 {
 	float	a;
 	float	b;
 	float	time;
-	float	ratio;
 
-	ratio = 1.0;
 	a = rt_dot_prod(*pl->dir, ray->dir);
 	b = rt_dot_prod(*pl->dir, rt_sub_vec(*pl->pos, ray->origin)); // distance
 	time = b / a;
 	if (time <= 0.0)
 		return (0);
-	if (ray->time == 0.0 || time < ray->time)
-		ray->time = time;
-	else
-		return (0);
-	rt_set_hit_point(ray);
-	ray->color = *pl->rgb;
-	if (time > 25.0)
-	{
-		ratio = 25.0 / time;
-		ray->color = rt_scale_color(*pl->rgb, ratio);
-	}
-	ray->normal = *pl->dir;
+	if (crea && (ray->inter == 0 || time < ray->hit.time))
+		rt_set_hit_pl(time, ray, pl);
 	return (1);
 }
 
-bool	rt_hit_sphere(t_ray *ray, t_object *sp)
+void	rt_set_hit_sp(float t, t_ray *ray, t_object *sp, int in_sphere)
+{	
+	ray->hit.time = t;
+	ray->inter = 1;
+	rt_set_hit_point(ray);
+	if (in_sphere)
+		ray->hit.normal = rt_sub_vec(*sp->pos, ray->hit.point);
+	else
+		ray->hit.normal = rt_sub_vec(ray->hit.point, *sp->pos);
+	rt_norm_vector(&ray->hit.normal);
+	ray->hit.color = *sp->rgb;
+	ray->hit.obj = sp;
+}	
+
+float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *res)
 {
 	t_coord	to_center;
 	float	a;
 	float	half_b;
 	float	c;
 	float	discriminant;
-	float	time[3];
 
 	to_center = rt_sub_vec(ray->origin, *sp->pos);
-	a = rt_vector_length_sqr(ray->dir); // normalement egal à 1
+	a = rt_vec_length_sqr(ray->dir);
 	half_b = rt_dot_prod(to_center, ray->dir);
-	c = rt_vector_length_sqr(to_center) - sp->radius * sp->radius;
+	c = rt_vec_length_sqr(to_center) - pow(sp->radius, 2);
 	discriminant = half_b * half_b - a * c;
-	if (discriminant < 0.0)
-		return (0);
-	time[0] = (-half_b + sqrt(discriminant)) * a;
-	time[1] = (-half_b - sqrt(discriminant)) * a;
-	rt_min_first(&time[0], &time[1]);
-	if (time[0] > 0.0 && time[1] > 0.0)
-		time[2] = time[1];
-	else
-		time[2] = time[0];
-	if (time[2] > 0.0 && (ray->time == 0.0 || time[2] < ray->time))
-		ray->time = time[2];
-	else
-		return (0);
-	rt_set_hit_point(ray);
-	if (in_sp)
-		ray->normal = rt_sub_vec(*sp->pos, ray->hit);
-	else
-		ray->normal = rt_sub_vec(ray->hit, *sp->pos);
-	rt_norm_vector(&ray->normal);
-	ray->color = *sp->rgb;
-	return (1);
+	if (discriminant >= 0.0)
+	{
+		res[0] = (-half_b + sqrt(discriminant)) * a;
+		res[1] = (-half_b - sqrt(discriminant)) * a;
+		rt_min_first(&res[0], &res[1]);
+	}
+	return (discriminant);
 }
 
-bool	rt_hit_cylinder(t_ray *ray, t_object *cy)
+bool	rt_inter_sphere(t_ray *ray, t_object *sp, int crea)
 {
-	float	a;
-	float	half_b;
-	float	c;
-	float	time[3];
-	t_coord	v;
-	t_coord	to_origin;
 	float	discriminant;
+	float	res[2];
+	float	time;
+	int		in_sphere;
 
-	v = rt_cross_vec(rt_cross_vec(*cy->dir, ray->dir), *cy->dir);
-	a = rt_vector_length_sqr(v);
-	to_origin = rt_cross_vec(rt_cross_vec(*cy->dir, rt_sub_vec(*cy->pos, ray->origin)), *cy->dir);
-	half_b = rt_dot_prod(to_origin, v);
-	c = rt_vector_length_sqr(to_origin) - cy->radius * cy->radius;
-	discriminant = half_b * half_b - a * c;
+	in_sphere = 0;
+	discriminant = rt_calcul_sphere(ray, sp, res);
 	if (discriminant < 0.0)
 		return (0);
-	time[0] = (-half_b + sqrt(discriminant)) * a;
-	time[1] = (-half_b - sqrt(discriminant)) * a;
-	if (time[0] < time[1])
-		time[2] = time[0];
+	if (!crea)
+		return (1);
+	if (res[0] > 0.0 && res[1] > 0.0)
+		time = res[1];
 	else
-		time[2] = time[1];
-	if (time[2] > 0.0 && ray->time == 0.0)
-		ray->time = time[2];
-	else if (time[2] > 0.0 && time[2] < ray->time)
-		ray->time = time[2];
-	else
-		return (0);
-	rt_set_hit_point(ray);
-	if (!(rt_dot_prod(rt_sub_vec(*cy->pos, ray->hit), *cy->dir) > 0.0 &&
-		rt_dot_prod(rt_sub_vec(rt_scale_vec(*cy->pos, cy->height), ray->hit), *cy->dir) < 0.0))
-		return (0);
-	ray->color = *cy->rgb;
+	{
+		time = res[0]; // on se trouve dans la sphere
+		in_sphere = 1;
+	}
+	if (ray->inter == 0 || time < ray->hit.time)
+		rt_set_hit_sp(time, ray, sp, in_sphere);
 	return (1);
 }

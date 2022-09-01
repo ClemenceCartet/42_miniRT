@@ -165,16 +165,22 @@ char		**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
 /*-------------------- rt_ray_tracer.c --------------------*/
 
 void		rt_ray_tracer(t_master *master);
+void		rt_intersect(t_obj_data *obj_data, t_ray *ray);
 t_ray		rt_create_ray(t_camera cam, float w, float h);
 void		rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
-bool		rt_intersect(t_obj_data *obj_data, t_ray *ray);
 
 /*-------------------- rt_hits1.c --------------------*/
 
+bool		rt_inter_plane(t_ray *ray, t_object *pl, int crea);
+void		rt_set_hit_pl(float t, t_ray *ray, t_object *pl);
+bool		rt_inter_sphere(t_ray *ray, t_object *sp, int crea);
+float		rt_calcul_sphere(t_ray *ray, t_object *sp, float *res);
+void		rt_set_hit_sp(float t, t_ray *ray, t_object *sp, int in_sphere);
+
+/*-------------------- rt_hits2.c --------------------*/
+
 void		rt_set_hit_point(t_ray *ray);
-bool		rt_hit_plane(t_ray *ray, t_object *pl);
-bool		rt_hit_sphere(t_ray *ray, t_object *sp);
-bool		rt_hit_cylinder(t_ray *ray, t_object *cy);
+//bool		rt_inter_cylinder(t_ray *ray, t_object *cy);
 
 /*-------------------- rt_light.c --------------------*/
 
@@ -182,23 +188,23 @@ t_color		rt_set_color(t_ray ray, t_master *master);
 t_color		rt_set_point_light(t_ray ray, t_light *light, t_coord l_vec);
 float		rt_diffuse_light(t_light *light, float angle);
 float		rt_specular_light(t_light *light, float angle, t_ray ray);
-t_color		rt_set_ambient_light(t_ray ray, t_ambient *ambient);
+t_color		rt_set_ambient_light(t_hit hit, t_ambient *ambient);
 
 /*-------------------- rt_color.c --------------------*/
 
-t_color		rt_init_ray_color(void);
+t_color		rt_color_bkg(void);
 t_color		rt_add_color(t_color c1, t_color c2);
 t_color		rt_scale_color(t_color c1, float ratio);
 t_color		rt_reflt_color(t_color light, t_color obj);
 
 /*-------------------- rt_shadow.c --------------------*/
 
-
+bool		rt_in_shadow(t_obj_data *obj_data, t_ray *ray);
 
 /*-------------------- rt_op_vector1.c --------------------*/
 
 float		rt_vector_length(t_coord v);
-float		rt_vector_length_sqr(t_coord v);
+float		rt_vec_length_sqr(t_coord v);
 void		rt_norm_vector(t_coord *v);
 t_coord		rt_create_vector(float x, float y, float z);
 
@@ -232,7 +238,7 @@ void		rt_min_first(float *t1, float *t2);
 /*-------------------- rt_bn_hit_square.c --------------------*/
 
 void		rt_init_square(t_object *sq);
-bool		rt_hit_square(t_ray *ray, t_object *sq);
+bool		rt_inter_square(t_ray *ray, t_object *sq);
 bool		rt_in_square(t_coord p, t_object *sq);
 
 #endif //MINI_RT_H

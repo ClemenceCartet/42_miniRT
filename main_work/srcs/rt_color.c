@@ -1,6 +1,6 @@
 #include <mini_rt.h>
 
-t_color	rt_init_ray_color(void)
+t_color	rt_color_bkg(void)
 {
 	t_color	color;
 

@@ -1,12 +1,12 @@
 #include <mini_rt.h>
 
-t_color	rt_set_ambient_light(t_ray ray, t_ambient *ambient)
+t_color	rt_set_ambient_light(t_hit hit, t_ambient *ambient)
 {
 	t_color	amb_color;
 	t_color	l_amb;
 	
 	amb_color = rt_scale_color(*ambient->rgb, ambient->ratio);
-	l_amb = rt_reflt_color(amb_color, ray.color);
+	l_amb = rt_reflt_color(amb_color, hit.color);
 	//dprintf(2, "%.2f, %.2f, %.2f\n", l_amb.r, l_amb.g, l_amb.b);
 	return (l_amb);
 }
@@ -27,9 +27,9 @@ float	rt_specular_light(t_light *light, float angle, t_ray ray)
 	t_coord	refl_vec;
 	t_coord	l_to_p_vec;
 
-	l_to_p_vec = rt_sub_vec(ray.hit, *light->pos);
+	l_to_p_vec = rt_sub_vec(ray.hit.point, *light->pos);
 	rt_norm_vector(&l_to_p_vec);
-	refl_vec = rt_add_vec(l_to_p_vec, rt_scale_vec(ray.normal, angle * 1.0)); 
+	refl_vec = rt_add_vec(l_to_p_vec, rt_scale_vec(ray.hit.normal, angle * 1.0)); 
 	rt_norm_vector(&refl_vec);
 	l_spec = light->ratio * rt_dot_prod(refl_vec, rt_scale_vec(ray.dir, -1));
 	if (l_spec < 0)
@@ -45,31 +45,32 @@ t_color	rt_set_point_light(t_ray ray, t_light *light, t_coord l_vec)
 	float 	angle;
 	t_color	spot;
 
-	angle = rt_dot_prod(ray.normal, l_vec);
+	angle = rt_dot_prod(ray.hit.normal, l_vec);
 	l_dif = rt_diffuse_light(light, angle); 
 	//l_spec = rt_specular_light(light, angle, ray);
-	l_bright = light->ratio / (M_PI * rt_vector_length_sqr(l_vec));
-	spot = rt_scale_color(ray.color, l_dif * l_bright);
+	l_bright = light->ratio / (M_PI * rt_vec_length_sqr(l_vec));
+	spot = rt_scale_color(ray.hit.color, l_dif * l_bright);
 	return (spot);
 }
 
 t_color	rt_set_color(t_ray ray, t_master *master)
 {
-	t_color	l_vec;
 	t_color	l_amb;
 	t_color	l_spot;
 	t_color color;
+	t_ray	shadow;
+	int		l_intensity;
 
-	l_vec = rt_sub_vec(*light->pos, ray.hit);
-	rt_norm_vector(&l_vec);
-	l_amb = rt_set_ambient_light(ray, master->ambient);
+	l_intensity = 1;
+	shadow.dir = rt_sub_vec(*master->light->pos, ray.hit.point);
+	rt_norm_vector(&shadow.dir);
+	shadow.origin = rt_add_vec(ray.hit.point, rt_scale_vec(ray.hit.normal, SHADOW_ACNE));
+	l_amb = rt_set_ambient_light(ray.hit, master->ambient);
 	// parcourir liste chainée des lumières
-	if (rt_in_shadow(l_vec, master->obj_data))
-		color = l_amb;
-	else
-	{
-		l_spot = rt_set_point_light(ray, master->light, l_vec);
-		color = rt_add_color(l_amb, l_spot);
-	}
+	if (rt_in_shadow(master->obj_data, &shadow))
+		l_intensity = 0;
+	l_spot = rt_set_point_light(ray, master->light, shadow.dir);
+	l_spot = rt_scale_color(l_spot, l_intensity);
+	color = rt_add_color(l_amb, l_spot);
 	return (color);
 }

@@ -14,10 +14,10 @@
 
 float	rt_vector_length(t_coord v)
 {
-	return (sqrt(rt_vector_length_sqr(v)));
+	return (sqrt(rt_vec_length_sqr(v)));
 }
 
-float	rt_vector_length_sqr(t_coord v)
+float	rt_vec_length_sqr(t_coord v)
 {
 	return (v.x * v.x + v.y * v.y + v.z * v.z);
 }

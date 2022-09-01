@@ -19,16 +19,6 @@
 		MAIN STRUCTURES
 *//////////////////////////////////////////////////////////////////////////////
 
-struct	s_ray
-{
-	t_coord	origin;
-	t_coord	dir;
-	float	time;
-	t_coord	hit;
-	t_coord	normal;
-	t_color	color;
-};
-
 struct	s_matrix
 {
 	float	x_x;

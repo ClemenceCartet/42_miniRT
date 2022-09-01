@@ -26,11 +26,13 @@ typedef struct s_mlx_data	t_mlx_data;
 typedef struct s_obj_data	t_obj_data;
 typedef struct s_object		t_object;
 
+typedef struct s_hit		t_hit;
+typedef struct s_ray		t_ray;
+
 typedef struct s_color		t_color;
 typedef struct s_coord		t_coord;
 
 //RT_MATHS_H
-typedef struct s_ray		t_ray;
 typedef struct s_matrix		t_matrix;
 
 //RT_OBJECTS_H
@@ -107,6 +109,36 @@ struct	s_coord
 	float	x;
 	float	y;
 	float	z;
+};
+
+/**Structure contenant les données d'un rayon
+ * time		= distance que le rayon doit parcourir pour
+ 			atteindre le point d'intersection 
+ * point	= coordonnées du point d'intersection
+ * normal	= vecteur perpendiculaire à la surface du point d'intersection
+ * color	= couleur du point d'int
+ * obj		= lien vers l'objet qui intersecte notre rayon
+*/
+struct	s_hit
+{
+	float		time;
+	t_coord		point;
+	t_coord		normal;
+	t_color		color;
+	t_object	*obj;
+};
+
+/**Structure contenant les données d'un rayon
+ * origin	= coordonnées d'origine du rayon
+ * dir		= vecteur d'orientation du rayon
+ * hit		= structure du point d'intersection du rayon avec un objet
+*/
+struct	s_ray
+{
+	t_coord		origin;
+	t_coord		dir;
+	int 		inter;
+	t_hit		hit;
 };
 
 #endif //RT_DATA_H
