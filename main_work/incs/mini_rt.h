@@ -179,7 +179,7 @@ bool		rt_hit_cylinder(t_ray *ray, t_object *cy);
 /*-------------------- rt_light.c --------------------*/
 
 t_color		rt_set_color(t_ray ray, t_master *master);
-t_color		rt_set_spot_light(t_ray ray, t_light *light);
+t_color		rt_set_point_light(t_ray ray, t_light *light, t_coord l_vec);
 float		rt_diffuse_light(t_light *light, float angle);
 float		rt_specular_light(t_light *light, float angle, t_ray ray);
 t_color		rt_set_ambient_light(t_ray ray, t_ambient *ambient);
@@ -191,10 +191,14 @@ t_color		rt_add_color(t_color c1, t_color c2);
 t_color		rt_scale_color(t_color c1, float ratio);
 t_color		rt_reflt_color(t_color light, t_color obj);
 
+/*-------------------- rt_shadow.c --------------------*/
+
+
+
 /*-------------------- rt_op_vector1.c --------------------*/
 
 float		rt_vector_length(t_coord v);
-float		rt_vector_length_squared(t_coord v);
+float		rt_vector_length_sqr(t_coord v);
 void		rt_norm_vector(t_coord *v);
 t_coord		rt_create_vector(float x, float y, float z);
 
@@ -229,6 +233,6 @@ void		rt_min_first(float *t1, float *t2);
 
 void		rt_init_square(t_object *sq);
 bool		rt_hit_square(t_ray *ray, t_object *sq);
-bool		rt_is_in_square(t_coord p, t_object *sq);
+bool		rt_in_square(t_coord p, t_object *sq);
 
 #endif //MINI_RT_H

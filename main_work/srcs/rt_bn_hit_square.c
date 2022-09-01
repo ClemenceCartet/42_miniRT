@@ -11,7 +11,7 @@ void	rt_init_square(t_object *sq)
 	x.z = 0.0;
 	// trouver les deux autres vecteurs perpendiculaires à sq->dir
 	U = rt_cross_vec(*sq->dir, x);
-	if (!rt_vector_length_squared(U))
+	if (!rt_vector_length_sqr(U))
 		U.y = 1.0;
 	V = rt_cross_vec(U, *sq->dir);
 	// modifier les vecteurs à la taille souhaitée
@@ -29,7 +29,7 @@ void	rt_init_square(t_object *sq)
 	sq->gap[3] = rt_sub_vec(sq->c[2], sq->c[3]);
 }	
 
-bool	rt_is_in_square(t_coord p, t_object *sq)
+bool	rt_in_square(t_coord p, t_object *sq)
 {
 	t_coord	g[4];
 
@@ -63,9 +63,8 @@ bool	rt_hit_square(t_ray *ray, t_object *sq)
 	else
  		return (0);
  	rt_set_hit_point(ray);
-	if (!rt_is_in_square(ray->hit, sq))
+	if (!rt_in_square(ray->hit, sq))
 		return (0);
  	ray->color = *sq->rgb;
- 	ray->object_id = SQ;
  	return (1);
 }

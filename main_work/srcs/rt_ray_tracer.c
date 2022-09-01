@@ -43,7 +43,6 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	// norm_vector(&new.dir);
 	new.color = rt_init_ray_color();
 	new.time = 0.0;
-	new.object_id = 0;
 	return (new);
 }
 

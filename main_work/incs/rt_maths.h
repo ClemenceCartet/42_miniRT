@@ -27,7 +27,6 @@ struct	s_ray
 	t_coord	hit;
 	t_coord	normal;
 	t_color	color;
-	int		object_id;
 };
 
 struct	s_matrix
