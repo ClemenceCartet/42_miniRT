@@ -1,24 +1,37 @@
 #include <mini_rt.h>
 
-bool	rt_in_shadow(t_obj_data *obj_data, t_ray *ray)
+bool	rt_check_inter_sphere(t_ray *ray, t_object *sp, int crea)
 {
-	size_t	n;
-	int 	i;
-	bool	(*fctHit[2])(t_ray*, t_object*, int);
+	float	discriminant;
+	float	res[2];
+	float	time;
+	int		in_sphere;
 
-	fctHit[0] = &rt_inter_sphere;
-	fctHit[1] = &rt_inter_plane;
-	//fctHit[2] = &rt_inter_cylinder;
-	n = -1;
-	while (++n < obj_data->lst_size)
+	in_sphere = 0;
+	discriminant = rt_calcul_sphere(ray, sp, res);
+	if (discriminant < 0.0)
+		return (0);
+	dprintf(2, "d%.2f\n", discriminant);
+	if (!crea)
+		return (1);
+	if (res[0] > 0.0 && res[1] > 0.0)
+		time = res[1];
+	else
 	{
-		i = 0;
-		while (++i <= 2)
-		{
-			if (i == obj_data->objects[n]->id)
-				if ((*fctHit[i - 1])(ray, obj_data->objects[n], 0))
-					return (1);
-		}
+		time = res[0]; // on se trouve dans la sphere
+		in_sphere = 1;
 	}
-	return (0);
-}	
+	if (ray->inter == 0 || time < ray->hit.time)
+		rt_set_hit_sp(time, ray, sp, in_sphere);
+	return (1);
+}
+
+bool	rt_check_inter_plane(t_ray *ray, t_object *pl, int crea)
+{
+	float	a;
+
+	a = rt_dot_prod(*pl->dir, ray->dir);
+	if (a < 0.0)
+		return (0);
+	return (rt_inter_plane(ray, pl, crea));
+}

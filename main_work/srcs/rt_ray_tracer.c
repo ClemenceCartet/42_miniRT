@@ -33,6 +33,7 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	new.dir.z = cam.focal;
 	rt_norm_vector(&new.dir);
 	new.inter = 0;
+	//ft_bzero(&ray.hit, 0);
 	return (new);
 }
 
@@ -81,7 +82,7 @@ void	rt_ray_tracer(t_master *master)
 			ray = rt_create_ray(*master->camera, w, h);
 			rt_intersect(master->obj_data, &ray);
 			if (ray.inter)
-				color = rt_set_color(ray, master);
+				color = rt_set_color(ray.hit, master);
 			else
 				color = rt_color_bkg();
 			rt_put_pixel(w, h, color, master->mlx);

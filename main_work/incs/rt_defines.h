@@ -22,8 +22,6 @@
 # define W 1280
 # define H 720
 
-# define SHADOW_ACNE 0.03
-
 # define SP 1
 # define PL 2
 # define CY 3

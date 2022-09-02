@@ -20,7 +20,10 @@ void	rt_set_hit_pl(float t, t_ray *ray, t_object *pl)
 	ray->hit.time = t;
 	ray->inter = 1;
 	rt_set_hit_point(ray);
-	ray->hit.normal = *pl->dir;
+	if (rt_dot_prod(ray->dir, *pl->dir) > 0)
+		ray->hit.normal = rt_scale_vec(*pl->dir, -1);
+	else
+		ray->hit.normal = *pl->dir;
 	ray->hit.color = *pl->rgb;
 	if (t > 25.0)
 	{
@@ -36,7 +39,9 @@ bool	rt_inter_plane(t_ray *ray, t_object *pl, int crea)
 	float	b;
 	float	time;
 
-	a = rt_dot_prod(*pl->dir, ray->dir);
+	a = rt_dot_prod(*pl->dir, ray->dir); // angle
+	if (!a)
+		return (0);
 	b = rt_dot_prod(*pl->dir, rt_sub_vec(*pl->pos, ray->origin)); // distance
 	time = b / a;
 	if (time <= 0.0)
@@ -69,10 +74,11 @@ float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *res)
 	float	discriminant;
 
 	to_center = rt_sub_vec(ray->origin, *sp->pos);
-	a = rt_vec_length_sqr(ray->dir);
+	a = rt_vec_length_sqr(ray->dir); // égal à 1, à supprimer du coup ?
 	half_b = rt_dot_prod(to_center, ray->dir);
-	c = rt_vec_length_sqr(to_center) - pow(sp->radius, 2);
+	c = rt_vec_length_sqr(to_center) - pow(sp->radius, 2); // toujours la même valeur pour une sphère
 	discriminant = half_b * half_b - a * c;
+	//dprintf(2, "%.2f, %.2f, %.2f\n", a, half_b, c);
 	if (discriminant >= 0.0)
 	{
 		res[0] = (-half_b + sqrt(discriminant)) * a;

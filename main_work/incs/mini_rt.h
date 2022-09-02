@@ -184,11 +184,10 @@ void		rt_set_hit_point(t_ray *ray);
 
 /*-------------------- rt_light.c --------------------*/
 
-t_color		rt_set_color(t_ray ray, t_master *master);
-t_color		rt_set_point_light(t_ray ray, t_light *light, t_coord l_vec);
-float		rt_diffuse_light(t_light *light, float angle);
-float		rt_specular_light(t_light *light, float angle, t_ray ray);
-t_color		rt_set_ambient_light(t_hit hit, t_ambient *ambient);
+t_color		rt_set_color(t_hit hit, t_master *master);
+t_color		rt_set_point_light(t_hit hit, t_light *light, t_coord l_dir);
+t_color		rt_set_ambient_light(t_color hit_color, t_ambient *ambient);
+bool		rt_in_shadow(t_obj_data *obj_data, t_ray l_ray, t_hit hit);
 
 /*-------------------- rt_color.c --------------------*/
 
@@ -199,7 +198,8 @@ t_color		rt_reflt_color(t_color light, t_color obj);
 
 /*-------------------- rt_shadow.c --------------------*/
 
-bool		rt_in_shadow(t_obj_data *obj_data, t_ray *ray);
+bool	rt_check_inter_sphere(t_ray *ray, t_object *sp, int crea);
+bool		rt_check_inter_plane(t_ray *ray, t_object *pl, int crea);
 
 /*-------------------- rt_op_vector1.c --------------------*/
 
