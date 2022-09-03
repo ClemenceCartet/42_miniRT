@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:13 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 12:37:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 15:03:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,10 @@ bool	rt_inter_square(t_ray *ray, t_object *sq)
 	time = b / a;
 	if (time <= 0.0)
 		return (0);
-	if (ray->inter == 0 || time < ray->hit.time)
+	if (time < ray->hit.time)
 		ray->hit.time = time;
 	else
 		return (0);
-	ray->inter = 1;
 	rt_set_hit_point(ray);
 	if (!rt_in_square(ray->hit.point, sq))
 		return (0);

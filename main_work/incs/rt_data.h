@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 14:08:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 15:14:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_ambient	t_ambient;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
 
-typedef bool				(*t_fcthit)(t_ray*, t_object*, int);
+typedef float				(*t_fcthit)(t_ray*, t_object*);
 
 /*/////////////////////////////////////////////////////////////////////////////
 		MAIN STRUCTURES
@@ -140,8 +140,8 @@ struct	s_ray
 {
 	t_coord		origin;
 	t_coord		dir;
-	bool		inter;
 	t_hit		hit;
+	bool		inter;
 	bool		in_obj;
 };
 

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 13:41:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 15:15:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,33 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ray.dir.z = cam.focal;
 	rt_norm_vector(&ray.dir);
 	ray.inter = 0;
+	ray.in_obj = 0;
 	return (ray);
 }
+
+// void	rt_ray_tracer(t_master *master)
+// {
+// 	t_ray	ray;
+// 	int		h;
+// 	int		w;
+// 	t_color	color;
+
+// 	h = -1;
+// 	while (++h < HEIGHT)
+// 	{	
+// 		w = -1;
+// 		while (++w < WIDTH)
+// 		{
+// 			ray = rt_create_ray(*master->camera, w, h);
+// 			rt_intersect(master->obj_data, &ray);
+// 			if (ray.inter)
+// 				color = rt_set_color(ray.hit, master);
+// 			else
+// 				color = rt_color_bkg();
+// 			rt_put_pixel(w, h, color, master->mlx);
+// 		}	
+// 	}
+// }
 
 void	rt_ray_tracer(t_master *master)
 {
@@ -51,6 +76,11 @@ void	rt_ray_tracer(t_master *master)
 		{
 			ray = rt_create_ray(*master->camera, pxl_w, pxl_h);
 			rt_intersect(master->obj_data, &ray);
+			if (ray.inter)
+				color = rt_set_color(ray.hit, master);
+			else
+				color = rt_color_bkg();
+			rt_put_pixel(pxl_w, pxl_h, color, master->mlx);
 			pxl_w++;
 		}
 		pxl_h++;

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 13:41:39 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 14:52:41 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 15:03:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,9 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray)
 		while (i <= 2)
 		{
 			if (i == obj_data->objects[n]->id)
-				time = (*fct[i - 1])(ray, obj_data->objects[n], 1);
+				time = (*fct[i - 1])(ray, obj_data->objects[n]);
+			if (time != -1 && time < ray->hit.time)
+				rt_set_hit(ray, obj_data->objects[n], time);
 			i++;
 		}
 		n++;
