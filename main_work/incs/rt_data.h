@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 12:15:14 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 14:08:17 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,9 @@ struct	s_ray
 {
 	t_coord		origin;
 	t_coord		dir;
-	int			inter;
+	bool		inter;
 	t_hit		hit;
+	bool		in_obj;
 };
 
 struct	s_matrix

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:13 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:37:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 12:37:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,13 @@ bool	rt_inter_square(t_ray *ray, t_object *sq)
 	ray->hit.obj = sq;
 	return (1);
 }
+
+//size_t	n;
+
+/*n = 0;
+while (n < master->obj_data->lst_size)
+{
+	if (master->obj_data->objects[n]->id == 2)
+	init_square(master->obj_data->objects[n]);
+	n++;
+}*/

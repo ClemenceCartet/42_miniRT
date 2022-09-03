@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 18:24:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 12:33:28 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 		DEFINES
 *//////////////////////////////////////////////////////////////////////////////
 
-# define W 1280
-# define H 720
+# define WIDTH 1280
+# define HEIGHT 720
 
 # define SP 1
 # define PL 2
