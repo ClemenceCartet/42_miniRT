@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:16 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/24 15:00:21 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 09:20:03 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_matrix	mat_rot_x(float rad) // rotation up-down
 	new.x_z = 0;
 	new.y_x = 0;
 	new.y_y = cos(rad);
-	new.y_z = - sin(rad);
+	new.y_z = -sin(rad);
 	new.z_x = 0;
 	new.z_y = sin(rad);
 	new.z_z = cos(rad);
@@ -33,7 +33,7 @@ t_matrix	mat_rot_z(float rad) // rotation left-right
 	t_matrix	new;
 
 	new.x_x = cos(rad);
-	new.x_y = - sin(rad);
+	new.x_y = -sin(rad);
 	new.x_z = 0;
 	new.y_x = sin(rad);
 	new.y_y = cos(rad);
