@@ -34,32 +34,9 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	rt_norm_vector(&ray.dir);
 	ray.inter = 0;
 	ray.in_obj = 0;
+	ray.hit.time = -1;
 	return (ray);
 }
-
-// void	rt_ray_tracer(t_master *master)
-// {
-// 	t_ray	ray;
-// 	int		h;
-// 	int		w;
-// 	t_color	color;
-
-// 	h = -1;
-// 	while (++h < HEIGHT)
-// 	{	
-// 		w = -1;
-// 		while (++w < WIDTH)
-// 		{
-// 			ray = rt_create_ray(*master->camera, w, h);
-// 			rt_intersect(master->obj_data, &ray);
-// 			if (ray.inter)
-// 				color = rt_set_color(ray.hit, master);
-// 			else
-// 				color = rt_color_bkg();
-// 			rt_put_pixel(w, h, color, master->mlx);
-// 		}	
-// 	}
-// }
 
 void	rt_ray_tracer(t_master *master)
 {

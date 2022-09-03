@@ -12,50 +12,6 @@
 
 #include <mini_rt.h>
 
-// bool	rt_inter_plane(t_ray *ray, t_object *pl, int crea)
-// {
-// 	float	a;
-// 	float	b;
-// 	float	time;
-
-// 	a = rt_dot_prod(*pl->dir, ray->dir); // angle
-// 	if (!a)
-// 		return (0);
-// 	b = rt_dot_prod(*pl->dir, rt_sub_vec(*pl->pos, ray->origin)); // distance
-// 	time = b / a;
-// 	if (time <= 0.0)
-// 		return (0);
-// 	if (crea && (ray->inter == 0 || time < ray->hit.time))
-// 		rt_set_hit_pl(time, ray, pl);
-// 	return (1);
-// }
-
-// bool	rt_inter_sphere(t_ray *ray, t_object *sp, int crea)
-// {
-// 	float	discriminant;
-// 	float	res[2];
-// 	float	time;
-// 	int		in_sphere;
-
-// 	in_sphere = 0;
-// 	discriminant = rt_calcul_sphere(ray, sp, res);
-// 	if (discriminant < 0.0)
-// 		return (0);
-// 	if (!crea)
-// 		return (1);
-// 	if (res[0] > 0.0 && res[1] > 0.0)
-// 		time = res[1];
-// 	else
-// 	{
-// 		time = res[0];
-// 		in_sphere = 1;
-// 	}
-// 	if (ray->inter == 0 || time < ray->hit.time)
-// 		if (!rt_set_hit_sp(time, ray, sp, in_sphere))
-// 			return (0);
-// 	return (1);
-// }
-
 float	rt_inter_plane(t_ray *ray, t_object *pl)
 {
 	float	angle_rad;
@@ -134,7 +90,7 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray)
 		{
 			if (i == obj_data->objects[n]->id)
 				time = (*fct[i - 1])(ray, obj_data->objects[n]);
-			if (time != -1 && time < ray->hit.time)
+			if (time != -1 && (ray->inter == 0 || time < ray->hit.time))
 				rt_set_hit(ray, obj_data->objects[n], time);
 			i++;
 		}
