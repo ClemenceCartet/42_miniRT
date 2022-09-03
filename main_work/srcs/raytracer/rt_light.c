@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_light.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:35 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 10:26:11 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 11:59:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_color	rt_set_ambient_light(t_color hit_color, t_ambient *ambient)
 
 	amb_color = rt_scale_color(*ambient->rgb, ambient->ratio);
 	l_amb = rt_reflt_color(amb_color, hit_color);
-	//dprintf(2, "%.2f, %.2f, %.2f\n", l_amb.r, l_amb.g, l_amb.b);
 	return (l_amb);
 }
 

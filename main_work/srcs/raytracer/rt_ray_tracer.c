@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:36:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 10:49:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	new.dir.z = cam.focal;
 	rt_norm_vector(&new.dir);
 	new.inter = 0;
-	//ft_bzero(&ray.hit, 0);
 	return (new);
 }
 

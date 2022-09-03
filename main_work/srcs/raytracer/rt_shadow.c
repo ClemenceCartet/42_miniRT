@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:43 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:34:46 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 11:59:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ bool	rt_check_inter_sphere(t_ray *ray, t_object *sp, int crea)
 	discriminant = rt_calcul_sphere(ray, sp, res);
 	if (discriminant < 0.0)
 		return (0);
-	dprintf(2, "d%.2f\n", discriminant);
 	if (!crea)
 		return (1);
 	if (res[0] > 0.0 && res[1] > 0.0)

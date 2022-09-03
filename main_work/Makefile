@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+         #
+#    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/24 15:49:38 by ccartet          ###   ########.fr        #
+#    Updated: 2022/09/03 12:25:12 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,23 +23,25 @@ MLX		:=	mlx/libmlx.a
 #//////////////////////////////////////////////////////////////////////////////
 
 # Files
-LST_INCS		:=	mini_rt.h		rt_keys.h			\
-					rt_data.h		rt_defines.h		\
-					rt_objects.h
-LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c			\
-					rt_data_utils.c				rt_init_coords.c			\
-					rt_init_data.c				rt_init_master.c			\
-					rt_init_objects.c			rt_init_rgb.c				\
+LST_INCS		:=	mini_rt.h					rt_keys.h			\
+					rt_data.h					rt_defines.h		\
+					rt_objects.h				rt_bonus.h			\
+					rt_hooks.h					rt_parsing.h		\
+					rt_raytracer.h				rt_utils.h
+LST_BONUS		:=	op_matrix1.c				rt_bn_hit_square.c
+LST_HOOKS		:=	rt_manage_hooks.c
+LST_MATHS		:=	rt_color.c					rt_op_vector1.c		\
+					rt_op_vector2.c
+LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c	\
+					rt_data_utils.c				rt_init_coords.c	\
+					rt_init_data.c				rt_init_master.c	\
+					rt_init_objects.c			rt_init_rgb.c		\
 					rt_init_additional_data.c
-LST_SRCS		:=	rt_ray_tracer.c				rt_hits1.c					\
-					rt_hits2.c					rt_light.c					\
-					rt_shadow.c					rt_color.c					\
-					rt_op_vector1.c				rt_op_vector2.c				\
-					rt_free_data.c				rt_free_objects.c			\
-					rt_return_errors.c			rt_write_errors.c			\
-					rt_utils.c 					\
-					rt_bn_hit_square.c			\
-					op_matrix1.c
+LST_RAYTRACER	:=	rt_hits1.c					rt_hits2.c			\
+					rt_light.c					rt_ray_tracer.c		\
+					rt_shadow.c
+LST_UTILS		:=	rt_free_data.c				rt_free_objects.c	\
+					rt_return_errors.c			rt_write_errors.c
 
 # Directories
 P_MLX			:=	mlx/
@@ -48,14 +50,23 @@ P_INCS_LIBFT	:=	libft/incs/
 
 P_INCS			:=	incs/
 P_SRCS			:=	srcs/
+P_BONUS			:=	bonus/
+P_HOOKS			:=	hooks/
+P_MATHS			:=	maths/
 P_PARSING		:=	parsing/
+P_RAYTRACER		:=	raytracer/
+P_UTILS			:=	utils/
 
 P_OBJS			:=	.objs/
 
 # Shortcuts
 INCS			:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS			:=	$(addprefix $(P_SRCS),$(LST_SRCS))					\
-					$(addprefix $(P_SRCS)$(P_PARSING),$(LST_PARSING))	\
+SRCS			:=	$(addprefix $(P_SRCS)$(P_BONUS),$(LST_BONUS))			\
+					$(addprefix $(P_SRCS)$(P_HOOKS),$(LST_HOOKS))			\
+					$(addprefix $(P_SRCS)$(P_MATHS),$(LST_MATHS))			\
+					$(addprefix $(P_SRCS)$(P_PARSING),$(LST_PARSING))		\
+					$(addprefix $(P_SRCS)$(P_RAYTRACER),$(LST_RAYTRACER))	\
+					$(addprefix $(P_SRCS)$(P_UTILS),$(LST_UTILS))			\
 					$(addprefix $(P_SRCS),main.c)
 OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
@@ -107,7 +118,12 @@ $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) $(MLX) Makefile | $(P_OBJS)
 
 $(P_OBJS):
 	mkdir -p $(P_OBJS)		\
-	$(P_OBJS)$(P_PARSING)
+	$(P_OBJS)$(P_BONUS)		\
+	$(P_OBJS)$(P_HOOKS)		\
+	$(P_OBJS)$(P_MATHS)		\
+	$(P_OBJS)$(P_PARSING)	\
+	$(P_OBJS)$(P_RAYTRACER)	\
+	$(P_OBJS)$(P_UTILS)
 	printf "✅	$(GREEN)$(BOLD)$(NAME) obj directories created$(RESET)\n"
 
 # Libs creation

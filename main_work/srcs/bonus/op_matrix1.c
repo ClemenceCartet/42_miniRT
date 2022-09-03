@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:16 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:38:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 12:09:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ t_matrix	mat_rot_x(float rad)
 {	
 	t_matrix	new;
 
-	new.x_x = 1;
-	new.x_y = 0;
-	new.x_z = 0;
-	new.y_x = 0;
-	new.y_y = cos(rad);
-	new.y_z = -sin(rad);
-	new.z_x = 0;
-	new.z_y = sin(rad);
-	new.z_z = cos(rad);
+	new.x.x = 1;
+	new.x.y = 0;
+	new.x.z = 0;
+	new.y.x = 0;
+	new.y.y = cos(rad);
+	new.y.z = -sin(rad);
+	new.z.x = 0;
+	new.z.y = sin(rad);
+	new.z.z = cos(rad);
 	return (new);
 }
 
@@ -34,15 +34,15 @@ t_matrix	mat_rot_z(float rad)
 {	
 	t_matrix	new;
 
-	new.x_x = cos(rad);
-	new.x_y = -sin(rad);
-	new.x_z = 0;
-	new.y_x = sin(rad);
-	new.y_y = cos(rad);
-	new.y_z = 0;
-	new.z_x = 0;
-	new.z_y = 0;
-	new.z_z = 1;
+	new.x.x = cos(rad);
+	new.x.y = -sin(rad);
+	new.x.z = 0;
+	new.y.x = sin(rad);
+	new.y.y = cos(rad);
+	new.y.z = 0;
+	new.z.x = 0;
+	new.z.y = 0;
+	new.z.z = 1;
 	return (new);
 }
 
@@ -50,9 +50,9 @@ t_coord	mat_x_vector(t_matrix m, t_coord v)
 {	
 	t_coord	new;
 
-	new.x = m.x_x * v.x + m.x_y * v.y + m.x_z * v.z;
-	new.y = m.y_x * v.x + m.y_y * v.y + m.y_z * v.z;
-	new.z = m.z_x * v.x + m.z_y * v.y + m.z_z * v.z;
+	new.x = m.x.x * v.x + m.x.y * v.y + m.x.z * v.z;
+	new.y = m.y.x * v.x + m.y.y * v.y + m.y.z * v.z;
+	new.z = m.z.x * v.x + m.z.y * v.y + m.z.z * v.z;
 	return (new);
 }
 

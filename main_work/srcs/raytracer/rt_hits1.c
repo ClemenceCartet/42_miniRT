@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hits1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 10:57:26 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 12:27:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *res)
 	{
 		res[0] = (-half_b + sqrt(discriminant)) * a;
 		res[1] = (-half_b - sqrt(discriminant)) * a;
-		rt_min_first(&res[0], &res[1]);
+		if (res[0] > res[1])
+			ft_fswap(&res[0], &res[1]);
 	}
 	return (discriminant);
 }
@@ -104,7 +105,6 @@ bool	rt_inter_sphere(t_ray *ray, t_object *sp, int crea)
 	discriminant = rt_calcul_sphere(ray, sp, res);
 	if (discriminant < 0.0)
 		return (0);
-	//dprintf(2, "d%.2f\n", discriminant);
 	if (!crea)
 		return (1);
 	if (res[0] > 0.0 && res[1] > 0.0)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_vector1.c                                       :+:      :+:    :+:   */
+/*   rt_op_vector1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:27 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/24 11:15:28 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 11:47:47 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ float	rt_vector_length(t_coord v)
 
 float	rt_vec_length_sqr(t_coord v)
 {
-	return (v.x * v.x + v.y * v.y + v.z * v.z);
+	float	x;
+	float	y;
+	float	z;
+
+	x = v.x * v.x;
+	y = v.y * v.y;
+	z = v.z * v.z;
+	return (x + y + z);
 }
 
 void	rt_norm_vector(t_coord *v)

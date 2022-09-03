@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_utils.c                                         :+:      :+:    :+:   */
+/*   ft_fswap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 09:12:49 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:12:50 by ccartet          ###   ########.fr       */
+/*   Created: 2022/09/03 12:28:23 by ljohnson          #+#    #+#             */
+/*   Updated: 2022/09/03 12:29:01 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mini_rt.h>
+#include <libft.h>
 
-void	rt_min_first(float *t1, float *t2)
+void	ft_fswap(float *a, float *b)
 {
 	float	ret;
 
-	if (t1 > t2)
-	{
-		ret = *t1;
-		*t1 = *t2;
-		*t2 = ret;
-	}
+	ret = *a;
+	*a = *b;
+	*b = ret;
 }
