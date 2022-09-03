@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 09:33:16 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 10:21:22 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ bool		rt_inter_plane(t_ray *ray, t_object *pl, int crea);
 void		rt_set_hit_pl(float t, t_ray *ray, t_object *pl);
 bool		rt_inter_sphere(t_ray *ray, t_object *sp, int crea);
 float		rt_calcul_sphere(t_ray *ray, t_object *sp, float *res);
-void		rt_set_hit_sp(float t, t_ray *ray, t_object *sp, int in_sphere);
+bool		rt_set_hit_sp(float t, t_ray *ray, t_object *sp, int in_sphere);
 
 /*-------------------- rt_hits2.c --------------------*/
 
@@ -187,7 +187,7 @@ void		rt_set_hit_point(t_ray *ray);
 t_color		rt_set_color(t_hit hit, t_master *master);
 t_color		rt_set_point_light(t_hit hit, t_light *light, t_coord l_dir);
 t_color		rt_set_ambient_light(t_color hit_color, t_ambient *ambient);
-bool		rt_in_shadow(t_obj_data *obj_data, t_ray l_ray, t_hit hit);
+bool		rt_in_shadow(t_obj_data *obj_data, t_ray *l_ray, t_hit hit);
 
 /*-------------------- rt_color.c --------------------*/
 

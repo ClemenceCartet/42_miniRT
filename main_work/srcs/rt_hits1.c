@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hits1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:37:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 10:57:26 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,16 @@ bool	rt_inter_plane(t_ray *ray, t_object *pl, int crea)
 	return (1);
 }
 
-void	rt_set_hit_sp(float t, t_ray *ray, t_object *sp, int in_sphere)
+bool	rt_set_hit_sp(float t, t_ray *ray, t_object *sp, int in_sphere)
 {	
+	t_coord	check;
+
 	ray->hit.time = t;
 	ray->inter = 1;
 	rt_set_hit_point(ray);
+	check = rt_sub_vec(ray->origin, ray->hit.point);
+	if (rt_dot_prod(check, ray->dir) > 0.0)
+		return (0);
 	if (in_sphere)
 		ray->hit.normal = rt_sub_vec(*sp->pos, ray->hit.point);
 	else
@@ -63,6 +68,7 @@ void	rt_set_hit_sp(float t, t_ray *ray, t_object *sp, int in_sphere)
 	rt_norm_vector(&ray->hit.normal);
 	ray->hit.color = *sp->rgb;
 	ray->hit.obj = sp;
+	return (1);
 }	
 
 float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *res)
@@ -78,7 +84,6 @@ float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *res)
 	half_b = rt_dot_prod(to_center, ray->dir);
 	c = rt_vec_length_sqr(to_center) - pow(sp->radius, 2); // toujours la même valeur pour une sphère
 	discriminant = half_b * half_b - a * c;
-	//dprintf(2, "%.2f, %.2f, %.2f\n", a, half_b, c);
 	if (discriminant >= 0.0)
 	{
 		res[0] = (-half_b + sqrt(discriminant)) * a;
@@ -99,6 +104,7 @@ bool	rt_inter_sphere(t_ray *ray, t_object *sp, int crea)
 	discriminant = rt_calcul_sphere(ray, sp, res);
 	if (discriminant < 0.0)
 		return (0);
+	//dprintf(2, "d%.2f\n", discriminant);
 	if (!crea)
 		return (1);
 	if (res[0] > 0.0 && res[1] > 0.0)
@@ -109,6 +115,7 @@ bool	rt_inter_sphere(t_ray *ray, t_object *sp, int crea)
 		in_sphere = 1;
 	}
 	if (ray->inter == 0 || time < ray->hit.time)
-		rt_set_hit_sp(time, ray, sp, in_sphere);
+		if (!rt_set_hit_sp(time, ray, sp, in_sphere))
+			return (0);
 	return (1);
 }
