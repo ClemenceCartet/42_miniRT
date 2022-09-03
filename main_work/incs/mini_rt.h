@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/28 14:53:26 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 09:33:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ t_color		rt_reflt_color(t_color light, t_color obj);
 
 /*-------------------- rt_shadow.c --------------------*/
 
-bool	rt_check_inter_sphere(t_ray *ray, t_object *sp, int crea);
+bool		rt_check_inter_sphere(t_ray *ray, t_object *sp, int crea);
 bool		rt_check_inter_plane(t_ray *ray, t_object *pl, int crea);
 
 /*-------------------- rt_op_vector1.c --------------------*/
@@ -229,11 +229,6 @@ void		rotate_z(t_coord *xyz, float rad);
 /*-------------------- utils.c --------------------*/
 
 void		rt_min_first(float *t1, float *t2);
-
-
-
-
-
 
 /*-------------------- rt_bn_hit_square.c --------------------*/
 

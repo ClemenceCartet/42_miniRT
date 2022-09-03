@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_light.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:35 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:27:09 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 09:36:54 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_color	rt_set_ambient_light(t_color hit_color, t_ambient *ambient)
 {
 	t_color	amb_color;
 	t_color	l_amb;
-	
+
 	amb_color = rt_scale_color(*ambient->rgb, ambient->ratio);
 	l_amb = rt_reflt_color(amb_color, hit_color);
 	//dprintf(2, "%.2f, %.2f, %.2f\n", l_amb.r, l_amb.g, l_amb.b);
@@ -25,7 +25,7 @@ t_color	rt_set_ambient_light(t_color hit_color, t_ambient *ambient)
 
 t_color	rt_set_point_light(t_hit hit, t_light *light, t_coord l_dir)
 {
-	float 	angle;
+	float	angle;
 	float	l_dif;
 	float	l_bright;
 	t_color	spot;
@@ -44,7 +44,7 @@ t_color	rt_set_color(t_hit hit, t_master *master)
 	t_ray	l_ray;
 	t_color	l_amb;
 	t_color	l_point;
-	t_color color;
+	t_color	color;
 	int		l_intensity;
 
 	l_intensity = 1;
@@ -61,14 +61,14 @@ t_color	rt_set_color(t_hit hit, t_master *master)
 
 bool	rt_in_shadow(t_obj_data *obj_data, t_ray l_ray, t_hit hit)
 {
-	t_ray	shadow;
-	size_t	n;
-	int 	i;
-	bool	(*fctHit[2])(t_ray*, t_object*, int);
+	t_ray		shadow;
+	size_t		n;
+	int			i;
+	t_fcthit	*fct[2];
 
-	fctHit[0] = &rt_check_inter_sphere;
-	fctHit[1] = &rt_check_inter_plane;
-	//fctHit[2] = &rt_inter_cylinder;
+	fct[0] = &rt_check_inter_sphere;
+	fct[1] = &rt_check_inter_plane;
+	//fct[2] = &rt_inter_cylinder;
 	shadow.dir = rt_scale_vec(l_ray.dir, -1);
 	rt_norm_vector(&shadow.dir);
 	shadow.origin = rt_add_vec(hit.point, rt_scale_vec(hit.normal, 0.001));
@@ -79,7 +79,7 @@ bool	rt_in_shadow(t_obj_data *obj_data, t_ray l_ray, t_hit hit)
 		while (++i <= 2)
 		{
 			if (i == obj_data->objects[n]->id)
-				if ((*fctHit[i - 1])(&shadow, obj_data->objects[n], 0))
+				if ((*fct[i - 1])(&shadow, obj_data->objects[n], 0))
 					return (1);
 		}
 	}

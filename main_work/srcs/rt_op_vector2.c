@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_vector2.c                                       :+:      :+:    :+:   */
+/*   rt_op_vector2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:56 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/28 14:53:20 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 09:36:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ t_coord	rt_scale_vec(t_coord v, float m)
 	z = v.z * m;
 	return (rt_create_vector(x, y, z));
 }
-// ici, on ne modifie pas la direction du vecteur, seulement sa magnitude / longueur
+// ici, on ne modifie pas la direction du vecteur
+//seulement sa magnitude / longueur
 
 float	rt_dot_prod(t_coord v1, t_coord v2)
 {

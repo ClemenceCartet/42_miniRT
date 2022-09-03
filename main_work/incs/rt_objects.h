@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/24 15:36:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 09:31:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ struct	s_object
 	float	height;
 
 	float	radius;
-	t_coord c[4];
+	t_coord	c[4];
 	t_coord	gap[4];
 };
 /**Structure pour l'objet sphère

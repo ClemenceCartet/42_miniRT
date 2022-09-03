@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 13:19:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/30 14:14:23 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 09:33:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ t_color	*rt_init_rgb(char **data, char *values)
 	color = rt_calloc_struct(sizeof(t_color), split);
 	if (!color)
 		return (rt_ret_ptr_error(data, split, NULL, NULL));
-	color->r = ft_atof(split[0])/ 255;
-	color->g = ft_atof(split[1])/ 255;
-	color->b = ft_atof(split[2])/ 255;
+	color->r = ft_atof(split[0]) / 255;
+	color->g = ft_atof(split[1]) / 255;
+	color->b = ft_atof(split[2]) / 255;
 	ft_free_split(split);
 	return (color);
 }

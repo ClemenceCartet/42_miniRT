@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/30 14:13:06 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 09:32:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_ambient	t_ambient;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
 
+typedef bool				(*t_fcthit)(t_ray*, t_object*, int);
+
 /*/////////////////////////////////////////////////////////////////////////////
 		MAIN STRUCTURES
 *//////////////////////////////////////////////////////////////////////////////
@@ -64,11 +66,12 @@ struct	s_master
 	t_light		*light;
 };
 
+//bpp = bit per pixel, 8 bits color
 struct s_mlx_data
 {
 	void	*img;
 	char	*addr;
-	int		bpp; // bit per pixel, 8 bits color
+	int		bpp;
 	int		line_length;
 	int		endian;
 };
@@ -137,7 +140,7 @@ struct	s_ray
 {
 	t_coord		origin;
 	t_coord		dir;
-	int 		inter;
+	int			inter;
 	t_hit		hit;
 };
 

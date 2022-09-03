@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_tracer.c                                       :+:      :+:    :+:   */
+/*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/08/28 14:51:59 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/03 09:36:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 
 	new.origin = *cam.pos;
 	new.dir.x = w - W * 0.5;
-	new.dir.y = H * 0.5 - h; 
+	new.dir.y = H * 0.5 - h;
 	new.dir.z = cam.focal;
 	rt_norm_vector(&new.dir);
 	new.inter = 0;
@@ -39,13 +39,13 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 
 void	rt_intersect(t_obj_data *obj_data, t_ray *ray)
 {
-	size_t	n;
-	int 	i;
-	bool	(*fctHit[2])(t_ray*, t_object*, int);
+	size_t		n;
+	int			i;
+	t_fcthit	fct[2];
 
-	fctHit[0] = &rt_inter_sphere;
-	fctHit[1] = &rt_inter_plane;
-	//fctHit[2] = &rt_inter_cylinder;
+	fct[0] = &rt_inter_sphere;
+	fct[1] = &rt_inter_plane;
+	//fct[2] = &rt_inter_cylinder;
 	n = -1;
 	while (++n < obj_data->lst_size)
 	{
@@ -53,7 +53,7 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray)
 		while (++i <= 2)
 		{
 			if (i == obj_data->objects[n]->id)
-				(*fctHit[i - 1])(ray, obj_data->objects[n], 1);
+				(*fct[i - 1])(ray, obj_data->objects[n], 1);
 		}
 	}
 }	

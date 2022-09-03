@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:44:05 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/28 11:04:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 09:33:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ static int	rt_check_coords_data(char **data, char **split, int isdir)
 }
 
 //Check dir values for objects and camera
-static t_coord	*rt_check_dir(t_coord * coord, char **data, char **split)
+static t_coord	*rt_check_dir(t_coord *coord, char **data, char **split)
 {
-
 	if (ft_strncmp(data[0], "C", 2) != 0)
 	{
 		if (!coord->x && !coord->y && !coord->z)
