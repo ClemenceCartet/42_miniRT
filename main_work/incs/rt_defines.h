@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 12:33:28 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/04 16:18:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define PL 2
 # define CY 3
 # define SQ 4
+
+# define AXIS_X 5
+# define AXIS_Y 6
+# define AXIS_Z 7
 
 # define PARSING_CHARSET "ACLsplcy0123456789-+., \n"
 # define INT_CHARSET "0123456789"
