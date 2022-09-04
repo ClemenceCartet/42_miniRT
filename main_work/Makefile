@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/09/03 15:17:18 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/09/04 18:03:19 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ LST_INCS		:=	mini_rt.h					rt_keys.h			\
 					rt_hooks.h					rt_parsing.h		\
 					rt_raytracer.h				rt_utils.h
 LST_BONUS		:=	op_matrix1.c				rt_bn_hit_square.c
-LST_HOOKS		:=	rt_manage_hooks.c
+LST_HOOKS		:=	rt_manage_hooks.c			rt_hook_objects.c	\
+					rt_hook_camera.c
 LST_MATHS		:=	rt_color.c					rt_op_vector1.c		\
 					rt_op_vector2.c
 LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c	\
