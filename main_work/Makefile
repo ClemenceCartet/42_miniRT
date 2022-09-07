@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/09/07 13:32:24 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/09/07 15:23:21 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ MLX		:=	mlx/libmlx.a
 # Files
 LST_INCS		:=	mini_rt.h					rt_keys.h			\
 					rt_data.h					rt_defines.h		\
-					rt_objects.h				rt_bonus.h			\
+					rt_objects.h				rt_utils.h			\
 					rt_hooks.h					rt_parsing.h		\
-					rt_raytracer.h				rt_utils.h
+					rt_raytracer.h
 LST_HOOKS		:=	rt_manage_hooks.c			rt_hook_objects.c	\
 					rt_hook_camera.c			rt_hook_selection.c	\
 					rt_display.c
