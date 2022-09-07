@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 13:43:24 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 15:11:52 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,17 @@
 # define STR27			"Object size modification"
 # define STR28			"Increase size : Numpad +"
 # define STR29			"Decrease size : Numpad -"
+
+# define STR30			"Sphere"
+# define STR31			"Plane"
+# define STR32			"Cylinder"
+# define STR33			"Index = "
+# define STR34			"Currently selected Object"
+
+# define STR35			"Selected Axis = "
+# define STR36			"Selected Size = "
+# define STR37			"Diameter"			
+# define STR38			"Height"
+# define STR39			"Object Type = "			
 
 #endif //RT_DEFINES_H

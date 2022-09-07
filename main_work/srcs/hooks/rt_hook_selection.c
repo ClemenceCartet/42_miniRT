@@ -6,15 +6,29 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:09:06 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 11:36:54 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 14:17:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
+//Set selected value of all objects to 0
+static void	rt_reset_object_selection(t_master *master)
+{
+	int	a;
+
+	a = 0;
+	while (master->obj_data->objects[a])
+	{
+		master->obj_data->objects[a]->selected = 0;
+		a++;
+	}
+}
+
 //Iterate through the object list with left and right key press
 int	rt_update_selected_object(int key, t_master *master, int object)
 {
+	rt_reset_object_selection(master);
 	if (key == K_LEFT)
 	{
 		if (object == -1 || object == 0)

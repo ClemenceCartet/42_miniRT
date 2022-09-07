@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:56:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 13:13:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 15:01:48 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ static void	rt_object_hook_hub(int key, t_master *master)
 	static int	obj_size = -1;
 
 	if (key == K_LEFT || key == K_RIGHT)
+	{
 		object = rt_update_selected_object(key, master, object);
+		if (object != -1)
+			master->obj_data->objects[object]->selected = 1;
+	}
 	else if (key == K_X || key == K_Y || key == K_Z)
 		axis = rt_update_selected_axis(key);
 	else if (key == K_T)
@@ -41,6 +45,7 @@ static void	rt_object_hook_hub(int key, t_master *master)
 		rt_update_obj_size(key, master, object, obj_size);
 	else if (key == PV_8 || key == PV_2)
 		rt_update_light_pos(key, master, axis);
+	rt_display_selection(master, axis, obj_size);
 }
 
 //Will call the appropriate function depending on the key pressed for camera

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:12:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 13:46:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 15:02:03 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@
 
 /*-------------------- rt_display.c --------------------*/
 
+void	rt_display_selection(t_master *m, int axis, int size);
+// void	rt_display_selected_object(t_master *m);
 // void	rt_display_camera_commands(t_master *master);
 // void	rt_display_select_commands(t_master *master);
-// void	rt_display_modif_commands(t_master *master);
 void	rt_display_info(t_master *master);
 
 /*-------------------- rt_hook_selection.c --------------------*/
 
+// void	rt_reset_object_selection(t_master *master);
 int		rt_update_selected_object(int key, t_master *master, int object);
 int		rt_update_selected_axis(int key);
 int		rt_update_selected_size(int obj_size);
