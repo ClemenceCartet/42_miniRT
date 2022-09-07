@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:12:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/04 18:02:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 10:24:51 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 int		rt_update_selected_object(int key, t_master *master, int object);
 int		rt_update_selected_axis(int key);
 void	rt_update_obj_pos(int key, t_master *master, int object, int axis);
-void	rt_update_object_size(int key, t_master *master, int object);
+void	rt_update_light_pos(int key, t_master *master, int axis);
+void	rt_update_obj_size(int key, t_master *master, int object, int obj_size);
 
 /*-------------------- rt_hook_camera.c --------------------*/
 

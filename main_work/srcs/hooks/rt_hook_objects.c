@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:35:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/04 18:02:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 10:30:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	rt_update_selected_object(int key, t_master *master, int object)
 		else
 			return (object - 1);
 	}
-	else
+	else if (key == K_RIGHT)
 	{
 		if (object == -1 || object == (int)(master->obj_data->lst_size - 1))
 			return (0);
@@ -60,7 +60,7 @@ void	rt_update_obj_pos(int key, t_master *master, int object, int axis)
 			else if (axis == AXIS_Z)
 				master->obj_data->objects[object]->pos->z += 0.2;
 		}
-		else
+		else if (K_DOWN)
 		{
 			if (axis == AXIS_X)
 				master->obj_data->objects[object]->pos->x -= 0.2;
@@ -72,11 +72,40 @@ void	rt_update_obj_pos(int key, t_master *master, int object, int axis)
 	}
 }
 
+//Move the light object on the axis given one way or the other
+void	rt_update_light_pos(int key, t_master *master, int axis)
+{
+	if (axis == -1)
+		return ;
+	else
+	{
+		if (key == PV_8)
+		{
+			if (axis == AXIS_X)
+				master->light->pos->x += 0.2;
+			else if (axis == AXIS_Y)
+				master->light->pos->y += 0.2;
+			else if (axis == AXIS_Z)
+				master->light->pos->z += 0.2;
+		}
+		else if (key == PV_2)
+		{
+			if (axis == AXIS_X)
+				master->light->pos->x -= 0.2;
+			else if (axis == AXIS_Y)
+				master->light->pos->y -= 0.2;
+			else if (axis == AXIS_Z)
+				master->light->pos->z -= 0.2;
+		}
+	}
+}
+
 //wip function
-void	rt_update_object_size(int key, t_master *master, int object)
+void	rt_update_obj_size(int key, t_master *master, int object, int obj_size)
 {
 	key = 0;
 	(void)master;
 	object = 0;
+	obj_size = 0;
 	return ;
 }
