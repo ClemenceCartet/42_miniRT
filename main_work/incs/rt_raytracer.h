@@ -36,6 +36,7 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray);
 t_color	rt_set_color(t_hit hit, t_master *master);
 t_color	rt_set_point_light(t_hit hit, t_light *light, t_coord l_dir);
 t_color	rt_set_ambient_light(t_color hit_color, t_ambient *ambient);
+bool	rt_in_shadow(t_obj_data *obj_data, t_ray *l_ray, t_hit hit);
 
 /*-------------------- rt_ray_tracer.c --------------------*/
 

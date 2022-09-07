@@ -39,8 +39,7 @@ LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c	\
 					rt_init_objects.c			rt_init_rgb.c		\
 					rt_init_additional_data.c
 LST_RAYTRACER	:=	rt_hits.c					rt_light.c			\
-					rt_ray_tracer.c				rt_shadow.c			\
-					rt_intersection.c
+					rt_ray_tracer.c				rt_intersection.c
 LST_UTILS		:=	rt_free_data.c				rt_free_objects.c	\
 					rt_return_errors.c			rt_write_errors.c
 
