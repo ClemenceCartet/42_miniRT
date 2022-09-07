@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_intersection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 13:41:39 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 15:03:26 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 09:10:53 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ float	rt_inter_sphere(t_ray *ray, t_object *sp)
 
 	ray->in_obj = 0;
 	delta = rt_calcul_sphere(ray, sp, tmp_time);
-	if (delta < 0.0)
+	if (delta < 0.0 || tmp_time[1] < 0.0)
 		return (-1);
 	if (tmp_time[0] > 0.0 && tmp_time[1] > 0.0)
 		time = tmp_time[0];
