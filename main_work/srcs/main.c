@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 12:33:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/04 17:59:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(int ac, char **av)
 	master.init = mlx_init();
 	master.wdw = mlx_new_window(master.init, WIDTH, HEIGHT, "miniRT");
 	rt_display_scene(&master);
-	mlx_hook(master.wdw, 2, 0, key_hook, &master);
-	mlx_hook(master.wdw, 17, 0, exit_x, &master);
+	mlx_hook(master.wdw, 2, 0, rt_key_hook_hub, &master);
+	mlx_hook(master.wdw, 17, 0, rt_exit_program, &master);
 	mlx_loop(master.init);
 	return (rt_free_master(&master));
 }
