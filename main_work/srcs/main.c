@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/04 17:59:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 13:45:13 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	rt_display_scene(t_master *master)
 	rt_ray_tracer(master);
 	mlx_put_image_to_window(master->init, master->wdw, master->mlx->img, 0, 0);
 	mlx_destroy_image(master->init, master->mlx->img);
+	rt_display_info(master);
 }
 
 int	main(int ac, char **av)

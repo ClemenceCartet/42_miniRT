@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:56:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 11:59:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 13:13:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void	rt_object_hook_hub(int key, t_master *master)
 //Will call the appropriate function depending on the key pressed for camera
 static void	rt_camera_hook_hub(int key, t_master *master)
 {
-	if (key == K_W || key == K_S || key == K_A || key == K_D)
+	if (key == K_W || key == K_S || key == K_A || key == K_D
+		|| key == K_Q || key == K_E)
 		rt_update_camera_pos(key, master);
 	else if (key == K_I || key == K_K || key == K_J || key == K_L)
 		rt_update_camera_dir(key, master);

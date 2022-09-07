@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:12:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 11:37:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 13:46:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 /*/////////////////////////////////////////////////////////////////////////////
 		HOOKS PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
+
+/*-------------------- rt_display.c --------------------*/
+
+// void	rt_display_camera_commands(t_master *master);
+// void	rt_display_select_commands(t_master *master);
+// void	rt_display_modif_commands(t_master *master);
+void	rt_display_info(t_master *master);
 
 /*-------------------- rt_hook_selection.c --------------------*/
 

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 11:11:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 13:43:24 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,41 @@
 # define E_SYNTAX		"RT VALUE ERROR: Invalid syntax found"
 # define E_NUMBER		"RT VALUE ERROR: Invalid number found"
 # define E_NO_VALUE		"RT VALUE ERROR: No value found"
+
+# define STR1			"Camera Movements"
+# define STR2			"Forward : W"
+# define STR3			"Backward : S"
+# define STR4			"Left : A"
+# define STR5			"Right : D"
+# define STR6			"Up : Q"
+# define STR7			"Down : E"
+
+# define STR8			"Camera View"
+# define STR9			"Look Up : I"
+# define STR10			"Look Down : K"
+# define STR11			"Look Left : J"
+# define STR12			"Look Right : L"
+
+# define STR13			"Axis selection"
+# define STR14			"X Axis : X"
+# define STR15			"Y Axis : Y"
+# define STR16			"Z Axis : Z"
+
+# define STR17			"Object Selection"
+# define STR18			"Prev Object : Left Arrow"
+# define STR19			"Next Object : Right Arrow"
+# define STR20			"Switch size parameter : T"
+
+# define STR21			"Object movement on selected axis"
+# define STR22			"Increase value : Up Arrow"
+# define STR23			"Decrease value : Down Arrow"
+
+# define STR24			"Light movement on selected axis"
+# define STR25			"Increase value : Numpad 8"
+# define STR26			"Decrease value : Numpad 2"
+
+# define STR27			"Object size modification"
+# define STR28			"Increase size : Numpad +"
+# define STR29			"Decrease size : Numpad -"
 
 #endif //RT_DEFINES_H
