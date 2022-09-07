@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:35 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 11:59:40 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 09:28:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_color	rt_set_color(t_hit hit, t_master *master)
 	l_amb = rt_set_ambient_light(hit.color, master->ambient);
 	l_point = rt_set_point_light(hit, master->light, l_ray.dir);
 	if (rt_in_shadow(master->obj_data, &l_ray, hit))
-	 	l_intensity = 0;
+		l_intensity = 0;
 	l_point = rt_scale_color(l_point, l_intensity);
 	color = rt_add_color(l_amb, l_point);
 	return (color);
@@ -60,32 +60,28 @@ t_color	rt_set_color(t_hit hit, t_master *master)
 
 bool	rt_in_shadow(t_obj_data *obj_data, t_ray *l_ray, t_hit hit)
 {
- 	size_t		n;
- 	int			i;
-	t_fcthit	fct[2];
- 	float		dist;
+	size_t		n;
+	int			i;
+	float		dist;
 	float		time;
 	t_coord		new_hit;
 
 	time = -1;
- 	fct[0] = &rt_inter_sphere;
- 	fct[1] = &rt_inter_plane;
- 	//fct[2] = &rt_inter_cylinder;
 	new_hit = rt_add_vec(hit.point, rt_scale_vec(hit.normal, 0.0001));
- 	l_ray->dir = rt_sub_vec(new_hit, l_ray->origin);
+	l_ray->dir = rt_sub_vec(new_hit, l_ray->origin);
 	dist = rt_vector_length(l_ray->dir);
 	rt_norm_vector(&l_ray->dir);
-	n = -1; 	
+	n = -1;
 	while (++n < obj_data->lst_size)
 	{
- 		i = 0;
+		i = 0;
 		while (++i <= 2)
 		{
- 			if (i == obj_data->objects[n]->id)
- 				time = (*fct[i - 1])(l_ray, obj_data->objects[n]);
+			if (i == obj_data->objects[n]->id)
+				time = obj_data->fct[i - 1](l_ray, obj_data->objects[n]);
 			if (time != -1 && time < dist)
- 				return (1);
- 		}
- 	}
- 	return (0);
+				return (1);
+		}
+	}
+	return (0);
 }

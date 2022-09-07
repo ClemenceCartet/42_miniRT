@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 15:14:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 09:28:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ struct	s_obj_data
 	size_t		lst_size;
 	void		*start;
 	t_object	**objects;
+	t_fcthit	fct[2];
 };
 
 /**Structure contenant les données de couleur

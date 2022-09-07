@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/09/04 18:03:19 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/09/07 09:32:58 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ LST_INCS		:=	mini_rt.h					rt_keys.h			\
 					rt_objects.h				rt_bonus.h			\
 					rt_hooks.h					rt_parsing.h		\
 					rt_raytracer.h				rt_utils.h
-LST_BONUS		:=	op_matrix1.c				rt_bn_hit_square.c
 LST_HOOKS		:=	rt_manage_hooks.c			rt_hook_objects.c	\
 					rt_hook_camera.c
 LST_MATHS		:=	rt_color.c					rt_op_vector1.c		\
@@ -50,7 +49,6 @@ P_INCS_LIBFT	:=	libft/incs/
 
 P_INCS			:=	incs/
 P_SRCS			:=	srcs/
-P_BONUS			:=	bonus/
 P_HOOKS			:=	hooks/
 P_MATHS			:=	maths/
 P_PARSING		:=	parsing/
@@ -61,8 +59,7 @@ P_OBJS			:=	.objs/
 
 # Shortcuts
 INCS			:=	$(addprefix $(P_INCS),$(LST_INCS))
-SRCS			:=	$(addprefix $(P_SRCS)$(P_BONUS),$(LST_BONUS))			\
-					$(addprefix $(P_SRCS)$(P_HOOKS),$(LST_HOOKS))			\
+SRCS			:=	$(addprefix $(P_SRCS)$(P_HOOKS),$(LST_HOOKS))			\
 					$(addprefix $(P_SRCS)$(P_MATHS),$(LST_MATHS))			\
 					$(addprefix $(P_SRCS)$(P_PARSING),$(LST_PARSING))		\
 					$(addprefix $(P_SRCS)$(P_RAYTRACER),$(LST_RAYTRACER))	\
@@ -118,7 +115,6 @@ $(P_OBJS)%.o: $(P_SRCS)%.c $(INCS) $(LIBFT) $(MLX) Makefile | $(P_OBJS)
 
 $(P_OBJS):
 	mkdir -p $(P_OBJS)		\
-	$(P_OBJS)$(P_BONUS)		\
 	$(P_OBJS)$(P_HOOKS)		\
 	$(P_OBJS)$(P_MATHS)		\
 	$(P_OBJS)$(P_PARSING)	\

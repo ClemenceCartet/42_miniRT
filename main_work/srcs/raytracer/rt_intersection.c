@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_intersection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 13:41:39 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 09:10:53 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/07 09:28:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ float	rt_inter_plane(t_ray *ray, t_object *pl)
 	return (time);
 }
 
+// float	a;
+// a = rt_vec_length_sqr(ray->dir);
 static float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time)
 {
 	t_coord	from_center;
 	float	half_b;
 	float	c;
 	float	delta;
-	// float	a;
 
 	from_center = rt_sub_vec(ray->origin, *sp->pos);
-	// a = rt_vec_length_sqr(ray->dir);
 	half_b = rt_dot_prod(from_center, ray->dir);
 	c = rt_vec_length_sqr(from_center) - sp->radius * sp->radius;
 	delta = half_b * half_b - c;
@@ -75,12 +75,8 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray)
 {
 	size_t		n;
 	int			i;
-	t_fcthit	fct[2];
 	float		time;
 
-	fct[0] = &rt_inter_sphere;
-	fct[1] = &rt_inter_plane;
-	//fct[2] = &rt_inter_cylinder;
 	n = 0;
 	time = -1;
 	while (n < obj_data->lst_size)
@@ -89,7 +85,7 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray)
 		while (i <= 2)
 		{
 			if (i == obj_data->objects[n]->id)
-				time = (*fct[i - 1])(ray, obj_data->objects[n]);
+				time = obj_data->fct[i - 1](ray, obj_data->objects[n]);
 			if (time != -1 && (ray->inter == 0 || time < ray->hit.time))
 				rt_set_hit(ray, obj_data->objects[n], time);
 			i++;

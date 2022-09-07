@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 12:34:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 09:26:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	rt_init_additional_data(t_master *master)
 	int	a;
 
 	a = 0;
-	master->mlx = malloc(sizeof(t_mlx_data));
+	master->mlx = ft_calloc(1, sizeof(t_mlx_data));
 	if (!master->mlx)
 		return (rt_write_int_error(E_MALLOC, NULL, DFI, DLI));
 	master->obj_data->objects = rt_init_object_tab(master->obj_data);
@@ -68,5 +68,8 @@ int	rt_init_additional_data(t_master *master)
 		rt_init_add_object(&master->obj_data->objects[a]);
 		a++;
 	}
+	master->obj_data->fct[0] = &rt_inter_sphere;
+	master->obj_data->fct[1] = &rt_inter_plane;
+	// master->obj_data->fct[2] = &rt_inter_cylinder;
 	return (0);
 }

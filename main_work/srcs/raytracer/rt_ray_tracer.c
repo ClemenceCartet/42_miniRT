@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 15:15:28 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 09:30:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 {
 	int	i;
 
-	i = (y * mlx->line_length) + (x * (mlx->bpp / 8)); // sert à cacluler le memory offset
+	i = (y * mlx->line_length) + (x * (mlx->bpp / 8));
 	mlx->addr[i++] = color.b * 255;
 	mlx->addr[i++] = color.g * 255;
 	mlx->addr[i++] = color.r * 255;
