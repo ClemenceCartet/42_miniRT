@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:12:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 10:24:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 11:37:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@
 		HOOKS PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
-/*-------------------- rt_hook_objects.c --------------------*/
+/*-------------------- rt_hook_selection.c --------------------*/
 
 int		rt_update_selected_object(int key, t_master *master, int object);
 int		rt_update_selected_axis(int key);
+int		rt_update_selected_size(int obj_size);
+
+/*-------------------- rt_hook_objects.c --------------------*/
+
 void	rt_update_obj_pos(int key, t_master *master, int object, int axis);
 void	rt_update_light_pos(int key, t_master *master, int axis);
 void	rt_update_obj_size(int key, t_master *master, int object, int obj_size);

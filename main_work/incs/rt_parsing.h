@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:16:30 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 12:17:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 11:56:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int			rt_init_ambient(t_ambient **ambient, char **split);
 
 // t_object	**rt_init_object_tab(t_obj_data *obj_data);
 // void		rt_init_add_camera(t_camera **camera);
-// void		rt_init_add_object(t_object **object);
+void		rt_init_add_object(t_object **object);
 int			rt_init_additional_data(t_master *master);
 
 /*-------------------- rt_init_master.c --------------------*/

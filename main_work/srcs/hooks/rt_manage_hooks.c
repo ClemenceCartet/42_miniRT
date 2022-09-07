@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:56:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 10:24:54 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 11:59:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	rt_object_hook_hub(int key, t_master *master)
 		object = rt_update_selected_object(key, master, object);
 	else if (key == K_X || key == K_Y || key == K_Z)
 		axis = rt_update_selected_axis(key);
+	else if (key == K_T)
+		obj_size = rt_update_selected_size(obj_size);
 	else if (key == K_UP || key == K_DOWN)
 		rt_update_obj_pos(key, master, object, axis);
 	else if (key == PV_PLUS || key == PV_MINUS)
