@@ -6,7 +6,7 @@
 /*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/08 15:58:23 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 17:04:44 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 	}
 	if (obj->id == PL)
 	{
-		if (rt_dot_prod(ray->dir, *pl->dir) > 0)
+		if (rt_dot_prod(ray->dir, *obj->dir) > 0)
 			ray->hit.normal = rt_scale_vec(*obj->dir, -1);
 		else
 			ray->hit.normal = *obj->dir;
 	}
-	// if (obj->id == CY)
+	if (obj->id == CY)
+		find_normal_cy(&ray->hit, obj, ray->in_obj);
 	rt_norm_vector(&ray->hit.normal);
 	ray->hit.color = *obj->rgb;
 	ray->hit.obj = obj;

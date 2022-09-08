@@ -6,7 +6,7 @@
 /*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 17:22:18 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 20:13:41 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,11 @@ t_coord		rt_sub_vec(t_coord v1, t_coord v2);
 t_coord		rt_scale_vec(t_coord v, float m);
 float		rt_dot_prod(t_coord v1, t_coord v2);
 t_coord		rt_cross_vec(t_coord v1, t_coord v2);
+
+/*-------------------- rt_rotation.c --------------------*/
+
+void		x_axis_rotation(t_coord *xyz, float rad);
+void		y_axis_rotation(t_coord *xyz, float rad);
+void		z_axis_rotation(t_coord *xyz, float rad);
 
 #endif /* RT_MATHS */

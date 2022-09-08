@@ -6,7 +6,7 @@
 /*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/08 15:55:54 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 16:53:10 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray);
 float	rt_inter_cylinder(t_ray *ray, t_object *cy);
 //float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time);
 //bool	check_up_down_cy(float time, t_ray *ray, t_object *cy);
+void	find_normal_cy(t_hit *hit, t_object *cy, int in_obj);
 
 /*-------------------- rt_light.c --------------------*/
 

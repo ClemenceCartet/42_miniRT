@@ -113,6 +113,27 @@ static float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time)
 	return (delta);
 } // ne fonctionne pas
 
+static float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time)
+{
+	float	a;
+	float	half_b;
+	float	c;
+	float	delta;
+	
+	a = pow(ray->dir.x, 2) + pow(ray->dir.z, 2);
+	half_b = ray->dir.x * ray->origin.x + ray->dir.z * ray->origin.z;
+	c = pow(ray->origin.x, 2) + pow(ray->origin.z, 2) - pow(cy->radius, 2);
+	delta = half_b * half_b - a * c;
+	if (delta >= 0.0)
+	{
+		tmp_time[0] = 0.0 + sqrt(delta) / a;
+		tmp_time[1] = 0.0 - sqrt(delta) / a;
+		if (tmp_time[0] > tmp_time[1])
+			ft_fswap(&tmp_time[0], &tmp_time[1]);
+	}
+	return (delta);
+} // fonctionne à peu près mais comment le mettre en place et dans la bonne direction ensuite ?
+
 /*static bool	check_up_down_cy(float time, t_ray *ray, t_object *cy)
 {
 	float 	hit_y;
