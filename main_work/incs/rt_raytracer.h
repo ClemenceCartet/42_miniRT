@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_raytracer.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 15:19:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 15:55:54 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ float	rt_inter_plane(t_ray *ray, t_object *pl);
 // float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time);
 float	rt_inter_sphere(t_ray *ray, t_object *sp);
 void	rt_intersect(t_obj_data *obj_data, t_ray *ray);
+
+/*-------------------- rt_inters_cylinder.c --------------------*/
+
+float	rt_inter_cylinder(t_ray *ray, t_object *cy);
+//float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time);
+//bool	check_up_down_cy(float time, t_ray *ray, t_object *cy);
 
 /*-------------------- rt_light.c --------------------*/
 

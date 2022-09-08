@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_intersection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 13:41:39 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 09:28:53 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 15:48:20 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,23 @@ float	rt_inter_plane(t_ray *ray, t_object *pl)
 	return (time);
 }
 
-// float	a;
-// a = rt_vec_length_sqr(ray->dir);
 static float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time)
 {
 	t_coord	from_center;
+	float	a;
 	float	half_b;
 	float	c;
 	float	delta;
 
 	from_center = rt_sub_vec(ray->origin, *sp->pos);
+	a = rt_vec_length_sqr(ray->dir);
 	half_b = rt_dot_prod(from_center, ray->dir);
 	c = rt_vec_length_sqr(from_center) - sp->radius * sp->radius;
-	delta = half_b * half_b - c;
+	delta = half_b * half_b - a * c;
 	if (delta >= 0.0)
 	{
-		tmp_time[0] = -half_b + sqrt(delta);
-		tmp_time[1] = -half_b - sqrt(delta);
+		tmp_time[0] = -half_b + sqrt(delta) * a;
+		tmp_time[1] = -half_b - sqrt(delta) * a;
 		if (tmp_time[0] > tmp_time[1])
 			ft_fswap(&tmp_time[0], &tmp_time[1]);
 	}
@@ -82,7 +82,7 @@ void	rt_intersect(t_obj_data *obj_data, t_ray *ray)
 	while (n < obj_data->lst_size)
 	{
 		i = 1;
-		while (i <= 2)
+		while (i <= 3)
 		{
 			if (i == obj_data->objects[n]->id)
 				time = obj_data->fct[i - 1](ray, obj_data->objects[n]);

@@ -54,3 +54,83 @@ bool	hit_plane(t_ray *ray, t_object *pl)
 	set_hit_point(ray);
 	return (1);
 }
+
+static float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time)
+{
+	t_coord	vA;
+	t_coord	rAO;
+	float	a;
+	float	half_b;
+	float	c;
+	float	delta;
+	
+	vA = rt_cross_vec(ray->dir, *cy->dir);
+	rAO = rt_cross_vec(rt_sub_vec(ray->origin, *cy->pos), *cy->dir);
+	a = rt_vec_length_sqr(vA);
+	half_b = rt_dot_prod(rAO, vA);
+	c = rt_vec_length_sqr(rAO) - cy->radius * cy->radius;
+	delta = half_b * half_b - c;
+	if (delta >= 0.0)
+	{
+		tmp_time[0] = -half_b + sqrt(delta);
+		tmp_time[1] = -half_b - sqrt(delta);
+		if (tmp_time[0] > tmp_time[1])
+			ft_fswap(&tmp_time[0], &tmp_time[1]);
+	}
+	return (delta);
+}
+// ne fonctionne pas...
+
+static float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time)
+{
+	t_coord	x_vec;
+	t_coord	y_vec;
+	t_coord	z_vec;
+	t_coord	line_segment;
+	//t_coord	origin;
+	float	a;
+	float	c;
+	float	delta;
+	
+	x_vec = rt_cross_vec(*cy->dir, ray->dir);
+	rt_norm_vector(&x_vec);
+	y_vec = *cy->dir;
+	z_vec = rt_cross_vec(y_vec, x_vec);
+	rt_norm_vector(&z_vec);
+	line_segment = rt_scale_vec(x_vec, rt_dot_prod(rt_sub_vec(ray->origin, *cy->pos), x_vec));
+	//origin = 
+
+	a = pow(rt_dot_prod(ray->dir, z_vec), 2);
+	c = pow(rt_dot_prod(line_segment, x_vec), 2) - pow(cy->radius, 2);
+	delta = - c / a;
+	if (delta >= 0.0)
+	{
+		tmp_time[0] = 0.0 + sqrt(delta);
+		tmp_time[1] = 0.0 - sqrt(delta);
+		if (tmp_time[0] > tmp_time[1])
+			ft_fswap(&tmp_time[0], &tmp_time[1]);
+	}
+	return (delta);
+} // ne fonctionne pas
+
+/*static bool	check_up_down_cy(float time, t_ray *ray, t_object *cy)
+{
+	float 	hit_y;
+
+	hit_y = ray->origin.y + ray->dir.y * time;
+	if (hit_y >= 0.0 && hit_y <= cy->height)
+		return (1);
+	return (0);
+}
+
+t_coord	rt_scale_2vec(t_coord v1, t_coord v2)
+{
+	float	x;
+	float	y;
+	float	z;
+
+	x = v1.x * v2.x;
+	y = v1.y * v2.y;
+	z = v1.z * v2.z;
+	return (rt_create_vector(x, y ,z)); 
+}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_op_vector2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:56 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:36:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 17:21:52 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ float	rt_dot_prod(t_coord v1, t_coord v2)
 	vector = rt_create_vector(x, y, z);
 	return (vector.x + vector.y + vector.z);
 }
-// renvoie seulement la magnitude, peut servir à trouver des distances
+// renvoie seulement la magnitude, peut servir à trouver des distances et des angles
 
 t_coord	rt_cross_vec(t_coord v1, t_coord v2)
 {

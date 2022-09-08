@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_bn_hit_square.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:13 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 15:03:53 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 17:22:52 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

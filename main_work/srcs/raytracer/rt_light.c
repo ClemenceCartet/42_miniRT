@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_light.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:35 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/07 09:28:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 17:22:45 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ bool	rt_in_shadow(t_obj_data *obj_data, t_ray *l_ray, t_hit hit)
 	while (++n < obj_data->lst_size)
 	{
 		i = 0;
-		while (++i <= 2)
+		while (++i <= 3)
 		{
 			if (i == obj_data->objects[n]->id)
 				time = obj_data->fct[i - 1](l_ray, obj_data->objects[n]);
