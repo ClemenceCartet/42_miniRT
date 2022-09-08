@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 07:56:17 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 12:26:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 10:59:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ struct s_list
 # include <rt_defines.h>
 # include <rt_objects.h>
 # include <rt_maths.h>
-# include <rt_bonus.h>
 # include <rt_hooks.h>
 # include <rt_parsing.h>
 # include <rt_raytracer.h>
