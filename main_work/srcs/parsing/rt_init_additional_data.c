@@ -6,7 +6,7 @@
 /*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 15:01:46 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 16:06:02 by nadegecarte      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	rt_init_additional_data(t_master *master)
 	while (master->obj_data->objects[a])
 	{
 		rt_init_add_object(&master->obj_data->objects[a]);
+		master->obj_data->objects[a]->selected = 0;
 		a++;
 	}
 	master->obj_data->fct[0] = &rt_inter_sphere;

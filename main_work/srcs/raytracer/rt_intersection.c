@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_intersection.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ccartet		   <ccartet@student.42ly    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 13:41:39 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/08 15:48:20 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 15:48:20 by ccartet	      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

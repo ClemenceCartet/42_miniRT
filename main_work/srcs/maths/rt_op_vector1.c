@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_op_vector1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42ly   		    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:27 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/07 17:21:59 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 17:21:59 by ccartet	      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
