@@ -96,3 +96,53 @@ float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 		return (-1);
 	return (time);
 }
+
+static float	rt_calcul_cylinder_bis(t_ray *ray, t_object *cy, float *tmp_time)
+{
+	float	a;
+	float	half_b;
+	float	c;
+	float	delta;
+	
+	a = pow(ray->dir.x, 2) + pow(ray->dir.z, 2);
+	half_b = ray->dir.x * ray->origin.x + ray->dir.z * ray->origin.z;
+	c = pow(ray->origin.x, 2) + pow(ray->origin.z, 2) - pow(cy->radius, 2);
+	delta = half_b * half_b - a * c;
+	if (delta >= 0.0)
+	{
+		tmp_time[0] = 0.0 + sqrt(delta) / a;
+		tmp_time[1] = 0.0 - sqrt(delta) / a;
+		if (tmp_time[0] > tmp_time[1])
+			ft_fswap(&tmp_time[0], &tmp_time[1]);
+	}
+	return (delta);
+}
+
+
+float	rt_inter_cylinder_bis(t_ray *ray, t_object *cy)
+{
+	t_ray	new_ray;
+	float	time;
+	float	delta;
+	float	tmp_time[2];
+
+	new_ray.origin = rt_sub_vec(ray->origin, *cy->pos);
+	//dprintf(2, "%.2f, %.2f, %.2f\n", new_ray.origin.x, new_ray.origin.y, new_ray.origin.z);
+	new_ray.dir = ray->dir;
+	// x_axis_rotation(&new_ray.dir, cy->dir->x);
+	// y_axis_rotation(&new_ray.dir, cy->dir->y);
+	// z_axis_rotation(&new_ray.dir, cy->dir->z);
+	delta = rt_calcul_cylinder_bis(&new_ray, cy, tmp_time);
+	if (delta < 0.0 || tmp_time[1] < 0.0)
+		return (-1);
+	if (tmp_time[0] > 0.0 && tmp_time[1] > 0.0)
+		time = tmp_time[0];
+	else
+	{
+		time = tmp_time[1];
+		ray->in_obj = 1;
+	}
+	if (!check_up_down_cy(time, ray, cy))
+		return (-1);
+	return (time);
+}
