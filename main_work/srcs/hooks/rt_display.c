@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:25:54 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 15:14:30 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/09 08:15:31 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static void	rt_display_camera_commands(t_master *master)
 	mlx_string_put(master->init, master->wdw, 0, 30, 0xFFDAB9, STR3);
 	mlx_string_put(master->init, master->wdw, 0, 40, 0xFFDAB9, STR4);
 	mlx_string_put(master->init, master->wdw, 0, 50, 0xFFDAB9, STR5);
-	mlx_string_put(master->init, master->wdw, 0, 60, 0xFF0000, STR6);
-	mlx_string_put(master->init, master->wdw, 0, 70, 0xFF0000, STR7);
+	mlx_string_put(master->init, master->wdw, 0, 60, 0xFFDAB9, STR6);
+	mlx_string_put(master->init, master->wdw, 0, 70, 0xFFDAB9, STR7);
 	mlx_string_put(master->init, master->wdw, 120, 10, 0xFFFFFF, STR8);
 	mlx_string_put(master->init, master->wdw, 120, 20, 0xFF0000, STR9);
 	mlx_string_put(master->init, master->wdw, 120, 30, 0xFF0000, STR10);
