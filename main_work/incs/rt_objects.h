@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/09 10:05:59 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/09 14:24:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ struct	s_object
 	t_coord	c[4];
 	t_coord	gap[4];
 	t_coord	cypos;
+	t_coord	cydir;
 	int		selected;
 };
 /**Structure pour l'objet sphère
