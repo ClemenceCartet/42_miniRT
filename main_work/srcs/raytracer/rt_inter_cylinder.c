@@ -20,15 +20,65 @@ void	find_normal_cy(t_hit *hit, t_object *cy, int in_obj)
 		hit->normal = rt_sub_vec(hit->point, new_center);
 }
 
-/*void	set_ends_cylinder(t_ray *ray, t_object *cy)
+float	rt_check_down_pl_cy(t_ray *ray, t_object *cy)
 {
-	float	time;
+	float	time_down;
 	t_coord	tmp_hit;
 
-	time = rt_inter_plane(ray, cy->pl_up);
+	time_down = rt_calcul_plane(ray, *cy->pos, cy->cydir);
+	if ((time_down <= 0.0))
+	{
+		tmp_hit = rt_add_vec(ray->origin, rt_scale_vec(ray->dir, time_down));
+		dist = rt_vector_length(rt_sub_vec(tmp_hit, *cy->pos));
+		if (dist > cy->radius)
+			return (-1);
+		else
+			return (time_down);
+	}
+	return (-1);	
+}	
 
+float	rt_check_up_pl_cy(t_ray *ray, t_object *cy)
+{
+	float	time_up;
+	t_coord	tmp_hit;
 
-}*/
+	time_up = rt_calcul_plane(ray, cy->cypos, *cy->dir);
+	if ((time_up <= 0.0))
+	{
+		tmp_hit = rt_add_vec(ray->origin, rt_scale_vec(ray->dir, time_up));
+		dist = rt_vector_length(rt_sub_vec(tmp_hit, cy->cypos));
+		if (dist > cy->radius)
+			return (-1);
+		else
+			return (time_up);
+	}
+	return (-1);	
+}	
+
+float	rt_set_ends_cylinder(t_ray *ray, t_object *cy)
+{
+	float	time_down;
+	float	time_up;
+	float	ret;
+	t_coord	tmp_hit;
+	float	dist;
+
+	time_down = rt_check_down_pl_cy(ray, cy);
+	time_up = rt_calcul_plane(ray, cy->cypos, *cy->dir);
+	if ((time_down > 0.0 && time_up > 0.0) && time_down < time_up)
+		ret = time_down;
+	else if ((time_down > 0.0 && time_up > 0.0) && time_down > time_up)
+		ret = time_up;
+	else if (time_down > 0.0 && time_up < 0.0)
+		ret = time_down;
+	else if (time_down < 0.0 && time_up > 0.0)
+		ret = time_up;
+	else
+		return (-1);
+	dist = rt_vector_length(rt_sub_vec(tmp_hit, ))
+	return (ret);
+}
 
 static bool	check_up_down_cy(float time, t_ray *ray, t_object *cy)
 {
@@ -82,12 +132,14 @@ static float	rt_calcul_cylinder_v1(t_ray *ray, t_object *cy, float *tmp_time)
 float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 {
 	t_coord	to_center;
+	float	end_time;
 	float	time;
 	float	delta;
 	float	tmp_time[2];
 	float	dist[2];
 
 	ray->in_obj = 0;
+	end_time = rt_set_ends_cylinder(ray, cy);
 	delta = rt_calcul_cylinder_v1(ray, cy, tmp_time);
 	if (delta < 0.0 || tmp_time[1] < 0.0)
 		return (-1);
@@ -103,6 +155,8 @@ float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 	}
 	if (!check_up_down_cy(time, ray, cy))
 		return (-1);
+	if (end_time != -1 && end_time < time)
+		return (end_time);
 	return (time);
 }
 

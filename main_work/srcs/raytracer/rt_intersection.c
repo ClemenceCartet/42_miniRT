@@ -12,17 +12,25 @@
 
 #include <mini_rt.h>
 
+static float	rt_calcul_plan(t_ray *ray, t_coord pl_pos, t_coord pl_dir)
+{
+	float	time;
+	float	a;
+	float	b;
+
+	a = rt_dot_prod(pl_dir, ray->dir);
+	if (!a)
+		return (-1);
+	b = rt_dot_prod(pl_dir, rt_sub_vec(pl_pos, ray->origin));
+	time = b / a;
+	return (time);
+}
+
 float	rt_inter_plane(t_ray *ray, t_object *pl)
 {
-	float	angle_rad;
-	float	distance;
 	float	time;
 
-	angle_rad = rt_dot_prod(*pl->dir, ray->dir);
-	if (!angle_rad)
-		return (-1);
-	distance = rt_dot_prod(*pl->dir, rt_sub_vec(*pl->pos, ray->origin));
-	time = distance / angle_rad;
+	time = rt_calcul_plan(ray, *pl->pos, *pl->dir);
 	if (time <= 0.0)
 		return (-1);
 	return (time);
