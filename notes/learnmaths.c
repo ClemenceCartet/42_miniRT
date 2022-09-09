@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:56:13 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/09 08:17:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/09 12:14:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,20 @@ void	rot_z(t_matrix *mat, float rot, int isradian)
 
 void	scale(t_matrix *mat, float scale)
 {
-	mat->x.x *= scale;
-	mat->x.y *= scale;
-	mat->x.z *= scale;
-	mat->y.x *= scale;
-	mat->y.y *= scale;
-	mat->y.z *= scale;
-	mat->z.x *= scale;
-	mat->z.y *= scale;
-	mat->z.z *= scale;
+	mat->x.x = ((mat->x.x - mat->t.x) * scale) + mat->t.x;
+	mat->x.y = ((mat->x.y - mat->t.x) * scale) + mat->t.x;
+	mat->x.z = ((mat->x.z - mat->t.x) * scale) + mat->t.x;
+	mat->y.x = ((mat->y.x - mat->t.y) * scale) + mat->t.y;
+	mat->y.y = ((mat->y.y - mat->t.y) * scale) + mat->t.y;
+	mat->y.z = ((mat->y.z - mat->t.y) * scale) + mat->t.y;
+	mat->z.x = ((mat->z.x - mat->t.z) * scale) + mat->t.z;
+	mat->z.y = ((mat->z.y - mat->t.z) * scale) + mat->t.z;
+	mat->z.z = ((mat->z.z - mat->t.z) * scale) + mat->t.z;
+}
+
+void	translate(t_matrix *mat, float val)
+{
+	mat->t.x += val;
+	mat->t.y += val;
+	mat->t.z += val;
 }

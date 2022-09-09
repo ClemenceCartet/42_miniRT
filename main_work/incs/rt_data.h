@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_data.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 15:02:44 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/09 11:50:35 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,11 +146,18 @@ struct	s_ray
 	bool		in_obj;
 };
 
+/**Structure contenant les données d'une matrice
+ * x	= vecteur d'orientation concernant x avec les ratios de rotation
+ * y	= vecteur d'orientation concernant y avec les ratios de rotation
+ * z	= vecteur d'orientation concernant z avec les ratios de rotation
+ * t	= position pour translation de l'origine du vecteur
+*/
 struct	s_matrix
 {
 	t_coord	x;
 	t_coord	y;
 	t_coord	z;
+	t_coord	t;
 };
 
 #endif //RT_DATA_H

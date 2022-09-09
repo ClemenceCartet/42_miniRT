@@ -92,7 +92,7 @@ float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 		time = dist[1];
 		ray->in_obj = 1;
 	}
-	//if (!check_up_down_cy(time, ray, cy))
-	//	return (-1);
+	if (!check_up_down_cy(time, ray, cy))
+		return (-1);
 	return (time);
 }

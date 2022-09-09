@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:56:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 15:01:48 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/09 13:29:59 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void	rt_camera_hook_hub(int key, t_master *master)
 	if (key == K_W || key == K_S || key == K_A || key == K_D
 		|| key == K_Q || key == K_E)
 		rt_update_camera_pos(key, master);
-	else if (key == K_I || key == K_K || key == K_J || key == K_L)
+	else if (key == K_I || key == K_K || key == K_J || key == K_L
+		|| key == K_U || key == K_O)
 		rt_update_camera_dir(key, master);
 }
 

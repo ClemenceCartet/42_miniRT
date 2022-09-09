@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 15:11:52 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/09 13:40:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@
 # define E_NUMBER		"RT VALUE ERROR: Invalid number found"
 # define E_NO_VALUE		"RT VALUE ERROR: No value found"
 
+/*/////////////////////////////////////////////////////////////////////////////
+		WINDOW COMMAND & INFO DISPLAY
+*//////////////////////////////////////////////////////////////////////////////
+
 # define STR1			"Camera Movements"
 # define STR2			"Forward : W"
 # define STR3			"Backward : S"
@@ -87,39 +91,41 @@
 # define STR10			"Look Down : K"
 # define STR11			"Look Left : J"
 # define STR12			"Look Right : L"
+# define STR13			"Tilt Left: U"
+# define STR14			"Tilt Right : O"
 
-# define STR13			"Axis selection"
-# define STR14			"X Axis : X"
-# define STR15			"Y Axis : Y"
-# define STR16			"Z Axis : Z"
+# define STR15			"Axis selection"
+# define STR16			"X Axis : X"
+# define STR17			"Y Axis : Y"
+# define STR18			"Z Axis : Z"
 
-# define STR17			"Object Selection"
-# define STR18			"Prev Object : Left Arrow"
-# define STR19			"Next Object : Right Arrow"
-# define STR20			"Switch size parameter : T"
+# define STR19			"Object Selection"
+# define STR20			"Prev Object : Left Arrow"
+# define STR21			"Next Object : Right Arrow"
+# define STR22			"Switch size parameter : T"
 
-# define STR21			"Object movement on selected axis"
-# define STR22			"Increase value : Up Arrow"
-# define STR23			"Decrease value : Down Arrow"
+# define STR23			"Object movement on selected axis"
+# define STR24			"Increase value : Up Arrow"
+# define STR25			"Decrease value : Down Arrow"
 
-# define STR24			"Light movement on selected axis"
-# define STR25			"Increase value : Numpad 8"
-# define STR26			"Decrease value : Numpad 2"
+# define STR26			"Light movement on selected axis"
+# define STR27			"Increase value : Numpad 8"
+# define STR28			"Decrease value : Numpad 2"
 
-# define STR27			"Object size modification"
-# define STR28			"Increase size : Numpad +"
-# define STR29			"Decrease size : Numpad -"
+# define STR29			"Object size modification"
+# define STR30			"Increase size : Numpad +"
+# define STR31			"Decrease size : Numpad -"
 
-# define STR30			"Sphere"
-# define STR31			"Plane"
-# define STR32			"Cylinder"
-# define STR33			"Index = "
-# define STR34			"Currently selected Object"
+# define STR32			"Currently selected Object"
+# define STR33			"Object Type = "
+# define STR34			"Sphere"
+# define STR35			"Plane"
+# define STR36			"Cylinder"
+# define STR37			"Index = "
 
-# define STR35			"Selected Axis = "
-# define STR36			"Selected Size = "
-# define STR37			"Diameter"			
-# define STR38			"Height"
-# define STR39			"Object Type = "			
+# define STR38			"Selected Axis = "
+# define STR39			"Selected Size = "
+# define STR40			"Diameter"
+# define STR41			"Height"
 
 #endif //RT_DEFINES_H
