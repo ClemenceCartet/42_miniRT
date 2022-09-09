@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_init_additional_data.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/08 16:06:02 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/09 09:59:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,19 @@ static void	rt_init_add_camera(t_camera **cam)
 //Object additional data initialization (SP / PL / CY)
 void	rt_init_add_object(t_object **object)
 {
+	t_coord	scale;
+
+	(*object)->radius = 0.0;
+	(*object)->cypos.x = 0.0;
+	(*object)->cypos.y = 0.0;
+	(*object)->cypos.z = 0.0;
 	if ((*object)->id == SP || (*object)->id == CY)
 		(*object)->radius = (*object)->diameter * 0.5;
-	else
-		(*object)->radius = 0;
+	if ((*object)->id == CY)
+	{
+		scale = rt_scale_vec(*(*object)->dir, (*object)->height);
+		(*object)->cypos = rt_add_vec(*(*object)->pos, scale);
+	}
 }
 
 //Master additional data initialization
