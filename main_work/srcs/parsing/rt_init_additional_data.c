@@ -86,6 +86,6 @@ int	rt_init_additional_data(t_master *master)
 	}
 	master->obj_data->fct[0] = &rt_inter_sphere;
 	master->obj_data->fct[1] = &rt_inter_plane;
-	master->obj_data->fct[2] = &rt_inter_cylinder_bis;
+	master->obj_data->fct[2] = &rt_inter_cylinder;
 	return (0);
 }
