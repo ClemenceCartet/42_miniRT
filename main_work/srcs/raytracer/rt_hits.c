@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/10 11:12:17 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/10 13:29:08 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 {
 	ray->hit.time = time;
 	rt_set_hit_point(ray);
+	//dprintf(2, "%.2f,%.2f,%.2f   ", ray->hit.point.x,ray->hit.point.y, ray->hit.point.z);
 	ray->inter = 1;
 	if (obj->id == SP)
 	{

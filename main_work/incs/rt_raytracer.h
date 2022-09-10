@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 11:12:29 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/10 13:41:04 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ float	rt_inter_sphere(t_ray *ray, t_object *sp);
 
 float	rt_inter_cylinder(t_ray *ray, t_object *cy);
 float	rt_calcul_cylinder_v1(t_ray *ray, t_object *cy, float *tmp_time);
+float	rt_calcul_cylinder_v2(t_ray *ray, t_object *cy, float *tmp_time);
+float	rt_calcul_cylinder_v3(t_ray *ray, t_object *cy, float *tmp_time);
 float	rt_inter_cylinder_bis(t_ray *ray, t_object *cy);
 bool	rt_check_up_down_cy(float time, t_ray *ray, t_object *cy);
 int		rt_set_ends_cylinder(t_ray *ray, t_object *cy, float *time_ends);

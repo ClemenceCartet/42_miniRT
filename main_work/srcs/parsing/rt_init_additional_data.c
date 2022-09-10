@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_init_additional_data.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/09 14:26:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/10 13:40:31 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int	rt_init_additional_data(t_master *master)
 	}
 	master->obj_data->fct[0] = &rt_inter_sphere;
 	master->obj_data->fct[1] = &rt_inter_plane;
-	master->obj_data->fct[2] = &rt_inter_cylinder;
+	master->obj_data->fct[2] = &rt_inter_cylinder_bis;
 	return (0);
 }
