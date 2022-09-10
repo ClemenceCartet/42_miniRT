@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_maths.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/08 20:13:41 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/10 13:41:57 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 /*/////////////////////////////////////////////////////////////////////////////
 		MATHS PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
+
+/*-------------------- rt_matrix_rotation.c --------------------*/
+
+t_matrix	rt_matrix_rot_x(int degree);
+t_matrix	rt_matrix_rot_y(int degree);
+t_matrix	rt_matrix_rot_z(int degree);
+
+/*-------------------- rt_matrix.c --------------------*/
+
+t_matrix	rt_init_matrix(void);
 
 /*-------------------- rt_color.c --------------------*/
 

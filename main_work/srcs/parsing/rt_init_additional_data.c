@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/09 13:22:36 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/10 13:39:29 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,6 @@ static void	rt_init_add_camera(t_camera **cam)
 {
 	(*cam)->radian = (*cam)->fov * M_PI / 180;
 	(*cam)->focal = WIDTH / (2 * tan((*cam)->radian * 0.5));
-	(*cam)->idm.x.x = (*cam)->dir->x;
-	(*cam)->idm.x.y = 0.0;
-	(*cam)->idm.x.z = 0.0;
-	(*cam)->idm.y.x = 0.0;
-	(*cam)->idm.y.y = (*cam)->dir->y;
-	(*cam)->idm.y.z = 0.0;
-	(*cam)->idm.z.x = 0.0;
-	(*cam)->idm.z.y = 0.0;
-	(*cam)->idm.z.z = (*cam)->dir->z;
-	(*cam)->idm.t.x = (*cam)->pos->x;
-	(*cam)->idm.t.y = (*cam)->pos->y;
-	(*cam)->idm.t.z = (*cam)->pos->z;
 }
 
 //Object additional data initialization (SP / PL / CY)
