@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 13:41:57 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/10 14:30:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_matrix	rt_matrix_rot_z(int degree);
 
 /*-------------------- rt_matrix.c --------------------*/
 
+t_matrix	rt_multiply_matrix(t_matrix s, t_matrix r);
+t_coord		rt_set_vector_identity(int id);
 t_matrix	rt_init_matrix(void);
 
 /*-------------------- rt_color.c --------------------*/

@@ -6,13 +6,13 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:38:48 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 13:38:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/10 14:28:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-//Rotation haut/bas
+//Rotation Up / Down
 t_matrix	rt_matrix_rot_x(int degree)
 {
 	t_matrix	matrix;
@@ -29,7 +29,7 @@ t_matrix	rt_matrix_rot_x(int degree)
 	return (matrix);
 }
 
-//rotation gauche/droite
+//Rotation Left / Right
 t_matrix	rt_matrix_rot_y(int degree)
 {
 	t_matrix	matrix;
@@ -46,7 +46,7 @@ t_matrix	rt_matrix_rot_y(int degree)
 	return (matrix);
 }
 
-//tangage gauche/droite
+//Tilt Left / Right
 t_matrix	rt_matrix_rot_z(int degree)
 {
 	t_matrix	matrix;

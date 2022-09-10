@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/09 13:40:06 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/10 14:25:22 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@
 
 # define SIZE_D 8
 # define SIZE_H	9
+
+# define ID_X 0
+# define ID_Y 1
+# define ID_Z 2
+# define ID_O 3
 
 # define PARSING_CHARSET "ACLsplcy0123456789-+., \n"
 # define INT_CHARSET "0123456789"
