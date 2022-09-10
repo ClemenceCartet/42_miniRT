@@ -12,7 +12,7 @@
 
 #include <mini_rt.h>
 
-static float	rt_calcul_plan(t_ray *ray, t_coord pl_pos, t_coord pl_dir)
+float	rt_calcul_plane(t_ray *ray, t_coord pl_pos, t_coord pl_dir)
 {
 	float	time;
 	float	a;
@@ -30,7 +30,7 @@ float	rt_inter_plane(t_ray *ray, t_object *pl)
 {
 	float	time;
 
-	time = rt_calcul_plan(ray, *pl->pos, *pl->dir);
+	time = rt_calcul_plane(ray, *pl->pos, *pl->dir);
 	if (time <= 0.0)
 		return (-1);
 	return (time);

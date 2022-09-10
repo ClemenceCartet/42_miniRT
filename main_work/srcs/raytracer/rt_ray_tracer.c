@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/07 09:30:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/10 10:18:15 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ray.inter = 0;
 	ray.in_obj = 0;
 	ray.hit.time = -1;
+	ray.hit.cy_plane = 0;
 	return (ray);
 }
 
