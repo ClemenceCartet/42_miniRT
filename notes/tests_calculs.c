@@ -188,3 +188,25 @@ float	rt_calcul_cylinder_v3(t_ray *ray, t_object *cy, float *tmp_time)
 	return (delta);
 }
 
+float	rt_calcul_cylinder_v4(t_ray *ray, t_object *cy, float *tmp_time)
+{
+	t_coord	from_center;
+	float	a;
+	float	half_b;
+	float	c;
+	float	delta;
+
+	from_center = rt_sub_vec(ray->origin, *cy->pos);
+	a = rt_vec_length_sqr(ray->dir) - pow(rt_dot_prod(ray->dir, *cy->dir), 2);
+	half_b = 2 * (rt_dot_prod(ray->dir, from_center) - rt_dot_prod(ray->dir, *cy->dir) * rt_dot_prod(from_center, *cy->dir));
+	c = rt_vec_length_sqr(from_center) - pow(rt_dot_prod(from_center, *cy->dir), 2) - pow(cy->radius, 2);
+	delta = pow(half_b, 2) - 4 * a * c;
+	if (delta > 0.0)
+	{
+		tmp_time[0] = -half_b + sqrt(delta) / 2 * a;
+		tmp_time[1] = -half_b - sqrt(delta) / 2 * a;
+		if (tmp_time[0] > tmp_time[1])
+			ft_fswap(&tmp_time[0], &tmp_time[1]);
+	}
+	return (delta);
+}

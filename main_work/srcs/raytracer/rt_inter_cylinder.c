@@ -53,7 +53,7 @@ bool	rt_check_up_down_cy(float time, t_ray *ray, t_object *cy)
 	float	dist;
 
 	tmp_hit = rt_add_vec(ray->origin, rt_scale_vec(ray->dir, time));
-	dprintf(2, "%.2f,%.2f,%.2f   ", tmp_hit.x, tmp_hit.y, tmp_hit.z);
+	// dprintf(2, "%.2f,%.2f,%.2f   ", tmp_hit.x, tmp_hit.y, tmp_hit.z);
 	from_down = rt_sub_vec(tmp_hit, *cy->pos);
 	dist_from_down = rt_vector_length(from_down);
 	angle_down = asin(cy->radius / dist_from_down);
@@ -83,55 +83,87 @@ bool	rt_check_up_down_cy_v2(float time, t_ray *ray, t_object *cy)
 	return (0);
 }
 
+// float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time)
+// {
+// 	float	a;
+// 	float	half_b;
+// 	float	c;
+// 	float	delta;
+	
+// 	a = pow(ray->dir.x, 2) + pow(ray->dir.z, 2);
+// 	half_b = ray->dir.x * ray->origin.x + ray->dir.z * ray->origin.z;
+// 	c = pow(ray->origin.x, 2) + pow(ray->origin.z, 2) - pow(cy->radius, 2);
+// 	delta = half_b * half_b - a * c;
+// 	if (delta >= 0.0)
+// 	{
+// 		tmp_time[0] = 0.0 + sqrt(delta) / a;
+// 		tmp_time[1] = 0.0 - sqrt(delta) / a;
+// 		if (tmp_time[0] > tmp_time[1])
+// 			ft_fswap(&tmp_time[0], &tmp_time[1]);
+// 	}
+// 	return (delta);
+// }
+
 float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time)
 {
-	t_coord	from_center;
+	t_coord	vA;
+	t_coord	rAO;
 	float	a;
 	float	half_b;
 	float	c;
 	float	delta;
 
-	from_center = rt_sub_vec(ray->origin, *cy->pos);
-	a = rt_vec_length_sqr(ray->dir) - pow(rt_dot_prod(ray->dir, *cy->dir), 2);
-	half_b = (rt_dot_prod(ray->dir, from_center) - rt_dot_prod(ray->dir, *cy->dir) * rt_dot_prod(from_center, *cy->dir));
-	c = rt_vec_length_sqr(from_center) - pow(rt_dot_prod(from_center, *cy->dir), 2) - pow(cy->radius, 2);
-	delta = pow(half_b, 2) - a * c;
+	vA = rt_cross_vec(ray->dir, *cy->dir);
+	rAO = rt_cross_vec(rt_sub_vec(ray->origin, *cy->pos), *cy->dir);
+	a = rt_vec_length_sqr(vA);
+	if (a == 0.0)
+		return (-1);
+	half_b = 2 * rt_dot_prod(rAO, vA);
+	c = rt_vec_length_sqr(rAO) - pow(cy->radius, 2);
+	delta = pow(half_b, 2) - 4 * a * c;
 	if (delta > 0.0)
 	{
-		tmp_time[0] = -half_b + sqrt(delta) / a;
-		tmp_time[1] = -half_b - sqrt(delta) / a;
+		tmp_time[0] = -half_b + sqrt(delta) / 2 * a;
+		tmp_time[1] = -half_b - sqrt(delta) / 2 * a;
 		if (tmp_time[0] > tmp_time[1])
 			ft_fswap(&tmp_time[0], &tmp_time[1]);
-	}
-	if (rt_dot_prod(ray->dir, *cy->dir) != 1)
-	{
-		tmp_time[0] = -half_b / a;
-		tmp_time[1] = -half_b / a;
 	}
 	return (delta);
 }
 
 float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 {
+	t_ray	new_ray;
 	float	time;
 	float	delta;
 	float	tmp_time[2];
+	float	dist[2];
+	t_coord	to_center;
 	float	time_ends;
 
 	ray->in_obj = 0;
 	ray->hit.cy_plane = 0;
+	new_ray.origin = rt_sub_vec(ray->origin, *cy->pos);
+	new_ray.dir = ray->dir;
+	x_axis_rotation(&new_ray.dir, cy->dir->x);
+	y_axis_rotation(&new_ray.dir, cy->dir->y);
+	z_axis_rotation(&new_ray.dir, cy->dir->z);
 	time = -1;
 	delta = rt_calcul_cylinder(ray, cy, tmp_time);
 	if (delta < 0.0 || tmp_time[1] < 0.0)
 		return (-1);
-	if (tmp_time[0] > 0.0 && tmp_time[1] > 0.0)
-		time = tmp_time[0];
+	to_center = rt_sub_vec(*cy->pos, ray->origin);
+	dist[0] = rt_dot_prod(*cy->dir, rt_sub_vec(rt_scale_vec(ray->dir, tmp_time[0]), *cy->pos));
+	dist[1] = rt_dot_prod(*cy->dir, rt_sub_vec(rt_scale_vec(ray->dir, tmp_time[1]), *cy->pos));
+	if (dist[0] >= 0.0 && dist[1] >= 0.0)
+		time = dist[0];
 	else
 	{
-		time = tmp_time[1];
+		time = dist[1];
 		ray->in_obj = 1;
 	}
-	//if (time > 0.0 && !rt_check_up_down_cy_v2(time, ray, cy))
+	// dprintf(2, "%.2f\n", time);
+	// if (time >= 0.0 && !rt_check_up_down_cy_v2(time, ray, cy))
 	// 	time = -1;
 	ray->hit.cy_plane = rt_set_ends_cylinder(ray, cy, &time_ends);
 	//dprintf(2, "%d\n", ray->hit.cy_plane);
