@@ -96,3 +96,4 @@ float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 		return (-1);
 	return (time);
 }
+

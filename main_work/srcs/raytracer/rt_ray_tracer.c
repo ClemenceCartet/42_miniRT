@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/11 14:09:02 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 09:30:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@ void	rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 	mlx->addr[i++] = color.r * 255;
 }
 
+bool	check_rotation_cam(t_ray *ray, t_camera cam)
+{
+	if (cam.dir->x == 0.0 && cam.dir->y == 0.0)
+	{
+		if (cam.dir->z < 0.0)
+		{
+			ray->dir.x = -ray->dir.x;
+			ray->dir.y = ray->dir.y;
+			ray->dir.z = -ray->dir.z;
+		}
+		return (1);
+	}
+	return (0);
+}	
+
 //Création d'un rayon tracé depuis la caméra vers le viewplane
 t_ray	rt_create_ray(t_camera cam, float w, float h)
 {
@@ -32,8 +47,12 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ray.dir.x = w - WIDTH * 0.5;
 	ray.dir.y = HEIGHT * 0.5 - h;
 	ray.dir.z = cam.focal;
-	rot = rt_matrix_rotate(*cam.dir);
-    ray.dir = rt_multiply_matrix_vector(rot, ray.dir);
+	if (!check_rotation_cam(&ray, cam))
+	{
+		rot = rt_matrix_rotate(*cam.dir);
+		ray.dir = rt_multiply_matrix_vector(rot, ray.dir);
+	}
+	//dprintf(2, "new_z:%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	rt_norm_vector(&ray.dir);
 	ray.inter = 0;
 	ray.in_obj = 0;

@@ -49,6 +49,7 @@ bool	rt_in_shadow(t_obj_data *obj_data, t_ray *l_ray, t_hit hit);
 
 void	rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
 t_ray	rt_create_ray(t_camera cam, float w, float h);
+bool	check_rotation_cam(t_ray *ray, t_camera cam);
 void	rt_ray_tracer(t_master *master);
 
 #endif /* RT_RAYTRACER_H */

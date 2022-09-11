@@ -86,6 +86,8 @@ int	rt_init_camera(t_camera **camera, char **split)
 	(*camera)->dir = rt_init_coords(split, split[2], 1);
 	if (!(*camera)->dir)
 		return (1);
+	if (rt_vector_length(*(*camera)->dir) > 1.0)
+		return (1);
 	(*camera)->fov = rt_init_fov(split, split[3]);
 	if ((*camera)->fov == -1)
 		return (1);

@@ -27,7 +27,11 @@ void	rt_update_camera_pos(int key, t_master *master)
 		master->camera->pos->y += 0.1;
 	else if (key == K_Q)
 		master->camera->pos->y -= 0.1;
-}
+} // à revoir
+// pour déplacer cam : récupérer la direction de la cam et récupérer calcul création hit point
+//	master->camera->pos->x += master->camera->dir->x * 0.1/-0.1;
+//	master->camera->pos->y += master->camera->dir->y * 0.1/-0.1;
+//	master->camera->pos->x += master->camera->dir->z * 0.1/-0.1;
 
 //Turn the camera angle up, down, left or right depending on the key pressed
 void	rt_update_camera_dir(int key, t_master *master)
