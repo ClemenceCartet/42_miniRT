@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 12:44:05 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 13:21:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 14:17:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ static t_coord	*rt_check_dir(t_coord *coord, char **data, char **split)
 			free (coord);
 			return (rt_ret_ptr_error(data, split, E_NUMBER, NULL));
 		}
-	}
-	else
-	{
-		if (!coord->z)
-			coord->z = 1;
 	}
 	ft_free_split(split);
 	return (coord);

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/07 09:30:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 14:09:02 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ void	rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 //Création d'un rayon tracé depuis la caméra vers le viewplane
 t_ray	rt_create_ray(t_camera cam, float w, float h)
 {
-	t_ray	ray;
+	t_ray		ray;
+	t_matrix	rot;
 
 	ray.origin = *cam.pos;
 	ray.dir.x = w - WIDTH * 0.5;
 	ray.dir.y = HEIGHT * 0.5 - h;
 	ray.dir.z = cam.focal;
+	rot = rt_matrix_rotate(*cam.dir);
+    ray.dir = rt_multiply_matrix_vector(rot, ray.dir);
 	rt_norm_vector(&ray.dir);
 	ray.inter = 0;
 	ray.in_obj = 0;

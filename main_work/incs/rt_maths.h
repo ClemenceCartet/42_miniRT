@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/11 11:43:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 14:26:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 t_matrix	rt_matrix_rot_x(int degree);
 t_matrix	rt_matrix_rot_y(int degree);
 t_matrix	rt_matrix_rot_z(int degree);
-t_coord		rt_matrix_rotate(t_coord vec);
+t_matrix	rt_matrix_rotate(t_coord vec);
 
 /*-------------------- rt_matrix.c --------------------*/
 
@@ -57,8 +57,8 @@ t_coord		rt_cross_vec(t_coord v1, t_coord v2);
 
 /*-------------------- rt_rotation.c --------------------*/
 
-void		x_axis_rotation(t_coord *xyz, float rad);
-void		y_axis_rotation(t_coord *xyz, float rad);
-void		z_axis_rotation(t_coord *xyz, float rad);
+void		x_axis_rotation(t_coord *xyz, float degree);
+void		y_axis_rotation(t_coord *xyz, float degree);
+void		z_axis_rotation(t_coord *xyz, float degree);
 
 #endif /* RT_MATHS */
