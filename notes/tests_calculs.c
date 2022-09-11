@@ -148,6 +148,12 @@ float	rt_calcul_cylinder_v2(t_ray *ray, t_object *cy, float *tmp_time)
 	return (delta);
 }
 
+	new_ray.origin = rt_sub_vec(ray->origin, *cy->pos);
+	new_ray.dir = ray->dir;
+	x_axis_rotation(&new_ray.dir, cy->dir->x);
+	y_axis_rotation(&new_ray.dir, cy->dir->y);
+	z_axis_rotation(&new_ray.dir, cy->dir->z);
+
 float	rt_calcul_cylinder_v3(t_ray *ray, t_object *cy, float *tmp_time)
 {
 	t_coord	x_vec;
@@ -209,4 +215,70 @@ float	rt_calcul_cylinder_v4(t_ray *ray, t_object *cy, float *tmp_time)
 			ft_fswap(&tmp_time[0], &tmp_time[1]);
 	}
 	return (delta);
+}
+
+float	rt_calcul_cylinder_v5(t_ray *ray, t_object *cy, float *tmp_time) // v5
+{
+	t_coord	vA;
+	t_coord	rAO;
+	float	a;
+	float	half_b;
+	float	c;
+	float	delta;
+
+	vA = rt_cross_vec(ray->dir, *cy->dir);
+	rAO = rt_cross_vec(rt_sub_vec(ray->origin, *cy->pos), *cy->dir);
+	a = rt_vec_length_sqr(vA);
+	if (a == 0.0)
+		return (-1);
+	half_b = 2 * rt_dot_prod(rAO, vA);
+	c = rt_vec_length_sqr(rAO) - pow(cy->radius, 2);
+	delta = pow(half_b, 2) - 4 * a * c;
+	if (delta > 0.0)
+	{
+		tmp_time[0] = -half_b + sqrt(delta) / 2 * a;
+		tmp_time[1] = -half_b - sqrt(delta) / 2 * a;
+		if (tmp_time[0] > tmp_time[1])
+			ft_fswap(&tmp_time[0], &tmp_time[1]);
+	}
+	return (delta);
+}
+
+bool	rt_check_up_down_cy_v2(float time, t_ray *ray, t_object *cy)
+{
+	t_coord tmp_hit;
+	t_coord	from_down;
+	t_coord	d_to_u;
+
+	float	dist;
+
+	tmp_hit = rt_add_vec(ray->origin, rt_scale_vec(ray->dir, time));
+	//dprintf(2, "%.2f,%.2f,%.2f   ", tmp_hit.x, tmp_hit.y, tmp_hit.z);
+	from_down = rt_sub_vec(tmp_hit, *cy->pos);
+	d_to_u = rt_sub_vec(cy->cypos, *cy->pos);
+	rt_norm_vector(&d_to_u);
+	dist = rt_dot_prod(from_down, d_to_u);
+	if (dist >= 0.0 && dist <= cy->height)
+		return (1);
+	return (0);
+}
+
+bool	rt_check_up_down_cy(float time, t_ray *ray, t_object *cy)
+{
+	t_coord tmp_hit;
+	t_coord	from_down;
+	float	dist_from_down;
+	float	angle_down;
+	float	dist;
+
+	tmp_hit = rt_add_vec(ray->origin, rt_scale_vec(ray->dir, time));
+	// dprintf(2, "%.2f,%.2f,%.2f   ", tmp_hit.x, tmp_hit.y, tmp_hit.z);
+	from_down = rt_sub_vec(tmp_hit, *cy->pos);
+	dist_from_down = rt_vector_length(from_down);
+	angle_down = asin(cy->radius / dist_from_down);
+	dist = cos(angle_down) * dist_from_down;
+	//dprintf(2, "%.2f,%.2f  ", dist_from_down, dist);
+	if (dist <= cy->height)
+		return (1);
+	return (0);
 }
