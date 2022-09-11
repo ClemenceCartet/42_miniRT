@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_matrix1.c                                       :+:      :+:    :+:   */
+/*   rt_matrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:31:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 14:30:56 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 11:45:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+//Multiplication of a matrix with a vector to get a new vector out of it
+t_coord	rt_multiply_matrix_vector(t_matrix m, t_coord v)
+{
+	t_coord	newvec;
+
+	newvec.x = m.x.x * v.x + m.y.x * v.y + m.z.x * v.z;
+	newvec.y = m.x.y * v.x + m.y.y * v.y + m.z.y * v.z;
+	newvec.x = m.x.z * v.x + m.y.z * v.y + m.z.z * v.z;
+	return (newvec);
+}
 
 //Multiplication of source matrix and rotation matrix to set a new matrix
 t_matrix	rt_multiply_matrix(t_matrix s, t_matrix r)

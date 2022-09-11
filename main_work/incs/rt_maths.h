@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 14:30:58 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 11:43:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@
 t_matrix	rt_matrix_rot_x(int degree);
 t_matrix	rt_matrix_rot_y(int degree);
 t_matrix	rt_matrix_rot_z(int degree);
+t_coord		rt_matrix_rotate(t_coord vec);
 
 /*-------------------- rt_matrix.c --------------------*/
 
+t_coord		rt_multiply_matrix_vector(t_matrix m, t_coord v);
 t_matrix	rt_multiply_matrix(t_matrix s, t_matrix r);
 t_coord		rt_set_vector_identity(int id);
 t_matrix	rt_init_matrix(void);

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:38:48 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 14:28:53 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 11:43:41 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,20 @@ t_matrix	rt_matrix_rot_z(int degree)
 	matrix.y.x = -sin(radians);
 	matrix.y.y = cos(radians);
 	return (matrix);
+}
+
+//Call every rotations and then multiply the three matrix given
+t_coord	rt_matrix_rotate(t_coord vec)
+{
+	t_matrix	m_src;
+	t_matrix	m_x;
+	t_matrix	m_y;
+	t_matrix	m_z;
+
+	m_x = rt_matrix_rot_x(acos(vec.x) * 180 / M_PI);
+	m_y = rt_matrix_rot_y(acos(vec.y) * 180 / M_PI);
+	m_z = rt_matrix_rot_z(acos(vec.z) * 180 / M_PI);
+	m_src = rt_multiply_matrix(m_z, m_y);
+	m_src = rt_multiply_matrix(m_src, m_x);
+	return (rt_multiply_matrix_vector(m_src, vec));
 }
