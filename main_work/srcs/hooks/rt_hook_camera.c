@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:45:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/11 14:23:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 14:34:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ void	rt_update_camera_pos(int key, t_master *master)
 //Turn the camera angle up, down, left or right depending on the key pressed
 void	rt_update_camera_dir(int key, t_master *master)
 {
-	// dprintf(1, "x = %f\n", master->camera->dir->x);
-	// dprintf(1, "y = %f\n", master->camera->dir->y);
-	// dprintf(1, "z = %f\n\n", master->camera->dir->z);
 	if (key == K_I) //haut
 		master->camera->dir->y += 0.1;
 	else if (key == K_K) //bas
@@ -47,10 +44,4 @@ void	rt_update_camera_dir(int key, t_master *master)
 		master->camera->dir->z += -0.1;
 	else if (key == K_O) //tilt droite
 		master->camera->dir->z += 0.1;
-	// *master->camera->dir = rt_matrix_rotate(*master->camera->dir);
-	// rt_norm_vector(master->camera->dir);
-	// dprintf(1, "x = %f\n", master->camera->dir->x);
-	// dprintf(1, "y = %f\n", master->camera->dir->y);
-	// dprintf(1, "z = %f\n\n", master->camera->dir->z);
-	// dprintf(1, "----------------\n\n");
 }

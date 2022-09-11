@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:38:48 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/11 14:27:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 14:33:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ t_matrix	rt_matrix_rot_x(int degree)
 	t_matrix	matrix;
 	float		radians;
 
-	// if (degree == 180 || degree == -180)
-		// degree = 0;
 	radians = degree * M_PI / 180;
 	matrix = rt_init_matrix();
 	matrix.y.y = cos(radians);
@@ -35,8 +33,6 @@ t_matrix	rt_matrix_rot_y(int degree)
 	t_matrix	matrix;
 	float		radians;
 
-	// if (degree == 180 || degree == -180)
-		// degree = 0;
 	radians = degree * M_PI / 180;
 	matrix = rt_init_matrix();
 	matrix.x.x = cos(radians);
@@ -52,8 +48,6 @@ t_matrix	rt_matrix_rot_z(int degree)
 	t_matrix	matrix;
 	float		radians;
 
-	// if (degree == 180 || degree == -180)
-		// degree = 0;
 	radians = degree * M_PI / 180;
 	matrix = rt_init_matrix();
 	matrix.x.x = cos(radians);
