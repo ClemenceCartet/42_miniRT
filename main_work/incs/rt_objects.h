@@ -91,8 +91,6 @@ struct	s_object
 	float	radius;
 	t_coord	c[4];
 	t_coord	gap[4];
-	t_coord	cypos;
-	t_coord	cydir;
 	int		selected;
 };
 /**Structure pour l'objet sphère

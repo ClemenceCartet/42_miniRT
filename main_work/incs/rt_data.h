@@ -142,6 +142,7 @@ struct	s_hit
 	t_coord		normal;
 	t_color		color;
 	int			cy_plane;
+	float		dist_for_normal;
 };
 
 /**Structure contenant les données d'un rayon

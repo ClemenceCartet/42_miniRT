@@ -41,18 +41,11 @@ void	rt_set_hit_point(t_ray *ray)
 
 void	rt_find_normal_cy(t_hit *hit, t_object *cy, int in_obj)
 {
-	t_coord c_to_h;
-	float	angle;
-	float	dist;
 	t_coord	new_center;
 
-	c_to_h = rt_sub_vec(hit->point, *cy->pos);
-	rt_norm_vector(&c_to_h);
-	angle = rt_dot_prod(c_to_h, *cy->dir);
-	dist = cos(angle) * rt_vector_length(rt_sub_vec(hit->point, *cy->pos));
-	new_center.x = cy->pos->x + cy->dir->x * dist;
-	new_center.y = cy->pos->y + cy->dir->y * dist;
-	new_center.z = cy->pos->z + cy->dir->z * dist;
+	new_center.x = cy->pos->x + cy->dir->x * hit->dist_for_normal;
+	new_center.y = cy->pos->y + cy->dir->y * hit->dist_for_normal;
+	new_center.z = cy->pos->z + cy->dir->z * hit->dist_for_normal;
 	if (in_obj)
 		hit->normal = rt_sub_vec(new_center, hit->point);
 	else
@@ -92,7 +85,7 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 		if (ray->hit.cy_plane == 1)
 			rt_find_normal_plane(ray, *obj->dir);
 		else if (ray->hit.cy_plane == 2)
-			rt_find_normal_plane(ray, obj->cydir);
+			rt_find_normal_plane(ray, rt_scale_vec(*obj->dir, -1));
 		else
 			rt_find_normal_cy(&ray->hit, obj, ray->in_obj);
 	}	

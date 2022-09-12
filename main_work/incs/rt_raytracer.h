@@ -36,11 +36,11 @@ float	rt_inter_sphere(t_ray *ray, t_object *sp);
 /*-------------------- rt_inters_cylinder.c --------------------*/
 
 float	rt_inter_cylinder(t_ray *ray, t_object *cy);
-float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time);
-bool	rt_check_up_down_cy(float time, t_ray *ray, t_object *cy);
-bool	rt_check_up_down_cy_v2(float time, t_ray *ray, t_object *cy);
-int		rt_set_ends_cylinder(t_ray *ray, t_object *cy, float *time_ends);
-float	rt_check_plane_cy(t_ray *ray, t_coord cy_pos, t_coord cy_dir, float radius);
+float	rt_body_cy_inter(t_ray *ray, t_object *cy);
+void	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time, float *delta);
+float	rt_end_cy_inter(t_ray *ray, t_object *cy);
+float	rt_check_down_plane_cy(t_ray *ray, t_object *cy);
+float	rt_check_up_plane_cy(t_ray *ray, t_object *cy);
 
 /*-------------------- rt_hits.c --------------------*/
 

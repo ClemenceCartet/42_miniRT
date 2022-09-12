@@ -48,11 +48,11 @@ static float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time)
 	a = rt_vec_length_sqr(ray->dir);
 	half_b = rt_dot_prod(from_center, ray->dir);
 	c = rt_vec_length_sqr(from_center) - sp->radius * sp->radius;
-	delta = half_b * half_b - a * c;
+	delta = pow(half_b, 2) - a * c;
 	if (delta >= 0.0)
 	{
-		tmp_time[0] = -half_b + sqrt(delta) / a;
-		tmp_time[1] = -half_b - sqrt(delta) / a;
+		tmp_time[0] = (-half_b + sqrt(delta)) / a;
+		tmp_time[1] = (-half_b - sqrt(delta)) / a;
 		if (tmp_time[0] > tmp_time[1])
 			ft_fswap(&tmp_time[0], &tmp_time[1]);
 	}

@@ -43,25 +43,9 @@ static void	rt_init_add_camera(t_camera **cam)
 //Object additional data initialization (SP / PL / CY)
 void	rt_init_add_object(t_object **object)
 {
-	t_coord	scale;
-
 	(*object)->radius = 0.0;
-	(*object)->cypos.x = 0.0;
-	(*object)->cypos.y = 0.0;
-	(*object)->cypos.z = 0.0;
-	(*object)->cydir.x = 0.0;
-	(*object)->cydir.y = 0.0;
-	(*object)->cydir.z = 0.0;
 	if ((*object)->id == SP || (*object)->id == CY)
 		(*object)->radius = (*object)->diameter * 0.5;
-	if ((*object)->id == CY)
-	{
-		scale = rt_scale_vec(*(*object)->dir, (*object)->height);
-		(*object)->cypos = rt_add_vec(*(*object)->pos, scale);
-		(*object)->cydir.x = -(*object)->dir->x;
-		(*object)->cydir.y = -(*object)->dir->y;
-		(*object)->cydir.z = -(*object)->dir->z;
-	}
 }
 
 //Master additional data initialization
