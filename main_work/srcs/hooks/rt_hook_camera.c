@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:45:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/11 14:34:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 11:22:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	rt_update_camera_dir(int key, t_master *master)
 	else if (key == K_L) //droite
 		master->camera->dir->x += 0.1;
 	else if (key == K_U) //tilt gauche
-		master->camera->dir->z += -0.1;
+		master->camera->angle.z -= 5;
 	else if (key == K_O) //tilt droite
-		master->camera->dir->z += 0.1;
+		master->camera->angle.z += 5;
 }

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/07 09:30:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 11:29:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ray.dir.z = cam.focal;
 	if (!check_rotation_cam(&ray, cam))
 	{
-		rot = rt_matrix_rotate(*cam.dir);
+		// rot = rt_init_matrix();
+		// ray.dir = rt_rotate_test(rot, ray.dir, cam);
+		rot = rt_matrix_rotate(cam.angle);
 		ray.dir = rt_multiply_matrix_vector(rot, ray.dir);
 	}
 	//dprintf(2, "new_z:%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);

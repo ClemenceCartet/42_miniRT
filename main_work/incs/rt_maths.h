@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/11 14:26:33 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 11:22:12 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 
 /*-------------------- rt_matrix_rotation.c --------------------*/
 
-t_matrix	rt_matrix_rot_x(int degree);
-t_matrix	rt_matrix_rot_y(int degree);
-t_matrix	rt_matrix_rot_z(int degree);
+t_matrix	rt_matrix_rot_x(float degree);
+t_matrix	rt_matrix_rot_y(float degree);
+t_matrix	rt_matrix_rot_z(float degree);
 t_matrix	rt_matrix_rotate(t_coord vec);
+// t_coord		rt_rotate_test(t_matrix m, t_coord baseray, t_camera cam);
 
 /*-------------------- rt_matrix.c --------------------*/
 

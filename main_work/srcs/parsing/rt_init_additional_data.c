@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 13:39:29 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 11:19:32 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ static void	rt_init_add_camera(t_camera **cam)
 {
 	(*cam)->radian = (*cam)->fov * M_PI / 180;
 	(*cam)->focal = WIDTH / (2 * tan((*cam)->radian * 0.5));
+	(*cam)->angle.x = 0.0;
+	(*cam)->angle.y = 0.0;
+	(*cam)->angle.z = atan2((*cam)->dir->y, (*cam)->dir->x);
+	(*cam)->angle.o = 0.0;
 }
 
 //Object additional data initialization (SP / PL / CY)
