@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/12 11:29:18 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 13:34:32 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	t_matrix	rot;
 
 	ray.origin = *cam.pos;
-	ray.dir.x = w - WIDTH * 0.5;
+	ray.dir.x = WIDTH * 0.5 - w;
 	ray.dir.y = HEIGHT * 0.5 - h;
 	ray.dir.z = cam.focal;
 	if (!check_rotation_cam(&ray, cam))
