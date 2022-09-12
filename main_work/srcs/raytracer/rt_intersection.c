@@ -15,14 +15,14 @@
 float	rt_calcul_plane(t_ray *ray, t_coord pl_pos, t_coord pl_dir)
 {
 	float	time;
-	float	a;
-	float	b;
+	float	angle;
+	float	dist;
 
-	a = rt_dot_prod(pl_dir, ray->dir);
-	if (!a)
+	angle = rt_dot_prod(ray->dir, pl_dir);
+	if (!angle)
 		return (-1);
-	b = rt_dot_prod(pl_dir, rt_sub_vec(pl_pos, ray->origin));
-	time = b / a;
+	dist = rt_dot_prod(pl_dir, rt_sub_vec(pl_pos, ray->origin));
+	time = dist / angle;
 	return (time);
 }
 

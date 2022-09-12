@@ -46,18 +46,12 @@ float	rt_end_cy_inter(t_ray *ray, t_object *cy)
 	if (tmp_time[0] < 0.0 && tmp_time[1] < 0.0)
 		return (-1);
 	//dprintf(2, "%.2f, %.2f\n", tmp_time[0], tmp_time[1]);
-	if ((tmp_time[0] > 0.0 && tmp_time[1] > 0.0) && tmp_time[0] < tmp_time[1])
-		time = tmp_time[0];
-	else if ((tmp_time[0] > 0.0 && tmp_time[1] > 0.0) && tmp_time[0] > tmp_time[1])
-		time = tmp_time[1];
-	else if (tmp_time[0] > 0.0 && tmp_time[1] < 0.0)
+	if (tmp_time[0] > tmp_time[1])
+			ft_fswap(&tmp_time[0], &tmp_time[1]);
+	if (tmp_time[0] >= 0.0 && tmp_time[1] >= 0.0)
 		time = tmp_time[0];
 	else
 		time = tmp_time[1];
-	if (time == tmp_time[0])
-		ray->hit.cy_plane = 2;
-	else
-		ray->hit.cy_plane = 1;
 	return (time);
 }
 
@@ -79,7 +73,7 @@ void	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time, float *delta)
 	half_b = 2 * rt_dot_prod(u, v);
 	c = rt_vec_length_sqr(u) - pow(cy->radius, 2);
 	*delta = pow(half_b, 2) - 4 * a * c;
-	if (*delta > 0.0)
+	if (*delta >= 0.0)
 	{
 		tmp_time[0] = (-half_b + sqrt(*delta)) / (2 * a);
 		tmp_time[1] = (-half_b - sqrt(*delta)) / (2 * a);
@@ -103,10 +97,10 @@ float	rt_body_cy_inter(t_ray *ray, t_object *cy)
 	to_center = rt_sub_vec(*cy->pos, ray->origin);
 	dist[0] = rt_dot_prod(*cy->dir, rt_sub_vec(rt_scale_vec(ray->dir, tmp_time[0]), to_center));
 	dist[1] = rt_dot_prod(*cy->dir, rt_sub_vec(rt_scale_vec(ray->dir, tmp_time[1]), to_center));
-	if (!((dist[0] >= 0.0 && dist[0] <= cy->height && tmp_time[0] > 0.0) ||
-			(dist[1] >= 0.0 && dist[1] <= cy->height && tmp_time[1] > 0.0))) // condition à faire vérifier à Loïc
+	if (!((dist[0] >= 0.0 && dist[0] <= cy->height && tmp_time[0] >= 0.0) ||
+			(dist[1] >= 0.0 && dist[1] <= cy->height && tmp_time[1] >= 0.0))) // condition à faire vérifier à Loïc
 		return (-1);
-	if (tmp_time[0] > 0.0 && tmp_time[1] > 0.0)
+	if (tmp_time[0] >= 0.0 && tmp_time[1] >= 0.0)
 	{
 		time = tmp_time[0];
 		ray->hit.dist_for_normal = dist[0];
@@ -132,12 +126,12 @@ float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 	end_time = rt_end_cy_inter(ray, cy);
 	if (body_time < 0.0 && end_time < 0.0)
 		return (-1);
-	//dprintf(1, "%.2f, %.2f       ", end_time, body_time);
+	dprintf(1, "%.2f, %.2f       ", end_time, body_time);
 	if ((body_time >= 0.0 && end_time > body_time) || end_time < 0.0)
-	{
-		ray->hit.cy_plane = 0;
 		return (body_time);
-	}
 	else
+	{
+		ray->hit.cy_plane = 1;
 		return (end_time);
+	}
 }

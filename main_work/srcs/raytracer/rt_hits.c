@@ -69,7 +69,7 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 	blop.b = 1.0;
 	ray->hit.time = time;
 	rt_set_hit_point(ray);
-	// dprintf(2, "%.2f,%.2f,%.2f   ", ray->hit.point.x,ray->hit.point.y, ray->hit.point.z);
+	//dprintf(1, "%.2f,%.2f,%.2f   ", ray->hit.point.x,ray->hit.point.y, ray->hit.point.z);
 	ray->inter = 1;
 	if (obj->id == SP)
 	{
@@ -84,13 +84,11 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 	{
 		if (ray->hit.cy_plane == 1)
 			rt_find_normal_plane(ray, *obj->dir);
-		else if (ray->hit.cy_plane == 2)
-			rt_find_normal_plane(ray, rt_scale_vec(*obj->dir, -1));
 		else
 			rt_find_normal_cy(&ray->hit, obj, ray->in_obj);
 	}	
 	rt_norm_vector(&ray->hit.normal);
-	if (ray->hit.cy_plane == 1 || ray->hit.cy_plane == 2)
+	if (ray->hit.cy_plane == 1)
 		ray->hit.color = blop;
 	else
 		ray->hit.color = *obj->rgb;
