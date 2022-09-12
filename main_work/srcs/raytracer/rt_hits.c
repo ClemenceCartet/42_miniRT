@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/11 11:12:20 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/12 14:54:23 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ void	rt_find_normal_plane(t_ray *ray, t_coord pl_dir)
 
 void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 {
+	t_color blop;
+
+	blop.r = 0.2;
+	blop.g = 0.8;
+	blop.b = 1.0;
 	ray->hit.time = time;
 	rt_set_hit_point(ray);
 	// dprintf(2, "%.2f,%.2f,%.2f   ", ray->hit.point.x,ray->hit.point.y, ray->hit.point.z);
@@ -92,5 +97,8 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 			rt_find_normal_cy(&ray->hit, obj, ray->in_obj);
 	}	
 	rt_norm_vector(&ray->hit.normal);
-	ray->hit.color = *obj->rgb;
+	if (ray->hit.cy_plane == 1 || ray->hit.cy_plane == 2)
+		ray->hit.color = blop;
+	else
+		ray->hit.color = *obj->rgb;
 }

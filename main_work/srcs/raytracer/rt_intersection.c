@@ -51,8 +51,8 @@ static float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time)
 	delta = half_b * half_b - a * c;
 	if (delta >= 0.0)
 	{
-		tmp_time[0] = -half_b + sqrt(delta) * a;
-		tmp_time[1] = -half_b - sqrt(delta) * a;
+		tmp_time[0] = -half_b + sqrt(delta) / a;
+		tmp_time[1] = -half_b - sqrt(delta) / a;
 		if (tmp_time[0] > tmp_time[1])
 			ft_fswap(&tmp_time[0], &tmp_time[1]);
 	}
