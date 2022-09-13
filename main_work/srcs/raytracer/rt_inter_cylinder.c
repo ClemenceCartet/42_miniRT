@@ -38,11 +38,15 @@ float	rt_check_up_plane_cy(t_ray *ray, t_object *cy)
 
 float	rt_end_cy_inter(t_ray *ray, t_object *cy)
 {
+	float	down;
+	float	up;
 	float	time;
 	float	tmp_time[2];
 
-	tmp_time[0] = rt_check_down_plane_cy(ray, cy);
-	tmp_time[1] = rt_check_up_plane_cy(ray, cy);
+	down = rt_check_down_plane_cy(ray, cy);
+	up = rt_check_up_plane_cy(ray, cy);
+	tmp_time[0] = down;
+	tmp_time[1] = up;
 	if (tmp_time[0] < 0.0 && tmp_time[1] < 0.0)
 		return (-1);
 	//dprintf(2, "%.2f, %.2f\n", tmp_time[0], tmp_time[1]);
@@ -52,6 +56,10 @@ float	rt_end_cy_inter(t_ray *ray, t_object *cy)
 		time = tmp_time[0];
 	else
 		time = tmp_time[1];
+	if (time == down)
+		ray->hit.cy_plane = 2;
+	else
+		ray->hit.cy_plane = 1;
 	return (time);
 }
 
@@ -126,12 +134,12 @@ float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 	end_time = rt_end_cy_inter(ray, cy);
 	if (body_time < 0.0 && end_time < 0.0)
 		return (-1);
-	dprintf(1, "%.2f, %.2f       ", end_time, body_time);
+	// dprintf(1, "%.2f, %.2f       ", end_time, body_time);
 	if ((body_time >= 0.0 && end_time > body_time) || end_time < 0.0)
-		return (body_time);
-	else
 	{
-		ray->hit.cy_plane = 1;
-		return (end_time);
+		ray->hit.cy_plane = 0;
+		return (body_time);
 	}
+	else
+		return (end_time);
 }
