@@ -12,46 +12,30 @@
 
 #include <mini_rt.h>
 
-//Move the camera forward, backward, left or right depending on the key pressed
-void	rt_update_camera_pos(int key, t_master *master)
+//Turn the camera angle up, down, left or right depending on the key pressed
+void	rt_update_camera(int key, t_master *master)
 {
-	float	move;
+	float			move;
+	static float	ud_angle;
+	static float	lr_angle;
 
 	move = 0;
 	if (key == K_W)
 		move += 0.25;
 	else if (key == K_S)
 		move -= 0.25;
-	master->camera->pos->x += master->camera->dir->x * move;
-	master->camera->pos->y += master->camera->dir->y * move;
-	master->camera->pos->z += master->camera->dir->z * move;
-}
-
-//Turn the camera angle up, down, left or right depending on the key pressed
-void	rt_update_camera_dir(int key, t_master *master)
-{
-	t_matrix	newm_y;
-	t_matrix	newm_x;
-	t_matrix	newm;
-	float		ud_angle;
-	float		lr_angle;
-
-	ud_angle = 0;
-	lr_angle = 0;
-	if (key == K_I) //haut
-		ud_angle += 0.1;
-	else if (key == K_K) //bas
+	else if (key == K_I) //haut
 		ud_angle -= 0.1;
+	else if (key == K_K) //bas
+		ud_angle += 0.1;
 	else if (key == K_J) //gauche
 		lr_angle += 0.1;
 	else if (key == K_L) //droite
 		lr_angle -= 0.1;
-	dprintf(1, "before : x = %f | y = %f | z = %f\n", master->camera->dir->x, master->camera->dir->y, master->camera->dir->z);
-	newm_y = rt_matrix_rot_x(ud_angle);
-	newm_x = rt_matrix_rot_y(lr_angle);
-	newm = rt_multiply_matrix(newm_x, newm_y);
-	*master->camera->dir = rt_multiply_matrix_vector(newm, *master->camera->dir);
-	// *master->camera->dir = rt_multiply_matrix_vector(newm_y, *master->camera->dir);
-	// *master->camera->dir = rt_multiply_matrix_vector(newm_x, *master->camera->dir);
-	dprintf(1, "after : x = %f | y = %f | z = %f\n", master->camera->dir->x, master->camera->dir->y, master->camera->dir->z);
+	//dprintf(1, "before : x = %f | y = %f | z = %f\n", master->camera->pos->x, master->camera->pos->y, master->camera->pos->z);
+	master->camera->mat_rot = rt_multiply_matrix(rt_matrix_rot_x(ud_angle),
+		rt_matrix_rot_y(lr_angle));
+	*master->camera->dir = rt_multiply_matrix_vector(master->camera->mat_rot, *master->camera->dir);
+	*master->camera->pos = rt_add_vec(*master->camera->pos, rt_scale_vec(*master->camera->dir, move));
+	//dprintf(1, "after : x = %f | y = %f | z = %f\n", master->camera->pos->x, master->camera->pos->y, master->camera->pos->z);
 }

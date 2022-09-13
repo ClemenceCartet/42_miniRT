@@ -172,7 +172,6 @@ struct	s_matrix
 	t_coord	x;
 	t_coord	y;
 	t_coord	z;
-	t_coord	o;
 };
 
 #endif //RT_DATA_H

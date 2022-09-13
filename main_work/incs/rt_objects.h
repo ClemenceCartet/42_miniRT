@@ -45,11 +45,8 @@ struct	s_camera
 
 	float		radian;
 	float		focal;
-
-	float		lr_angle;
-	float		ud_angle;
-	t_matrix	m_x;
-	t_matrix	m_y;
+	
+	t_matrix	mat_rot;
 };
 
 /**Structure pour la lumière

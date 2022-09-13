@@ -38,6 +38,8 @@ static void	rt_init_add_camera(t_camera **cam)
 {
 	(*cam)->radian = (*cam)->fov * M_PI / 180;
 	(*cam)->focal = WIDTH / (2 * tan((*cam)->radian * 0.5));
+	(*cam)->mat_rot = rt_multiply_matrix(rt_matrix_rot_x(-asin((*cam)->dir->y)),
+		rt_matrix_rot_y(atan2((*cam)->dir->x, (*cam)->dir->z)));
 }
 
 //Object additional data initialization (SP / PL / CY)

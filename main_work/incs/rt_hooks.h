@@ -42,8 +42,8 @@ void	rt_update_obj_size(int key, t_master *master, int object, int obj_size);
 
 /*-------------------- rt_hook_camera.c --------------------*/
 
-void	rt_update_camera_pos(int key, t_master *master);
-void	rt_update_camera_dir(int key, t_master *master);
+//void	rt_update_camera_pos(int key, t_master *master);
+void	rt_update_camera(int key, t_master *master);
 
 /*-------------------- rt_manage_hooks.c --------------------*/
 
