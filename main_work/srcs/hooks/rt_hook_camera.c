@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:45:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 14:56:37 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 16:53:00 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	rt_update_camera_dir(int key, t_master *master)
 	dprintf(1, "before : x = %f | y = %f | z = %f\n", master->camera->dir->x, master->camera->dir->y, master->camera->dir->z);
 	newm_y = rt_matrix_rot_x(ud_angle);
 	newm_x = rt_matrix_rot_y(lr_angle);
-	newm = rt_multiply_matrix(newm_y, newm_x);
+	newm = rt_multiply_matrix(newm_x, newm_y);
 	*master->camera->dir = rt_multiply_matrix_vector(newm, *master->camera->dir);
 	// *master->camera->dir = rt_multiply_matrix_vector(newm_y, *master->camera->dir);
 	// *master->camera->dir = rt_multiply_matrix_vector(newm_x, *master->camera->dir);

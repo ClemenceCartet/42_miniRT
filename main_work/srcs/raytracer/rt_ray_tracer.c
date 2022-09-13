@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/13 14:53:04 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 17:02:54 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 			dprintf(2, "%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 		rot = rt_multiply_matrix(cam.m_y, cam.m_x);
 		ray.dir = rt_multiply_matrix_vector(rot, ray.dir);
+		// ray.dir = rt_multiply_matrix_vector(cam.m_y, ray.dir);
 		if (w == 50 && h == 50)
 			dprintf(2, "%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	}
-	rt_norm_vector(&ray.dir);
+	// rt_norm_vector(&ray.dir);
 	//dprintf(2, "new_z:%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	ray.inter = 0;
 	ray.in_obj = 0;
@@ -90,8 +91,8 @@ void	rt_ray_tracer(t_master *master)
 	t_color	color;
 
 	pxl_h = 0;
-	master->camera->m_y = rt_matrix_rot_x(asin(master->camera->dir->y));
-	master->camera->m_x = rt_matrix_rot_y(asin(master->camera->dir->x));
+	master->camera->m_y = rt_multiply_matrix(rt_matrix_rot_x(asin(master->camera->dir->y)), rt_matrix_rot_x(-asin(master->camera->dir->z)));
+	master->camera->m_x = rt_matrix_rot_y(atan2(master->camera->dir->x, master->camera->dir->z));
 	while (pxl_h < HEIGHT)
 	{
 		pxl_w = 0;

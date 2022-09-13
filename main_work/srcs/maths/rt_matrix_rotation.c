@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:38:48 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 14:10:58 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 16:17:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_matrix	rt_matrix_rot_x(float rad)
 
 	matrix = rt_init_matrix();
 	matrix.y.y = cos(rad);
-	matrix.y.z = -sin(rad);
-	matrix.z.y = sin(rad);
+	matrix.y.z = sin(rad);
+	matrix.z.y = -sin(rad);
 	matrix.z.z = cos(rad);
 	return (matrix);
 }
@@ -32,8 +32,8 @@ t_matrix	rt_matrix_rot_y(float rad)
 
 	matrix = rt_init_matrix();
 	matrix.x.x = cos(rad);
-	matrix.x.z = sin(rad);
-	matrix.z.x = -sin(rad);
+	matrix.x.z = -sin(rad);
+	matrix.z.x = sin(rad);
 	matrix.z.z = cos(rad);
 	return (matrix);
 }
@@ -45,8 +45,8 @@ t_matrix	rt_matrix_rot_z(float rad)
 
 	matrix = rt_init_matrix();
 	matrix.x.x = cos(rad);
-	matrix.x.y = -sin(rad);
-	matrix.y.x = sin(rad);
+	matrix.x.y = sin(rad);
+	matrix.y.x = -sin(rad);
 	matrix.y.y = cos(rad);
 	return (matrix);
 }
