@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/13 17:19:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 17:22:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	rt_ray_tracer(t_master *master)
 	t_color	color;
 
 	pxl_h = 0;
-	master->camera->m_y = rt_multiply_matrix(rt_matrix_rot_x(asin(master->camera->dir->y)), rt_matrix_rot_x(-asin(master->camera->dir->z)));
+	master->camera->m_y = rt_matrix_rot_x(-asin(master->camera->dir->y));
 	master->camera->m_x = rt_matrix_rot_y(atan2(master->camera->dir->x, master->camera->dir->z));
 	while (pxl_h < HEIGHT)
 	{

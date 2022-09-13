@@ -6,6 +6,7 @@ float	rt_check_down_plane_cy(t_ray *ray, t_object *cy)
 	t_coord	tmp_hit;
 	float	dist;
 
+	//new_hit = rt_add_vec(hit.point, rt_scale_vec(hit.normal, 0.0001));
 	time = rt_calcul_plane(ray, *cy->pos, *cy->dir);
 	if (time >= 0.0)
 	{
@@ -134,7 +135,7 @@ float	rt_inter_cylinder(t_ray *ray, t_object *cy)
 	end_time = rt_end_cy_inter(ray, cy);
 	if (body_time < 0.0 && end_time < 0.0)
 		return (-1);
-	// dprintf(1, "%.2f, %.2f       ", end_time, body_time);
+	dprintf(1, "%.2f, %.2f       ", end_time, body_time);
 	if ((body_time >= 0.0 && end_time > body_time) || end_time < 0.0)
 	{
 		ray->hit.cy_plane = 0;
