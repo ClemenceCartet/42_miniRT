@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_data.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/09 10:09:19 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 11:15:42 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ struct	s_hit
 	t_coord		point;
 	t_coord		normal;
 	t_color		color;
-	t_object	*obj;
+	int			cy_plane;
+	float		dist_for_normal;
 };
 
 /**Structure contenant les données d'un rayon

@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:21 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/03 09:12:22 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/12 14:27:38 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ t_color	rt_color_bkg(void)
 {
 	t_color	color;
 
-	color.r = 0;
-	color.g = 0;
-	color.b = 0;
+	ft_memset(&color, 0, sizeof(t_color));
 	return (color);
 }
 
@@ -26,6 +24,7 @@ t_color	rt_add_color(t_color c1, t_color c2)
 {
 	t_color	new;
 
+	ft_memset(&new, 0, sizeof(t_color));
 	new.r = c1.r + c2.r;
 	if (new.r > 1.0)
 		new.r = 1.0;
@@ -42,6 +41,7 @@ t_color	rt_scale_color(t_color c1, float ratio)
 {
 	t_color	new;
 
+	ft_memset(&new, 0, sizeof(t_color));
 	new.r = c1.r * ratio;
 	if (new.r > 1.0)
 		new.r = 1.0;
@@ -58,6 +58,7 @@ t_color	rt_reflt_color(t_color light, t_color obj)
 {
 	t_color	new;
 
+	ft_memset(&new, 0, sizeof(t_color));
 	new.r = light.r * obj.r;
 	new.g = light.g * obj.g;
 	new.b = light.b * obj.b;
