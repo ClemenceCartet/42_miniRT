@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/10 13:20:55 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 17:16:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ typedef float				(*t_fcthit)(t_ray*, t_object*);
 *//////////////////////////////////////////////////////////////////////////////
 
 /**Structure master, donnant accès à toute les données du programme
- * mlxdata	= structure contenant les données de la MLX
- * obj_data	= structure contenant les données des objets (sp, pl & cy)
+ * init		= pointeur d'initialisation de la mlx
+ * wdw		= pointeur de fenêtre de la mlx
+ * mlx		= structure contenant les données de la MLX
+ * 
+ * obj_data	= structure contenant les données des objets (SP, PL & CY)
+ * 
  * ambient	= structure contenant les données de la lumière ambiante
  * camera	= structure contenant les données de la caméra
  * light	= structure contenant les données de la lumière
@@ -66,7 +70,13 @@ struct	s_master
 	t_light		*light;
 };
 
-//bpp = bit per pixel, 8 bits color
+/**Structure contenant les données d'image de la mlx
+ * img			= ?
+ * addr			= ?
+ * bpp			= bit per pixel, 8 bits color
+ * line_length	= ?
+ * endian		= ?
+*/
 struct s_mlx_data
 {
 	void	*img;
@@ -81,6 +91,8 @@ struct s_mlx_data
  * lst_size	= nombre de maillon de la liste lst
  * start	= pointeur vers le début de lst
  * lst->content = t_object
+ * objects	= tableau contenant les maillons de la list lst
+ * fct[3]	= tableau de pointeur sur fonction pour les objets
 */
 struct	s_obj_data
 {
@@ -131,7 +143,8 @@ struct	s_hit
 	t_coord		point;
 	t_coord		normal;
 	t_color		color;
-	t_object	*obj;
+	int			cy_plane;
+	float		dist_for_normal;
 };
 
 /**Structure contenant les données d'un rayon

@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   rt_light.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:35 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/07 17:22:45 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 14:54:07 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+t_color	ft_skybox_color(t_ambient amb, t_coord v)
+{
+	t_color	color;
+
+	ft_memset(&color, 0, sizeof(t_color));
+	if (fabs(v.x) >= fabs(v.y) && fabs(v.x) >= fabs(v.z))
+		color.r = ((v.x + 1) / 2.0) * amb.rgb->r
+			* amb.ratio;
+	if (fabs(v.y) >= fabs(v.x) && fabs(v.y) >= fabs(v.z))
+		color.g = ((v.y + 1) / 2.0) * amb.rgb->g
+			* amb.ratio;
+	if (fabs(v.z) >= fabs(v.x) && fabs(v.z) >= fabs(v.y))
+		color.b = ((v.z + 1) / 2.0) * amb.rgb->b
+			* amb.ratio;
+	return (color);
+}
+
 
 t_color	rt_set_ambient_light(t_color hit_color, t_ambient *ambient)
 {
@@ -51,8 +69,8 @@ t_color	rt_set_color(t_hit hit, t_master *master)
 	l_ray.origin = *master->light->pos;
 	l_amb = rt_set_ambient_light(hit.color, master->ambient);
 	l_point = rt_set_point_light(hit, master->light, l_ray.dir);
-	if (rt_in_shadow(master->obj_data, &l_ray, hit))
-		l_intensity = 0;
+	//if (rt_in_shadow(master->obj_data, &l_ray, hit))
+	//	l_intensity = 0;
 	l_point = rt_scale_color(l_point, l_intensity);
 	color = rt_add_color(l_amb, l_point);
 	return (color);

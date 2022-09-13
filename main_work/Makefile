@@ -6,10 +6,9 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/09/13 14:16:17 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/09/13 17:16:09 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
-
 
 .PHONY: all clean fclean re makelibft makemlx
 .SILENT:
@@ -76,7 +75,7 @@ OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 # Commands
 CC				:=	gcc
-CF				:=	-Wall -Werror -Wextra -O3 #-g3 -fsanitize=address
+CF				:=	-Wall -Werror -Wextra -O3 -g3 -fsanitize=address
 CI				:=	-I $(P_INCS_LIBFT) -I $(P_INCS) -I $(P_MLX)
 CS				:=	-g3 -fsanitize=address
 CG				:=	-g3

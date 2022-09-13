@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hits.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/08 17:04:44 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 10:10:54 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,37 @@ void	rt_set_hit_point(t_ray *ray)
 	ray->hit.point.z = ray->origin.z + ray->dir.z * ray->hit.time;
 }
 
+void	rt_find_normal_cy(t_hit *hit, t_object *cy, int in_obj)
+{
+	t_coord	new_center;
+
+	new_center.x = cy->pos->x + cy->dir->x * hit->dist_for_normal;
+	new_center.y = cy->pos->y + cy->dir->y * hit->dist_for_normal;
+	new_center.z = cy->pos->z + cy->dir->z * hit->dist_for_normal;
+	if (in_obj)
+		hit->normal = rt_sub_vec(new_center, hit->point);
+	else
+		hit->normal = rt_sub_vec(hit->point, new_center);
+}
+
+void	rt_find_normal_plane(t_ray *ray, t_coord pl_dir)
+{
+	if (rt_dot_prod(ray->dir, pl_dir) > 0)
+		ray->hit.normal = rt_scale_vec(pl_dir, -1);
+	else
+		ray->hit.normal = pl_dir;
+}
+
 void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 {
+	t_color blop;
+
+	blop.r = 0.2;
+	blop.g = 0.8;
+	blop.b = 1.0;
 	ray->hit.time = time;
 	rt_set_hit_point(ray);
+	//dprintf(1, "%.2f,%.2f,%.2f   ", ray->hit.point.x,ray->hit.point.y, ray->hit.point.z);
 	ray->inter = 1;
 	if (obj->id == SP)
 	{
@@ -52,15 +79,21 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 			ray->hit.normal = rt_sub_vec(ray->hit.point, *obj->pos);
 	}
 	if (obj->id == PL)
-	{
-		if (rt_dot_prod(ray->dir, *obj->dir) > 0)
-			ray->hit.normal = rt_scale_vec(*obj->dir, -1);
-		else
-			ray->hit.normal = *obj->dir;
-	}
+		rt_find_normal_plane(ray, *obj->dir);
 	if (obj->id == CY)
-		find_normal_cy(&ray->hit, obj, ray->in_obj);
+	{
+		if (ray->hit.cy_plane == 1)
+			rt_find_normal_plane(ray, *obj->dir);
+		else if (ray->hit.cy_plane == 2)
+			rt_find_normal_plane(ray, rt_scale_vec(*obj->dir, -1));
+		else
+			rt_find_normal_cy(&ray->hit, obj, ray->in_obj);
+	}	
 	rt_norm_vector(&ray->hit.normal);
-	ray->hit.color = *obj->rgb;
-	ray->hit.obj = obj;
+	if (ray->hit.cy_plane == 1)
+		ray->hit.color = blop;
+	else if (ray->hit.cy_plane == 2)
+		ray->hit.color = rt_scale_color(blop, 0.5);
+	else
+		ray->hit.color = *obj->rgb;
 }

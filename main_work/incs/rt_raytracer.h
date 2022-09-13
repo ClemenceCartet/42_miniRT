@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_raytracer.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 12:02:09 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/13 17:17:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,35 @@
 		FUNCTION PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
 
-/*-------------------- rt_hits.c --------------------*/
+/*-------------------- rt_ray_tracer.c --------------------*/
 
-void	rt_set_hit_point(t_ray *ray);
-void	rt_set_hit(t_ray *ray, t_object *obj, float time);
+void	rt_ray_tracer(t_master *master);
+t_ray	rt_create_ray(t_camera cam, float w, float h);
+void	rt_put_pixel(int x, int y, t_color color, t_mlx_data *mlx);
 
 /*-------------------- rt_intersection.c --------------------*/
 
-float	rt_inter_plane(t_ray *ray, t_object *pl);
-// float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time);
-float	rt_inter_sphere(t_ray *ray, t_object *sp);
 void	rt_intersect(t_obj_data *obj_data, t_ray *ray);
+float	rt_inter_plane(t_ray *ray, t_object *pl);
+float	rt_calcul_plane(t_ray *ray, t_coord pl_pos, t_coord pl_dir);
+float	rt_inter_sphere(t_ray *ray, t_object *sp);
+// float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time);
 
 /*-------------------- rt_inters_cylinder.c --------------------*/
 
 float	rt_inter_cylinder(t_ray *ray, t_object *cy);
-//float	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time);
-//bool	check_up_down_cy(float time, t_ray *ray, t_object *cy);
-void	find_normal_cy(t_hit *hit, t_object *cy, int in_obj);
+float	rt_body_cy_inter(t_ray *ray, t_object *cy);
+void	rt_calcul_cylinder(t_ray *ray, t_object *cy, float *tmp_time, float *delta);
+float	rt_end_cy_inter(t_ray *ray, t_object *cy);
+float	rt_check_down_plane_cy(t_ray *ray, t_object *cy);
+float	rt_check_up_plane_cy(t_ray *ray, t_object *cy);
+
+/*-------------------- rt_hits.c --------------------*/
+
+void	rt_set_hit(t_ray *ray, t_object *obj, float time);
+void	rt_find_normal_plane(t_ray *ray, t_coord pl_dir);
+void	rt_find_normal_cy(t_hit *hit, t_object *cy, int in_obj);
+void	rt_set_hit_point(t_ray *ray);
 
 /*-------------------- rt_light.c --------------------*/
 

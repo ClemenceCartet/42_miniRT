@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 14:52:51 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 17:18:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,9 @@ static void	rt_init_add_camera(t_camera **cam)
 //Object additional data initialization (SP / PL / CY)
 void	rt_init_add_object(t_object **object)
 {
+	(*object)->radius = 0.0;
 	if ((*object)->id == SP || (*object)->id == CY)
 		(*object)->radius = (*object)->diameter * 0.5;
-	else
-		(*object)->radius = 0;
 }
 
 //Master additional data initialization

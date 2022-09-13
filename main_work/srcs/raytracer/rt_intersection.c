@@ -12,17 +12,25 @@
 
 #include <mini_rt.h>
 
+float	rt_calcul_plane(t_ray *ray, t_coord pl_pos, t_coord pl_dir)
+{
+	float	time;
+	float	angle;
+	float	dist;
+
+	angle = rt_dot_prod(ray->dir, pl_dir);
+	if (!angle)
+		return (-1);
+	dist = rt_dot_prod(pl_dir, rt_sub_vec(pl_pos, ray->origin));
+	time = dist / angle;
+	return (time);
+}
+
 float	rt_inter_plane(t_ray *ray, t_object *pl)
 {
-	float	angle_rad;
-	float	distance;
 	float	time;
 
-	angle_rad = rt_dot_prod(*pl->dir, ray->dir);
-	if (!angle_rad)
-		return (-1);
-	distance = rt_dot_prod(*pl->dir, rt_sub_vec(*pl->pos, ray->origin));
-	time = distance / angle_rad;
+	time = rt_calcul_plane(ray, *pl->pos, *pl->dir);
 	if (time <= 0.0)
 		return (-1);
 	return (time);
@@ -40,11 +48,11 @@ static float	rt_calcul_sphere(t_ray *ray, t_object *sp, float *tmp_time)
 	a = rt_vec_length_sqr(ray->dir);
 	half_b = rt_dot_prod(from_center, ray->dir);
 	c = rt_vec_length_sqr(from_center) - sp->radius * sp->radius;
-	delta = half_b * half_b - a * c;
+	delta = pow(half_b, 2) - a * c;
 	if (delta >= 0.0)
 	{
-		tmp_time[0] = -half_b + sqrt(delta) * a;
-		tmp_time[1] = -half_b - sqrt(delta) * a;
+		tmp_time[0] = (-half_b + sqrt(delta)) / a;
+		tmp_time[1] = (-half_b - sqrt(delta)) / a;
 		if (tmp_time[0] > tmp_time[1])
 			ft_fswap(&tmp_time[0], &tmp_time[1]);
 	}
