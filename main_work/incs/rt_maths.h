@@ -24,8 +24,6 @@
 t_matrix	rt_matrix_rot_x(float rad);
 t_matrix	rt_matrix_rot_y(float rad);
 t_matrix	rt_matrix_rot_z(float rad);
-t_matrix	rt_matrix_rotate(t_coord vec);
-// t_coord		rt_rotate_test(t_matrix m, t_coord baseray, t_camera cam);
 
 /*-------------------- rt_matrix.c --------------------*/
 
