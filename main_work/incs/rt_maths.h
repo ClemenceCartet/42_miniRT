@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_maths.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 11:10:37 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/13 14:08:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,5 @@ t_coord		rt_sub_vec(t_coord v1, t_coord v2);
 t_coord		rt_scale_vec(t_coord v, float m);
 float		rt_dot_prod(t_coord v1, t_coord v2);
 t_coord		rt_cross_vec(t_coord v1, t_coord v2);
-
-/*-------------------- rt_rotation.c --------------------*/
-
-void		x_axis_rotation(t_coord *xyz, float degree);
-void		y_axis_rotation(t_coord *xyz, float degree);
-void		z_axis_rotation(t_coord *xyz, float degree);
 
 #endif /* RT_MATHS */

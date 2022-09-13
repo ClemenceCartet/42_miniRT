@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_matrix_rotation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:38:48 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 11:41:29 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/13 14:10:58 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_matrix	rt_matrix_rot_x(float rad)
 	matrix.y.z = -sin(rad);
 	matrix.z.y = sin(rad);
 	matrix.z.z = cos(rad);
-	//dprintf(2, "new_z:%.2f, %.2f, %.2f, %.2f\n", matrix.y.y, matrix.y.z, matrix.z.y, matrix.z.z);
 	return (matrix);
 }
 
@@ -33,8 +32,8 @@ t_matrix	rt_matrix_rot_y(float rad)
 
 	matrix = rt_init_matrix();
 	matrix.x.x = cos(rad);
-	matrix.x.z = -sin(rad);
-	matrix.z.x = sin(rad);
+	matrix.x.z = sin(rad);
+	matrix.z.x = -sin(rad);
 	matrix.z.z = cos(rad);
 	return (matrix);
 }
@@ -46,8 +45,8 @@ t_matrix	rt_matrix_rot_z(float rad)
 
 	matrix = rt_init_matrix();
 	matrix.x.x = cos(rad);
-	matrix.x.y = sin(rad);
-	matrix.y.x = -sin(rad);
+	matrix.x.y = -sin(rad);
+	matrix.y.x = sin(rad);
 	matrix.y.y = cos(rad);
 	return (matrix);
 }

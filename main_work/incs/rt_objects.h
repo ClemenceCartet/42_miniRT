@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/12 11:08:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 14:29:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ struct	s_camera
 
 	float		radian;
 	float		focal;
-	t_coord		angle;
+
+	float		lr_angle;
+	float		ud_angle;
+	t_matrix	m_x;
+	t_matrix	m_y;
 };
 
 /**Structure pour la lumière

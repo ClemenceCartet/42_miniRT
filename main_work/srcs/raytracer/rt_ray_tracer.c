@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/13 12:04:09 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/13 14:53:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
-
 
 t_color	ft_skybox_color(t_ambient amb, t_coord v)
 {
@@ -59,10 +58,8 @@ bool	check_rotation_cam(t_ray *ray, t_camera cam)
 t_ray	rt_create_ray(t_camera cam, float w, float h)
 {
 	t_ray		ray;
-	t_matrix	m_y;
-	t_matrix	m_x;
 	t_matrix	rot;
-	
+
 	ray.origin = *cam.pos;
 	ray.dir.x = WIDTH * 0.5 - w;
 	ray.dir.y = HEIGHT * 0.5 - h;
@@ -72,13 +69,12 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	{
 		if (w == 50 && h == 50)
 			dprintf(2, "%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
-		m_y = rt_matrix_rot_x(asin(cam.dir->y));
-		m_x = rt_matrix_rot_y(asin(cam.dir->x));
-		rot = rt_multiply_matrix(m_y, m_x);
+		rot = rt_multiply_matrix(cam.m_y, cam.m_x);
 		ray.dir = rt_multiply_matrix_vector(rot, ray.dir);
 		if (w == 50 && h == 50)
 			dprintf(2, "%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	}
+	rt_norm_vector(&ray.dir);
 	//dprintf(2, "new_z:%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	ray.inter = 0;
 	ray.in_obj = 0;
@@ -94,6 +90,8 @@ void	rt_ray_tracer(t_master *master)
 	t_color	color;
 
 	pxl_h = 0;
+	master->camera->m_y = rt_matrix_rot_x(asin(master->camera->dir->y));
+	master->camera->m_x = rt_matrix_rot_y(asin(master->camera->dir->x));
 	while (pxl_h < HEIGHT)
 	{
 		pxl_w = 0;
