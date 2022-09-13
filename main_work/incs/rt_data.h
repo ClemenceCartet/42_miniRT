@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_data.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/11 11:15:42 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/13 17:16:21 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,14 @@ struct	s_color
  * x	= axe X
  * y	= axe Y
  * Z	= axe Z
+ * O	= Origine
 */
 struct	s_coord
 {
 	float	x;
 	float	y;
 	float	z;
+	float	o;
 };
 
 /**Structure contenant les données d'un rayon
@@ -159,11 +161,18 @@ struct	s_ray
 	bool		in_obj;
 };
 
+/**Structure contenant les données d'une matrice
+ * x	= vecteur d'orientation concernant x avec les ratios de rotation
+ * y	= vecteur d'orientation concernant y avec les ratios de rotation
+ * z	= vecteur d'orientation concernant z avec les ratios de rotation
+ * o	= position pour translation de l'origine du vecteur
+*/
 struct	s_matrix
 {
 	t_coord	x;
 	t_coord	y;
 	t_coord	z;
+	t_coord	o;
 };
 
 #endif //RT_DATA_H

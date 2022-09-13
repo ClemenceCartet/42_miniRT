@@ -3,13 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+         #
+#    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/09/12 14:17:49 by ccartet          ###   ########.fr        #
+#    Updated: 2022/09/13 17:16:09 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
-
 
 .PHONY: all clean fclean re makelibft makemlx
 .SILENT:
@@ -32,7 +31,8 @@ LST_HOOKS		:=	rt_manage_hooks.c			rt_hook_objects.c	\
 					rt_hook_camera.c			rt_hook_selection.c	\
 					rt_display.c
 LST_MATHS		:=	rt_color.c					rt_op_vector1.c		\
-					rt_op_vector2.c				rt_rotation.c
+					rt_op_vector2.c				rt_matrix.c			\
+					rt_matrix_rotation.c
 LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c	\
 					rt_data_utils.c				rt_init_coords.c	\
 					rt_init_data.c				rt_init_master.c	\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_init_additional_data.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/12 14:06:04 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/13 17:18:09 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

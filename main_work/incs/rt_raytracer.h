@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_raytracer.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/12 14:10:40 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/13 17:17:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ t_color	rt_set_color(t_hit hit, t_master *master);
 t_color	rt_set_point_light(t_hit hit, t_light *light, t_coord l_dir);
 t_color	rt_set_ambient_light(t_color hit_color, t_ambient *ambient);
 bool	rt_in_shadow(t_obj_data *obj_data, t_ray *l_ray, t_hit hit);
+
+/*-------------------- rt_ray_tracer.c --------------------*/
+
+void	rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
+t_ray	rt_create_ray(t_camera cam, float w, float h);
+bool	check_rotation_cam(t_ray *ray, t_camera cam);
+void	rt_ray_tracer(t_master *master);
 t_color	ft_skybox_color(t_ambient amb, t_coord v);
 
 #endif /* RT_RAYTRACER_H */

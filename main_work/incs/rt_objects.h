@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/09 14:24:27 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 17:16:42 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,17 @@ struct	s_ambient
 */
 struct	s_camera
 {
-	t_coord	*pos;
-	t_coord	*dir;
-	int		fov;
+	t_coord		*pos;
+	t_coord		*dir;
+	int			fov;
 
-	float	radian;
-	float	focal;
+	float		radian;
+	float		focal;
+
+	float		lr_angle;
+	float		ud_angle;
+	t_matrix	m_x;
+	t_matrix	m_y;
 };
 
 /**Structure pour la lumière

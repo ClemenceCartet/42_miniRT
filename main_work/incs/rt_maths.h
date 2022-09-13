@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_maths.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/08 20:13:41 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 14:08:39 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@
 /*/////////////////////////////////////////////////////////////////////////////
 		MATHS PROTOTYPES
 *//////////////////////////////////////////////////////////////////////////////
+
+/*-------------------- rt_matrix_rotation.c --------------------*/
+
+t_matrix	rt_matrix_rot_x(float rad);
+t_matrix	rt_matrix_rot_y(float rad);
+t_matrix	rt_matrix_rot_z(float rad);
+t_matrix	rt_matrix_rotate(t_coord vec);
+// t_coord		rt_rotate_test(t_matrix m, t_coord baseray, t_camera cam);
+
+/*-------------------- rt_matrix.c --------------------*/
+
+t_coord		rt_multiply_matrix_vector(t_matrix m, t_coord v);
+t_matrix	rt_multiply_matrix(t_matrix s, t_matrix r);
+t_coord		rt_set_vector_identity(int id);
+t_matrix	rt_init_matrix(void);
 
 /*-------------------- rt_color.c --------------------*/
 
@@ -40,11 +55,5 @@ t_coord		rt_sub_vec(t_coord v1, t_coord v2);
 t_coord		rt_scale_vec(t_coord v, float m);
 float		rt_dot_prod(t_coord v1, t_coord v2);
 t_coord		rt_cross_vec(t_coord v1, t_coord v2);
-
-/*-------------------- rt_rotation.c --------------------*/
-
-void		x_axis_rotation(t_coord *xyz, float rad);
-void		y_axis_rotation(t_coord *xyz, float rad);
-void		z_axis_rotation(t_coord *xyz, float rad);
 
 #endif /* RT_MATHS */
