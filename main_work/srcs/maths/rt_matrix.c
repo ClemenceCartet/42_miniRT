@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_matrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:31:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/11 11:45:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 11:45:28 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_coord	rt_multiply_matrix_vector(t_matrix m, t_coord v)
 
 	newvec.x = m.x.x * v.x + m.y.x * v.y + m.z.x * v.z;
 	newvec.y = m.x.y * v.x + m.y.y * v.y + m.z.y * v.z;
-	newvec.x = m.x.z * v.x + m.y.z * v.y + m.z.z * v.z;
+	newvec.z = m.x.z * v.x + m.y.z * v.y + m.z.z * v.z;
 	return (newvec);
 }
 

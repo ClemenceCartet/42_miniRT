@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/12 13:34:32 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 12:04:09 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+
+t_color	ft_skybox_color(t_ambient amb, t_coord v)
+{
+	t_color	color;
+
+	ft_memset(&color, 0, sizeof(t_color));
+	if (fabs(v.x) >= fabs(v.y) && fabs(v.x) >= fabs(v.z))
+		color.r = ((v.x + 1) / 2.0) * amb.rgb->r
+			* amb.ratio;
+	if (fabs(v.y) >= fabs(v.x) && fabs(v.y) >= fabs(v.z))
+		color.g = ((v.y + 1) / 2.0) * amb.rgb->g
+			* amb.ratio;
+	if (fabs(v.z) >= fabs(v.x) && fabs(v.z) >= fabs(v.y))
+		color.b = ((v.z + 1) / 2.0) * amb.rgb->b
+			* amb.ratio;
+	return (color);
+}
 
 void	rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx)
 {
@@ -41,21 +59,27 @@ bool	check_rotation_cam(t_ray *ray, t_camera cam)
 t_ray	rt_create_ray(t_camera cam, float w, float h)
 {
 	t_ray		ray;
+	t_matrix	m_y;
+	t_matrix	m_x;
 	t_matrix	rot;
-
+	
 	ray.origin = *cam.pos;
 	ray.dir.x = WIDTH * 0.5 - w;
 	ray.dir.y = HEIGHT * 0.5 - h;
 	ray.dir.z = cam.focal;
+	rt_norm_vector(&ray.dir);
 	if (!check_rotation_cam(&ray, cam))
 	{
-		// rot = rt_init_matrix();
-		// ray.dir = rt_rotate_test(rot, ray.dir, cam);
-		rot = rt_matrix_rotate(cam.angle);
+		if (w == 50 && h == 50)
+			dprintf(2, "%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
+		m_y = rt_matrix_rot_x(asin(cam.dir->y));
+		m_x = rt_matrix_rot_y(asin(cam.dir->x));
+		rot = rt_multiply_matrix(m_y, m_x);
 		ray.dir = rt_multiply_matrix_vector(rot, ray.dir);
+		if (w == 50 && h == 50)
+			dprintf(2, "%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	}
 	//dprintf(2, "new_z:%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
-	rt_norm_vector(&ray.dir);
 	ray.inter = 0;
 	ray.in_obj = 0;
 	ray.hit.time = -1;
@@ -80,7 +104,7 @@ void	rt_ray_tracer(t_master *master)
 			if (ray.inter)
 				color = rt_set_color(ray.hit, master);
 			else
-				color = rt_color_bkg();
+				color = ft_skybox_color(*master->ambient, ray.dir);
 			rt_put_pixel(pxl_w, pxl_h, color, master->mlx);
 			pxl_w++;
 		}

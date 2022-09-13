@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_raytracer.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadegecartet <nadegecartet@student.42ly    +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/08 16:53:10 by nadegecarte      ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 12:02:09 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	rt_put_pixel(float x, float y, t_color color, t_mlx_data *mlx);
 t_ray	rt_create_ray(t_camera cam, float w, float h);
 bool	check_rotation_cam(t_ray *ray, t_camera cam);
 void	rt_ray_tracer(t_master *master);
+t_color	ft_skybox_color(t_ambient amb, t_coord v);
 
 #endif /* RT_RAYTRACER_H */
