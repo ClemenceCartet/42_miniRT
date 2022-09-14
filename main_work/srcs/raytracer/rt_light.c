@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_light.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:35 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 13:45:13 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 14:33:04 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_color	ft_skybox_color(t_ambient amb, t_coord v)
 			* amb.ratio;
 	return (color);
 }
-
 
 t_color	rt_set_ambient_light(t_color hit_color, t_ambient *ambient)
 {
@@ -69,8 +68,8 @@ t_color	rt_set_color(t_hit hit, t_master *master)
 	l_ray.origin = *master->light->pos;
 	l_amb = rt_set_ambient_light(hit.color, master->ambient);
 	l_point = rt_set_point_light(hit, master->light, l_ray.dir);
-	// if (rt_in_shadow(master->obj_data, &l_ray, hit))
-	// 	l_intensity = 0;
+	if (rt_in_shadow(master->obj_data, &l_ray, hit))
+		l_intensity = 0;
 	l_point = rt_scale_color(l_point, l_intensity);
 	color = rt_add_color(l_amb, l_point);
 	return (color);

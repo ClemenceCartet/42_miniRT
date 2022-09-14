@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_objects.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 11:45:29 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 14:32:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct	s_camera
 
 	float		radian;
 	float		focal;
-	
+
 	t_matrix	rotate;
 };
 

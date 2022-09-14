@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hits.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 13:54:40 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 14:33:38 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
-
-// void	rt_set_hit_pl(float t, t_ray *ray, t_object *pl)
-// {	
-// 	float	ratio;
-
-// 	ratio = 1.0;
-// 	ray->hit.time = t;
-// 	rt_set_hit_point(ray);
-// 	if (rt_dot_prod(ray->dir, *pl->dir) > 0)
-// 		ray->hit.normal = rt_scale_vec(*pl->dir, -1);
-// 	else
-// 		ray->hit.normal = *pl->dir;
-// 	ray->hit.color = *pl->rgb;
-// 	if (t > 25.0)
-// 	{
-// 		ratio = 25.0 / t;
-// 		ray->hit.color = rt_scale_color(*pl->rgb, ratio);
-// 	}
-// 	ray->hit.obj = pl;
-// }	
 
 void	rt_set_hit_point(t_ray *ray)
 {	
@@ -62,14 +42,13 @@ void	rt_find_normal_plane(t_ray *ray, t_coord pl_dir)
 
 void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 {
-	t_color up;
-	t_color down;
+	t_color	up;
+	t_color	down;
 
-	up = rt_create_color(0.78,0.537,1.0);
-	down = rt_create_color(0.537,0.874,1.0);
+	up = rt_create_color(0.78, 0.537, 1.0);
+	down = rt_create_color(0.537, 0.874, 1.0);
 	ray->hit.time = time;
 	rt_set_hit_point(ray);
-	//dprintf(1, "%.2f,%.2f,%.2f   ", ray->hit.point.x,ray->hit.point.y, ray->hit.point.z);
 	ray->inter = 1;
 	if (obj->id == SP)
 	{

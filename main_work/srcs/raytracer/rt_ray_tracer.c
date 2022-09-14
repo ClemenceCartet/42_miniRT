@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 11:45:48 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 14:32:25 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	rt_norm_vector(&ray.dir);
 	if (!check_rotation_cam(&ray, cam)) // enlever cette condition ?
 		ray.dir = rt_multiply_matrix_vector(cam.rotate, ray.dir);
-	//dprintf(2, "new_z:%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	ray.inter = 0;
 	ray.in_obj = 0;
 	ray.hit.time = -1;
