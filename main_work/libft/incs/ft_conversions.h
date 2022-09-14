@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:57:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/06 14:18:43 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/03 12:28:40 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ long	ft_atol(const char *str);
 int		ft_big_atoi(const char *str);
 long	ft_big_atol(const char *str);
 void	ft_swap(int *a, int *b);
+void	ft_fswap(float *a, float *b);
 char	*ft_str_toupper(const char *str);
 char	*ft_str_tolower(const char *str);
 int		ft_add_str_to_int(const char *str, int *a);

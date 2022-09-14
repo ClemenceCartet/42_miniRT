@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/12 12:48:45 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 14:32:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,20 @@ struct	s_ambient
  * pos		= coordonnées XYZ de la caméra
  * dir		= Vecteur d'orientation 3D sur l'axe XYZ | range [ -1 / 1 ]
  * fov		= Champ de vision horizontal en degré | range [ 0 / 180 ]
+ * 
+ * radian	= FOV * PI / 180, permet d'utiliser le FOV
+ * focal	= ?
 */
 struct	s_camera
 {
-	t_coord	*pos;
-	t_coord	*dir;
-	int		fov;
-	float	radian;
+	t_coord		*pos;
+	t_coord		*dir;
+	int			fov;
+
+	float		radian;
+	float		focal;
+
+	t_matrix	rotate;
 };
 
 /**Structure pour la lumière
@@ -66,6 +73,12 @@ struct	s_light
  * rgb		= couleur RGB de l'objet | range [ 0 / 255 ]
  * diameter	= diamètre de l'objet (SP / CY)
  * height	= hauteur de l'objet (CY)
+ * 
+ * radius	= rayon en fonction du diamètre (SP / CY)
+ * c[4]		= ?
+ * gap[4]	= ?
+ * cypos	= seconde position pour l'autre bout du cylindre (CY)
+ * selected	= permet de savoir si l'objet est sélectionné ou non avec un hook
 */
 struct	s_object
 {
@@ -76,6 +89,11 @@ struct	s_object
 	t_color	*rgb;
 	float	diameter;
 	float	height;
+
+	float	radius;
+	t_coord	c[4];
+	t_coord	gap[4];
+	int		selected;
 };
 /**Structure pour l'objet sphère
  * pos		= coordonnées XYZ du centre de la sphère

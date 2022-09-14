@@ -6,11 +6,23 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:17:51 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 17:47:15 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 11:39:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+//Check object ID to init correct object data
+static t_object	*rt_obj_data_hub(char **split)
+{
+	if (!ft_strncmp(split[0], "sp", 3))
+		return (rt_init_sphere(split));
+	else if (!ft_strncmp(split[0], "pl", 3))
+		return (rt_init_plane(split));
+	else if (!ft_strncmp(split[0], "cy", 3))
+		return (rt_init_cylinder(split));
+	return (NULL);
+}
 
 //Object initialization (SP / PL / CY)
 int	rt_init_obj_data(t_obj_data **obj_data, char **split)
@@ -25,13 +37,9 @@ int	rt_init_obj_data(t_obj_data **obj_data, char **split)
 			return (1);
 		(*obj_data)->lst = NULL;
 		(*obj_data)->lst_size = 0;
+		(*obj_data)->objects = NULL;
 	}
-	if (!ft_strncmp(split[0], "sp", 3))
-		object = rt_init_sphere(split);
-	else if (!ft_strncmp(split[0], "pl", 3))
-		object = rt_init_plane(split);
-	else if (!ft_strncmp(split[0], "cy", 3))
-		object = rt_init_cylinder(split);
+	object = rt_obj_data_hub(split);
 	if (!object)
 		return (1);
 	ft_free_split(split);
@@ -47,8 +55,8 @@ int	rt_init_light(t_light **light, char **split)
 {
 	if (rt_check_ptr(*light, split))
 		return (1);
-	if (ft_splitlen(split) != 4)
-		return (rt_return_int_error(split, NULL, E_SPLITLEN, "Light"));
+	if (ft_splitlen(split) != 3)
+		return (rt_ret_int_error(split, NULL, E_SPLITLEN, "Light"));
 	*light = rt_calloc_struct(sizeof(t_light), split);
 	if (!*light)
 		return (1);
@@ -57,9 +65,6 @@ int	rt_init_light(t_light **light, char **split)
 		return (1);
 	(*light)->ratio = rt_init_ratio(split, split[2]);
 	if ((*light)->ratio == -1)
-		return (1);
-	(*light)->rgb = rt_init_rgb(split, split[3]);
-	if (!(*light)->rgb)
 		return (1);
 	ft_free_split(split);
 	return (0);
@@ -71,7 +76,7 @@ int	rt_init_camera(t_camera **camera, char **split)
 	if (rt_check_ptr(*camera, split))
 		return (1);
 	if (ft_splitlen(split) != 4)
-		return (rt_return_int_error(split, NULL, E_SPLITLEN, "Camera"));
+		return (rt_ret_int_error(split, NULL, E_SPLITLEN, "Camera"));
 	*camera = rt_calloc_struct(sizeof(t_camera), split);
 	if (!*camera)
 		return (1);
@@ -81,10 +86,12 @@ int	rt_init_camera(t_camera **camera, char **split)
 	(*camera)->dir = rt_init_coords(split, split[2], 1);
 	if (!(*camera)->dir)
 		return (1);
+	if (rt_vector_length(*(*camera)->dir) > 1.0
+		|| rt_vector_length(*(*camera)->dir) == 0.0)
+		return (rt_ret_int_error(split, NULL, E_NUMBER, NULL));
 	(*camera)->fov = rt_init_fov(split, split[3]);
 	if ((*camera)->fov == -1)
 		return (1);
-	(*camera)->radian = 0;//rt_init_radian((*camera)->fov); //ouaf
 	ft_free_split(split);
 	return (0);
 }
@@ -95,7 +102,7 @@ int	rt_init_ambient(t_ambient **ambient, char **split)
 	if (rt_check_ptr(*ambient, split))
 		return (1);
 	if (ft_splitlen(split) != 3)
-		return (rt_return_int_error(split, NULL, E_SPLITLEN, "Ambient Light"));
+		return (rt_ret_int_error(split, NULL, E_SPLITLEN, "Ambient Light"));
 	*ambient = rt_calloc_struct(sizeof(t_ambient), split);
 	if (!*ambient)
 		return (1);

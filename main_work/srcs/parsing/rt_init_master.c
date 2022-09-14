@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:48:45 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 18:24:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/13 17:18:15 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ static int	rt_check_init_master(t_master *master)
 //Call everything to initialize base data from a given file
 int	rt_init_master(t_master *master, char *filename)
 {
-	master->mlx_data = NULL;
+	master->init = NULL;
+	master->wdw = NULL;
+	master->mlx = NULL;
 	master->obj_data = NULL;
 	master->ambient = NULL;
 	master->camera = NULL;
@@ -112,6 +114,8 @@ int	rt_init_master(t_master *master, char *filename)
 	if (rt_get_file_content(master, filename))
 		return (1);
 	if (rt_check_init_master(master))
+		return (1);
+	if (rt_init_additional_data(master))
 		return (1);
 	return (0);
 }

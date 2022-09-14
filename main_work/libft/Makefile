@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 09:59:23 by ljohnson          #+#    #+#              #
-#    Updated: 2022/08/06 16:58:06 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/09/03 12:29:11 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ LST_CONVERSIONS		:=	ft_atoi.c					ft_atol.c					\
 						ft_strmapi.c				ft_swap.c					\
 						ft_tolower.c				ft_toupper.c				\
 						ft_add_str_to_int.c			ft_atof.c					\
-						ft_replace_char.c
+						ft_replace_char.c			ft_fswap.c
 
 LST_COUNTERS		:=	ft_count_char.c				ft_count_word.c				\
 						ft_strlcat.c				ft_strlcpy.c				\
@@ -126,7 +126,7 @@ CF			:=	-Wall -Werror -Wextra
 CS			:=	-g -fsanitize=address
 CI			:=	-I $(P_INCS)
 CG			:=	-g3
-AR			:=	ar rcs
+AR			:=	ar -rcs
 RM			:=	rm -rf
 
 # Colors
