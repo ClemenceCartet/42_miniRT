@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hits.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 14:46:57 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:49:19 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ void	rt_find_normal_sphere(t_ray *ray, t_object *sp)
 
 void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 {
-	t_color	up;
-	t_color	down;
-
-	up = rt_create_color(0.78, 0.537, 1.0);
-	down = rt_create_color(0.537, 0.874, 1.0);
 	ray->hit.time = time;
 	rt_set_hit_point(ray);
 	ray->inter = 1;
@@ -72,10 +67,5 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 			rt_find_normal_cy(&ray->hit, obj, ray->in_obj);
 	}	
 	rt_norm_vector(&ray->hit.normal);
-	if (ray->hit.cy_plane == 1)
-		ray->hit.color = up;
-	else if (ray->hit.cy_plane == 2)
-		ray->hit.color = down;
-	else
-		ray->hit.color = *obj->rgb;
+	ray->hit.color = *obj->rgb;
 }

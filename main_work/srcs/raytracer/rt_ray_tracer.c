@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 15:21:32 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:47:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,6 @@ void	rt_put_pixel(int x, int y, t_color color, t_mlx_data *mlx)
 	mlx->addr[i++] = color.r * 255;
 }
 
-bool	check_rotation_cam(t_ray *ray, t_camera cam)
-{
-	if (cam.dir->x == 0.0 && cam.dir->y == 0.0)
-	{
-		if (cam.dir->z < 0.0)
-		{
-			ray->dir.x = -ray->dir.x;
-			ray->dir.y = ray->dir.y;
-			ray->dir.z = -ray->dir.z;
-		}
-		return (1);
-	}
-	return (0);
-}	
-
 t_ray	rt_create_ray(t_camera cam, float w, float h)
 {
 	t_ray		ray;
@@ -47,8 +32,7 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ray.dir.y = HEIGHT * 0.5 - h;
 	ray.dir.z = cam.focal;
 	rt_norm_vector(&ray.dir);
-	if (!check_rotation_cam(&ray, cam)) // enlever cette condition ?
-		ray.dir = rt_multiply_matrix_vector(cam.rotate, ray.dir);
+	ray.dir = rt_multiply_matrix_vector(cam.rotate, ray.dir);
 	ray.inter = 0;
 	ray.in_obj = 0;
 	ray.hit.time = -1;
@@ -75,7 +59,7 @@ void	rt_ray_tracer(t_master *master)
 			if (ray.inter)
 				color = rt_set_color(ray.hit, master);
 			else
-				color = rt_create_color( 0.0, 0.0, 0.0);
+				color = rt_create_color(0.0, 0.0, 0.0);
 			rt_put_pixel(pxl_w, pxl_h, color, master->mlx);
 			pxl_w++;
 		}

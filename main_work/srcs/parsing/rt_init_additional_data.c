@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_init_additional_data.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 15:34:42 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:52:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_object	**rt_init_object_tab(t_obj_data *obj_data)
 	a = 0;
 	objects = malloc(sizeof(t_object *) * (obj_data->lst_size + 1));
 	if (!objects)
-		return (rt_write_ptr_error(E_MALLOC, NULL, DFI, DLI));
+		return (rt_write_ptr_error(E_MALLOC, NULL));
 	obj_data->lst = obj_data->start;
 	while (a < obj_data->lst_size)
 	{
@@ -41,7 +41,7 @@ static void	rt_init_add_camera(t_camera **cam)
 
 	(*cam)->radian = (*cam)->fov * M_PI / 180;
 	(*cam)->focal = WIDTH / (2 * tan((*cam)->radian * 0.5));
-	newm_y = rt_matrix_rot_x(-asin((*cam)->dir->y ) + 0.0001);
+	newm_y = rt_matrix_rot_x(-asin((*cam)->dir->y) + 0.0001);
 	newm_x = rt_matrix_rot_y(atan2((*cam)->dir->x, (*cam)->dir->z) + 0.0001);
 	(*cam)->rotate = rt_multiply_matrix(newm_y, newm_x);
 	*(*cam)->dir = rt_multiply_matrix_vector((*cam)->rotate, *(*cam)->dir);
@@ -64,7 +64,7 @@ int	rt_init_additional_data(t_master *master)
 	a = 0;
 	master->mlx = ft_calloc(1, sizeof(t_mlx_data));
 	if (!master->mlx)
-		return (rt_write_int_error(E_MALLOC, NULL, DFI, DLI));
+		return (rt_write_int_error(E_MALLOC, NULL));
 	master->obj_data->objects = rt_init_object_tab(master->obj_data);
 	if (!master->obj_data->objects)
 		return (1);

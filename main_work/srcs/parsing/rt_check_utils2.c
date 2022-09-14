@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:55:27 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:52:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	rt_check_overflow(char *value, char **split)
 int	rt_check_float_range(float val, float min, float max, char *range)
 {
 	if (isnan(val) || isinf(val))
-		return (rt_write_int_error(E_NUMBER, NULL, DFI, DLI));
+		return (rt_write_int_error(E_NUMBER, NULL));
 	if (val < min)
-		return (rt_write_int_error(E_RANGE, range, DFI, DLI));
+		return (rt_write_int_error(E_RANGE, range));
 	if (min < max)
 	{
 		if (val > max)
-			return (rt_write_int_error(E_RANGE, range, DFI, DLI));
+			return (rt_write_int_error(E_RANGE, range));
 	}
 	return (0);
 }
@@ -73,13 +73,13 @@ int	rt_check_float_range(float val, float min, float max, char *range)
 int	rt_check_int_range(int value, int min, int max, char *range)
 {
 	if (isnan(value) || isinf(value))
-		return (rt_write_int_error(E_NUMBER, NULL, DFI, DLI));
+		return (rt_write_int_error(E_NUMBER, NULL));
 	if (value < min)
-		return (rt_write_int_error(E_RANGE, range, DFI, DLI));
+		return (rt_write_int_error(E_RANGE, range));
 	if (min < max)
 	{
 		if (value > max)
-			return (rt_write_int_error(E_RANGE, range, DFI, DLI));
+			return (rt_write_int_error(E_RANGE, range));
 	}
 	return (0);
 }

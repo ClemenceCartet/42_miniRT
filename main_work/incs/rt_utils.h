@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:18:29 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/03 12:19:10 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:53:06 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ char		**rt_ret_split_error(char **s1, char **s2, char *str, char *str2);
 /*-------------------- rt_write_errors.c --------------------*/
 
 //	 void	rt_display_error(char *str, char *str2);
-int			rt_write_int_error(char *str, char *str2, char *dfi, int dli);
-void		*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli);
-char		*rt_write_char_error(char *str, char *str2, char *dfi, int dli);
-char		**rt_write_split_error(char *str, char *str2, char *dfi, int dli);
+int			rt_write_int_error(char *str, char *str2);
+void		*rt_write_ptr_error(char *str, char *str2);
+char		*rt_write_char_error(char *str, char *str2);
+char		**rt_write_split_error(char *str, char *str2);
 
 #endif /* RT_UTILS_H */

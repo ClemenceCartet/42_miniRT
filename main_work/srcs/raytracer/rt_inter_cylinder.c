@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_inter_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 14:28:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 15:28:08 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:48:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ float	rt_body_cy_inter(t_ray *ray, t_object *cy)
 	float	time;
 	float	delta;
 	float	tmp_time[2];
-	
+
 	time = 0.0;
 	delta = 0.0;
 	rt_calcul_cy(ray, cy, tmp_time, &delta);

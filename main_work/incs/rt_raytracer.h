@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 15:40:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:46:50 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ bool	rt_in_shadow(t_obj_data *obj_data, t_ray *l_ray, t_hit hit);
 
 void	rt_put_pixel(int x, int y, t_color color, t_mlx_data *mlx);
 t_ray	rt_create_ray(t_camera cam, float w, float h);
-bool	check_rotation_cam(t_ray *ray, t_camera cam);
 void	rt_ray_tracer(t_master *master);
 
 #endif /* RT_RAYTRACER_H */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_inter_cy_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 14:30:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 15:28:33 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:48:20 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ float	rt_set_time(t_ray *ray, float tmp_time, float dist, int ok)
 	return (time);
 }
 
-float rt_check_body_cy(t_ray *ray, t_object *cy, float *tmp_time)
+float	rt_check_body_cy(t_ray *ray, t_object *cy, float *tmp_time)
 {
 	float	dist[2];
 	t_coord	to_center;

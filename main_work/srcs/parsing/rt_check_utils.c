@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 10:35:03 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/18 09:57:17 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:52:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	rt_check_comma(char *values)
 	a = 0;
 	count = 0;
 	if (!values || !values[0])
-		return (rt_write_int_error(E_NO_VALUE, NULL, DFI, DLI));
+		return (rt_write_int_error(E_NO_VALUE, NULL));
 	while (values[a])
 	{
 		if (values[a] == ',')
@@ -44,7 +44,7 @@ int	rt_check_comma(char *values)
 		a++;
 	}
 	if (count != 2)
-		return (rt_write_int_error(E_SYNTAX, values, DFI, DLI));
+		return (rt_write_int_error(E_SYNTAX, values));
 	return (0);
 }
 
@@ -55,11 +55,11 @@ int	rt_check_charset(char *value, char *charset)
 
 	a = 0;
 	if (!value || !value[0])
-		return (rt_write_int_error(E_NO_VALUE, NULL, DFI, DLI));
+		return (rt_write_int_error(E_NO_VALUE, NULL));
 	while (value[a])
 	{
 		if (ft_isnotcharset(value[a], charset))
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
+			return (rt_write_int_error(E_SYNTAX, value));
 		a++;
 	}
 	return (0);
@@ -74,15 +74,15 @@ int	rt_check_float_syntax(char *value)
 	a = 0;
 	point = 0;
 	if (!value || !value[0])
-		return (rt_write_int_error(E_NO_VALUE, NULL, DFI, DLI));
+		return (rt_write_int_error(E_NO_VALUE, NULL));
 	while (value[a])
 	{
 		if (ft_isnotcharset(value[a], FLOAT_CHARSET))
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
+			return (rt_write_int_error(E_SYNTAX, value));
 		if (a > 0 && (value[a] == '-' || value[a] == '+'))
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
+			return (rt_write_int_error(E_SYNTAX, value));
 		if (point && value[a] == '.')
-			return (rt_write_int_error(E_SYNTAX, value, DFI, DLI));
+			return (rt_write_int_error(E_SYNTAX, value));
 		if (!point && value[a] == '.')
 			point = 1;
 		a++;

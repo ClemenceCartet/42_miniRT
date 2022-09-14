@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:45:12 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/08/13 18:17:11 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:53:16 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,40 +28,36 @@ static void	rt_display_error(char *str, char *str2)
 }
 
 // Write an error message in two parts and return 1
-int	rt_write_int_error(char *str, char *str2, char *dfi, int dli)
+int	rt_write_int_error(char *str, char *str2)
 {
 	ft_putstr_fd("\033[33m", STDERR_FILENO);
-	dprintf(STDERR_FILENO, "%s | %d\n", dfi, dli);
 	ft_putstr_fd("\033[0m", STDERR_FILENO);
 	rt_display_error(str, str2);
 	return (1);
 }
 
 // Write an error message in two parts and return NULL for pointer
-void	*rt_write_ptr_error(char *str, char *str2, char *dfi, int dli)
+void	*rt_write_ptr_error(char *str, char *str2)
 {
 	ft_putstr_fd("\033[33m", STDERR_FILENO);
-	dprintf(STDERR_FILENO, "%s | %d\n", dfi, dli);
 	ft_putstr_fd("\033[0m", STDERR_FILENO);
 	rt_display_error(str, str2);
 	return (NULL);
 }
 
 // Write an error message in two parts and return NULL for string
-char	*rt_write_char_error(char *str, char *str2, char *dfi, int dli)
+char	*rt_write_char_error(char *str, char *str2)
 {
 	ft_putstr_fd("\033[33m", STDERR_FILENO);
-	dprintf(STDERR_FILENO, "%s | %d\n", dfi, dli);
 	ft_putstr_fd("\033[0m", STDERR_FILENO);
 	rt_display_error(str, str2);
 	return (NULL);
 }
 
 // Write an error message in two parts and return NULL for split
-char	**rt_write_split_error(char *str, char *str2, char *dfi, int dli)
+char	**rt_write_split_error(char *str, char *str2)
 {
 	ft_putstr_fd("\033[33m", STDERR_FILENO);
-	dprintf(STDERR_FILENO, "%s | %d\n", dfi, dli);
 	ft_putstr_fd("\033[0m", STDERR_FILENO);
 	rt_display_error(str, str2);
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:44:34 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 13:45:13 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:52:49 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	t_master	master;
 
 	if (ac != 2)
-		return (rt_write_int_error(E_USAGE, NULL, DFI, DLI));
+		return (rt_write_int_error(E_USAGE, NULL));
 	if (rt_init_master(&master, av[1]))
 		return (rt_free_master(&master) + 1);
 	master.init = mlx_init();
