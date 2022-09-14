@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:20:32 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 14:52:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:40:07 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,21 @@ float	rt_inter_sphere(t_ray *ray, t_object *sp);
 
 /*-------------------- rt_inters_cylinder.c --------------------*/
 
-float	rt_check_down_plane_cy(t_ray *ray, t_object *cy);
-float	rt_check_up_plane_cy(t_ray *ray, t_object *cy);
-float	rt_end_cy_inter(t_ray *ray, t_object *cy);
-void	rt_calcul_cy(t_ray *ray, t_object *cy, float *tmp_time, float *delta);
-float	rt_set_time(t_ray *ray, float tmp_time, float dist, int ok);
-
-/*-------------------- rt_inters_cylinder2.c --------------------*/
-
-float	rt_body_cy_inter(t_ray *ray, t_object *cy);
 float	rt_inter_cylinder(t_ray *ray, t_object *cy);
+float	rt_body_cy_inter(t_ray *ray, t_object *cy);
+void	rt_calcul_cy(t_ray *ray, t_object *cy, float *tmp_time, float *delta);
+float	rt_end_cy_inter(t_ray *ray, t_object *cy);
+
+/*-------------------- rt_inters_cy_utils.c --------------------*/
+
+float	rt_check_body_cy(t_ray *ray, t_object *cy, float *tmp_time);
+float	rt_set_time(t_ray *ray, float tmp_time, float dist, int ok);
+float	rt_check_plane_cy(t_ray *ray, t_coord cy_pos, t_object *cy);
 
 /*-------------------- rt_hits.c --------------------*/
 
 void	rt_set_hit(t_ray *ray, t_object *obj, float time);
+void	rt_find_normal_sphere(t_ray *ray, t_object *sp);
 void	rt_find_normal_plane(t_ray *ray, t_coord pl_dir);
 void	rt_find_normal_cy(t_hit *hit, t_object *cy, int in_obj);
 void	rt_set_hit_point(t_ray *ray);
@@ -66,6 +67,5 @@ void	rt_put_pixel(int x, int y, t_color color, t_mlx_data *mlx);
 t_ray	rt_create_ray(t_camera cam, float w, float h);
 bool	check_rotation_cam(t_ray *ray, t_camera cam);
 void	rt_ray_tracer(t_master *master);
-t_color	ft_skybox_color(t_ambient amb, t_coord v);
 
 #endif /* RT_RAYTRACER_H */

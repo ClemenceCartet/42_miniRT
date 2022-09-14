@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hits.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:15:01 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 14:33:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 14:46:57 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ void	rt_find_normal_plane(t_ray *ray, t_coord pl_dir)
 		ray->hit.normal = pl_dir;
 }
 
+void	rt_find_normal_sphere(t_ray *ray, t_object *sp)
+{
+	if (ray->in_obj)
+		ray->hit.normal = rt_sub_vec(*sp->pos, ray->hit.point);
+	else
+		ray->hit.normal = rt_sub_vec(ray->hit.point, *sp->pos);
+}
+
 void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 {
 	t_color	up;
@@ -51,12 +59,7 @@ void	rt_set_hit(t_ray *ray, t_object *obj, float time)
 	rt_set_hit_point(ray);
 	ray->inter = 1;
 	if (obj->id == SP)
-	{
-		if (ray->in_obj)
-			ray->hit.normal = rt_sub_vec(*obj->pos, ray->hit.point);
-		else
-			ray->hit.normal = rt_sub_vec(ray->hit.point, *obj->pos);
-	}
+		rt_find_normal_sphere(ray, obj);
 	if (obj->id == PL)
 		rt_find_normal_plane(ray, *obj->dir);
 	if (obj->id == CY)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 14:32:25 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:21:32 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ bool	check_rotation_cam(t_ray *ray, t_camera cam)
 	return (0);
 }	
 
-//Création d'un rayon tracé depuis la caméra vers le viewplane
 t_ray	rt_create_ray(t_camera cam, float w, float h)
 {
 	t_ray		ray;
@@ -76,7 +75,7 @@ void	rt_ray_tracer(t_master *master)
 			if (ray.inter)
 				color = rt_set_color(ray.hit, master);
 			else
-				color = ft_skybox_color(*master->ambient, ray.dir);
+				color = rt_create_color( 0.0, 0.0, 0.0);
 			rt_put_pixel(pxl_w, pxl_h, color, master->mlx);
 			pxl_w++;
 		}

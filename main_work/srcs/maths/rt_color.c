@@ -3,20 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   rt_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 09:12:21 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/14 14:34:05 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:20:17 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-t_color	rt_color_bkg(void)
+t_color	rt_skybox_color(t_ambient amb, t_coord v)
 {
 	t_color	color;
 
 	ft_memset(&color, 0, sizeof(t_color));
+	if (fabs(v.x) >= fabs(v.y) && fabs(v.x) >= fabs(v.z))
+		color.r = ((v.x + 1) / 2.0) * amb.rgb->r
+			* amb.ratio;
+	if (fabs(v.y) >= fabs(v.x) && fabs(v.y) >= fabs(v.z))
+		color.g = ((v.y + 1) / 2.0) * amb.rgb->g
+			* amb.ratio;
+	if (fabs(v.z) >= fabs(v.x) && fabs(v.z) >= fabs(v.y))
+		color.b = ((v.z + 1) / 2.0) * amb.rgb->b
+			* amb.ratio;
 	return (color);
 }
 
