@@ -3,60 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   rt_inter_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 14:28:42 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 14:30:00 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:28:08 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
 
-float	rt_check_down_plane_cy(t_ray *ray, t_object *cy)
-{
-	float	time;
-	t_coord	tmp_hit;
-	float	dist;
-
-	time = rt_calcul_plane(ray, *cy->pos, *cy->dir);
-	if (time >= 0.0)
-	{
-		tmp_hit = rt_add_vec(ray->origin, rt_scale_vec(ray->dir, time));
-		dist = rt_vector_length(rt_sub_vec(tmp_hit, *cy->pos));
-		if (dist <= cy->radius)
-			return (time);
-	}
-	return (-1);
-}
-
-float	rt_check_up_plane_cy(t_ray *ray, t_object *cy)
-{
-	t_coord	up;
-	float	time;
-	t_coord	tmp_hit;
-	float	dist;
-
-	up = rt_add_vec(*cy->pos, rt_scale_vec(*cy->dir, cy->height));
-	time = rt_calcul_plane(ray, up, *cy->dir);
-	if (time >= 0.0)
-	{
-		tmp_hit = rt_add_vec(ray->origin, rt_scale_vec(ray->dir, time));
-		dist = rt_vector_length(rt_sub_vec(tmp_hit, up));
-		if (dist <= cy->radius)
-			return (time);
-	}
-	return (-1);
-}
-
 float	rt_end_cy_inter(t_ray *ray, t_object *cy)
 {
 	float	down;
+	t_coord	up_pos;
 	float	up;
 	float	time;
 	float	tmp_time[2];
 
-	down = rt_check_down_plane_cy(ray, cy);
-	up = rt_check_up_plane_cy(ray, cy);
+	down = rt_check_plane_cy(ray, *cy->pos, cy);
+	up_pos = rt_add_vec(*cy->pos, rt_scale_vec(*cy->dir, cy->height));
+	up = rt_check_plane_cy(ray, up_pos, cy);
 	tmp_time[0] = down;
 	tmp_time[1] = up;
 	if (tmp_time[0] < 0.0 && tmp_time[1] < 0.0)
@@ -102,12 +68,38 @@ void	rt_calcul_cy(t_ray *ray, t_object *cy, float *tmp_time, float *delta)
 	}
 }
 
-float	rt_set_time(t_ray *ray, float tmp_time, float dist, int ok)
+float	rt_body_cy_inter(t_ray *ray, t_object *cy)
 {
 	float	time;
-
-	time = tmp_time;
-	ray->hit.dist_for_normal = dist;
-	ray->in_obj = ok;
+	float	delta;
+	float	tmp_time[2];
+	
+	time = 0.0;
+	delta = 0.0;
+	rt_calcul_cy(ray, cy, tmp_time, &delta);
+	if (delta < 0.0 || tmp_time[1] < 0.0)
+		return (-1);
+	time = rt_check_body_cy(ray, cy, tmp_time);
 	return (time);
+}
+
+float	rt_inter_cylinder(t_ray *ray, t_object *cy)
+{
+	float	body_time;
+	float	end_time;
+
+	ray->in_obj = 0;
+	ray->hit.cy_plane = 0;
+	ray->hit.dist_for_normal = 0;
+	body_time = rt_body_cy_inter(ray, cy);
+	end_time = rt_end_cy_inter(ray, cy);
+	if (body_time < 0.0 && end_time < 0.0)
+		return (-1);
+	if ((body_time >= 0.0 && end_time > body_time) || end_time < 0.0)
+	{
+		ray->hit.cy_plane = 0;
+		return (body_time);
+	}
+	else
+		return (end_time);
 }

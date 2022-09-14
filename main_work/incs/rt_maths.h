@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 13:08:08 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:20:11 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_matrix	rt_init_matrix(void);
 
 /*-------------------- rt_color.c --------------------*/
 
-t_color		rt_color_bkg(void);
+t_color		rt_skybox_color(t_ambient amb, t_coord v);
 t_color		rt_add_color(t_color c1, t_color c2);
 t_color		rt_scale_color(t_color c1, float ratio);
 t_color		rt_reflt_color(t_color light, t_color obj);

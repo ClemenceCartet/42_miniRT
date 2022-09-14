@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/09/13 17:16:09 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/09/14 15:12:01 by ccartet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c	\
 					rt_init_additional_data.c
 LST_RAYTRACER	:=	rt_hits.c					rt_light.c			\
 					rt_ray_tracer.c				rt_intersection.c	\
-					rt_inter_cylinder.c
+					rt_inter_cylinder.c			rt_inter_cy_utils.c
 LST_UTILS		:=	rt_free_data.c				rt_free_objects.c	\
 					rt_return_errors.c			rt_write_errors.c
 
