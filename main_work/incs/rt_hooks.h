@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hooks.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:12:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 15:02:03 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 11:35:23 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	rt_update_obj_size(int key, t_master *master, int object, int obj_size);
 
 /*-------------------- rt_hook_camera.c --------------------*/
 
-//void	rt_update_camera_pos(int key, t_master *master);
-void	rt_update_camera(int key, t_master *master);
+void	rt_update_camera_pos(int key, t_master *master);
+void	rt_update_camera_dir(int key, t_master *master);
 
 /*-------------------- rt_manage_hooks.c --------------------*/
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_maths.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 08:19:15 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 14:08:39 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 13:08:08 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_color		rt_color_bkg(void);
 t_color		rt_add_color(t_color c1, t_color c2);
 t_color		rt_scale_color(t_color c1, float ratio);
 t_color		rt_reflt_color(t_color light, t_color obj);
+t_color		rt_create_color(float r, float g, float b);
 
 /*-------------------- rt_op_vector1.c --------------------*/
 

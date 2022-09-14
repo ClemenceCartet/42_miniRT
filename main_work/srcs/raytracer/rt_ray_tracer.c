@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_tracer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/13 17:22:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 11:45:48 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	rt_put_pixel(int x, int y, t_color color, t_mlx_data *mlx)
 	int	i;
 
 	i = (y * mlx->line_length) + (x * (mlx->bpp / 8));
-	mlx->addr[i++] = ft_get_lowest((int)(color.b * 255), 255);
-	mlx->addr[i++] = ft_get_lowest((int)(color.g * 255), 255);
-	mlx->addr[i++] = ft_get_lowest((int)(color.r * 255), 255);
+	mlx->addr[i++] = color.b * 255;
+	mlx->addr[i++] = color.g * 255;
+	mlx->addr[i++] = color.r * 255;
 }
 
 bool	check_rotation_cam(t_ray *ray, t_camera cam)
@@ -49,7 +49,7 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ray.dir.z = cam.focal;
 	rt_norm_vector(&ray.dir);
 	if (!check_rotation_cam(&ray, cam)) // enlever cette condition ?
-		ray.dir = rt_multiply_matrix_vector(cam.mat_rot, ray.dir);
+		ray.dir = rt_multiply_matrix_vector(cam.rotate, ray.dir);
 	//dprintf(2, "new_z:%.2f, %.2f, %.2f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	ray.inter = 0;
 	ray.in_obj = 0;
