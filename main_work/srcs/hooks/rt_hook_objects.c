@@ -6,11 +6,41 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:35:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/07 11:56:49 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:37:34 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mini_rt.h>
+
+//Turn the object angle up, down, left or right depending on the key and axis
+void	rt_update_obj_dir(int key, t_master *master, int o)
+{
+	t_matrix	newm_y;
+	t_matrix	newm_x;
+
+	master->obj_data->objects[o]->ud_angle = 0;
+	master->obj_data->objects[o]->lr_angle = 0;
+	if (o == -1)
+		return ;
+	else
+	{
+		if (key == PV_8)
+			master->obj_data->objects[o]->ud_angle -= 0.1;
+		else if (key == PV_2)
+			master->obj_data->objects[o]->ud_angle += 0.1;
+		else if (key == PV_4)
+			master->obj_data->objects[o]->lr_angle += 0.1;
+		else if (key == PV_6)
+			master->obj_data->objects[o]->lr_angle -= 0.1;
+		newm_y = rt_matrix_rot_x(master->obj_data->objects[o]->ud_angle);
+		newm_x = rt_matrix_rot_y(master->obj_data->objects[o]->lr_angle);
+		master->obj_data->objects[o]->rotate
+			= rt_multiply_matrix(newm_y, newm_x);
+		*master->obj_data->objects[o]->dir
+			= rt_multiply_matrix_vector(master->obj_data->objects[o]->rotate,
+				*master->obj_data->objects[o]->dir);
+	}
+}
 
 //Move the corresponding object on the axis given one way or the other
 void	rt_update_obj_pos(int key, t_master *master, int object, int axis)
@@ -47,7 +77,7 @@ void	rt_update_light_pos(int key, t_master *master, int axis)
 		return ;
 	else
 	{
-		if (key == PV_8)
+		if (key == K_EQUAL)
 		{
 			if (axis == AXIS_X)
 				master->light->pos->x += 0.2;
@@ -56,7 +86,7 @@ void	rt_update_light_pos(int key, t_master *master, int axis)
 			else if (axis == AXIS_Z)
 				master->light->pos->z += 0.2;
 		}
-		else if (key == PV_2)
+		else if (key == K_MINUS)
 		{
 			if (axis == AXIS_X)
 				master->light->pos->x -= 0.2;

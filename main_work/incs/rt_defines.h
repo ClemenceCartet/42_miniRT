@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 17:16:38 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:24:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 # define ID_X 0
 # define ID_Y 1
 # define ID_Z 2
-# define ID_O 3
 
 # define PARSING_CHARSET "ACLsplcy0123456789-+., \n"
 # define INT_CHARSET "0123456789"
@@ -86,51 +85,51 @@
 # define STR1			"Camera Movements"
 # define STR2			"Forward : W"
 # define STR3			"Backward : S"
-# define STR4			"Left : A"
-# define STR5			"Right : D"
-# define STR6			"Up : Q"
-# define STR7			"Down : E"
 
-# define STR8			"Camera View"
-# define STR9			"Look Up : I"
-# define STR10			"Look Down : K"
-# define STR11			"Look Left : J"
-# define STR12			"Look Right : L"
-# define STR13			"Tilt Left: U"
-# define STR14			"Tilt Right : O"
+# define STR4			"Camera View"
+# define STR5			"Look Up : I"
+# define STR6			"Look Down : K"
+# define STR7			"Look Left : J"
+# define STR8			"Look Right : L"
 
-# define STR15			"Axis selection"
-# define STR16			"X Axis : X"
-# define STR17			"Y Axis : Y"
-# define STR18			"Z Axis : Z"
+# define STR9			"Axis selection"
+# define STR10			"X Axis : X"
+# define STR11			"Y Axis : Y"
+# define STR12			"Z Axis : Z"
 
-# define STR19			"Object Selection"
-# define STR20			"Prev Object : Left Arrow"
-# define STR21			"Next Object : Right Arrow"
-# define STR22			"Switch size parameter : T"
+# define STR13			"Object Selection"
+# define STR14			"Prev Object : Left Arrow"
+# define STR15			"Next Object : Right Arrow"
+# define STR16			"Switch size parameter : T"
 
-# define STR23			"Object movement on selected axis"
-# define STR24			"Increase value : Up Arrow"
-# define STR25			"Decrease value : Down Arrow"
+# define STR17			"Object movement on selected axis"
+# define STR18			"Increase value : Up Arrow"
+# define STR19			"Decrease value : Down Arrow"
 
-# define STR26			"Light movement on selected axis"
-# define STR27			"Increase value : Numpad 8"
-# define STR28			"Decrease value : Numpad 2"
+# define STR20			"Light movement on selected axis"
+# define STR21			"Increase value : EQUAL / PLUS"
+# define STR22			"Decrease value : MINUS"
 
-# define STR29			"Object size modification"
-# define STR30			"Increase size : Numpad +"
-# define STR31			"Decrease size : Numpad -"
+# define STR23			"Object size modification"
+# define STR24			"Increase size : Numpad +"
+# define STR25			"Decrease size : Numpad -"
 
-# define STR32			"Currently selected Object"
-# define STR33			"Object Type = "
-# define STR34			"Sphere"
-# define STR35			"Plane"
-# define STR36			"Cylinder"
-# define STR37			"Index = "
+# define STR26			"Currently selected Object"
+# define STR27			"Object Type = "
+# define STR28			"Sphere"
+# define STR29			"Plane"
+# define STR30			"Cylinder"
+# define STR31			"Index = "
 
-# define STR38			"Selected Axis = "
-# define STR39			"Selected Size = "
-# define STR40			"Diameter"
-# define STR41			"Height"
+# define STR32			"Object Orientation"
+# define STR33			"Y Axis Up : Numpad 8"
+# define STR34			"Y Axis Down : Numpad 2"
+# define STR35			"X Axis Up : Numpad 4"
+# define STR36			"X Axis Down : Numpad 6"
+
+# define STR37			"Selected Axis = "
+# define STR38			"Selected Size = "
+# define STR39			"Diameter"
+# define STR40			"Height"
 
 #endif //RT_DEFINES_H

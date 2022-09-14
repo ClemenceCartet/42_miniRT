@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_manage_hooks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:56:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 11:39:02 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:31:18 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static void	rt_object_hook_hub(int key, t_master *master)
 		rt_update_obj_pos(key, master, object, axis);
 	else if (key == PV_PLUS || key == PV_MINUS)
 		rt_update_obj_size(key, master, object, obj_size);
-	else if (key == PV_8 || key == PV_2)
+	else if (key == K_MINUS || key == K_EQUAL)
 		rt_update_light_pos(key, master, axis);
+	else if (key == PV_8 || key == PV_2 || key == PV_4 || key == PV_6)
+		rt_update_obj_dir(key, master, object);
 	rt_display_selection(master, axis, obj_size);
 }
 

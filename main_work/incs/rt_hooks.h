@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hooks.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:12:56 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 11:35:23 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/14 15:27:37 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 /*-------------------- rt_display.c --------------------*/
 
 void	rt_display_selection(t_master *m, int axis, int size);
-// void	rt_display_selected_object(t_master *m);
+void	rt_display_selected_object(t_master *m);
 // void	rt_display_camera_commands(t_master *master);
 // void	rt_display_select_commands(t_master *master);
 void	rt_display_info(t_master *master);
@@ -36,8 +36,10 @@ int		rt_update_selected_size(int obj_size);
 
 /*-------------------- rt_hook_objects.c --------------------*/
 
+void	rt_update_obj_dir(int key, t_master *master, int o);
 void	rt_update_obj_pos(int key, t_master *master, int object, int axis);
 void	rt_update_light_pos(int key, t_master *master, int axis);
+//float	rt_update_size(int key, float size);
 void	rt_update_obj_size(int key, t_master *master, int object, int obj_size);
 
 /*-------------------- rt_hook_camera.c --------------------*/

@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:21:19 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/13 17:16:21 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 14:53:55 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ struct	s_coord
 	float	x;
 	float	y;
 	float	z;
-	float	o;
 };
 
 /**Structure contenant les données d'un rayon
@@ -151,6 +150,8 @@ struct	s_hit
  * origin	= coordonnées d'origine du rayon
  * dir		= vecteur d'orientation du rayon
  * hit		= structure du point d'intersection du rayon avec un objet
+ * inter	= ?
+ * in_obj	= ?
 */
 struct	s_ray
 {

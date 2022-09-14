@@ -6,7 +6,7 @@
 #    By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 07:55:50 by ljohnson          #+#    #+#              #
-#    Updated: 2022/09/13 17:16:09 by ljohnson         ###   ########lyon.fr    #
+#    Updated: 2022/09/14 15:26:33 by ljohnson         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LST_INCS		:=	mini_rt.h					rt_keys.h			\
 					rt_raytracer.h
 LST_HOOKS		:=	rt_manage_hooks.c			rt_hook_objects.c	\
 					rt_hook_camera.c			rt_hook_selection.c	\
-					rt_display.c
+					rt_display.c				rt_display_object.c
 LST_MATHS		:=	rt_color.c					rt_op_vector1.c		\
 					rt_op_vector2.c				rt_matrix.c			\
 					rt_matrix_rotation.c
@@ -40,7 +40,7 @@ LST_PARSING		:=	rt_check_utils.c			rt_check_utils2.c	\
 					rt_init_additional_data.c
 LST_RAYTRACER	:=	rt_hits.c					rt_light.c			\
 					rt_ray_tracer.c				rt_intersection.c	\
-					rt_inter_cylinder.c
+					rt_inter_cylinder.c			rt_inter_cylinder2.c
 LST_UTILS		:=	rt_free_data.c				rt_free_objects.c	\
 					rt_return_errors.c			rt_write_errors.c
 
@@ -75,7 +75,7 @@ OBJS			:=	$(subst $(P_SRCS),$(P_OBJS),$(SRCS:.c=.o))
 
 # Commands
 CC				:=	gcc
-CF				:=	-Wall -Werror -Wextra -O3 -g3 -fsanitize=address
+CF				:=	-Wall -Werror -Wextra -O3 #-g3 -fsanitize=address
 CI				:=	-I $(P_INCS_LIBFT) -I $(P_INCS) -I $(P_MLX)
 CS				:=	-g3 -fsanitize=address
 CG				:=	-g3

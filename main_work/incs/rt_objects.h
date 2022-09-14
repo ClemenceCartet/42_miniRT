@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:18:11 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 14:32:07 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/14 15:04:27 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,22 @@ struct	s_light
 */
 struct	s_object
 {
-	int		id;
+	int			id;
 
-	t_coord	*pos;
-	t_coord	*dir;
-	t_color	*rgb;
-	float	diameter;
-	float	height;
+	t_coord		*pos;
+	t_coord		*dir;
+	t_color		*rgb;
+	float		diameter;
+	float		height;
 
-	float	radius;
-	t_coord	c[4];
-	t_coord	gap[4];
-	int		selected;
+	float		radius;
+	t_coord		c[4];
+	t_coord		gap[4];
+	int			selected;
+
+	t_matrix	rotate;
+	float		ud_angle;
+	float		lr_angle;
 };
 /**Structure pour l'objet sphère
  * pos		= coordonnées XYZ du centre de la sphère
