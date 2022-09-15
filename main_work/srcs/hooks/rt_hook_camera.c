@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_hook_camera.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:45:57 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/15 14:07:21 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/15 14:13:43 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	rt_update_camera_dir(int key, t_master *master)
 	float	lr_angle;
 
 	lr_angle = 0.0;
-	if (key == K_J)
+	if (key == K_A)
 		lr_angle += 0.1;
-	else if (key == K_L)
+	else if (key == K_D)
 		lr_angle -= 0.1;
 	master->camera->rotate = rt_matrix_rot_y(lr_angle);
 	*master->camera->dir = rt_multiply_matrix_vector(master->camera->rotate,

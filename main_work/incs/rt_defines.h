@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:23:22 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 15:24:23 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/15 14:13:33 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,8 @@
 # define STR3			"Backward : S"
 
 # define STR4			"Camera View"
-# define STR5			"Look Up : I"
-# define STR6			"Look Down : K"
-# define STR7			"Look Left : J"
-# define STR8			"Look Right : L"
+# define STR7			"Look Left : A"
+# define STR8			"Look Right : D"
 
 # define STR9			"Axis selection"
 # define STR10			"X Axis : X"

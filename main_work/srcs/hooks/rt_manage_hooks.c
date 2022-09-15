@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_manage_hooks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:56:26 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/15 13:09:00 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/15 14:13:53 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	rt_camera_hook_hub(int key, t_master *master)
 {
 	if (key == K_W || key == K_S)
 		rt_update_camera_pos(key, master);
-	else if (key == K_J || key == K_L)
+	else if (key == K_A || key == K_D)
 		rt_update_camera_dir(key, master);
 }
 
