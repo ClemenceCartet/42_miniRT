@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:35:44 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/14 15:37:34 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/15 08:27:26 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	rt_update_obj_dir(int key, t_master *master, int o)
 	t_matrix	newm_y;
 	t_matrix	newm_x;
 
-	master->obj_data->objects[o]->ud_angle = 0;
-	master->obj_data->objects[o]->lr_angle = 0;
 	if (o == -1)
 		return ;
 	else
 	{
+		master->obj_data->objects[o]->ud_angle = 0;
+		master->obj_data->objects[o]->lr_angle = 0;
 		if (key == PV_8)
 			master->obj_data->objects[o]->ud_angle -= 0.1;
 		else if (key == PV_2)
