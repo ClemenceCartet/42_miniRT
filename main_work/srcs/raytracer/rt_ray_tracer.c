@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/15 11:36:10 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/15 11:43:15 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,10 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ft_memset(&ray, 0, sizeof(t_ray));
 	ray.origin = *cam.pos;
 	ray.dir.x = WIDTH * 0.5 - w;
-	// ray.dir.x = - (2 * w - WIDTH);
 	ray.dir.y = HEIGHT * 0.5 - h;
-	// ray.dir.y = HEIGHT * 0.5 - h;
 	ray.dir.z = cam.focal;
-	rt_norm_vector(&tmp_dir);
-	ray.dir = rt_multiply_matrix_vector(cam.rotate, tmp_dir);
-	// if (tmp_dir.z < 0.0 && cam.rotate.z.z < 0.0)
-	// 	ray.dir = rt_scale_vec(ray.dir, -1);
+	rt_norm_vector(&ray.dir);
+	ray.dir = rt_multiply_matrix_vector(cam.rotate, ray.dir);
 	// if (w == 640 && h == 0)
 	// 	dprintf(2, "ray_dir_after:%f, %f, %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	ray.inter = 0;

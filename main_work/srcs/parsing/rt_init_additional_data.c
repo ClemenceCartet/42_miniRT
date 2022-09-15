@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/15 10:39:47 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/15 11:47:44 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ static t_object	**rt_init_object_tab(t_obj_data *obj_data)
 //Camera additional data initialization (C)
 static void	rt_init_add_camera(t_camera **cam)
 {
-	// t_matrix		newm_y;
-	// t_matrix		newm_x;
+	t_matrix		newm_y;
+	t_matrix		newm_x;
 
 	(*cam)->radian = (*cam)->fov * M_PI / 180;
 	(*cam)->focal = WIDTH / (2 * tan((*cam)->radian * 0.5));
-	// newm_y = rt_matrix_rot_x(-asin((*cam)->dir->y) + 0.0001);
-	// newm_x = rt_matrix_rot_y(atan2((*cam)->dir->x, (*cam)->dir->z) + 0.0001);
-	// (*cam)->rotate = rt_multiply_matrix(newm_y, newm_x);
-	// *(*cam)->dir = rt_multiply_matrix_vector((*cam)->rotate, *(*cam)->dir);
-	// *(*cam)->pos = rt_add_vec(*(*cam)->pos, rt_scale_vec(*(*cam)->dir, 0.001));
+	newm_y = rt_matrix_rot_x(-asin((*cam)->dir->y) + 0.0001);
+	newm_x = rt_matrix_rot_y(atan2((*cam)->dir->x, (*cam)->dir->z) + 0.0001);
+	(*cam)->rotate = rt_multiply_matrix(newm_y, newm_x);
+	*(*cam)->dir = rt_multiply_matrix_vector((*cam)->rotate, *(*cam)->dir);
+	*(*cam)->pos = rt_add_vec(*(*cam)->pos, rt_scale_vec(*(*cam)->dir, 0.001));
 }
 
 //Object additional data initialization (SP / PL / CY)
