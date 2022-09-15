@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_init_additional_data.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 11:43:28 by ljohnson          #+#    #+#             */
-/*   Updated: 2022/09/15 14:08:21 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/15 14:20:23 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	rt_init_add_camera(t_camera **cam)
 	(*cam)->radian = (*cam)->fov * M_PI / 180;
 	(*cam)->focal = WIDTH / (2 * tan((*cam)->radian * 0.5));
 	newm_y = rt_matrix_rot_x(-asin((*cam)->dir->y) + 0.0001);
-	newm_x = rt_matrix_rot_y(atan2((*cam)->dir->x, (*cam)->dir->z) + 0.0001);
+	newm_x = rt_matrix_rot_y(atan2((*cam)->dir->x, (*cam)->dir->z) + 0.0005);
 	(*cam)->rotate = rt_multiply_matrix(newm_y, newm_x);
-	*(*cam)->pos = rt_add_vec(*(*cam)->pos, rt_scale_vec(*(*cam)->dir, 0.0001));
+	*(*cam)->pos = rt_add_vec(*(*cam)->pos, rt_scale_vec(*(*cam)->dir, 0.0005));
 }
 
 //Object additional data initialization (SP / PL / CY)
