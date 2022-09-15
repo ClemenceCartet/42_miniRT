@@ -6,7 +6,7 @@
 /*   By: ljohnson <ljohnson@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/15 14:10:42 by ljohnson         ###   ########lyon.fr   */
+/*   Updated: 2022/09/15 14:16:45 by ljohnson         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	rt_set_new_rotate(t_master *master)
 	master->camera->rotate = rt_multiply_matrix(newm_y, newm_x);
 }
 
-void	rt_ray_tracer(t_master *master)
+void	rt_ray_tracer(t_master *master, int pxl_w, int pxl_h)
 {
+	static int	first = 0;
 	t_ray		ray;
-	int			pxl_w;
-	int			pxl_h;
 	t_color		color;
 
-	rt_set_new_rotate(master);
+	if (first)
+		rt_set_new_rotate(master);
 	pxl_h = 0;
 	while (pxl_h < HEIGHT)
 	{
@@ -77,4 +77,5 @@ void	rt_ray_tracer(t_master *master)
 		}
 		pxl_h++;
 	}
+	first = 1;
 }
