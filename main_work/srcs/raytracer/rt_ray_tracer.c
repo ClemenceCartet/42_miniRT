@@ -6,7 +6,7 @@
 /*   By: ccartet <ccartet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:14:53 by ccartet           #+#    #+#             */
-/*   Updated: 2022/09/15 11:43:15 by ccartet          ###   ########.fr       */
+/*   Updated: 2022/09/15 13:50:55 by ccartet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	ray.dir.z = cam.focal;
 	rt_norm_vector(&ray.dir);
 	ray.dir = rt_multiply_matrix_vector(cam.rotate, ray.dir);
-	// if (w == 640 && h == 0)
-	// 	dprintf(2, "ray_dir_after:%f, %f, %f\n", ray.dir.x, ray.dir.y, ray.dir.z);
 	ray.inter = 0;
 	ray.in_obj = 0;
 	ray.hit.time = -1;
@@ -43,19 +41,26 @@ t_ray	rt_create_ray(t_camera cam, float w, float h)
 	return (ray);
 }
 
-void	rt_ray_tracer(t_master *master)
+void	rt_set_new_rotate(t_master *master)
 {
 	t_matrix newm_y;
 	t_matrix newm_x;
-	t_ray	ray;
-	int		pxl_w;
-	int		pxl_h;
-	t_color	color;
-
-	// dprintf(2, "cam_dir:%f, %f, %f\n", master->camera->dir->x, master->camera->dir->y, master->camera->dir->z);
+	
 	newm_y = rt_matrix_rot_x(-asin(master->camera->dir->y));
 	newm_x = rt_matrix_rot_y(atan2(master->camera->dir->x, master->camera->dir->z));
 	master->camera->rotate = rt_multiply_matrix(newm_y, newm_x);
+}
+
+void	rt_ray_tracer(t_master *master)
+{
+	static int	first = 0;
+	t_ray		ray;
+	int			pxl_w;
+	int			pxl_h;
+	t_color		color;
+
+	if (first)
+		rt_set_new_rotate(master);
 	pxl_h = 0;
 	while (pxl_h < HEIGHT)
 	{
@@ -67,10 +72,11 @@ void	rt_ray_tracer(t_master *master)
 			if (ray.inter)
 				color = rt_set_color(ray.hit, master);
 			else
-				color = rt_create_color(0.0, 0.0, 0.0);
+				color = rt_skybox_color(*master->ambient, ray.dir);
 			rt_put_pixel(pxl_w, pxl_h, color, master->mlx);
 			pxl_w++;
 		}
 		pxl_h++;
 	}
+	first = 1;
 }
